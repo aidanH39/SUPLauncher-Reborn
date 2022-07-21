@@ -1,0 +1,11 @@
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\bin\Debug\SUPLauncher-Reborn.exe.config
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\bin\Debug\SUPLauncher-Reborn.exe
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\bin\Debug\SUPLauncher-Reborn.pdb
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\obj\Debug\SUPLauncher-Reborn.csprojAssemblyReference.cache
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\obj\Debug\SUPLauncher_Reborn.frm_main.resources
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\obj\Debug\SUPLauncher_Reborn.Properties.Resources.resources
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\obj\Debug\SUPLauncher-Reborn.csproj.GenerateResource.cache
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\obj\Debug\SUPLauncher-Reborn.csproj.CoreCompileInputs.cache
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\obj\Debug\SUPLauncher-Reborn.exe
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\obj\Debug\SUPLauncher-Reborn.pdb
+C:\Users\aidan\source\repos\SUPLauncher-Reborn\SUPLauncher-Reborn\obj\Debug\SUPLauncher_Reborn.ServerPanel.resources
