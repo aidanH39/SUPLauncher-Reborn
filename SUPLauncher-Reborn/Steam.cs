@@ -1,13 +1,23 @@
-﻿using System;
+﻿// Steam Bridge Class
+// This class is desinged to help with aspects of connecting to the steam client and getting infomation.
+// Modified by @Best of all to add some additional features.
+// 
+// CREDIT: @Nick
+
+using System;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using System.Diagnostics;
+using System.Windows.Forms;
+using Gameloop.Vdf;
+using System.IO;
+using Gameloop.Vdf.Linq;
+
 /// <summary>
 /// Allows basic communication with Steam.
 /// </summary>
-public class SteamBridge : IDisposable
+public class Steam : IDisposable
 {
     /// <summary>
     /// Handle to the steamclient.dll.
@@ -25,9 +35,9 @@ public class SteamBridge : IDisposable
     private bool _isDisposed;
 
     /// <summary>
-    /// <see cref="SteamBridge"/>
+    /// <see cref="Steam"/>
     /// </summary>
-    public SteamBridge()
+    public Steam()
     {
         // Get the steam path from the registry.
         var steamPath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Valve\Steam", "SteamPath", "") as string;
@@ -61,7 +71,7 @@ public class SteamBridge : IDisposable
     /// <summary>
     /// Destructor to make sure resources are cleaned up.
     /// </summary>
-    ~SteamBridge()
+    ~Steam()
     {
         Dispose();
     }
@@ -151,6 +161,45 @@ public class SteamBridge : IDisposable
     }
 
     /// <summary>
+    /// Gets the gmod process, this works even if gmod is on another branch.
+    /// </summary>
+
+    public static Process getGmodProcess()
+    {
+        Process[] hl2 = Process.GetProcessesByName("hl2");
+        Process[] gmod = Process.GetProcessesByName("gmod");
+        if (hl2.Length > 0)
+        {
+            return hl2[0];
+        }
+        else if (gmod.Length > 0)
+        {
+            return gmod[0];
+        }
+        else
+        {
+            return null;
+        }
+
+    }
+
+    /// <summary>
+    /// Gets the handle proccess for GMOD
+    /// </summary>
+    /// <returns></returns>
+    public static IntPtr getGMOD()
+    {
+        try
+        {
+            if (getGmodProcess() == null) return IntPtr.Zero; else if (getGmodProcess().ProcessName == "hl2") { return WindowHelper.FindWindow(null, "Garry's Mod"); } else { return WindowHelper.FindWindow(null, "Garry's Mod (x64)"); }
+        }
+        catch (Exception)
+        {
+            return IntPtr.Zero;
+        }
+    }
+
+    /// <summary>
     /// Get the steam id of the current user.
     /// </summary>
     public UInt64 GetSteamId()
@@ -202,6 +251,50 @@ public class SteamBridge : IDisposable
 
         // Everthing has been disposed.
         _isDisposed = true;
+    }
+
+    public static string getGarrysModPath()
+    {
+        String strSteamInstallPath = (String) Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null);
+        dynamic volvo = VdfConvert.Deserialize(File.ReadAllText(strSteamInstallPath + "/steamapps/libraryfolders.vdf"));
+        string gmodPath = null;
+        foreach (dynamic v in volvo.Value)
+        {
+            string path = v.Value.path.ToString();
+            foreach (var lFolder in v.Value.apps)
+            {
+                String[] st = lFolder.ToString().Split('"');
+                if (st[1] == "4000")
+                {
+                    gmodPath = path + "\\steamapps\\common\\GarrysMod";
+                }
+            }
+        }
+        if (gmodPath == null)
+        {
+            MessageBox.Show("We could not locate your GMOD install.");
+        }
+        return gmodPath;
+    }
+
+    public static bool isCSSinstalled()
+    {
+        String strSteamInstallPath = (String)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null);
+        dynamic volvo = VdfConvert.Deserialize(File.ReadAllText(strSteamInstallPath + "/steamapps/libraryfolders.vdf"));
+        bool isinstalled = false;
+        foreach (dynamic v in volvo.Value)
+        {
+            string path = v.Value.path.ToString();
+            foreach (var lFolder in v.Value.apps)
+            {
+                String[] st = lFolder.ToString().Split('"');
+                if (st[1] == "240")
+                {
+                    isinstalled = true;
+                }
+            }
+        }
+        return isinstalled;
     }
 
     #region Delegates

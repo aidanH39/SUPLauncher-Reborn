@@ -83,6 +83,46 @@ namespace SUPLauncher_Reborn.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PngItem_6405989 {
+            get {
+                object obj = ResourceManager.GetObject("PngItem_6405989", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PngItem_64059891 {
+            get {
+                object obj = ResourceManager.GetObject("PngItem_64059891", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SecurityAndMaintenance_Alert {
+            get {
+                object obj = ResourceManager.GetObject("SecurityAndMaintenance_Alert", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap site_logo_reduced {
+            get {
+                object obj = ResourceManager.GetObject("site-logo_reduced", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap textless_logo {
             get {
                 object obj = ResourceManager.GetObject("textless_logo", resourceCulture);

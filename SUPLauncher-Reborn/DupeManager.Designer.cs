@@ -1,4 +1,4 @@
-﻿namespace SUPLauncher
+﻿namespace SUPLauncher_Reborn
 {
     partial class DupeManager
     {
@@ -38,7 +38,6 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Import = new System.Windows.Forms.OpenFileDialog();
             this.TopBar = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Drop = new System.Windows.Forms.Panel();
@@ -52,9 +51,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.FolderMenu.SuspendLayout();
             this.TopBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.Drop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgrefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -114,7 +113,7 @@
             // TopBar
             // 
             this.TopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.TopBar.Controls.Add(this.pictureBox2);
+            this.TopBar.Controls.Add(this.panel2);
             this.TopBar.Controls.Add(this.button3);
             this.TopBar.Controls.Add(this.button2);
             this.TopBar.Cursor = System.Windows.Forms.Cursors.SizeAll;
@@ -126,16 +125,6 @@
             this.TopBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
             this.TopBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
             this.TopBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::SUPLauncher.Properties.Resources.suplogo;
-            this.pictureBox2.Location = new System.Drawing.Point(5, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 22);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 56;
-            this.pictureBox2.TabStop = false;
             // 
             // button3
             // 
@@ -294,6 +283,15 @@
             this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(4, 28);
+            this.panel2.TabIndex = 57;
+            // 
             // DupeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,7 +319,6 @@
             this.DragLeave += new System.EventHandler(this.DupeManager_DragLeave);
             this.FolderMenu.ResumeLayout(false);
             this.TopBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.Drop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgrefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -351,7 +348,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel2;
     }
 }

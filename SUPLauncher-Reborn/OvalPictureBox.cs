@@ -18,4 +18,5 @@ public class OvalPictureBox : PictureBox
             this.Region = new Region(gp);
         }
     }
+
 }

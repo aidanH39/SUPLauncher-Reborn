@@ -8,7 +8,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace SUPLauncher
+namespace SUPLauncher_Reborn
 {
     public partial class DupeManager : Form
     {
@@ -161,7 +161,7 @@ namespace SUPLauncher
         private void reloadFoldersAndFiles()
         {
 
-            DirectoryInfo dInfo = new DirectoryInfo(frmLauncher.dupePath + @"\" + path.Text); // Directory info to see what directories we have to work with
+            DirectoryInfo dInfo = new DirectoryInfo(Program.dupePath + @"\" + path.Text); // Directory info to see what directories we have to work with
 
 
             Dupes.Items.Clear(); // Make sure the listview has no items before loading these items below
@@ -190,7 +190,7 @@ namespace SUPLauncher
             if (MessageBox.Show("Are you sure you want to delete " + Dupes.SelectedItems[0].ToString() + "?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
 
-                File.Delete(frmLauncher.dupePath + path.Text + @"\" + Dupes.SelectedItems[0].Text);
+                File.Delete(Program.dupePath + path.Text + @"\" + Dupes.SelectedItems[0].Text);
                 Dupes.Items.RemoveAt(Dupes.SelectedIndices[0]);
             }
         }
@@ -202,7 +202,7 @@ namespace SUPLauncher
 
         private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            copiedNode = frmLauncher.dupePath + path.Text + @"\" + Dupes.SelectedItems[0].Text;
+            copiedNode = Program.dupePath + path.Text + @"\" + Dupes.SelectedItems[0].Text;
             copiedNodeName = Dupes.Text;
         }
 
@@ -212,19 +212,19 @@ namespace SUPLauncher
             if (File.Exists(copiedNode.ToString()))
             {
                 int i = 1;
-                while (File.Exists(frmLauncher.dupePath + path.Text + @"\" + copiedNodeName + "(" + i + ")"))
+                while (File.Exists(Program.dupePath + path.Text + @"\" + copiedNodeName + "(" + i + ")"))
                 {
                     i = i + 1;
 
                 }
-                File.Copy(copiedNode.ToString(), frmLauncher.dupePath + path.Text + @"\" + copiedNodeName + "(" + i + ")");
+                File.Copy(copiedNode.ToString(), Program.dupePath + path.Text + @"\" + copiedNodeName + "(" + i + ")");
 
             }
             else
             {
                 try
                 {
-                    File.Copy(copiedNode.ToString(), frmLauncher.dupePath + path.Text + "/" + @"\" + copiedNode);
+                    File.Copy(copiedNode.ToString(), Program.dupePath + path.Text + "/" + @"\" + copiedNode);
                 }
                 catch (Exception) // Stops errors popping up if the file does not exist anymore
                 {
@@ -236,8 +236,8 @@ namespace SUPLauncher
 
         private void CreateNewFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String name = Interaction.InputBox("Folder name:");
-            Directory.CreateDirectory(frmLauncher.dupePath + frmLauncher.dupePath + path.Text + @"\" + copiedNode + name);
+            String name = Interaction.InputBox("Folder name:", "Please enter folder name");
+            Directory.CreateDirectory(Program.dupePath + Program.dupePath + path.Text + @"\" + copiedNode + name);
 
         }
 
@@ -259,15 +259,15 @@ namespace SUPLauncher
         private void NewFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            String filename = Interaction.InputBox("Folder Name");
-            if (Directory.Exists(frmLauncher.dupePath + path.Text + "/" + filename))
+            String filename = Interaction.InputBox("Folder Name", "Please enter folder name");
+            if (Directory.Exists(Program.dupePath + path.Text + "/" + filename))
             {
                 MessageBox.Show("Folder already exsists!", "SUPLauncher");
                 return;
             }
             else
             {
-                Directory.CreateDirectory(frmLauncher.dupePath + path.Text + @"\" + filename);
+                Directory.CreateDirectory(Program.dupePath + path.Text + @"\" + filename);
                 reloadFoldersAndFiles();
 
             }
@@ -295,7 +295,7 @@ namespace SUPLauncher
                     if (Path.GetFileName(dupe).EndsWith(".txt"))
                     {
                         Drop.Visible = false;
-                        File.Copy(dupe, frmLauncher.dupePath + frmLauncher.dupePath + path.Text + @"\" + Path.GetFileName(dupe));
+                        File.Copy(dupe, Program.dupePath + Program.dupePath + path.Text + @"\" + Path.GetFileName(dupe));
                     }
                 }
 
@@ -393,7 +393,7 @@ namespace SUPLauncher
         private void Dupes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
-            if (Directory.Exists(frmLauncher.dupePath + path.Text + @"\" + Dupes.SelectedItems[0].Text))
+            if (Directory.Exists(Program.dupePath + path.Text + @"\" + Dupes.SelectedItems[0].Text))
             {
                 history.Add(path.Text);
                 if (path.Text[path.Text.Length - 1] == '/')
@@ -456,9 +456,9 @@ namespace SUPLauncher
             {
                 if (File.Exists(Import.FileName))
                 {
-                    if (File.Exists(frmLauncher.dupePath + path.Text + "/" + Import.SafeFileName) == false)
+                    if (File.Exists(Program.dupePath + path.Text + "/" + Import.SafeFileName) == false)
                     {
-                        File.Copy(Import.FileName, frmLauncher.dupePath + path.Text + "/" + Import.SafeFileName);
+                        File.Copy(Import.FileName, Program.dupePath + path.Text + "/" + Import.SafeFileName);
                         reloadFoldersAndFiles();
                     }
                 }
@@ -522,11 +522,11 @@ namespace SUPLauncher
                     {
                         if (item.Tag == "folder")
                         {
-                            deleteFolder(frmLauncher.dupePath + path.Text + "/" + item.Text);
+                            deleteFolder(Program.dupePath + path.Text + "/" + item.Text);
                         }
                         else
                         {
-                            File.Delete(frmLauncher.dupePath + path.Text + "/" + item.Text);
+                            File.Delete(Program.dupePath + path.Text + "/" + item.Text);
                         }
                     }
                 }
@@ -540,9 +540,9 @@ namespace SUPLauncher
 
                 String filename = Interaction.InputBox("New file name for '" + Dupes.SelectedItems[0].Text + "'. You do not need to include .txt at the end its done for you otherwise you may have problems loading in your dupe.", "Input File Name");
 
-                if (!File.Exists(frmLauncher.dupePath + path.Text + "/" + filename))
+                if (!File.Exists(Program.dupePath + path.Text + "/" + filename))
                 {
-                    File.Move(frmLauncher.dupePath + path.Text + "/" + Dupes.SelectedItems[0].Text, frmLauncher.dupePath + path.Text + "/" + filename);
+                    File.Move(Program.dupePath + path.Text + "/" + Dupes.SelectedItems[0].Text, Program.dupePath + path.Text + "/" + filename);
                     reloadFoldersAndFiles();
                 }
 
@@ -550,9 +550,9 @@ namespace SUPLauncher
             else
             {
                 String filename = Interaction.InputBox("New folder name for '" + Dupes.SelectedItems[0].Text + "'", "Input Folder Name");
-                if (!Directory.Exists(frmLauncher.dupePath + path.Text + "/" + filename))
+                if (!Directory.Exists(Program.dupePath + path.Text + "/" + filename))
                 {
-                    Directory.Move(frmLauncher.dupePath + path.Text + "/" + Dupes.SelectedItems[0].Text, frmLauncher.dupePath + path.Text + "/" + filename);
+                    Directory.Move(Program.dupePath + path.Text + "/" + Dupes.SelectedItems[0].Text, Program.dupePath + path.Text + "/" + filename);
                     reloadFoldersAndFiles();
                 }
             }
