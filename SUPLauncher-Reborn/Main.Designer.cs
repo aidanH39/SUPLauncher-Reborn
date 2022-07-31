@@ -45,7 +45,7 @@ namespace SUPLauncher_Reborn
             this.lbl_lookup = new System.Windows.Forms.Label();
             this.pnl_4 = new System.Windows.Forms.Panel();
             this.txt_lookup = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_server = new System.Windows.Forms.Label();
             this.lbl_playerName = new System.Windows.Forms.Label();
             this.img_avatar = new OvalPictureBox();
             this.lbl_version = new System.Windows.Forms.Label();
@@ -151,7 +151,7 @@ namespace SUPLauncher_Reborn
             this.panel1.Controls.Add(this.btn_lookup);
             this.panel1.Controls.Add(this.pnl_lookup);
             this.panel1.Controls.Add(this.txt_lookup);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lbl_server);
             this.panel1.Controls.Add(this.lbl_playerName);
             this.panel1.Controls.Add(this.img_avatar);
             this.panel1.Controls.Add(this.lbl_version);
@@ -170,6 +170,7 @@ namespace SUPLauncher_Reborn
             this.img_warning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_warning.TabIndex = 8;
             this.img_warning.TabStop = false;
+            this.img_warning.Visible = false;
             // 
             // btn_settings
             // 
@@ -237,18 +238,18 @@ namespace SUPLauncher_Reborn
             this.txt_lookup.Size = new System.Drawing.Size(219, 20);
             this.txt_lookup.TabIndex = 4;
             // 
-            // label1
+            // lbl_server
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(0, 161);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(244, 26);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Currently playing Danktown";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_server.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_server.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_server.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_server.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lbl_server.Location = new System.Drawing.Point(0, 161);
+            this.lbl_server.Name = "lbl_server";
+            this.lbl_server.Size = new System.Drawing.Size(244, 26);
+            this.lbl_server.TabIndex = 2;
+            this.lbl_server.Text = "Currently playing Danktown";
+            this.lbl_server.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_playerName
             // 
@@ -368,7 +369,7 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_server;
         private System.Windows.Forms.Label lbl_playerName;
         private OvalPictureBox img_avatar;
         private System.Windows.Forms.FlowLayoutPanel pnl_servers;

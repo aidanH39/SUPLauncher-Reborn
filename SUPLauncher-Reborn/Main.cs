@@ -43,21 +43,29 @@ namespace SUPLauncher_Reborn
             
             toolTip1.SetToolTip(btn_lookup, "Click to show profile of inputed steamid");
             lbl_version.Text = "V" + Application.ProductVersion.ToString();
-            //var result = Updater.getCurrentVersion().CompareTo(Updater.getLatestVersion());
-            var result = new Version("1.0.0.1").CompareTo(new Version("1.0.0.0"));
+            var result = Updater.getCurrentVersion().CompareTo(Updater.getLatestVersion());
+            //var result = new Version("1.0.0.1").CompareTo(new Version("1.0.0.0"));
             if (result > 0)
             {
                 toolTip1.SetToolTip(lbl_version, "You are currently on a beta version!");
                 toolTip1.SetToolTip(img_warning, "You are currently on a beta version!");
+                img_warning.Visible = true;
             } else if (result < 0)
             {
                 toolTip1.SetToolTip(lbl_version, "A update is available! Click to update.");
                 toolTip1.SetToolTip(img_warning, "A update is available! Click to update.");
+                img_warning.Visible = true;
             } else
             {
                 toolTip1.SetToolTip(lbl_version, "You are currently on the latest version!");
                 toolTip1.SetToolTip(img_warning, "You are currently on the latest version!");
             }
+
+            Program.serverChanged += delegate
+            {
+                lbl_server.Text = "Currently playing " + SuperiorServers.ipToName(Program.lastIp);
+            };
+
         }
 
         public static void loadImage(PictureBox img, String url)
