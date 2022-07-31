@@ -13,12 +13,16 @@ using System.Windows.Forms;
 using Gameloop.Vdf;
 using System.IO;
 using Gameloop.Vdf.Linq;
+using System.Net;
 
 /// <summary>
 /// Allows basic communication with Steam.
 /// </summary>
 public class Steam : IDisposable
 {
+
+    private static string steamAPIKey = "E1A259FB701EFDCF1B916DE8E646FE47";
+
     /// <summary>
     /// Handle to the steamclient.dll.
     /// </summary>
@@ -255,7 +259,7 @@ public class Steam : IDisposable
 
     public static string getGarrysModPath()
     {
-        String strSteamInstallPath = (String) Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null);
+        String strSteamInstallPath = (String)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null);
         dynamic volvo = VdfConvert.Deserialize(File.ReadAllText(strSteamInstallPath + "/steamapps/libraryfolders.vdf"));
         string gmodPath = null;
         foreach (dynamic v in volvo.Value)
@@ -296,6 +300,27 @@ public class Steam : IDisposable
         }
         return isinstalled;
     }
+
+
+
+    public static string getPlayingServer(string steamid)
+    {
+        try
+        {
+            HttpWebRequest request = WebRequest.CreateHttp("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + steamAPIKey + "&steamids=" + steamid);
+            request.UserAgent = "SUPLauncher";
+            WebResponse response = null;
+            response = request.GetResponse();
+            StreamReader sr = new StreamReader(response.GetResponseStream());
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(sr.ReadToEnd());
+            return result.response.players.First.gameserverip.ToString();
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
 
     #region Delegates
 

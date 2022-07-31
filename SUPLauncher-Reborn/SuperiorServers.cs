@@ -170,5 +170,25 @@ namespace SUPLauncher_Reborn
         {
             return LengthFormat(int.Parse(length));
         }
+
+        public static string ipToName(string ip)
+        {
+            switch (ip)
+            {
+                case "208.103.169.12:27015":
+                    return "Danktown";
+                case "208.103.169.14:27015":
+                    return "ZombieRP";
+                case "208.103.169.18:27015":
+                    return "MilRP";
+                case "208.103.169.16:27015":
+                    return "CWRP";
+                case "208.103.169.17:27015":
+                    return "CWRP (Events)";
+                default:
+                    return null;
+            }
+
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiscordRPC;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
-    static class Program
+    class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -26,7 +27,7 @@ namespace SUPLauncher_Reborn
 
         public static string CSSlink = "https://drive.google.com/file/d/1SPO4kx6e-ylkFrIG8R88Yg0ZS2G8WTRI/view?usp=sharing";
 
-
+        public static EventHandler<Action> serverChanged;
         [STAThread]
         static void Main()
         {
@@ -61,7 +62,49 @@ namespace SUPLauncher_Reborn
                 startOverlay();
             };
             startOverlay();
+            Timer serverUpdate = new Timer();
+            serverUpdate.Enabled = true;
+            serverUpdate.Interval = 10000;
+            serverUpdate.Tick += delegate
+            {
+                checkServer();
+            };
+
+            rpcClient.Initialize();
             Application.Run(new frm_main());
+            
+        }
+        public static DiscordRpcClient rpcClient = new DiscordRpcClient("1003419232769409084");
+
+        public static string lastIp;
+        private static long joinedSince = 0;
+
+        private static void checkServer()
+        {
+            string ip = Steam.getPlayingServer(steamid.ToString());
+            updateDiscord(ip);
+            if (ip != lastIp)
+            {
+                lastIp = ip;
+                joinedSince = DateTimeOffset.Now.ToUnixTimeSeconds();
+                serverChanged.Invoke(null, null);
+            }
+        }
+
+        public static void updateDiscord(string ip=null)
+        {
+            if (ip == null) ip = Steam.getPlayingServer(steamid.ToString());
+            long secondsJoined = DateTimeOffset.Now.ToUnixTimeSeconds() - joinedSince;
+            rpcClient.SetPresence(new RichPresence()
+            {
+                Details = "Playing on " + SuperiorServers.ipToName(ip),
+                State = "for " + SuperiorServers.LengthFormat(Int32.Parse(secondsJoined.ToString())),
+                Assets = new Assets()
+                {
+                    SmallImageText = "SuperiorServers",
+                    SmallImageKey = "sup_small"
+                }
+            });
             
         }
 
