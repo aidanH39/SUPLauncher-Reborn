@@ -41,10 +41,16 @@ namespace SUPLauncher_Reborn
                 t.Interval = 1000;
                 t.Tick += delegate
                 {
-                    this.pnl_loading.BeginInvoke((MethodInvoker)delegate () { this.pnl_loading.Visible = false; });
-                    t.Enabled = false;
-                    t.Stop();
-                    t.Dispose();
+                    try // Incase form is closed
+                    {
+                        this.pnl_loading.BeginInvoke((MethodInvoker)delegate () { this.pnl_loading.Visible = false; });
+                        t.Enabled = false;
+                        t.Stop();
+                        t.Dispose();
+                    } catch (Exception)
+                    {
+                        return; 
+                    }
                 };
                 
             }
