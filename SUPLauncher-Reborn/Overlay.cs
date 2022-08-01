@@ -75,7 +75,7 @@ namespace SUPLauncher_Reborn
                 
                 if (profile.Badmin.Name == "Unknown")
                 {
-                    MessageBox.Show("Invalid SteamID"); // Debug Messages. Remove before commiting
+                    MessageBox.Show("Invalid SteamID");
                     return;
                 }
 
@@ -121,9 +121,9 @@ namespace SUPLauncher_Reborn
                     MessageBox.Show(ex.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
-            
 
+
+            chk_profileOverlay.Checked = Properties.Settings.Default.profileOverlayEnabled;
 
             Notification n = new Notification("OVERLAY", "Overlay has been loaded (ALT + S)");
             n.Show();
@@ -152,6 +152,7 @@ namespace SUPLauncher_Reborn
         {
             // Handle messages...
             base.WndProc(ref m);
+            if (!Properties.Settings.Default.profileOverlayEnabled) return;
             if (m.Msg == 0x308 || m.Msg == 0x031D)
             {
                 bool steamid = false;
@@ -252,6 +253,12 @@ namespace SUPLauncher_Reborn
             ProfileForm form = new ProfileForm(Program.steamid.ToString(), true);
             form.TopMost = true;
             form.Show(this);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.profileOverlayEnabled = chk_profileOverlay.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

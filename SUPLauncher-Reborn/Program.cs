@@ -1,10 +1,14 @@
 ﻿using DiscordRPC;
+using IWshRuntimeLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Management;
+using static SUPLauncher_Reborn.SuperiorServers;
 
 namespace SUPLauncher_Reborn
 {
@@ -24,7 +28,9 @@ namespace SUPLauncher_Reborn
         public static KeyboardHook overlayHotkeyHook;
         public static KeyboardHook profileOverlayHook;
         public static KeyboardHook profileKeyHook;
+        public static Server afkWaitForServer;
 
+        // Link to download CSS content.
         public static string CSSlink = "https://drive.google.com/file/d/1SPO4kx6e-ylkFrIG8R88Yg0ZS2G8WTRI/view?usp=sharing";
 
         public static EventHandler<Action> serverChanged;
@@ -36,6 +42,9 @@ namespace SUPLauncher_Reborn
             steamid = steam.GetSteamId();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            # region Keyboard hooks
+
             overlayHotkeyHook = new KeyboardHook();
             overlayHotkeyHook.KeyPressed +=
             new EventHandler<KeyPressedEventArgs>(OverlayKey);
@@ -54,6 +63,9 @@ namespace SUPLauncher_Reborn
             profileKeyHook.RegisterKeybind(Properties.Settings.Default.overlayModiferKey,
                         Properties.Settings.Default.profileOverlayKey);
 
+            #endregion
+
+            #region Timers
             Timer timer = new Timer();
             timer.Enabled = true;
             timer.Interval = 5000;
@@ -69,6 +81,7 @@ namespace SUPLauncher_Reborn
             {
                 checkServer();
             };
+            #endregion
 
             rpcClient.Initialize();
             Application.Run(new frm_main());
@@ -89,15 +102,49 @@ namespace SUPLauncher_Reborn
                 joinedSince = DateTimeOffset.Now.ToUnixTimeSeconds();
                 serverChanged.Invoke(null, null);
             }
+            if (afkWaitForServer != null)
+            {
+                if (Steam.getGmodProcess() == null)
+                {
+                    Process.Start(afkWaitForServer.Connect);
+                }
+                else
+                {
+                    afkWaitForServer = null;
+                }
+            }
+            if (Properties.Settings.Default.afkModeEnabeld && Steam.getGmodProcess() == null)
+            {
+                if (!Steam.isGmodAFK() && afkWaitForServer == null)
+                {
+                    // Find the steam file instead of using URL's. As this bypasses the anoying popup :)
+                    Process.Start(Steam.getSteamPath() + "\\steam.exe", "-applaunch 4000 -64bit -textmode -single_core -nojoy -low -nosound -sw -noshader -nopix -novid -nopreload -nopreloadmodels -multirun +connect rp.superiorservers.co");
+                }
+            }
         }
 
+
+
+        /// <summary>
+        /// Update the discord RPC
+        /// </summary>
         public static void updateDiscord(string ip=null)
         {
             if (ip == null) ip = Steam.getPlayingServer(steamid.ToString());
             long secondsJoined = DateTimeOffset.Now.ToUnixTimeSeconds() - joinedSince;
+            string name = SuperiorServers.ipToName(ip);
+            string playingon;
+            if (name != null)
+            {
+                playingon = "Playing on " + SuperiorServers.ipToName(ip);
+            } else
+            {
+                playingon = "Not currently playing SUP";
+
+            }
             rpcClient.SetPresence(new RichPresence()
             {
-                Details = "Playing on " + SuperiorServers.ipToName(ip),
+                Details = playingon,
                 State = "for " + SuperiorServers.LengthFormat(Int32.Parse(secondsJoined.ToString())),
                 Assets = new Assets()
                 {
@@ -105,7 +152,6 @@ namespace SUPLauncher_Reborn
                     SmallImageKey = "sup_small"
                 }
             });
-            
         }
 
         
@@ -122,6 +168,31 @@ namespace SUPLauncher_Reborn
                     overlay.Show();
                     overlay.Visible = false;
                 }
+            }
+        }
+
+        public static void updateStartup()
+        {
+            if (Properties.Settings.Default.AutoStartup)
+            {
+                if (!System.IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\SUPLauncher.lnk"))
+                {
+                    IWshShortcut shortcut;
+                    WshShell wshShell = new WshShell();
+                    shortcut =
+              (IWshRuntimeLibrary.IWshShortcut)wshShell.CreateShortcut(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\SUPLauncher.lnk");
+                    shortcut.TargetPath = Application.ExecutablePath;
+                    shortcut.WorkingDirectory = Application.StartupPath;
+                    shortcut.Description = "Open SUPLauncher";
+                    shortcut.Save();
+                }
+            } else
+            {
+                if (System.IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\SUPLauncher.lnk"))
+                {
+                    System.IO.File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\SUPLauncher.lnk");
+                }
+
             }
         }
 

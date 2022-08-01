@@ -106,5 +106,65 @@ namespace SUPLauncher_Reborn.Properties {
                 this["supuserId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool profileOverlayEnabled {
+            get {
+                return ((bool)(this["profileOverlayEnabled"]));
+            }
+            set {
+                this["profileOverlayEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool afkModeEnabeld {
+            get {
+                return ((bool)(this["afkModeEnabeld"]));
+            }
+            set {
+                this["afkModeEnabeld"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool afkAutoStartup {
+            get {
+                return ((bool)(this["afkAutoStartup"]));
+            }
+            set {
+                this["afkAutoStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool discordRPCEnabled {
+            get {
+                return ((bool)(this["discordRPCEnabled"]));
+            }
+            set {
+                this["discordRPCEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoStartup {
+            get {
+                return ((bool)(this["AutoStartup"]));
+            }
+            set {
+                this["AutoStartup"] = value;
+            }
+        }
     }
 }

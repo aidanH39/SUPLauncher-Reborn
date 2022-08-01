@@ -144,5 +144,18 @@ namespace SUPLauncher_Reborn
             LoginForm form = new LoginForm();
             form.Show();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.discordRPCEnabled = checkBox1.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AutoStartup = checkBox2.Checked;
+            Properties.Settings.Default.Save();
+            Program.updateStartup();
+        }
     }
 }

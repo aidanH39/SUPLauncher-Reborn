@@ -87,6 +87,9 @@ namespace SUPLauncher_Reborn
             return true;
         }
 
+        /// <summary>
+        /// Get all the available servers.
+        /// </summary>
         public static List<Server> getServers()
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://superiorservers.co/api/servers");
@@ -110,6 +113,9 @@ namespace SUPLauncher_Reborn
             return servers;
         }
 
+        /// <summary>
+        /// Returns bans on a profile. Returns a list.
+        /// </summary>
         public static List<Ban> getBans(Profile profile)
         {
             List<Ban> bans = new List<Ban>();
@@ -121,6 +127,10 @@ namespace SUPLauncher_Reborn
 
         }
 
+        /// <summary>
+        /// Formats seconds into a length display.
+        /// Example: 2w 3d 6h
+        /// </summary>
         public static string LengthFormat(int length)
         {
             if (length == 0)
@@ -166,11 +176,29 @@ namespace SUPLauncher_Reborn
             return lengthStr;
         }
 
+        /// <summary>
+        /// Formats seconds into a length display.
+        /// Example: 2w 3d 6h
+        /// </summary>
         public static string LengthFormat(string length)
         {
             return LengthFormat(int.Parse(length));
         }
 
+        /// <summary>
+        /// Turns second into a hours:minutes:seconds formatted string.
+        /// </summary>
+        /// <param name="seconds">Amount of seconds you wish to format.</param>
+        public static string playtimeFormat(int seconds)
+        {
+            int hours = seconds / 3600;
+            int mins = (seconds % 3600) / 60;
+            return string.Format("{0:D2}:{1:D2}:{2:D2}", hours, mins, seconds % 60);
+        }
+
+        /// <summary>
+        /// Turns a ip address into the correct superiorservers server name.
+        /// </summary>
         public static string ipToName(string ip)
         {
             switch (ip)

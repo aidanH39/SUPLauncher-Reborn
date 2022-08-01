@@ -46,6 +46,7 @@ namespace SUPLauncher_Reborn
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_dupeMang = new System.Windows.Forms.Button();
+            this.img_heading = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lbl_playtime = new System.Windows.Forms.Label();
@@ -55,13 +56,17 @@ namespace SUPLauncher_Reborn
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.img_heading = new System.Windows.Forms.PictureBox();
+            this.chk_profileOverlay = new System.Windows.Forms.CheckBox();
+            this.pnl_staffTools = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.img_avatar = new OvalPictureBox();
             this.pnl_.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_heading)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_heading)).BeginInit();
+            this.pnl_staffTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,6 +75,7 @@ namespace SUPLauncher_Reborn
             this.pnl_.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.pnl_.Controls.Add(this.pnl_staffTools);
             this.pnl_.Controls.Add(this.btn_milrp);
             this.pnl_.Controls.Add(this.panel6);
             this.pnl_.Controls.Add(this.btn_cwrp2);
@@ -213,7 +219,7 @@ namespace SUPLauncher_Reborn
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.lbl_playerLookup);
             this.panel3.Controls.Add(this.panel1);
-            this.panel3.Location = new System.Drawing.Point(1, 623);
+            this.panel3.Location = new System.Drawing.Point(2, 628);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(322, 136);
             this.panel3.TabIndex = 6;
@@ -307,6 +313,19 @@ namespace SUPLauncher_Reborn
             this.btn_dupeMang.Text = "Dupe Manager";
             this.btn_dupeMang.UseVisualStyleBackColor = false;
             this.btn_dupeMang.Click += new System.EventHandler(this.btn_dupeMang_Click);
+            // 
+            // img_heading
+            // 
+            this.img_heading.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.img_heading.BackColor = System.Drawing.Color.Transparent;
+            this.img_heading.Image = global::SUPLauncher_Reborn.Properties.Resources.site_logo_reduced;
+            this.img_heading.Location = new System.Drawing.Point(3, 12);
+            this.img_heading.Name = "img_heading";
+            this.img_heading.Size = new System.Drawing.Size(322, 92);
+            this.img_heading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_heading.TabIndex = 0;
+            this.img_heading.TabStop = false;
             // 
             // panel2
             // 
@@ -402,18 +421,53 @@ namespace SUPLauncher_Reborn
             this.panel8.Size = new System.Drawing.Size(4, 148);
             this.panel8.TabIndex = 58;
             // 
-            // img_heading
+            // chk_profileOverlay
             // 
-            this.img_heading.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.chk_profileOverlay.AutoSize = true;
+            this.chk_profileOverlay.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_profileOverlay.ForeColor = System.Drawing.Color.White;
+            this.chk_profileOverlay.Location = new System.Drawing.Point(14, 38);
+            this.chk_profileOverlay.Name = "chk_profileOverlay";
+            this.chk_profileOverlay.Size = new System.Drawing.Size(164, 23);
+            this.chk_profileOverlay.TabIndex = 60;
+            this.chk_profileOverlay.Text = "Staff Profile Overlay";
+            this.chk_profileOverlay.UseVisualStyleBackColor = true;
+            this.chk_profileOverlay.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // pnl_staffTools
+            // 
+            this.pnl_staffTools.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl_staffTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.pnl_staffTools.Controls.Add(this.label2);
+            this.pnl_staffTools.Controls.Add(this.panel10);
+            this.pnl_staffTools.Controls.Add(this.chk_profileOverlay);
+            this.pnl_staffTools.Location = new System.Drawing.Point(3, 770);
+            this.pnl_staffTools.Name = "pnl_staffTools";
+            this.pnl_staffTools.Size = new System.Drawing.Size(321, 100);
+            this.pnl_staffTools.TabIndex = 61;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(319, 23);
+            this.label2.TabIndex = 61;
+            this.label2.Text = "Staff Tools";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel10
+            // 
+            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.img_heading.BackColor = System.Drawing.Color.Transparent;
-            this.img_heading.Image = global::SUPLauncher_Reborn.Properties.Resources.site_logo_reduced;
-            this.img_heading.Location = new System.Drawing.Point(3, 12);
-            this.img_heading.Name = "img_heading";
-            this.img_heading.Size = new System.Drawing.Size(322, 92);
-            this.img_heading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_heading.TabIndex = 0;
-            this.img_heading.TabStop = false;
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.panel10.Location = new System.Drawing.Point(66, 26);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(196, 2);
+            this.panel10.TabIndex = 62;
             // 
             // img_avatar
             // 
@@ -447,10 +501,12 @@ namespace SUPLauncher_Reborn
             this.pnl_.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_heading)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_heading)).EndInit();
+            this.pnl_staffTools.ResumeLayout(false);
+            this.pnl_staffTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.ResumeLayout(false);
 
@@ -485,5 +541,9 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.CheckBox chk_profileOverlay;
+        private System.Windows.Forms.Panel pnl_staffTools;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel10;
     }
 }

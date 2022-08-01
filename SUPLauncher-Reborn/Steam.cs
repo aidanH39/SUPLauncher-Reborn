@@ -14,6 +14,7 @@ using Gameloop.Vdf;
 using System.IO;
 using Gameloop.Vdf.Linq;
 using System.Net;
+using SUPLauncher_Reborn;
 
 /// <summary>
 /// Allows basic communication with Steam.
@@ -187,6 +188,18 @@ public class Steam : IDisposable
 
     }
 
+    public static bool isGmodAFK()
+    {
+        if (Steam.getGmodProcess() != null)
+        {
+            if (Steam.getGMOD() == IntPtr.Zero)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /// <summary>
     /// Gets the handle proccess for GMOD
     /// </summary>
@@ -255,6 +268,17 @@ public class Steam : IDisposable
 
         // Everthing has been disposed.
         _isDisposed = true;
+    }
+
+    public static string getSteamPath()
+    {
+        string steam = (String)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null);
+        if (steam == null)
+        {
+            MessageBox.Show(null, "We could not find the steam path in your registry, please make sure your steam is setup correctly.", "Could not locate steam", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null;
+        }
+        return steam;
     }
 
     public static string getGarrysModPath()

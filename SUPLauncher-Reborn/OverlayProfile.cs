@@ -67,12 +67,12 @@ namespace SUPLauncher_Reborn
 
         public void loadProfile(Profile profile)
         {
-            double playtime = profile.Badmin.PlayTime;
+            int playtime = profile.Badmin.PlayTime;
             lbl_name.Text = profile.Badmin.Name;
             lbl_previousOffenses.Text = playtime.ToString();
+            
             TimeSpan time = TimeSpan.FromSeconds(playtime);
-
-            lbl_playTime.Text = time.ToString(@"hh\:mm\:ss\:fff");
+            lbl_playTime.Text = SuperiorServers.playtimeFormat(playtime);
             profile.setAvatar(img_avatar);
             List<Ban> bans = SuperiorServers.getBans(profile);
 

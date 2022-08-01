@@ -63,7 +63,14 @@ namespace SUPLauncher_Reborn
 
             Program.serverChanged += delegate
             {
-                lbl_server.Text = "Currently playing " + SuperiorServers.ipToName(Program.lastIp);
+                string name = SuperiorServers.ipToName(Program.lastIp);
+                if (name != null)
+                {
+                    lbl_server.Text = "Currently playing " + name;
+                } else
+                {
+                    lbl_server.Text = "Currently not playing SUP";
+                }
             };
 
         }
@@ -95,7 +102,8 @@ namespace SUPLauncher_Reborn
             }
             loadImage(img_avatar, "https://superiorservers.co/api/avatar/" + Program.steam.GetSteamId());
 
-            
+            chk_afkMode.Checked = Properties.Settings.Default.afkModeEnabeld;
+            chk_autoAFKStartup.Checked = Properties.Settings.Default.afkAutoStartup;
 
         }
 
@@ -277,7 +285,29 @@ namespace SUPLauncher_Reborn
             {
                 // Everything is installed proceed with launch.
                 lbl_progress.Text = "Launching '" + server.Name + "'...";
-                Process.Start(server.Connect);
+
+                if (Steam.isGmodAFK())
+                {
+                    
+                    Process gmod = Steam.getGmodProcess();
+                    Program.afkWaitForServer = server;
+                    Process[] p = Process.GetProcessesByName("gmod");
+                    foreach (Process pro in p)
+                    {
+                        pro.Kill();
+                    }
+
+
+
+
+                }
+                else
+                {
+                    Process.Start(server.Connect);
+                }
+
+                
+                
                 cProgressBar1.Value = 100;
             }
         }
@@ -344,6 +374,18 @@ namespace SUPLauncher_Reborn
         {
             LoginForm form = new LoginForm();
             form.Show();
+        }
+
+        private void chk_afkMode_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.afkModeEnabeld = chk_afkMode.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void chk_autoAFKStartup_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.afkAutoStartup = chk_autoAFKStartup.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }
