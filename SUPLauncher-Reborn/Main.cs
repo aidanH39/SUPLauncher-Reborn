@@ -22,8 +22,6 @@ namespace SUPLauncher_Reborn
     {
         public frm_main()
         {
-
-
             var settings = new CefSettings();
             settings.CachePath = Application.StartupPath + "\\cookies";
             settings.PersistSessionCookies = true;
@@ -46,6 +44,7 @@ namespace SUPLauncher_Reborn
             lbl_version.Text = "V" + Updater.getCurrentVersion().ToString();
 
             // Check latest version
+            
             var result = Updater.getCurrentVersion().CompareTo(Updater.getLatestVersion());
             if (result > 0)
             {
@@ -98,6 +97,8 @@ namespace SUPLauncher_Reborn
         private void frm_main_Load(object sender, EventArgs e)
         {
 
+            Profile profile = SuperiorServers.getProfile(Program.steamid.ToString());
+            lbl_playerName.Text = profile.Badmin.Name;
 
             List<Server> servers = SuperiorServers.GetServers();
             foreach (Server server in servers)
@@ -338,7 +339,8 @@ namespace SUPLauncher_Reborn
         #region Form top button controls.
         private void btn_close_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Visible = false;
+            notifyIcon1.ShowBalloonTip(5);
         }
 
         private void btn_minimize_Click(object sender, EventArgs e)
@@ -390,6 +392,23 @@ namespace SUPLauncher_Reborn
         private void img_warning_Click(object sender, EventArgs e)
         {
             Updater.downloadLatestVersion();
+        }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Visible = true;
+            } else
+            {
+                this.Close();
+            }
         }
     }
 }

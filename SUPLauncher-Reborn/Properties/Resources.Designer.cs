@@ -113,6 +113,16 @@ namespace SUPLauncher_Reborn.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SecurityAndMaintenance_Error {
+            get {
+                object obj = ResourceManager.GetObject("SecurityAndMaintenance_Error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap site_logo_reduced {
             get {
                 object obj = ResourceManager.GetObject("site-logo_reduced", resourceCulture);

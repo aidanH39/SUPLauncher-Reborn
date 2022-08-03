@@ -33,7 +33,7 @@ namespace SUPLauncher_Reborn
             lbl_header.Text = this.head;
             lbl_info.Text = info;
             int startingTop = this.Top;
-            Timer timer = new Timer();
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Enabled = true;
             timer.Tick += delegate
             {
@@ -44,7 +44,7 @@ namespace SUPLauncher_Reborn
                     
                     timer.Stop();
                     timer.Dispose();
-                    Timer closeAfter = new Timer();
+                    System.Windows.Forms.Timer closeAfter = new System.Windows.Forms.Timer();
                     closeAfter.Enabled = true;
                     closeAfter.Tick += delegate
                     {

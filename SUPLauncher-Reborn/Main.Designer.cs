@@ -57,6 +57,7 @@ namespace SUPLauncher_Reborn
             this.lbl_progress = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tip_afk = new System.Windows.Forms.ToolTip(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
             this.img_avatar = new OvalPictureBox();
             this.pnl_topBar.SuspendLayout();
@@ -326,7 +327,7 @@ namespace SUPLauncher_Reborn
             this.lbl_playerName.Name = "lbl_playerName";
             this.lbl_playerName.Size = new System.Drawing.Size(244, 26);
             this.lbl_playerName.TabIndex = 1;
-            this.lbl_playerName.Text = "Best of all";
+            this.lbl_playerName.Text = "PLAYER_NAME";
             this.lbl_playerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_version
@@ -375,6 +376,18 @@ namespace SUPLauncher_Reborn
             // 
             this.tip_afk.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.tip_afk.ToolTipTitle = "AFK Mode";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "The SUPLauncher is in the background. Right-click on the icon bottom right to clo" +
+    "se.";
+            this.notifyIcon1.BalloonTipTitle = "SUPLauncher is not closed!";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "SUPLauncher";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
             // cProgressBar1
             // 
@@ -464,6 +477,7 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Panel pnl_afkHead;
         private System.Windows.Forms.Label lbl_afk;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
