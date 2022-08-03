@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Management;
 using static SUPLauncher_Reborn.SuperiorServers;
+using System.Threading;
 
 namespace SUPLauncher_Reborn
 {
@@ -39,6 +40,7 @@ namespace SUPLauncher_Reborn
             steamid = steam.GetSteamId();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += Application_ThreadException;
 
             # region Keyboard hooks
 
@@ -62,8 +64,8 @@ namespace SUPLauncher_Reborn
 
             #endregion
 
-            #region Timers
-            Timer timer = new Timer();
+            #region System.Windows.Forms.Timers
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Enabled = true;
             timer.Interval = 5000;
             timer.Tick += delegate
@@ -71,7 +73,7 @@ namespace SUPLauncher_Reborn
                 StartOverlay();
             };
             StartOverlay();
-            Timer serverUpdate = new Timer();
+            System.Windows.Forms.Timer serverUpdate = new System.Windows.Forms.Timer();
             serverUpdate.Enabled = true;
             serverUpdate.Interval = 10000;
             serverUpdate.Tick += delegate
@@ -117,6 +119,15 @@ namespace SUPLauncher_Reborn
                     Process.Start(Steam.getSteamPath() + "\\steam.exe", "-applaunch 4000 -64bit -textmode -single_core -nojoy -low -nosound -sw -noshader -nopix -novid -nopreload -nopreloadmodels -multirun +connect rp.superiorservers.co");
                 }
             }
+        }
+
+
+        // Custom unhandled error catching.
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            ExceptionForm form = new ExceptionForm(e.Exception);
+            form.Show();
+            form.TopMost = true;
         }
 
         /// <summary>
