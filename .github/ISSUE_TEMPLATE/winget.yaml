@@ -1,0 +1,15 @@
+name: Publish to WinGet
+on:
+  release:
+    types: [released]
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: vedantmgoyal2009/winget-releaser@latest
+        with:
+          identifier: BestOfAllCoding.SUPLauncher
+          installers-regex: '\.msi$'
+          delete-previous-version: 'false'
+          token: ${{ secrets.WINGET_TOKEN }} 
