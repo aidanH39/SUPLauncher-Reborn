@@ -43,11 +43,10 @@ namespace SUPLauncher_Reborn
             t1.Start();
             
             toolTip1.SetToolTip(btn_lookup, "Click to show profile of inputed steamid");
-            lbl_version.Text = "V" + Application.ProductVersion.ToString();
+            lbl_version.Text = "V" + Updater.getCurrentVersion().ToString();
 
             // Check latest version
             var result = Updater.getCurrentVersion().CompareTo(Updater.getLatestVersion());
-            //var result = new Version("1.0.0.1").CompareTo(new Version("1.0.0.0"));
             if (result > 0)
             {
                 toolTip1.SetToolTip(lbl_version, "You are currently on a beta version!");

@@ -29,6 +29,7 @@ namespace SUPLauncher_Reborn
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notification));
             this.img_icon = new System.Windows.Forms.PictureBox();
             this.lbl_header = new System.Windows.Forms.Label();
             this.lbl_info = new System.Windows.Forms.Label();
@@ -91,7 +92,9 @@ namespace SUPLauncher_Reborn
             this.Controls.Add(this.lbl_header);
             this.Controls.Add(this.img_icon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Notification";
+            this.ShowInTaskbar = false;
             this.Text = "Notification";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Notification_Load);
