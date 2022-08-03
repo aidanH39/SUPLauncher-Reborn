@@ -25,13 +25,11 @@ namespace SUPLauncher_Reborn
                 WebResponse response = null;
                 response = request.GetResponse();
                 StreamReader sr = new StreamReader(response.GetResponseStream());
-                string cr = sr.ReadToEnd();
-                webData = cr.Split(Convert.ToChar(","));
-                string newestVersion = webData[7].Substring(webData[7].LastIndexOf(":") + 2, webData[7].Length - webData[7].LastIndexOf(":") - 3);
-                return new Version(newestVersion);
-            } catch (Exception)
+                dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(sr.ReadToEnd());
+                return new Version(json.tag_name.ToString()) ;
+            } catch (Exception e)
             {
-                return new Version("0.0.0.0");
+                return new Version("0.0.0");
             }
         }
 
