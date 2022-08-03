@@ -19,7 +19,7 @@ namespace SUPLauncher_Reborn
         {
             try
             {
-                HttpWebRequest request = WebRequest.CreateHttp("http://192.168.1.131:2095/api/currentServer/" + steamid);
+                HttpWebRequest request = WebRequest.CreateHttp("http://bestofall.ml:2095/api/currentServer/" + steamid);
                 request.UserAgent = "SUPLauncher";
                 WebResponse response = null;
                 response = request.GetResponse();
