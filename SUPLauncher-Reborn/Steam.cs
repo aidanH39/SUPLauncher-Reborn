@@ -21,9 +21,6 @@ using SUPLauncher_Reborn;
 /// </summary>
 public class Steam : IDisposable
 {
-
-    private static string steamAPIKey = "E1A259FB701EFDCF1B916DE8E646FE47";
-
     /// <summary>
     /// Handle to the steamclient.dll.
     /// </summary>
@@ -168,7 +165,6 @@ public class Steam : IDisposable
     /// <summary>
     /// Gets the gmod process, this works even if gmod is on another branch.
     /// </summary>
-
     public static Process getGmodProcess()
     {
         Process[] hl2 = Process.GetProcessesByName("hl2");
@@ -185,9 +181,12 @@ public class Steam : IDisposable
         {
             return null;
         }
-
     }
 
+    /// <summary>
+    /// Checks if the current instance of GMOD, is a console window.
+    /// </summary>
+    /// <returns></returns>
     public static bool isGmodAFK()
     {
         if (Steam.getGmodProcess() != null)
@@ -270,6 +269,9 @@ public class Steam : IDisposable
         _isDisposed = true;
     }
 
+    /// <summary>
+    /// Returns the location of where steam is installed.
+    /// </summary>
     public static string getSteamPath()
     {
         string steam = (String)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null);
@@ -281,6 +283,9 @@ public class Steam : IDisposable
         return steam;
     }
 
+    /// <summary>
+    /// Gets the location of where garrys mod is installed.
+    /// </summary>
     public static string getGarrysModPath()
     {
         String strSteamInstallPath = (String)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null);
@@ -305,6 +310,10 @@ public class Steam : IDisposable
         return gmodPath;
     }
 
+    /// <summary>
+    /// Checks if the player owns & has downloaded Counter Strike Source.
+    /// </summary>
+    /// <returns></returns>
     public static bool isCSSinstalled()
     {
         String strSteamInstallPath = (String)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam", "InstallPath", null);
@@ -326,24 +335,6 @@ public class Steam : IDisposable
     }
 
 
-
-    public static string getPlayingServer(string steamid)
-    {
-        try
-        {
-            HttpWebRequest request = WebRequest.CreateHttp("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + steamAPIKey + "&steamids=" + steamid);
-            request.UserAgent = "SUPLauncher";
-            WebResponse response = null;
-            response = request.GetResponse();
-            StreamReader sr = new StreamReader(response.GetResponseStream());
-            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(sr.ReadToEnd());
-            return result.response.players.First.gameserverip.ToString();
-        }
-        catch (Exception)
-        {
-            return null;
-        }
-    }
 
 
     #region Delegates
