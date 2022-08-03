@@ -18,9 +18,6 @@ namespace SUPLauncher_Reborn
         /// The main entry point for the application.
         /// </summary>
         /// 
-
-        
-
         public static Steam steam;
         public static ulong steamid;
         public static string dupePath = Steam.getGarrysModPath() + "\\garrysmod\\data\\advdupe2";
@@ -71,9 +68,9 @@ namespace SUPLauncher_Reborn
             timer.Interval = 5000;
             timer.Tick += delegate
             {
-                startOverlay();
+                StartOverlay();
             };
-            startOverlay();
+            StartOverlay();
             Timer serverUpdate = new Timer();
             serverUpdate.Enabled = true;
             serverUpdate.Interval = 10000;
@@ -88,13 +85,12 @@ namespace SUPLauncher_Reborn
             
         }
         public static DiscordRpcClient rpcClient = new DiscordRpcClient("1003419232769409084");
-
         public static string lastIp;
         private static long joinedSince = 0;
 
         private static void checkServer()
         {
-            string ip = Steam.getPlayingServer(steamid.ToString());
+            string ip = MyCustomSteamAPI.getPlayingServer(steamid.ToString());
             updateDiscord(ip);
             if (ip != lastIp)
             {
@@ -123,42 +119,50 @@ namespace SUPLauncher_Reborn
             }
         }
 
-
-
         /// <summary>
         /// Update the discord RPC
         /// </summary>
         public static void updateDiscord(string ip=null)
         {
-            if (ip == null) ip = Steam.getPlayingServer(steamid.ToString());
-            long secondsJoined = DateTimeOffset.Now.ToUnixTimeSeconds() - joinedSince;
-            string name = SuperiorServers.ipToName(ip);
-            string playingon;
-            if (name != null)
+            if (Properties.Settings.Default.discordRPCEnabled)
             {
-                playingon = "Playing on " + SuperiorServers.ipToName(ip);
-            } else
-            {
-                playingon = "Not currently playing SUP";
-
-            }
-            rpcClient.SetPresence(new RichPresence()
-            {
-                Details = playingon,
-                State = "for " + SuperiorServers.LengthFormat(Int32.Parse(secondsJoined.ToString())),
-                Assets = new Assets()
+                if (ip == null) ip = MyCustomSteamAPI.getPlayingServer(steamid.ToString());
+                long secondsJoined = DateTimeOffset.Now.ToUnixTimeSeconds() - joinedSince;
+                string name = SuperiorServers.IpToName(ip);
+                string playingon;
+                if (name != null)
                 {
-                    SmallImageText = "SuperiorServers",
-                    SmallImageKey = "sup_small"
+                    playingon = "Playing on " + SuperiorServers.IpToName(ip);
                 }
-            });
+                else
+                {
+                    playingon = "Not currently playing SUP";
+
+                }
+                rpcClient.SetPresence(new RichPresence()
+                {
+                    Details = playingon,
+                    State = "for " + SuperiorServers.LengthFormat(Int32.Parse(secondsJoined.ToString())),
+                    Assets = new Assets()
+                    {
+                        SmallImageText = "SuperiorServers",
+                        SmallImageKey = "sup_small"
+                    }
+                });
+            }
+            else
+            {
+                rpcClient.ClearPresence();
+            }
+            
         }
 
-        
         public static bool overlayEnabled = true;
         private static bool overlayVisible = false;
-        
-        public static void startOverlay()
+        /// <summary>
+        /// This opens the overlay, when gmod is present.
+        /// </summary>
+        public static void StartOverlay()
         {
             if (overlay == null || overlay.IsDisposed)
             {
@@ -171,7 +175,10 @@ namespace SUPLauncher_Reborn
             }
         }
 
-        public static void updateStartup()
+        /// <summary>
+        /// This checks if auto startup is enabled. If it is, then it will add it to the windows startup folder, else it will delete it.
+        /// </summary>
+        public static void UpdateStartup()
         {
             if (Properties.Settings.Default.AutoStartup)
             {
@@ -196,6 +203,9 @@ namespace SUPLauncher_Reborn
             }
         }
 
+        /// <summary>
+        /// The keyboard hook to expand the profile overlay.
+        /// </summary>
         public static void ProfileOverlayExpand(object sender, KeyPressedEventArgs e)
         {
             if (overlayEnabled && overlay.overlayProfile != null && !overlay.overlayProfile.IsDisposed)
@@ -204,6 +214,9 @@ namespace SUPLauncher_Reborn
             }
         }
 
+        /// <summary>
+        /// The keyboard hook to toggle visibility on the profile overlay.
+        /// </summary>
         public static void ProfileOverlay(object sender, KeyPressedEventArgs e)
         {
             if (overlayEnabled && overlay.overlayProfile != null && !overlay.overlayProfile.IsDisposed)
@@ -219,7 +232,9 @@ namespace SUPLauncher_Reborn
             }
         }
 
-
+        /// <summary>
+        /// Keyboard hook for overlay.
+        /// </summary>
         private static void OverlayKey(object sender, KeyPressedEventArgs e)
         {
             if (overlayEnabled)
@@ -244,6 +259,5 @@ namespace SUPLauncher_Reborn
                 }
             }
         }
-
     }
 }

@@ -72,9 +72,9 @@ namespace SUPLauncher_Reborn
             lbl_previousOffenses.Text = playtime.ToString();
             
             TimeSpan time = TimeSpan.FromSeconds(playtime);
-            lbl_playTime.Text = SuperiorServers.playtimeFormat(playtime);
+            lbl_playTime.Text = SuperiorServers.PlaytimeFormat(playtime);
             profile.setAvatar(img_avatar);
-            List<Ban> bans = SuperiorServers.getBans(profile);
+            List<Ban> bans = SuperiorServers.GetBans(profile);
 
             foreach (Ban ban in bans)
             {

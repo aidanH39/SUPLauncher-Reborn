@@ -14,7 +14,10 @@ namespace SUPLauncher_Reborn
     {
 
         public Keys overlayOpenKey = (Keys)Properties.Settings.Default.overlayKey;
-        public ModifierKeys overOpenModifier = (ModifierKeys)Properties.Settings.Default.overlayModiferKey;
+        public ModifierKeys modifierKey = (ModifierKeys)Properties.Settings.Default.overlayModiferKey;
+
+        public Keys staffProfileOverlayKey = (Keys)Properties.Settings.Default.profileOverlayKey;
+        public Keys staffProfileOverlayExpandKey = (Keys)Properties.Settings.Default.profileOverlayExpandKey;
 
         public Settings()
         {
@@ -23,7 +26,15 @@ namespace SUPLauncher_Reborn
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            
+            KeysConverter kc = new KeysConverter();
+            txt_overlayKey.Text = kc.ConvertToString((Keys)Properties.Settings.Default.overlayKey);
+            txt_profileOverlayKey.Text = kc.ConvertToString((Keys)Properties.Settings.Default.profileOverlayKey);
+            txt_profileOverlayExpandKey.Text = kc.ConvertToString((Keys)Properties.Settings.Default.profileOverlayExpandKey);
+
+            comboBox1.Text = kc.ConvertToString(modifierKey);
+
+            chk_autoStartup.Checked = Properties.Settings.Default.AutoStartup;
+            chk_discordActivity.Checked = Properties.Settings.Default.discordRPCEnabled;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -34,7 +45,7 @@ namespace SUPLauncher_Reborn
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             this.overlayOpenKey = e.KeyCode;
-            this.textBox1.Text = e.KeyCode.ToString();
+            this.txt_overlayKey.Text = e.KeyCode.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,9 +53,13 @@ namespace SUPLauncher_Reborn
             try
             {
 
-                Program.overlayHotkeyHook.RegisterKeybind((uint)overOpenModifier, (int)overlayOpenKey);
+                Program.overlayHotkeyHook.RegisterKeybind((uint)modifierKey, (int)overlayOpenKey);
                 Properties.Settings.Default.overlayKey = (int)overlayOpenKey;
-                Properties.Settings.Default.overlayModiferKey = (uint)overOpenModifier;
+                Properties.Settings.Default.overlayModiferKey = (uint)modifierKey;
+
+                Properties.Settings.Default.profileOverlayKey = (int)staffProfileOverlayKey;
+                Properties.Settings.Default.profileOverlayExpandKey = (int)staffProfileOverlayExpandKey;
+
                 Properties.Settings.Default.Save();
 
                 MessageBox.Show("Settings changed! Application will now restart!");
@@ -59,11 +74,11 @@ namespace SUPLauncher_Reborn
         {
             if (comboBox1.Text == "CTRL")
             {
-                overOpenModifier = SUPLauncher_Reborn.ModifierKeys.Control;
+                modifierKey = SUPLauncher_Reborn.ModifierKeys.Control;
             } else if (comboBox1.Text == "ALT") {
-                overOpenModifier = SUPLauncher_Reborn.ModifierKeys.Alt;
+                modifierKey = SUPLauncher_Reborn.ModifierKeys.Alt;
             } else if (comboBox1.Text == "SHIFT") {
-                overOpenModifier = SUPLauncher_Reborn.ModifierKeys.Shift;
+                modifierKey = SUPLauncher_Reborn.ModifierKeys.Shift;
             }
         }
 
@@ -147,15 +162,27 @@ namespace SUPLauncher_Reborn
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.discordRPCEnabled = checkBox1.Checked;
+            Properties.Settings.Default.discordRPCEnabled = chk_discordActivity.Checked;
             Properties.Settings.Default.Save();
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.AutoStartup = checkBox2.Checked;
+            Properties.Settings.Default.AutoStartup = chk_autoStartup.Checked;
             Properties.Settings.Default.Save();
-            Program.updateStartup();
+            Program.UpdateStartup();
+        }
+
+        private void textBox3_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.staffProfileOverlayExpandKey = e.KeyCode;
+            this.txt_profileOverlayExpandKey.Text = e.KeyCode.ToString();
+        }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.staffProfileOverlayKey = e.KeyCode;
+            this.txt_profileOverlayKey.Text = e.KeyCode.ToString();
         }
     }
 }

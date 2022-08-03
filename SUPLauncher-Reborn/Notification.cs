@@ -14,16 +14,14 @@ namespace SUPLauncher_Reborn
     {
         private string head = "";
         private string info = "";
+        /// <summary>
+        /// Shows a notfication over GMOD, or any window open at the time.
+        /// </summary>
         public Notification(string header, string info)
         {
             this.head = header;
             this.info = info;
             InitializeComponent();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Notification_Load(object sender, EventArgs e)
@@ -59,8 +57,6 @@ namespace SUPLauncher_Reborn
             };
             timer.Interval = 1;
             timer.Start();
-
-
         }
     }
 }

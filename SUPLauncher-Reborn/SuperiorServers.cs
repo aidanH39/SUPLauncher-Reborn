@@ -15,6 +15,9 @@ namespace SUPLauncher_Reborn
     public class SuperiorServers
     {
 
+        /// <summary>
+        /// A SUP Server.
+        /// </summary>
         public class Server
         {
 
@@ -28,6 +31,10 @@ namespace SUPLauncher_Reborn
             public string MaxPlayers;
         }
 
+
+        /// <summary>
+        /// A SUP Profile
+        /// </summary>
         public class Profile
         {
             public bool IsStaff;
@@ -46,6 +53,9 @@ namespace SUPLauncher_Reborn
 
         }
 
+        /// <summary>
+        /// A SUP ban.
+        /// </summary>
         public class Ban
         {
             public string AdminName;
@@ -62,6 +72,12 @@ namespace SUPLauncher_Reborn
             public string UnbanReason;
         }
 
+
+        /// <summary>
+        /// Retreives the steamid's SUP Profile.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Profile getProfile(string id)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://superiorservers.co/api/profile/" + id);
@@ -80,7 +96,12 @@ namespace SUPLauncher_Reborn
             return profile;
         }
 
-        public static bool isStaff(Profile profile)
+        /// <summary>
+        ///  Checks if the person is a staff member on superiorservers.
+        /// </summary>
+        /// <param name="profile">Profile to check.</param>
+        /// <returns>true if player is staff member, else false.</returns>
+        public static bool IsStaff(Profile profile)
         {
             //string drp = (string)profile.GetType().GetProperty("Badmin").GetValue("CWRP");
             //MessageBox.Show(drp);
@@ -90,7 +111,7 @@ namespace SUPLauncher_Reborn
         /// <summary>
         /// Get all the available servers.
         /// </summary>
-        public static List<Server> getServers()
+        public static List<Server> GetServers()
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://superiorservers.co/api/servers");
             request.UserAgent = "SUPLauncher";
@@ -116,7 +137,7 @@ namespace SUPLauncher_Reborn
         /// <summary>
         /// Returns bans on a profile. Returns a list.
         /// </summary>
-        public static List<Ban> getBans(Profile profile)
+        public static List<Ban> GetBans(Profile profile)
         {
             List<Ban> bans = new List<Ban>();
             foreach (object ban in profile.Badmin.Bans)
@@ -189,7 +210,7 @@ namespace SUPLauncher_Reborn
         /// Turns second into a hours:minutes:seconds formatted string.
         /// </summary>
         /// <param name="seconds">Amount of seconds you wish to format.</param>
-        public static string playtimeFormat(int seconds)
+        public static string PlaytimeFormat(int seconds)
         {
             int hours = seconds / 3600;
             int mins = (seconds % 3600) / 60;
@@ -199,7 +220,7 @@ namespace SUPLauncher_Reborn
         /// <summary>
         /// Turns a ip address into the correct superiorservers server name.
         /// </summary>
-        public static string ipToName(string ip)
+        public static string IpToName(string ip)
         {
             switch (ip)
             {
@@ -216,7 +237,6 @@ namespace SUPLauncher_Reborn
                 default:
                     return null;
             }
-
         }
     }
 }

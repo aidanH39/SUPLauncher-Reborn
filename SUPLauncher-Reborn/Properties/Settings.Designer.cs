@@ -134,18 +134,6 @@ namespace SUPLauncher_Reborn.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool afkAutoStartup {
-            get {
-                return ((bool)(this["afkAutoStartup"]));
-            }
-            set {
-                this["afkAutoStartup"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool discordRPCEnabled {
             get {
                 return ((bool)(this["discordRPCEnabled"]));

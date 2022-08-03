@@ -38,6 +38,11 @@ namespace SUPLauncher_Reborn
             this.btn_minimize = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chk_afkMode = new System.Windows.Forms.CheckBox();
+            this.pnl_afkHead = new System.Windows.Forms.Panel();
+            this.lbl_afk = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.img_warning = new System.Windows.Forms.PictureBox();
             this.btn_settings = new System.Windows.Forms.PictureBox();
             this.btn_lookup = new System.Windows.Forms.Button();
@@ -53,21 +58,15 @@ namespace SUPLauncher_Reborn
             this.lbl_progress = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
-            this.pnl_afkHead = new System.Windows.Forms.Panel();
-            this.lbl_afk = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.chk_afkMode = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chk_autoAFKStartup = new System.Windows.Forms.CheckBox();
             this.tip_afk = new System.Windows.Forms.ToolTip(this.components);
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnl_afkHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_warning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_settings)).BeginInit();
             this.pnl_lookup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
-            this.pnl_afkHead.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_topBar
@@ -154,7 +153,6 @@ namespace SUPLauncher_Reborn
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panel1.Controls.Add(this.chk_autoAFKStartup);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.chk_afkMode);
             this.panel1.Controls.Add(this.pnl_afkHead);
@@ -172,6 +170,60 @@ namespace SUPLauncher_Reborn
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(244, 580);
             this.panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(13, 458);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(218, 59);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "AFK mode will run garry\'s mod in the background. Using less resources. Whenever y" +
+    "our gmod is closed.";
+            // 
+            // chk_afkMode
+            // 
+            this.chk_afkMode.AutoSize = true;
+            this.chk_afkMode.ForeColor = System.Drawing.Color.White;
+            this.chk_afkMode.Location = new System.Drawing.Point(27, 400);
+            this.chk_afkMode.Name = "chk_afkMode";
+            this.chk_afkMode.Size = new System.Drawing.Size(118, 17);
+            this.chk_afkMode.TabIndex = 9;
+            this.chk_afkMode.Text = "AFK Mode Enabled";
+            this.tip_afk.SetToolTip(this.chk_afkMode, "Check this to enable AFK mode. Whenever garrys mod is closed.");
+            this.chk_afkMode.UseVisualStyleBackColor = true;
+            this.chk_afkMode.CheckedChanged += new System.EventHandler(this.chk_afkMode_CheckedChanged);
+            // 
+            // pnl_afkHead
+            // 
+            this.pnl_afkHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnl_afkHead.Controls.Add(this.lbl_afk);
+            this.pnl_afkHead.Controls.Add(this.panel4);
+            this.pnl_afkHead.Location = new System.Drawing.Point(12, 362);
+            this.pnl_afkHead.Name = "pnl_afkHead";
+            this.pnl_afkHead.Size = new System.Drawing.Size(219, 29);
+            this.pnl_afkHead.TabIndex = 6;
+            // 
+            // lbl_afk
+            // 
+            this.lbl_afk.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_afk.ForeColor = System.Drawing.Color.White;
+            this.lbl_afk.Location = new System.Drawing.Point(11, 1);
+            this.lbl_afk.Name = "lbl_afk";
+            this.lbl_afk.Size = new System.Drawing.Size(156, 25);
+            this.lbl_afk.TabIndex = 1;
+            this.lbl_afk.Text = "AFK Options";
+            this.lbl_afk.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(5, 29);
+            this.panel4.TabIndex = 0;
             // 
             // img_warning
             // 
@@ -342,74 +394,6 @@ namespace SUPLauncher_Reborn
             this.cProgressBar1.Value = 0;
             this.cProgressBar1.Visible = false;
             // 
-            // pnl_afkHead
-            // 
-            this.pnl_afkHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pnl_afkHead.Controls.Add(this.lbl_afk);
-            this.pnl_afkHead.Controls.Add(this.panel4);
-            this.pnl_afkHead.Location = new System.Drawing.Point(12, 362);
-            this.pnl_afkHead.Name = "pnl_afkHead";
-            this.pnl_afkHead.Size = new System.Drawing.Size(219, 29);
-            this.pnl_afkHead.TabIndex = 6;
-            // 
-            // lbl_afk
-            // 
-            this.lbl_afk.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_afk.ForeColor = System.Drawing.Color.White;
-            this.lbl_afk.Location = new System.Drawing.Point(11, 1);
-            this.lbl_afk.Name = "lbl_afk";
-            this.lbl_afk.Size = new System.Drawing.Size(156, 25);
-            this.lbl_afk.TabIndex = 1;
-            this.lbl_afk.Text = "AFK Options";
-            this.lbl_afk.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(5, 29);
-            this.panel4.TabIndex = 0;
-            // 
-            // chk_afkMode
-            // 
-            this.chk_afkMode.AutoSize = true;
-            this.chk_afkMode.ForeColor = System.Drawing.Color.White;
-            this.chk_afkMode.Location = new System.Drawing.Point(27, 400);
-            this.chk_afkMode.Name = "chk_afkMode";
-            this.chk_afkMode.Size = new System.Drawing.Size(118, 17);
-            this.chk_afkMode.TabIndex = 9;
-            this.chk_afkMode.Text = "AFK Mode Enabled";
-            this.tip_afk.SetToolTip(this.chk_afkMode, "Check this to enable AFK mode. Whenever garrys mod is closed.");
-            this.chk_afkMode.UseVisualStyleBackColor = true;
-            this.chk_afkMode.CheckedChanged += new System.EventHandler(this.chk_afkMode_CheckedChanged);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(13, 458);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 59);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "AFK mode will run garry\'s mod in the background. Using less resources. Whenever y" +
-    "our gmod is closed.";
-            // 
-            // chk_autoAFKStartup
-            // 
-            this.chk_autoAFKStartup.AutoSize = true;
-            this.chk_autoAFKStartup.ForeColor = System.Drawing.Color.White;
-            this.chk_autoAFKStartup.Location = new System.Drawing.Point(27, 423);
-            this.chk_autoAFKStartup.Name = "chk_autoAFKStartup";
-            this.chk_autoAFKStartup.Size = new System.Drawing.Size(83, 17);
-            this.chk_autoAFKStartup.TabIndex = 11;
-            this.chk_autoAFKStartup.Text = "Auto startup";
-            this.tip_afk.SetToolTip(this.chk_autoAFKStartup, "If enabled, when your PC starts up, sup launcher will also be started, as well as" +
-        " a AFK garrys mod process.");
-            this.chk_autoAFKStartup.UseVisualStyleBackColor = true;
-            this.chk_autoAFKStartup.CheckedChanged += new System.EventHandler(this.chk_autoAFKStartup_CheckedChanged);
-            // 
             // tip_afk
             // 
             this.tip_afk.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -438,11 +422,11 @@ namespace SUPLauncher_Reborn
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnl_afkHead.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.img_warning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_settings)).EndInit();
             this.pnl_lookup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
-            this.pnl_afkHead.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -471,7 +455,6 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label lbl_version;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox img_warning;
-        private System.Windows.Forms.CheckBox chk_autoAFKStartup;
         private System.Windows.Forms.ToolTip tip_afk;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chk_afkMode;

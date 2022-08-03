@@ -39,5 +39,10 @@ namespace SUPLauncher_Reborn
             return new Version(Application.ProductVersion);
         }
 
+        public static void downloadLatestVersion()
+        {
+
+        }
+
     }
 }

@@ -25,32 +25,31 @@ namespace SUPLauncher_Reborn
 
         RECT rect;
         public OverlayProfile overlayProfile;
-
+        #region imports from user32.dll
         [DllImport("user32.dll")]
         static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
         [DllImport("user32.dll")]
         static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetWindowRect(IntPtr hwnd, out RECT ipRect);
-
-
+        [DllImport("User32.dll")]
+        protected static extern int SetClipboardViewer(int hWndNewViewer);
+        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr SetClipboardViewer(IntPtr hWndNewViewer);
+        #endregion
 
         public Overlay()
         {
             InitializeComponent();
         }
 
-        [DllImport("User32.dll")]
-        protected static extern int SetClipboardViewer(int hWndNewViewer);
-
         private void Overlay_Load(object sender, EventArgs e)
         {
-            SetClipboardViewer(this.Handle);
+            SetClipboardViewer(this.Handle); // Set clipboard viewer to this form. So this form can catch when user copies.
 
+            // Set to size of garry's mod window.
             IntPtr handle = Steam.getGMOD();
-
             GetWindowRect(handle, out rect);
             this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
             this.Top = rect.top;
@@ -67,34 +66,26 @@ namespace SUPLauncher_Reborn
                 ms.Close();
             }
 
-
-
-            Profile profile = SuperiorServers.getProfile(Program.steamid.ToString());
+            Profile profile = SuperiorServers.getProfile(Program.steamid.ToString()); // Get SUP profile of current user.
             try
             {
-                
                 if (profile.Badmin.Name == "Unknown")
                 {
                     MessageBox.Show("Invalid SteamID");
                     return;
                 }
-
                 lbl_player_name.Text = profile.Badmin.Name;
                 lbl_steamid.Text = profile.SteamID32;
                 decimal playtime = profile.Badmin.PlayTime;
                 lbl_playtime.Text = Math.Floor(playtime / 60 / 60) + " hours total playtime";
-                
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-            if (Properties.Settings.Default.supLogin.Length > 0 && SuperiorServers.isStaff(profile))
+            if (Properties.Settings.Default.supLogin.Length > 0 && SuperiorServers.IsStaff(profile))
             {
-
                 try
                 {
                     HttpWebRequest request = WebRequest.CreateHttp("https://superiorservers.co/api/profile/sits/" + Program.steamid);
@@ -106,7 +97,7 @@ namespace SUPLauncher_Reborn
                     WebResponse response = null;
                     response = request.GetResponse(); // Get Response from webrequest
                     StreamReader sr = new StreamReader(response.GetResponseStream()); // Create stream to access web data
-                    panel7.Visible = true;
+                    pnl_staffSits.Visible = true;
                     var result = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(sr.ReadToEnd());
                     JArray sitCounts = (JArray)result.response;
                     foreach (JObject count in sitCounts)
@@ -121,43 +112,33 @@ namespace SUPLauncher_Reborn
                     MessageBox.Show(ex.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
             chk_profileOverlay.Checked = Properties.Settings.Default.profileOverlayEnabled;
-
-            Notification n = new Notification("OVERLAY", "Overlay has been loaded (ALT + S)");
+            Notification n = new Notification("OVERLAY", "Overlay has been loaded (" + ((ModifierKeys)Properties.Settings.Default.overlayModiferKey).ToString() + " + " + ((Keys)Properties.Settings.Default.overlayKey).ToString() + ")");
             n.Show();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        /// <summary>
+        /// Event when clipboard was changed.
+        /// </summary>
         public class ClipboardChangedEventArgs : EventArgs
         {
             public readonly IDataObject DataObject;
-
             public ClipboardChangedEventArgs(IDataObject dataObject)
             {
                 DataObject = dataObject;
             }
         }
 
-
-        [DllImport("User32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr SetClipboardViewer(IntPtr hWndNewViewer);
-
-
-        protected override void WndProc(ref Message m)
+        protected override void WndProc(ref Message m) // Catch messages from windows.
         {
             // Handle messages...
             base.WndProc(ref m);
             if (!Properties.Settings.Default.profileOverlayEnabled) return;
-            if (m.Msg == 0x308 || m.Msg == 0x031D)
+            if (m.Msg == 0x308 || m.Msg == 0x031D) // If message is WM_DRAWCLIPBOARD OR WM_CLIPBOARDUPDATE
             {
+                // Gotta make sure its a steamid.
                 bool steamid = false;
                 long s = 0;
-
                 string text = Clipboard.GetText(); // Get text from clipboard
 
                 if (text.StartsWith("STEAM_") && text.Length > 17)
@@ -171,14 +152,14 @@ namespace SUPLauncher_Reborn
 
                 if (steamid)
                 {
+                    // Ok... its a steamid. show the profile.
                     if (overlayProfile == null || overlayProfile.IsDisposed)
                     {
                         overlayProfile = new OverlayProfile();
                         overlayProfile.loadProfile(SuperiorServers.getProfile(text));
                         overlayProfile.PointToScreen(new Point(0, 150));
                         overlayProfile.Show();
-                    } else
-                    {
+                    } else {
                         overlayProfile.Close();
                         overlayProfile = new OverlayProfile();
                         overlayProfile.loadProfile(SuperiorServers.getProfile(text));
@@ -197,21 +178,11 @@ namespace SUPLauncher_Reborn
             }
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btn_dupeMang_Click(object sender, EventArgs e)
         {
             DupeManager form = new DupeManager();
             form.TopMost = true;
             form.Show(this);
-        }
-
-        private void pnl__Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -31,6 +31,10 @@ namespace SUPLauncher_Reborn
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Overlay));
             this.pnl_ = new System.Windows.Forms.Panel();
+            this.pnl_staffTools = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.chk_profileOverlay = new System.Windows.Forms.CheckBox();
             this.btn_milrp = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btn_cwrp2 = new System.Windows.Forms.Button();
@@ -52,22 +56,18 @@ namespace SUPLauncher_Reborn
             this.lbl_playtime = new System.Windows.Forms.Label();
             this.lbl_steamid = new System.Windows.Forms.Label();
             this.lbl_player_name = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.img_avatar = new OvalPictureBox();
+            this.pnl_staffSits = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.chk_profileOverlay = new System.Windows.Forms.CheckBox();
-            this.pnl_staffTools = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.img_avatar = new OvalPictureBox();
             this.pnl_.SuspendLayout();
+            this.pnl_staffTools.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_heading)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.pnl_staffTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
+            this.pnl_staffSits.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_
@@ -92,7 +92,54 @@ namespace SUPLauncher_Reborn
             this.pnl_.Name = "pnl_";
             this.pnl_.Size = new System.Drawing.Size(325, 920);
             this.pnl_.TabIndex = 1;
-            this.pnl_.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl__Paint);
+            // 
+            // pnl_staffTools
+            // 
+            this.pnl_staffTools.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl_staffTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.pnl_staffTools.Controls.Add(this.label2);
+            this.pnl_staffTools.Controls.Add(this.panel10);
+            this.pnl_staffTools.Controls.Add(this.chk_profileOverlay);
+            this.pnl_staffTools.Location = new System.Drawing.Point(3, 770);
+            this.pnl_staffTools.Name = "pnl_staffTools";
+            this.pnl_staffTools.Size = new System.Drawing.Size(321, 100);
+            this.pnl_staffTools.TabIndex = 61;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(319, 23);
+            this.label2.TabIndex = 61;
+            this.label2.Text = "Staff Tools";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel10
+            // 
+            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.panel10.Location = new System.Drawing.Point(66, 26);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(196, 2);
+            this.panel10.TabIndex = 62;
+            // 
+            // chk_profileOverlay
+            // 
+            this.chk_profileOverlay.AutoSize = true;
+            this.chk_profileOverlay.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_profileOverlay.ForeColor = System.Drawing.Color.White;
+            this.chk_profileOverlay.Location = new System.Drawing.Point(14, 38);
+            this.chk_profileOverlay.Name = "chk_profileOverlay";
+            this.chk_profileOverlay.Size = new System.Drawing.Size(164, 23);
+            this.chk_profileOverlay.TabIndex = 60;
+            this.chk_profileOverlay.Text = "Staff Profile Overlay";
+            this.chk_profileOverlay.UseVisualStyleBackColor = true;
+            this.chk_profileOverlay.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // btn_milrp
             // 
@@ -223,7 +270,6 @@ namespace SUPLauncher_Reborn
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(322, 136);
             this.panel3.TabIndex = 6;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // button3
             // 
@@ -255,7 +301,6 @@ namespace SUPLauncher_Reborn
             this.textBox1.Size = new System.Drawing.Size(300, 26);
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "STEAM_ID";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             // 
             // lbl_playerLookup
@@ -382,17 +427,27 @@ namespace SUPLauncher_Reborn
             this.lbl_player_name.Size = new System.Drawing.Size(211, 27);
             this.lbl_player_name.TabIndex = 1;
             // 
-            // panel7
+            // img_avatar
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
-            this.panel7.Controls.Add(this.flowLayoutPanel1);
-            this.panel7.Controls.Add(this.label3);
-            this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(2, 179);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(403, 148);
-            this.panel7.TabIndex = 59;
-            this.panel7.Visible = false;
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(15, 23);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(128, 128);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            // 
+            // pnl_staffSits
+            // 
+            this.pnl_staffSits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
+            this.pnl_staffSits.Controls.Add(this.flowLayoutPanel1);
+            this.pnl_staffSits.Controls.Add(this.label3);
+            this.pnl_staffSits.Controls.Add(this.panel8);
+            this.pnl_staffSits.Location = new System.Drawing.Point(2, 179);
+            this.pnl_staffSits.Name = "pnl_staffSits";
+            this.pnl_staffSits.Size = new System.Drawing.Size(403, 148);
+            this.pnl_staffSits.TabIndex = 59;
+            this.pnl_staffSits.Visible = false;
             // 
             // flowLayoutPanel1
             // 
@@ -421,64 +476,6 @@ namespace SUPLauncher_Reborn
             this.panel8.Size = new System.Drawing.Size(4, 148);
             this.panel8.TabIndex = 58;
             // 
-            // chk_profileOverlay
-            // 
-            this.chk_profileOverlay.AutoSize = true;
-            this.chk_profileOverlay.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_profileOverlay.ForeColor = System.Drawing.Color.White;
-            this.chk_profileOverlay.Location = new System.Drawing.Point(14, 38);
-            this.chk_profileOverlay.Name = "chk_profileOverlay";
-            this.chk_profileOverlay.Size = new System.Drawing.Size(164, 23);
-            this.chk_profileOverlay.TabIndex = 60;
-            this.chk_profileOverlay.Text = "Staff Profile Overlay";
-            this.chk_profileOverlay.UseVisualStyleBackColor = true;
-            this.chk_profileOverlay.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // pnl_staffTools
-            // 
-            this.pnl_staffTools.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnl_staffTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.pnl_staffTools.Controls.Add(this.label2);
-            this.pnl_staffTools.Controls.Add(this.panel10);
-            this.pnl_staffTools.Controls.Add(this.chk_profileOverlay);
-            this.pnl_staffTools.Location = new System.Drawing.Point(3, 770);
-            this.pnl_staffTools.Name = "pnl_staffTools";
-            this.pnl_staffTools.Size = new System.Drawing.Size(321, 100);
-            this.pnl_staffTools.TabIndex = 61;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(319, 23);
-            this.label2.TabIndex = 61;
-            this.label2.Text = "Staff Tools";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel10
-            // 
-            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
-            this.panel10.Location = new System.Drawing.Point(66, 26);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(196, 2);
-            this.panel10.TabIndex = 62;
-            // 
-            // img_avatar
-            // 
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(15, 23);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(128, 128);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
-            // 
             // Overlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,7 +483,7 @@ namespace SUPLauncher_Reborn
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(899, 920);
-            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.pnl_staffSits);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnl_);
             this.DoubleBuffered = true;
@@ -499,15 +496,15 @@ namespace SUPLauncher_Reborn
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Overlay_Load);
             this.pnl_.ResumeLayout(false);
+            this.pnl_staffTools.ResumeLayout(false);
+            this.pnl_staffTools.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_heading)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.pnl_staffTools.ResumeLayout(false);
-            this.pnl_staffTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
+            this.pnl_staffSits.ResumeLayout(false);
+            this.pnl_staffSits.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -537,7 +534,7 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btn_milrp;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel pnl_staffSits;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel8;

@@ -143,6 +143,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyCustomSteamAPI.cs" />
     <Compile Include="Notification.cs">
       <SubType>Form</SubType>
     </Compile>

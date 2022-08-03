@@ -28,21 +28,24 @@ namespace SUPLauncher_Reborn
             settings.CachePath = Application.StartupPath + "\\cookies";
             settings.PersistSessionCookies = true;
 
+            // Init browser settings.
             Cef.Initialize(settings);
-
             instance = this;
             InitializeComponent();
-            Opacity = 0;      //first the opacity is 0
 
-            t1.Interval = 10;  //we'll increase the opacity every 10ms
+            // Fade the form in.
+            Opacity = 0;     
+            t1.Interval = 10;  
             t1.Tick += delegate
             {
                 fadeIn(this);
-            };  //this calls the function that changes opacity 
+            }; 
             t1.Start();
             
             toolTip1.SetToolTip(btn_lookup, "Click to show profile of inputed steamid");
             lbl_version.Text = "V" + Application.ProductVersion.ToString();
+
+            // Check latest version
             var result = Updater.getCurrentVersion().CompareTo(Updater.getLatestVersion());
             //var result = new Version("1.0.0.1").CompareTo(new Version("1.0.0.0"));
             if (result > 0)
@@ -63,7 +66,7 @@ namespace SUPLauncher_Reborn
 
             Program.serverChanged += delegate
             {
-                string name = SuperiorServers.ipToName(Program.lastIp);
+                string name = SuperiorServers.IpToName(Program.lastIp);
                 if (name != null)
                 {
                     lbl_server.Text = "Currently playing " + name;
@@ -72,9 +75,13 @@ namespace SUPLauncher_Reborn
                     lbl_server.Text = "Currently not playing SUP";
                 }
             };
-
         }
 
+        /// <summary>
+        /// Loads a picture into a picture frame. Sends request with `user-agent` header.
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="url"></param>
         public static void loadImage(PictureBox img, String url)
         {
             var client = new WebClient();
@@ -92,7 +99,7 @@ namespace SUPLauncher_Reborn
         private void frm_main_Load(object sender, EventArgs e)
         {
             
-            List<Server> servers = SuperiorServers.getServers();
+            List<Server> servers = SuperiorServers.GetServers();
             foreach (Server server in servers)
             {
                 serversList.Add(server.Name, server);
@@ -101,14 +108,10 @@ namespace SUPLauncher_Reborn
                 pnl_servers.Controls.Add(serverP);
             }
             loadImage(img_avatar, "https://superiorservers.co/api/avatar/" + Program.steam.GetSteamId());
-
             chk_afkMode.Checked = Properties.Settings.Default.afkModeEnabeld;
-            chk_autoAFKStartup.Checked = Properties.Settings.Default.afkAutoStartup;
-
         }
 
-        // Window Drag
-
+        #region Window Drag
         bool isTopPanelDragged = false;
         Size _normalWindowSize;
         Point _normalWindowLocation = Point.Empty;
@@ -168,7 +171,12 @@ namespace SUPLauncher_Reborn
 
             }
         }
+        #endregion
+
         public static frm_main instance;
+        /// <summary>
+        /// Connet to a server. First it checks for any files that needs to be downloaded.
+        /// </summary>
         public void connect(Server server)
         {
             // First validate all files.
@@ -209,8 +217,11 @@ namespace SUPLauncher_Reborn
         }
         #endregion
 
-  
-
+        /// <summary>
+        /// Checks through GMOD content. First checks to see if GMOD is installed, then checks if CSS textures are installed.
+        /// </summary>
+        /// <param name="server"></param>
+        /// <param name="check"></param>
         private void validateCheck(Server server, int check)
         {
             lbl_progress.Visible = true;
@@ -266,29 +277,25 @@ namespace SUPLauncher_Reborn
                             this.Invoke(new Action(() => validateCheck(server, check + 1)));
                             File.Delete(Application.StartupPath + "\\downloads\\CSS-Content.zip");
                         });
-                        
                     };
                     Directory.CreateDirectory(Application.StartupPath + "\\downloads");
                     fileDownloader.DownloadFileAsync(Program.CSSlink,Application.StartupPath + "\\downloads\\CSS-Content.zip");
-
-
                     return;
                 } else
                 {
                     lbl_progress.Text = "CSS Content is installed!";
                 }
             }
-            if (check < 7)
+            if (check < 3)
             {
                 validateCheck(server, check + 1);
             } else
             {
                 // Everything is installed proceed with launch.
                 lbl_progress.Text = "Launching '" + server.Name + "'...";
-
+                // Check if garry's mod is in AFK mode first. If it is, close it and then proceed with launch.
                 if (Steam.isGmodAFK())
                 {
-                    
                     Process gmod = Steam.getGmodProcess();
                     Program.afkWaitForServer = server;
                     Process[] p = Process.GetProcessesByName("gmod");
@@ -296,18 +303,11 @@ namespace SUPLauncher_Reborn
                     {
                         pro.Kill();
                     }
-
-
-
-
                 }
                 else
                 {
                     Process.Start(server.Connect);
                 }
-
-                
-                
                 cProgressBar1.Value = 100;
             }
         }
@@ -322,6 +322,7 @@ namespace SUPLauncher_Reborn
                 this.lbl_progress.BeginInvoke((MethodInvoker)delegate () { this.lbl_progress.Text = "Extracting '" + e.CurrentEntry.FileName + "'"; });
             } 
         }
+
         // progress when downloading CSS content.
         private void downloadProgressChange(object sender, DownloadProgress e)
         {
@@ -334,8 +335,7 @@ namespace SUPLauncher_Reborn
             form.Show();
         }
 
-
-        // Form top button controls.
+        #region Form top button controls.
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -345,7 +345,7 @@ namespace SUPLauncher_Reborn
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
+        #endregion
 
         // Lookup profile click event.
         private void btn_lookup_Click(object sender, EventArgs e)
@@ -382,10 +382,6 @@ namespace SUPLauncher_Reborn
             Properties.Settings.Default.Save();
         }
 
-        private void chk_autoAFKStartup_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.afkAutoStartup = chk_autoAFKStartup.Checked;
-            Properties.Settings.Default.Save();
-        }
+   
     }
 }

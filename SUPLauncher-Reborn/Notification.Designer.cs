@@ -46,7 +46,6 @@ namespace SUPLauncher_Reborn
             this.img_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_icon.TabIndex = 0;
             this.img_icon.TabStop = false;
-            this.img_icon.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lbl_header
             // 
