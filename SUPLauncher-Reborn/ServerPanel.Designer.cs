@@ -30,9 +30,9 @@ namespace SUPLauncher_Reborn
         private void InitializeComponent()
         {
             this.pnl_server = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.img = new System.Windows.Forms.PictureBox();
             this.pnl_danktown_top = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_playerCount = new System.Windows.Forms.Label();
             this.lbl_serverName = new System.Windows.Forms.Label();
             this.pnl_server.SuspendLayout();
@@ -49,15 +49,6 @@ namespace SUPLauncher_Reborn
             this.pnl_server.Name = "pnl_server";
             this.pnl_server.Size = new System.Drawing.Size(150, 100);
             this.pnl_server.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(167)))), ((int)(((byte)(255)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(4, 31);
-            this.panel2.TabIndex = 5;
             // 
             // img
             // 
@@ -81,6 +72,15 @@ namespace SUPLauncher_Reborn
             this.pnl_danktown_top.Name = "pnl_danktown_top";
             this.pnl_danktown_top.Size = new System.Drawing.Size(150, 31);
             this.pnl_danktown_top.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(167)))), ((int)(((byte)(255)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(4, 31);
+            this.panel2.TabIndex = 5;
             // 
             // lbl_playerCount
             // 
@@ -110,6 +110,7 @@ namespace SUPLauncher_Reborn
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnl_server);
+            this.DoubleBuffered = true;
             this.Name = "ServerPanel";
             this.Size = new System.Drawing.Size(150, 100);
             this.pnl_server.ResumeLayout(false);
