@@ -184,5 +184,11 @@ namespace SUPLauncher_Reborn
             this.staffProfileOverlayKey = e.KeyCode;
             this.txt_profileOverlayKey.Text = e.KeyCode.ToString();
         }
+
+        private void chk_overlay_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.overlayEnabled = chk_overlay.Checked;
+            Properties.Settings.Default.Save();
+        }
     }
 }

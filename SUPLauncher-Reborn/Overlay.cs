@@ -46,6 +46,7 @@ namespace SUPLauncher_Reborn
 
         private void Overlay_Load(object sender, EventArgs e)
         {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetClipboardViewer(this.Handle); // Set clipboard viewer to this form. So this form can catch when user copies.
 
             // Set to size of garry's mod window.

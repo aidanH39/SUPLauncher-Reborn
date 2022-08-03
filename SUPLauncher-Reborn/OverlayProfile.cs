@@ -158,6 +158,7 @@ namespace SUPLauncher_Reborn
 
         private void OverlayProfile_Load(object sender, EventArgs e)
         {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             pnl_bans.AutoScroll = false;
             pnl_bans.HorizontalScroll.Enabled = false;
             pnl_bans.HorizontalScroll.Visible = false;

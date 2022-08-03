@@ -97,7 +97,9 @@ namespace SUPLauncher_Reborn
 
         private void frm_main_Load(object sender, EventArgs e)
         {
-            
+
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             List<Server> servers = SuperiorServers.GetServers();
             foreach (Server server in servers)
             {

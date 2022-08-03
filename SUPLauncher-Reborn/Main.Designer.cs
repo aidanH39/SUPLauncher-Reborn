@@ -52,13 +52,13 @@ namespace SUPLauncher_Reborn
             this.txt_lookup = new System.Windows.Forms.TextBox();
             this.lbl_server = new System.Windows.Forms.Label();
             this.lbl_playerName = new System.Windows.Forms.Label();
-            this.img_avatar = new OvalPictureBox();
             this.lbl_version = new System.Windows.Forms.Label();
             this.pnl_servers = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_progress = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
             this.tip_afk = new System.Windows.Forms.ToolTip(this.components);
+            this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
+            this.img_avatar = new OvalPictureBox();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -329,18 +329,6 @@ namespace SUPLauncher_Reborn
             this.lbl_playerName.Text = "Best of all";
             this.lbl_playerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // img_avatar
-            // 
-            this.img_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(59, 6);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(128, 128);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
-            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
-            // 
             // lbl_version
             // 
             this.lbl_version.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -383,6 +371,11 @@ namespace SUPLauncher_Reborn
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // tip_afk
+            // 
+            this.tip_afk.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.tip_afk.ToolTipTitle = "AFK Mode";
+            // 
             // cProgressBar1
             // 
             this.cProgressBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
@@ -396,10 +389,17 @@ namespace SUPLauncher_Reborn
             this.cProgressBar1.Value = 0;
             this.cProgressBar1.Visible = false;
             // 
-            // tip_afk
+            // img_avatar
             // 
-            this.tip_afk.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.tip_afk.ToolTipTitle = "AFK Mode";
+            this.img_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(59, 6);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(128, 128);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
             // 
             // frm_main
             // 
@@ -412,6 +412,7 @@ namespace SUPLauncher_Reborn
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnl_servers);
             this.Controls.Add(this.pnl_topBar);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(580, 615);

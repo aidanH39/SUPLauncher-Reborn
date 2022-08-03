@@ -154,5 +154,17 @@ namespace SUPLauncher_Reborn.Properties {
                 this["AutoStartup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool overlayEnabled {
+            get {
+                return ((bool)(this["overlayEnabled"]));
+            }
+            set {
+                this["overlayEnabled"] = value;
+            }
+        }
     }
 }

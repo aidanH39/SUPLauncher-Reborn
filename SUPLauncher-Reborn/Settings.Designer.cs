@@ -52,6 +52,7 @@ namespace SUPLauncher_Reborn
             this.txt_profileOverlayKey = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.chk_overlay = new System.Windows.Forms.CheckBox();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -196,7 +197,7 @@ namespace SUPLauncher_Reborn
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(27, 308);
+            this.button2.Location = new System.Drawing.Point(27, 318);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 25);
             this.button2.TabIndex = 8;
@@ -207,7 +208,7 @@ namespace SUPLauncher_Reborn
             // label3
             // 
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(153, 307);
+            this.label3.Location = new System.Drawing.Point(153, 317);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(282, 28);
             this.label3.TabIndex = 9;
@@ -318,12 +319,27 @@ namespace SUPLauncher_Reborn
             this.label1.TabIndex = 15;
             this.label1.Text = "Modifier Key will be the key you also press when using these keys.";
             // 
+            // chk_overlay
+            // 
+            this.chk_overlay.AutoSize = true;
+            this.chk_overlay.ForeColor = System.Drawing.Color.White;
+            this.chk_overlay.Location = new System.Drawing.Point(27, 295);
+            this.chk_overlay.Name = "chk_overlay";
+            this.chk_overlay.Size = new System.Drawing.Size(104, 17);
+            this.chk_overlay.TabIndex = 16;
+            this.chk_overlay.Text = "Overlay Enabled";
+            this.tip.SetToolTip(this.chk_overlay, "Automaticlly start SUPLauncher on windows startup. If AFK auto startup is enabled" +
+        " this will be enabled. Disable that first.");
+            this.chk_overlay.UseVisualStyleBackColor = true;
+            this.chk_overlay.CheckedChanged += new System.EventHandler(this.chk_overlay_CheckedChanged);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(577, 397);
+            this.Controls.Add(this.chk_overlay);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel1);
@@ -373,5 +389,6 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.TextBox txt_profileOverlayKey;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chk_overlay;
     }
 }

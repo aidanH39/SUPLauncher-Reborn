@@ -30,13 +30,14 @@ namespace SUPLauncher_Reborn
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             //var cookieManager = Cef.GetGlobalCookieManager();
             //Cookie cookie = new Cookie();
             //cookie.
             //cookieManager.SetCookie("https://superiorservers.co", cookie);
             //
 
-            
+
             browser.Dock = DockStyle.Fill;
 
             browser.LoadingStateChanged += chromiumWebBrowser1_LoadingStateChanged;

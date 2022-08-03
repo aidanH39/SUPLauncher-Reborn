@@ -157,7 +157,6 @@ namespace SUPLauncher_Reborn
             
         }
 
-        public static bool overlayEnabled = true;
         private static bool overlayVisible = false;
         /// <summary>
         /// This opens the overlay, when gmod is present.
@@ -166,12 +165,15 @@ namespace SUPLauncher_Reborn
         {
             if (overlay == null || overlay.IsDisposed)
             {
-                if (Steam.getGMOD() != IntPtr.Zero)
+                if (Properties.Settings.Default.overlayEnabled && Steam.getGMOD() != IntPtr.Zero)
                 {
                     overlay = new Overlay();
                     overlay.Show();
                     overlay.Visible = false;
                 }
+            } else if (!Properties.Settings.Default.overlayEnabled)
+            {
+                overlay.Close();
             }
         }
 
@@ -208,7 +210,7 @@ namespace SUPLauncher_Reborn
         /// </summary>
         public static void ProfileOverlayExpand(object sender, KeyPressedEventArgs e)
         {
-            if (overlayEnabled && overlay.overlayProfile != null && !overlay.overlayProfile.IsDisposed)
+            if (Properties.Settings.Default.overlayEnabled && overlay.overlayProfile != null && !overlay.overlayProfile.IsDisposed)
             {
                 overlay.overlayProfile.toggleExpand();
             }
@@ -219,7 +221,7 @@ namespace SUPLauncher_Reborn
         /// </summary>
         public static void ProfileOverlay(object sender, KeyPressedEventArgs e)
         {
-            if (overlayEnabled && overlay.overlayProfile != null && !overlay.overlayProfile.IsDisposed)
+            if (Properties.Settings.Default.overlayEnabled && overlay.overlayProfile != null && !overlay.overlayProfile.IsDisposed)
             {
                 if (overlay.overlayProfile.Visible)
                 {
@@ -237,7 +239,7 @@ namespace SUPLauncher_Reborn
         /// </summary>
         private static void OverlayKey(object sender, KeyPressedEventArgs e)
         {
-            if (overlayEnabled)
+            if (Properties.Settings.Default.overlayEnabled)
             {
                 try
                 {
