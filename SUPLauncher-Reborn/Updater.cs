@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -41,7 +42,7 @@ namespace SUPLauncher_Reborn
 
         public static void downloadLatestVersion()
         {
-
+            Process.Start("https://github.com/BestOfAllCoding/SUPLauncher-Reborn/releases");
         }
 
     }

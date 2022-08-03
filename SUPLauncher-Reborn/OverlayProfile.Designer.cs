@@ -31,12 +31,10 @@ namespace SUPLauncher_Reborn
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_profile = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pnl_timePlayed = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.lbl_previousOffenses = new System.Windows.Forms.Label();
             this.lbl_playTime = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
@@ -51,10 +49,8 @@ namespace SUPLauncher_Reborn
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.pnl_profile.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.pnl_timePlayed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.pnl_bans.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -65,7 +61,6 @@ namespace SUPLauncher_Reborn
             this.pnl_profile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.pnl_profile.Controls.Add(this.panel2);
             this.pnl_profile.Controls.Add(this.panel1);
-            this.pnl_profile.Controls.Add(this.pnl_timePlayed);
             this.pnl_profile.Controls.Add(this.lbl_previousOffenses);
             this.pnl_profile.Controls.Add(this.lbl_playTime);
             this.pnl_profile.Controls.Add(this.lbl_name);
@@ -80,13 +75,22 @@ namespace SUPLauncher_Reborn
             this.pnl_profile.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
             this.pnl_profile.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(4, 207);
+            this.panel2.TabIndex = 59;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(123, 144);
+            this.panel1.Location = new System.Drawing.Point(15, 144);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(102, 51);
+            this.panel1.Size = new System.Drawing.Size(210, 51);
             this.panel1.TabIndex = 6;
             // 
             // label4
@@ -98,7 +102,7 @@ namespace SUPLauncher_Reborn
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(3, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 23);
+            this.label4.Size = new System.Drawing.Size(204, 23);
             this.label4.TabIndex = 5;
             this.label4.Text = "12/21/2016";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -112,47 +116,10 @@ namespace SUPLauncher_Reborn
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(3, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 23);
+            this.label5.Size = new System.Drawing.Size(204, 23);
             this.label5.TabIndex = 4;
             this.label5.Text = "First Join";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pnl_timePlayed
-            // 
-            this.pnl_timePlayed.Controls.Add(this.label3);
-            this.pnl_timePlayed.Controls.Add(this.label2);
-            this.pnl_timePlayed.Location = new System.Drawing.Point(15, 144);
-            this.pnl_timePlayed.Name = "pnl_timePlayed";
-            this.pnl_timePlayed.Size = new System.Drawing.Size(102, 51);
-            this.pnl_timePlayed.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 23);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "2092:43:52";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 23);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Time Played";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_previousOffenses
             // 
@@ -160,7 +127,7 @@ namespace SUPLauncher_Reborn
             this.lbl_previousOffenses.ForeColor = System.Drawing.Color.White;
             this.lbl_previousOffenses.Location = new System.Drawing.Point(90, 59);
             this.lbl_previousOffenses.Name = "lbl_previousOffenses";
-            this.lbl_previousOffenses.Size = new System.Drawing.Size(111, 23);
+            this.lbl_previousOffenses.Size = new System.Drawing.Size(132, 23);
             this.lbl_previousOffenses.TabIndex = 3;
             this.lbl_previousOffenses.Text = "2 Total PO\'s";
             // 
@@ -214,7 +181,6 @@ namespace SUPLauncher_Reborn
             // 
             this.tmr_giveBackFocus.Enabled = true;
             this.tmr_giveBackFocus.Interval = 1000;
-            this.tmr_giveBackFocus.Tick += new System.EventHandler(this.tmr_giveBackFocus_Tick);
             // 
             // pnl_bans
             // 
@@ -311,15 +277,6 @@ namespace SUPLauncher_Reborn
             this.label10.Text = "Unban Reason";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(4, 207);
-            this.panel2.TabIndex = 59;
-            // 
             // OverlayProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,11 +296,9 @@ namespace SUPLauncher_Reborn
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "OverlayProfile";
             this.TopMost = true;
-            this.Activated += new System.EventHandler(this.OverlayProfile_Activated);
             this.Load += new System.EventHandler(this.OverlayProfile_Load);
             this.pnl_profile.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.pnl_timePlayed.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.pnl_bans.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -358,9 +313,6 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel pnl_timePlayed;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_previousOffenses;
         private System.Windows.Forms.Label lbl_playTime;
         private System.Windows.Forms.Label lbl_name;

@@ -69,7 +69,7 @@ namespace SUPLauncher_Reborn
         {
             int playtime = profile.Badmin.PlayTime;
             lbl_name.Text = profile.Badmin.Name;
-            lbl_previousOffenses.Text = playtime.ToString();
+            
             
             TimeSpan time = TimeSpan.FromSeconds(playtime);
             lbl_playTime.Text = SuperiorServers.PlaytimeFormat(playtime);
@@ -82,24 +82,13 @@ namespace SUPLauncher_Reborn
                 pnl_bans.Controls.Add(banControl);
                 banControl.loadBan(ban);
             }
+            lbl_previousOffenses.Text = bans.Count + " Total PO(s)";
 
         }
 
         public void loadProfile(string id)
         {
             loadProfile(SuperiorServers.getProfile(id));
-        }
-
-
-
-        private void OverlayProfile_Activated(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void tmr_giveBackFocus_Tick(object sender, EventArgs e)
-        {
- 
         }
 
         // Window Drag

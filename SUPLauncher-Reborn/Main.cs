@@ -381,6 +381,14 @@ namespace SUPLauncher_Reborn
             Properties.Settings.Default.Save();
         }
 
-   
+        private void lbl_version_Click(object sender, EventArgs e)
+        {
+            Updater.downloadLatestVersion();
+        }
+
+        private void img_warning_Click(object sender, EventArgs e)
+        {
+            Updater.downloadLatestVersion();
+        }
     }
 }

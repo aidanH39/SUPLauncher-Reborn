@@ -235,6 +235,7 @@ namespace SUPLauncher_Reborn
             this.img_warning.TabIndex = 8;
             this.img_warning.TabStop = false;
             this.img_warning.Visible = false;
+            this.img_warning.Click += new System.EventHandler(this.img_warning_Click);
             // 
             // btn_settings
             // 
@@ -350,6 +351,7 @@ namespace SUPLauncher_Reborn
             this.lbl_version.TabIndex = 7;
             this.lbl_version.Text = "V1.0.0";
             this.lbl_version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_version.Click += new System.EventHandler(this.lbl_version_Click);
             this.lbl_version.MouseEnter += new System.EventHandler(this.lbl_version_MouseEnter);
             // 
             // pnl_servers

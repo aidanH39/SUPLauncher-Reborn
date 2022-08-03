@@ -55,7 +55,7 @@ namespace SUPLauncher_Reborn
             // 
             // pnl_ban
             // 
-            this.pnl_ban.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(34)))), ((int)(((byte)(0)))));
+            this.pnl_ban.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.pnl_ban.Controls.Add(this.pnl_date);
             this.pnl_ban.Controls.Add(this.pnl_server);
             this.pnl_ban.Controls.Add(this.pnl_admin);
@@ -134,7 +134,7 @@ namespace SUPLauncher_Reborn
             this.lbl_admin.Name = "lbl_admin";
             this.lbl_admin.Size = new System.Drawing.Size(80, 35);
             this.lbl_admin.TabIndex = 0;
-            this.lbl_admin.Text = "Nick Diamond PHD";
+            this.lbl_admin.Text = "Best of all";
             this.lbl_admin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnl_length
@@ -154,7 +154,7 @@ namespace SUPLauncher_Reborn
             this.lbl_length.Name = "lbl_length";
             this.lbl_length.Size = new System.Drawing.Size(70, 35);
             this.lbl_length.TabIndex = 0;
-            this.lbl_length.Text = "1w 4d 19H";
+            this.lbl_length.Text = "1w";
             this.lbl_length.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnl_reason
@@ -174,8 +174,7 @@ namespace SUPLauncher_Reborn
             this.lbl_reason.Name = "lbl_reason";
             this.lbl_reason.Size = new System.Drawing.Size(219, 35);
             this.lbl_reason.TabIndex = 0;
-            this.lbl_reason.Text = "\t(5h served) MRDM | Diss in sit | LTAP | Pox2 / JPOx3 | Update: STEAM_0:0:5437646" +
-    "82";
+            this.lbl_reason.Text = "MRDM";
             this.lbl_reason.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnl_unban
@@ -202,6 +201,7 @@ namespace SUPLauncher_Reborn
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnl_ban);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "UserBan";
             this.Size = new System.Drawing.Size(849, 38);
             this.pnl_ban.ResumeLayout(false);

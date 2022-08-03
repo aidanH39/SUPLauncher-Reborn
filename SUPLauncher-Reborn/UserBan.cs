@@ -23,8 +23,13 @@ namespace SUPLauncher_Reborn
 
             if (ban.BanID == null)
             {
-                this.BackColor = Color.FromArgb(82, 34, 0);
+                pnl_ban.BackColor = Color.FromArgb(82, 34, 0);
+            } else if (ban.UnbanReason.Length > 1)
+            {
+                pnl_ban.BackColor = Color.FromArgb(35, 70, 35);
             }
+
+
 
             lbl_admin.Text = ban.AdminName;
             DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
