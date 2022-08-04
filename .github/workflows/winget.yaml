@@ -2,11 +2,7 @@ name: Publish to WinGet
 on:
   release:
     types: [released]
-  workflow_dispatch:
-    inputs:
-      test:
-        description: Test
-        required: false
+
 
   
 
