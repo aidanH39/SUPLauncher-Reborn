@@ -10,21 +10,17 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
-    public partial class inputbox : Form
+    public partial class msgBox : Form
     {
-
-        public string text;
-
-        public inputbox(string title, string message)
+        public msgBox(string message, string title="SUPLauncher")
         {
             InitializeComponent();
-            label1.Text = message;
-            label2.Text = title;
+            lbl_title.Text = title;
+            lbl_msg.Text = message;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            text = textBox1.Text;
             this.Close();
         }
     }

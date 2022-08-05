@@ -88,6 +88,9 @@
     <Reference Include="Gameloop.Vdf, Version=0.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Gameloop.Vdf.0.6.2\lib\net45\Gameloop.Vdf.dll</HintPath>
     </Reference>
+    <Reference Include="Markdown, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1b320cc08ad5aa89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Markdown.2.2.1\lib\net451\Markdown.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -125,16 +128,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APILogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="APILogin.Designer.cs">
+      <DependentUpon>APILogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="CookieCollector.cs" />
     <Compile Include="CookieVisitor.cs" />
     <Compile Include="CProgressBar.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DupeDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DupeDetails.Designer.cs">
+      <DependentUpon>DupeDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DupeDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DupeDisplay.Designer.cs">
+      <DependentUpon>DupeDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="DupeManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DupeManager.Designer.cs">
       <DependentUpon>DupeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DupeMarket.cs" />
+    <Compile Include="DupeMarketPlace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DupeMarketPlace.Designer.cs">
+      <DependentUpon>DupeMarketPlace.cs</DependentUpon>
     </Compile>
     <Compile Include="ExceptionForm.cs">
       <SubType>Form</SubType>
@@ -162,6 +193,12 @@
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="msgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="msgBox.Designer.cs">
+      <DependentUpon>msgBox.cs</DependentUpon>
     </Compile>
     <Compile Include="MyCustomSteamAPI.cs" />
     <Compile Include="Notification.cs">
@@ -214,6 +251,12 @@
     <Compile Include="Steam.cs" />
     <Compile Include="SuperiorServers.cs" />
     <Compile Include="Updater.cs" />
+    <Compile Include="UploadDupe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UploadDupe.Designer.cs">
+      <DependentUpon>UploadDupe.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserBan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -221,8 +264,20 @@
       <DependentUpon>UserBan.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowHelper.cs" />
+    <EmbeddedResource Include="APILogin.resx">
+      <DependentUpon>APILogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DupeDetails.resx">
+      <DependentUpon>DupeDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DupeDisplay.resx">
+      <DependentUpon>DupeDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DupeManager.resx">
       <DependentUpon>DupeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DupeMarketPlace.resx">
+      <DependentUpon>DupeMarketPlace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExceptionForm.resx">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
@@ -235,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="msgBox.resx">
+      <DependentUpon>msgBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notification.resx">
       <DependentUpon>Notification.cs</DependentUpon>
@@ -266,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SitCount.resx">
       <DependentUpon>SitCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadDupe.resx">
+      <DependentUpon>UploadDupe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserBan.resx">
       <DependentUpon>UserBan.cs</DependentUpon>
@@ -320,6 +381,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\dupe-default.jpg" />
     <None Include="Resources\SecurityAndMaintenance_Error.png" />
   </ItemGroup>
   <ItemGroup>

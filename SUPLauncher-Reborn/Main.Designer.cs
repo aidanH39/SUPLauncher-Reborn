@@ -52,6 +52,7 @@ namespace SUPLauncher_Reborn
             this.txt_lookup = new System.Windows.Forms.TextBox();
             this.lbl_server = new System.Windows.Forms.Label();
             this.lbl_playerName = new System.Windows.Forms.Label();
+            this.img_avatar = new OvalPictureBox();
             this.lbl_version = new System.Windows.Forms.Label();
             this.pnl_servers = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_progress = new System.Windows.Forms.Label();
@@ -59,7 +60,7 @@ namespace SUPLauncher_Reborn
             this.tip_afk = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
-            this.img_avatar = new OvalPictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -154,6 +155,7 @@ namespace SUPLauncher_Reborn
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.chk_afkMode);
             this.panel1.Controls.Add(this.pnl_afkHead);
@@ -187,7 +189,7 @@ namespace SUPLauncher_Reborn
             // 
             this.chk_afkMode.AutoSize = true;
             this.chk_afkMode.ForeColor = System.Drawing.Color.White;
-            this.chk_afkMode.Location = new System.Drawing.Point(27, 400);
+            this.chk_afkMode.Location = new System.Drawing.Point(27, 399);
             this.chk_afkMode.Name = "chk_afkMode";
             this.chk_afkMode.Size = new System.Drawing.Size(118, 17);
             this.chk_afkMode.TabIndex = 9;
@@ -201,7 +203,7 @@ namespace SUPLauncher_Reborn
             this.pnl_afkHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnl_afkHead.Controls.Add(this.lbl_afk);
             this.pnl_afkHead.Controls.Add(this.panel4);
-            this.pnl_afkHead.Location = new System.Drawing.Point(12, 362);
+            this.pnl_afkHead.Location = new System.Drawing.Point(12, 361);
             this.pnl_afkHead.Name = "pnl_afkHead";
             this.pnl_afkHead.Size = new System.Drawing.Size(219, 29);
             this.pnl_afkHead.TabIndex = 6;
@@ -256,7 +258,7 @@ namespace SUPLauncher_Reborn
             this.btn_lookup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.btn_lookup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_lookup.ForeColor = System.Drawing.Color.White;
-            this.btn_lookup.Location = new System.Drawing.Point(13, 320);
+            this.btn_lookup.Location = new System.Drawing.Point(13, 319);
             this.btn_lookup.Name = "btn_lookup";
             this.btn_lookup.Size = new System.Drawing.Size(218, 23);
             this.btn_lookup.TabIndex = 6;
@@ -270,7 +272,7 @@ namespace SUPLauncher_Reborn
             this.pnl_lookup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnl_lookup.Controls.Add(this.lbl_lookup);
             this.pnl_lookup.Controls.Add(this.pnl_4);
-            this.pnl_lookup.Location = new System.Drawing.Point(12, 258);
+            this.pnl_lookup.Location = new System.Drawing.Point(12, 257);
             this.pnl_lookup.Name = "pnl_lookup";
             this.pnl_lookup.Size = new System.Drawing.Size(219, 29);
             this.pnl_lookup.TabIndex = 5;
@@ -299,7 +301,7 @@ namespace SUPLauncher_Reborn
             // 
             this.txt_lookup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.txt_lookup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_lookup.Location = new System.Drawing.Point(12, 293);
+            this.txt_lookup.Location = new System.Drawing.Point(12, 292);
             this.txt_lookup.Name = "txt_lookup";
             this.txt_lookup.Size = new System.Drawing.Size(219, 20);
             this.txt_lookup.TabIndex = 4;
@@ -329,6 +331,18 @@ namespace SUPLauncher_Reborn
             this.lbl_playerName.TabIndex = 1;
             this.lbl_playerName.Text = "PLAYER_NAME";
             this.lbl_playerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // img_avatar
+            // 
+            this.img_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(59, 6);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(128, 128);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
             // 
             // lbl_version
             // 
@@ -402,17 +416,19 @@ namespace SUPLauncher_Reborn
             this.cProgressBar1.Value = 0;
             this.cProgressBar1.Visible = false;
             // 
-            // img_avatar
+            // button1
             // 
-            this.img_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(59, 6);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(128, 128);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
-            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(12, 207);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(218, 29);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Dupe Manager";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // frm_main
             // 
@@ -478,6 +494,7 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label lbl_afk;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

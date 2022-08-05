@@ -38,6 +38,8 @@
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Import = new System.Windows.Forms.OpenFileDialog();
             this.TopBar = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Drop = new System.Windows.Forms.Panel();
@@ -51,7 +53,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.FolderMenu.SuspendLayout();
             this.TopBar.SuspendLayout();
             this.Drop.SuspendLayout();
@@ -113,6 +115,7 @@
             // TopBar
             // 
             this.TopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.TopBar.Controls.Add(this.label2);
             this.TopBar.Controls.Add(this.panel2);
             this.TopBar.Controls.Add(this.button3);
             this.TopBar.Controls.Add(this.button2);
@@ -125,6 +128,26 @@
             this.TopBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
             this.TopBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
             this.TopBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(10, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 19);
+            this.label2.TabIndex = 58;
+            this.label2.Text = "Dupe Manager";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(4, 28);
+            this.panel2.TabIndex = 57;
             // 
             // button3
             // 
@@ -198,7 +221,7 @@
             // Dupes
             // 
             this.Dupes.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.Dupes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.Dupes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.Dupes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Dupes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -207,9 +230,9 @@
             this.Dupes.ForeColor = System.Drawing.Color.White;
             this.Dupes.HideSelection = false;
             this.Dupes.LargeImageList = this.iconList;
-            this.Dupes.Location = new System.Drawing.Point(12, 66);
+            this.Dupes.Location = new System.Drawing.Point(12, 82);
             this.Dupes.Name = "Dupes";
-            this.Dupes.Size = new System.Drawing.Size(533, 500);
+            this.Dupes.Size = new System.Drawing.Size(533, 484);
             this.Dupes.TabIndex = 50;
             this.Dupes.UseCompatibleStateImageBehavior = false;
             this.Dupes.SelectedIndexChanged += new System.EventHandler(this.Dupes_SelectedIndexChanged);
@@ -236,11 +259,11 @@
             this.path.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.path.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.path.ForeColor = System.Drawing.Color.White;
-            this.path.Location = new System.Drawing.Point(75, 43);
+            this.path.Location = new System.Drawing.Point(211, 43);
             this.path.Multiline = true;
             this.path.Name = "path";
             this.path.ReadOnly = true;
-            this.path.Size = new System.Drawing.Size(470, 23);
+            this.path.Size = new System.Drawing.Size(334, 23);
             this.path.TabIndex = 51;
             this.path.Text = "/";
             this.path.WordWrap = false;
@@ -248,7 +271,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.panel1.Location = new System.Drawing.Point(63, 43);
+            this.panel1.Location = new System.Drawing.Point(201, 43);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(77, 23);
             this.panel1.TabIndex = 52;
@@ -283,14 +306,19 @@
             this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             // 
-            // panel2
+            // button4
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(4, 28);
-            this.panel2.TabIndex = 57;
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(125)))), ((int)(((byte)(125)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(62, 43);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(133, 23);
+            this.button4.TabIndex = 55;
+            this.button4.Text = "Marketplace";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // DupeManager
             // 
@@ -300,6 +328,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(557, 623);
             this.ControlBox = false;
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.path);
@@ -319,6 +348,7 @@
             this.DragLeave += new System.EventHandler(this.DupeManager_DragLeave);
             this.FolderMenu.ResumeLayout(false);
             this.TopBar.ResumeLayout(false);
+            this.TopBar.PerformLayout();
             this.Drop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgrefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -350,5 +380,7 @@
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button4;
     }
 }

@@ -592,5 +592,12 @@ namespace SUPLauncher_Reborn
 
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DupeMarketPlace form = new DupeMarketPlace();
+            form.Show();
+            form.TopMost = TopMost;
+        }
     }
 }

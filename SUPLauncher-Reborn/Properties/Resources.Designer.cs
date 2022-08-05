@@ -83,6 +83,16 @@ namespace SUPLauncher_Reborn.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dupe_default {
+            get {
+                object obj = ResourceManager.GetObject("dupe-default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PngItem_6405989 {
             get {
                 object obj = ResourceManager.GetObject("PngItem_6405989", resourceCulture);

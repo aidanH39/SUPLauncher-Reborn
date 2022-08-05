@@ -410,5 +410,11 @@ namespace SUPLauncher_Reborn
                 this.Close();
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            DupeManager form = new DupeManager();
+            form.Show();
+        }
     }
 }
