@@ -62,6 +62,8 @@ namespace SUPLauncher_Reborn
             this.pnl_publishedDupes = new System.Windows.Forms.Panel();
             this.pnl_publishedDupesList = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
+            this.combo_categories = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.TopBar.SuspendLayout();
             this.pnl_left.SuspendLayout();
             this.pnl_leftHead.SuspendLayout();
@@ -305,11 +307,11 @@ namespace SUPLauncher_Reborn
             this.customTabControl1.Controls.Add(this.browseDupes);
             this.customTabControl1.Controls.Add(this.publishedDupes);
             this.customTabControl1.ItemSize = new System.Drawing.Size(20, 10);
-            this.customTabControl1.Location = new System.Drawing.Point(212, 61);
+            this.customTabControl1.Location = new System.Drawing.Point(212, 84);
             this.customTabControl1.Multiline = true;
             this.customTabControl1.Name = "customTabControl1";
             this.customTabControl1.SelectedIndex = 0;
-            this.customTabControl1.Size = new System.Drawing.Size(477, 565);
+            this.customTabControl1.Size = new System.Drawing.Size(477, 542);
             this.customTabControl1.TabIndex = 35;
             // 
             // tabPage1
@@ -319,7 +321,7 @@ namespace SUPLauncher_Reborn
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Location = new System.Drawing.Point(4, 14);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(469, 547);
+            this.tabPage1.Size = new System.Drawing.Size(469, 524);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "ownedDupes";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -358,7 +360,7 @@ namespace SUPLauncher_Reborn
             this.browseDupes.Location = new System.Drawing.Point(4, 14);
             this.browseDupes.Name = "browseDupes";
             this.browseDupes.Padding = new System.Windows.Forms.Padding(3);
-            this.browseDupes.Size = new System.Drawing.Size(469, 547);
+            this.browseDupes.Size = new System.Drawing.Size(469, 524);
             this.browseDupes.TabIndex = 0;
             this.browseDupes.Text = "browseDupes";
             // 
@@ -372,7 +374,7 @@ namespace SUPLauncher_Reborn
             this.pnl_ownedDupesTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_ownedDupesTab.Location = new System.Drawing.Point(3, 3);
             this.pnl_ownedDupesTab.Name = "pnl_ownedDupesTab";
-            this.pnl_ownedDupesTab.Size = new System.Drawing.Size(463, 541);
+            this.pnl_ownedDupesTab.Size = new System.Drawing.Size(463, 518);
             this.pnl_ownedDupesTab.TabIndex = 35;
             this.pnl_ownedDupesTab.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
@@ -382,7 +384,7 @@ namespace SUPLauncher_Reborn
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(298, 49);
+            this.button1.Location = new System.Drawing.Point(228, 50);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 21);
             this.button1.TabIndex = 37;
@@ -397,7 +399,7 @@ namespace SUPLauncher_Reborn
             this.txt_search.ForeColor = System.Drawing.Color.White;
             this.txt_search.Location = new System.Drawing.Point(4, 50);
             this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(290, 20);
+            this.txt_search.Size = new System.Drawing.Size(218, 20);
             this.txt_search.TabIndex = 36;
             this.txt_search.Text = "Search";
             // 
@@ -410,7 +412,7 @@ namespace SUPLauncher_Reborn
             this.pnl_browsedupeList.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.pnl_browsedupeList.Location = new System.Drawing.Point(4, 75);
             this.pnl_browsedupeList.Name = "pnl_browsedupeList";
-            this.pnl_browsedupeList.Size = new System.Drawing.Size(456, 463);
+            this.pnl_browsedupeList.Size = new System.Drawing.Size(456, 440);
             this.pnl_browsedupeList.TabIndex = 1;
             this.pnl_browsedupeList.WrapContents = false;
             // 
@@ -419,7 +421,7 @@ namespace SUPLauncher_Reborn
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(6, 19);
+            this.label3.Location = new System.Drawing.Point(0, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(162, 28);
             this.label3.TabIndex = 0;
@@ -433,7 +435,7 @@ namespace SUPLauncher_Reborn
             this.publishedDupes.Location = new System.Drawing.Point(4, 14);
             this.publishedDupes.Name = "publishedDupes";
             this.publishedDupes.Padding = new System.Windows.Forms.Padding(3);
-            this.publishedDupes.Size = new System.Drawing.Size(469, 547);
+            this.publishedDupes.Size = new System.Drawing.Size(469, 524);
             this.publishedDupes.TabIndex = 1;
             this.publishedDupes.Text = "publishedDupes";
             // 
@@ -445,7 +447,7 @@ namespace SUPLauncher_Reborn
             this.pnl_publishedDupes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_publishedDupes.Location = new System.Drawing.Point(3, 3);
             this.pnl_publishedDupes.Name = "pnl_publishedDupes";
-            this.pnl_publishedDupes.Size = new System.Drawing.Size(463, 541);
+            this.pnl_publishedDupes.Size = new System.Drawing.Size(463, 518);
             this.pnl_publishedDupes.TabIndex = 35;
             this.pnl_publishedDupes.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_publishedDupes_Paint);
             // 
@@ -459,7 +461,7 @@ namespace SUPLauncher_Reborn
             this.pnl_publishedDupesList.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.pnl_publishedDupesList.Location = new System.Drawing.Point(3, 54);
             this.pnl_publishedDupesList.Name = "pnl_publishedDupesList";
-            this.pnl_publishedDupesList.Size = new System.Drawing.Size(457, 484);
+            this.pnl_publishedDupesList.Size = new System.Drawing.Size(457, 461);
             this.pnl_publishedDupesList.TabIndex = 1;
             this.pnl_publishedDupesList.WrapContents = false;
             // 
@@ -474,12 +476,41 @@ namespace SUPLauncher_Reborn
             this.label5.TabIndex = 0;
             this.label5.Text = "Your Published Dupes";
             // 
+            // combo_categories
+            // 
+            this.combo_categories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.combo_categories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_categories.ForeColor = System.Drawing.Color.White;
+            this.combo_categories.FormattingEnabled = true;
+            this.combo_categories.Items.AddRange(new object[] {
+            "Any"});
+            this.combo_categories.Location = new System.Drawing.Point(535, 130);
+            this.combo_categories.Name = "combo_categories";
+            this.combo_categories.Size = new System.Drawing.Size(140, 21);
+            this.combo_categories.TabIndex = 3;
+            this.combo_categories.SelectedIndexChanged += new System.EventHandler(this.combo_categories_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(531, 105);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 19);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Category";
+            // 
             // DupeMarketPlace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SUPLauncher_Reborn.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(706, 638);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.combo_categories);
             this.Controls.Add(this.pnl_left);
             this.Controls.Add(this.TopBar);
             this.Controls.Add(this.customTabControl1);
@@ -507,6 +538,7 @@ namespace SUPLauncher_Reborn
             this.pnl_publishedDupes.ResumeLayout(false);
             this.pnl_publishedDupes.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -550,5 +582,7 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_search;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox combo_categories;
     }
 }

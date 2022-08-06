@@ -124,7 +124,7 @@ namespace SUPLauncher_Reborn
                 }
             }
         }
-
+        Dictionary<int, DupeCategory> categoriesIndex = new Dictionary<int, DupeCategory>();
         private void DupeMarketPlace_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.apiSecret.Length < 1)
@@ -132,27 +132,47 @@ namespace SUPLauncher_Reborn
                 this.Close();
                 return;
             }
-            List<Dupe> dupes = DupeMarket.GetDupes(10);
             
+            List<DupeCategory> categories = DupeMarket.GetCategories();
+            foreach (DupeCategory category in categories)
+            {
+                categoriesIndex.Add(combo_categories.Items.Add(category.name), category);
+            }
+            this.combo_categories.SelectedIndex = 0;
+        }
+
+        public void loadDupes(DupeCategory category = null)
+        {
+            List<Dupe> dupes = DupeMarket.GetDupes(10);
+
             foreach (Dupe dupe in dupes)
             {
-                pnl_browsedupeList.Controls.Add(new DupeDisplay(dupe));
+                if (category == null || dupe.category == category.id)
+                {
+                    pnl_browsedupeList.Controls.Add(new DupeDisplay(dupe));
+                }
+                
             }
 
             dupes = DupeMarket.GetDupesBy(Program.steamid.ToString());
 
             foreach (Dupe dupe in dupes)
             {
-                pnl_publishedDupesList.Controls.Add(new DupeDisplay(dupe));
+                if (category == null || dupe.category == category.id)
+                {
+                    pnl_publishedDupesList.Controls.Add(new DupeDisplay(dupe));
+                }
             }
 
             dupes = DupeMarket.GetOwnedDupes();
 
             foreach (Dupe dupe in dupes)
             {
-                pnl_ownedDupesList.Controls.Add(new DupeDisplay(dupe));
+                if (category == null || dupe.category == category.id)
+                {
+                    pnl_ownedDupesList.Controls.Add(new DupeDisplay(dupe));
+                }
             }
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -211,6 +231,48 @@ namespace SUPLauncher_Reborn
             foreach (Dupe dupe in dupes)
             {
                 pnl_browsedupeList.Controls.Add(new DupeDisplay(dupe));
+            }
+        }
+
+        private void combo_categories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (categoriesIndex.ContainsKey(combo_categories.SelectedIndex))
+            {
+                pnl_publishedDupesList.Controls.Clear();
+                pnl_browsedupeList.Controls.Clear();
+                pnl_ownedDupesList.Controls.Clear();
+                foreach (Control control in pnl_browsedupeList.Controls)
+                {
+                    MessageBox.Show(control.Name);
+                    control.Dispose();
+                }
+                foreach (Control control in pnl_ownedDupesList.Controls)
+                {
+                    control.Dispose();
+                }
+                foreach (Control control in pnl_publishedDupesList.Controls)
+                {
+                    control.Dispose();
+                }
+                loadDupes(categoriesIndex[combo_categories.SelectedIndex]);
+            } else if (combo_categories.SelectedIndex == 0)
+            {
+                pnl_publishedDupesList.Controls.Clear();
+                pnl_browsedupeList.Controls.Clear();
+                pnl_ownedDupesList.Controls.Clear();
+                foreach (Control control in pnl_browsedupeList.Controls)
+                {
+                    control.Dispose();
+                }
+                foreach (Control control in pnl_ownedDupesList.Controls)
+                {
+                    control.Dispose();
+                }
+                foreach (Control control in pnl_publishedDupesList.Controls)
+                {
+                    control.Dispose();
+                }
+                loadDupes();
             }
         }
     }

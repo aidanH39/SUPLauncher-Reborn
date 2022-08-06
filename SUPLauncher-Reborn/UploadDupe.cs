@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SUPLauncher_Reborn.DupeMarket;
 
 namespace SUPLauncher_Reborn
 {
@@ -18,6 +19,12 @@ namespace SUPLauncher_Reborn
             InitializeComponent();
             fileDialog_dupe.FileName = path;
             lbl_selectDupeHead.Text = "Select Dupe (" + fileDialog_dupe.SafeFileName + ")";
+            List<DupeCategory> categories = DupeMarket.GetCategories();
+            foreach (DupeCategory category in categories)
+            {
+                dupeCategories.Add(combo_category.Items.Add(category.name), category);
+            }
+            this.combo_category.SelectedIndex = 0;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -157,6 +164,10 @@ namespace SUPLauncher_Reborn
                 
                 
                 formData.Add(new StringContent(Properties.Settings.Default.apiSecret), "key");
+                if (dupeCategories.ContainsKey(combo_category.SelectedIndex))
+                {
+                    formData.Add(new StringContent(dupeCategories[combo_category.SelectedIndex].id.ToString()), "category");
+                }
                 formData.Add(new StringContent(txt_dupeName.Text), "name");
                 formData.Add(new StringContent(txt_dupeDesc.Text), "description");
                 formData.Add(new StringContent(combo_type.Text), "type");
@@ -166,6 +177,7 @@ namespace SUPLauncher_Reborn
                     Interaction.MessageBox("Something went wrong. Status code: " + response.StatusCode.ToString());
                 } else
                 {
+                    MessageBox.Show(await response.Content.ReadAsStringAsync());
                     Interaction.MessageBox("Success!");
                 }
                 
@@ -180,6 +192,12 @@ namespace SUPLauncher_Reborn
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        Dictionary<int, DupeCategory> dupeCategories = new Dictionary<int, DupeCategory>();
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

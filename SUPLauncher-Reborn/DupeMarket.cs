@@ -23,8 +23,15 @@ namespace SUPLauncher_Reborn
             public string title;
             public string description;
             public string type;
+            public int category;
             public int downloads;
             public int views;
+        }
+
+        public class DupeCategory
+        {
+            public int id;
+            public string name;
         }
 
         /// <summary>
@@ -70,7 +77,15 @@ namespace SUPLauncher_Reborn
                     var reqparm = new System.Collections.Specialized.NameValueCollection();
                     reqparm.Add("key", Properties.Settings.Default.apiSecret);
                     byte[] result = webClient.UploadValues("http://bestofall.ml:2095/api/getDupes.php?dupe=" + dupe.id + "&download", reqparm);
-                    File.WriteAllBytes(gmodPath + "\\garrysmod\\data\\advdupe2\\Dupe Market Place\\" + dupe.title + ".txt", result);
+                    string path = gmodPath + "\\garrysmod\\data\\advdupe2\\Dupe Market Place\\";
+                    List<DupeCategory> categories = DupeMarket.GetCategories();
+                    DupeCategory cat = categories.Where(c => c.id == dupe.category).First();
+                    if (!Directory.Exists(path + "\\" + cat.name + "\\"))
+                    {
+                        Directory.CreateDirectory(path + "\\" + cat.name + "\\");
+                    }
+                    
+                    File.WriteAllBytes(path + "\\" + cat.name + "\\" + dupe.title + "-" + dupe.id + ".txt", result);
                 } catch (WebException e)
                 {
                     if (e.Status == WebExceptionStatus.ProtocolError)
@@ -164,6 +179,22 @@ namespace SUPLauncher_Reborn
             {
                 Interaction.MessageBox(json);
             }
+        }
+
+        public static List<DupeCategory> GetCategories()
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://bestofall.ml:2095/api/getCategories.php");
+            request.UserAgent = "SUPLauncher";
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+            string json;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                json = reader.ReadToEnd();
+            }
+            //MessageBox.Show(jsonP.response.Servers);
+            return JsonConvert.DeserializeObject<List<DupeCategory>>(json);
         }
 
         /// <summary>

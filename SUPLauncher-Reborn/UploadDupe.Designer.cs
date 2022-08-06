@@ -57,6 +57,10 @@ namespace SUPLauncher_Reborn
             this.btn_upload = new System.Windows.Forms.Button();
             this.fileDialog_dupe = new System.Windows.Forms.OpenFileDialog();
             this.fileDialog_image = new System.Windows.Forms.OpenFileDialog();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.combo_category = new System.Windows.Forms.ComboBox();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,6 +68,7 @@ namespace SUPLauncher_Reborn
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_topBar
@@ -374,12 +379,56 @@ namespace SUPLauncher_Reborn
             this.fileDialog_image.Title = "Select image to upload...";
             this.fileDialog_image.FileOk += new System.ComponentModel.CancelEventHandler(this.fileDialog_image_FileOk);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Location = new System.Drawing.Point(234, 251);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(219, 29);
+            this.panel3.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(11, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(156, 25);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Category";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(5, 29);
+            this.panel5.TabIndex = 0;
+            // 
+            // combo_category
+            // 
+            this.combo_category.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.combo_category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_category.ForeColor = System.Drawing.Color.White;
+            this.combo_category.FormattingEnabled = true;
+            this.combo_category.Location = new System.Drawing.Point(235, 279);
+            this.combo_category.Name = "combo_category";
+            this.combo_category.Size = new System.Drawing.Size(218, 21);
+            this.combo_category.TabIndex = 16;
+            this.combo_category.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // UploadDupe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SUPLauncher_Reborn.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(478, 658);
+            this.Controls.Add(this.combo_category);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.btn_upload);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.btn_selectDupe);
@@ -404,6 +453,7 @@ namespace SUPLauncher_Reborn
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,5 +489,9 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Button btn_upload;
         private System.Windows.Forms.OpenFileDialog fileDialog_dupe;
         private System.Windows.Forms.OpenFileDialog fileDialog_image;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.ComboBox combo_category;
     }
 }
