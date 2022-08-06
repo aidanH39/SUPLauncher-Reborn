@@ -29,22 +29,34 @@ namespace SUPLauncher_Reborn
 
         void fadeIn(object sender, EventArgs e)
         {
-            if (Opacity >= 1)
-                t1.Stop();   //this stops the timer if the form is completely displayed
-            else
-                Opacity += 0.05;
+            try
+            {
+                if (Opacity >= 1)
+                    t1.Stop();   //this stops the timer if the form is completely displayed
+                else
+                    Opacity += 0.05;
+            } catch (Exception)
+            {
+                t1.Stop();
+            }
         }
 
         void fadeOut(object sender, EventArgs e)
         {
-            if (Opacity <= 0)     //check if opacity is 0
+            try
             {
-                t1.Stop();    //if it is, we stop the timer
-                Close();   //and we try to close the form
+                if (Opacity <= 0)     //check if opacity is 0
+                {
+                    t1.Stop();    //if it is, we stop the timer
+                    Close();   //and we try to close the form
+                }
+                else
+                    Opacity -= 0.05;
+            } catch (Exception)
+            {
+                t1.Stop();
             }
-            else
-                Opacity -= 0.05;
-        }
+}
         #endregion
 
         private void btn_expand_Click(object sender, EventArgs e)
@@ -118,7 +130,7 @@ namespace SUPLauncher_Reborn
         {
             if (isTopPanelDragged)
             {
-                Point newPoint = panel1.PointToScreen(new Point(e.X, e.Y));
+                Point newPoint = pnl_topBar.PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(offset);
                 this.Location = newPoint;
 

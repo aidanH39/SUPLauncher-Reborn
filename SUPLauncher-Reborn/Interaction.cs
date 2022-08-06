@@ -11,10 +11,16 @@ namespace SUPLauncher_Reborn
         public static string InputBox(string question, string title)
         {
             
-            inputbox form = new inputbox();
+            inputbox form = new inputbox(title, question);
             form.Text = title;
             form.ShowDialog();
             return form.text;
+        }
+
+        public static void MessageBox(string message, string title = null)
+        {
+            msgBox form = new msgBox(message, title);
+            form.ShowDialog();
         }
     }
 }

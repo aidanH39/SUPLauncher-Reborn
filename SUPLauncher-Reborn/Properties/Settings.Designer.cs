@@ -166,5 +166,17 @@ namespace SUPLauncher_Reborn.Properties {
                 this["overlayEnabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string apiSecret {
+            get {
+                return ((string)(this["apiSecret"]));
+            }
+            set {
+                this["apiSecret"] = value;
+            }
+        }
     }
 }
