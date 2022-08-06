@@ -77,6 +77,9 @@ namespace SUPLauncher_Reborn
             this.TopBar.Name = "TopBar";
             this.TopBar.Size = new System.Drawing.Size(314, 28);
             this.TopBar.TabIndex = 33;
+            this.TopBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
+            this.TopBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
+            this.TopBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
             // 
             // label2
             // 

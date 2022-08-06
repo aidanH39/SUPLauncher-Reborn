@@ -32,14 +32,14 @@ namespace SUPLauncher_Reborn
             this.pnl_topBar = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_title = new System.Windows.Forms.Label();
+            this.img_icon = new System.Windows.Forms.PictureBox();
             this.btn_minimize = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
-            this.img_icon = new System.Windows.Forms.PictureBox();
             this.pnl_loading = new System.Windows.Forms.Panel();
-            this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
-            this.lbl_loading = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbl_loading = new System.Windows.Forms.Label();
             this.chromiumWebBrowser1 = new CefSharp.WinForms.ChromiumWebBrowser();
+            this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.pnl_loading.SuspendLayout();
@@ -78,10 +78,20 @@ namespace SUPLauncher_Reborn
             this.lbl_title.ForeColor = System.Drawing.Color.White;
             this.lbl_title.Location = new System.Drawing.Point(43, 4);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(116, 26);
+            this.lbl_title.Size = new System.Drawing.Size(295, 26);
             this.lbl_title.TabIndex = 3;
-            this.lbl_title.Text = "SUPLauncher";
+            this.lbl_title.Text = "SUPLauncher (Login to marketplace)";
             this.lbl_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // img_icon
+            // 
+            this.img_icon.Image = global::SUPLauncher_Reborn.Properties.Resources.textless_logo;
+            this.img_icon.Location = new System.Drawing.Point(10, 0);
+            this.img_icon.Name = "img_icon";
+            this.img_icon.Size = new System.Drawing.Size(35, 35);
+            this.img_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_icon.TabIndex = 2;
+            this.img_icon.TabStop = false;
             // 
             // btn_minimize
             // 
@@ -116,16 +126,6 @@ namespace SUPLauncher_Reborn
             this.btn_close.UseVisualStyleBackColor = false;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
-            // img_icon
-            // 
-            this.img_icon.Image = global::SUPLauncher_Reborn.Properties.Resources.textless_logo;
-            this.img_icon.Location = new System.Drawing.Point(10, 0);
-            this.img_icon.Name = "img_icon";
-            this.img_icon.Size = new System.Drawing.Size(35, 35);
-            this.img_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_icon.TabIndex = 2;
-            this.img_icon.TabStop = false;
-            // 
             // pnl_loading
             // 
             this.pnl_loading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
@@ -138,18 +138,18 @@ namespace SUPLauncher_Reborn
             this.pnl_loading.Size = new System.Drawing.Size(663, 413);
             this.pnl_loading.TabIndex = 3;
             // 
-            // cProgressBar1
+            // pictureBox1
             // 
-            this.cProgressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cProgressBar1.Location = new System.Drawing.Point(0, 411);
-            this.cProgressBar1.Maximum = 100;
-            this.cProgressBar1.Minimum = 0;
-            this.cProgressBar1.Name = "cProgressBar1";
-            this.cProgressBar1.ProgressBarColor = System.Drawing.Color.DodgerBlue;
-            this.cProgressBar1.Size = new System.Drawing.Size(663, 5);
-            this.cProgressBar1.TabIndex = 2;
-            this.cProgressBar1.Value = 50;
+            this.pictureBox1.Image = global::SUPLauncher_Reborn.Properties.Resources.textless_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(261, 79);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(130, 164);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // lbl_loading
             // 
@@ -165,19 +165,6 @@ namespace SUPLauncher_Reborn
             this.lbl_loading.Text = "Loading...";
             this.lbl_loading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::SUPLauncher_Reborn.Properties.Resources.textless_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(261, 79);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 164);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // chromiumWebBrowser1
             // 
             this.chromiumWebBrowser1.ActivateBrowserOnCreation = false;
@@ -187,6 +174,19 @@ namespace SUPLauncher_Reborn
             this.chromiumWebBrowser1.Size = new System.Drawing.Size(663, 413);
             this.chromiumWebBrowser1.TabIndex = 4;
             this.chromiumWebBrowser1.LoadingStateChanged += new System.EventHandler<CefSharp.LoadingStateChangedEventArgs>(this.chromiumWebBrowser1_LoadingStateChanged);
+            // 
+            // cProgressBar1
+            // 
+            this.cProgressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cProgressBar1.Location = new System.Drawing.Point(0, 411);
+            this.cProgressBar1.Maximum = 100;
+            this.cProgressBar1.Minimum = 0;
+            this.cProgressBar1.Name = "cProgressBar1";
+            this.cProgressBar1.ProgressBarColor = System.Drawing.Color.DodgerBlue;
+            this.cProgressBar1.Size = new System.Drawing.Size(663, 5);
+            this.cProgressBar1.TabIndex = 2;
+            this.cProgressBar1.Value = 50;
             // 
             // APILogin
             // 

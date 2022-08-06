@@ -22,6 +22,7 @@ namespace SUPLauncher_Reborn
             label2.Text = dupe.title;
             if (dupe.img_url != null) pictureBox1.LoadAsync(dupe.img_url);
             frm_main.loadImage(ovalPictureBox1, "https://superiorservers.co/api/avatar/" + dupe.creator);
+            lbl_downloads.Text = "Downloads: " + dupe.downloads;
         }
 
         private void panel2_MouseEnter(object sender, EventArgs e)
@@ -43,6 +44,11 @@ namespace SUPLauncher_Reborn
                 form.TopMost = this.FindForm().TopMost;
                 form.Show();
             }
+        }
+
+        private void DupeDisplay_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

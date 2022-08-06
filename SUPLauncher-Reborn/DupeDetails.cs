@@ -120,7 +120,7 @@ namespace SUPLauncher_Reborn
         private void btn_access_Click(object sender, EventArgs e)
         {
             string input = Interaction.InputBox("Steam ID of the person you wish to give access to.", "Enter SteamID");
-            
+            DupeMarket.DupeGiveAccess(dupe.id, input);
         }
 
         private void btn_remove_Click(object sender, EventArgs e)

@@ -99,7 +99,7 @@ namespace SUPLauncher_Reborn
             this.lbl_title.ForeColor = System.Drawing.Color.White;
             this.lbl_title.Location = new System.Drawing.Point(44, 4);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(243, 26);
+            this.lbl_title.Size = new System.Drawing.Size(124, 26);
             this.lbl_title.TabIndex = 3;
             this.lbl_title.Text = "SUPLauncher";
             this.lbl_title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

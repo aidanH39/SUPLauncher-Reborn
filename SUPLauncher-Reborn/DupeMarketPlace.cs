@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,11 @@ namespace SUPLauncher_Reborn
     {
         public DupeMarketPlace()
         {
+            this.SetStyle(
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.UserPaint |
+                ControlStyles.DoubleBuffer,
+                true);
             InitializeComponent();
             pnl_browsedupeList.AutoScroll = false;
             pnl_browsedupeList.HorizontalScroll.Enabled = false;
@@ -187,6 +193,19 @@ namespace SUPLauncher_Reborn
             }
             pnl_publishedDupeInd.BackColor = Color.FromArgb(47, 129, 255);
             customTabControl1.SelectTab(2);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in pnl_browsedupeList.Controls)
+            {
+                control.Dispose();
+            }
+            List<Dupe> dupes = DupeMarket.GetDupes(30, txt_search.Text);
+            foreach (Dupe dupe in dupes)
+            {
+                pnl_browsedupeList.Controls.Add(new DupeDisplay(dupe));
+            }
         }
     }
 }

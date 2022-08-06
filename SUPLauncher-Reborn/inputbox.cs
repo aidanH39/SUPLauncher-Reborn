@@ -22,6 +22,74 @@ namespace SUPLauncher_Reborn
             label2.Text = title;
         }
 
+        bool isTopPanelDragged = false;
+        bool isWindowMaximized = false;
+        Point offset;
+        Size _normalWindowSize;
+        Point _normalWindowLocation = Point.Empty;
+        private void TopBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isTopPanelDragged = true;
+                Point pointStartPosition = this.PointToScreen(new Point(e.X, e.Y));
+                offset = new Point
+                {
+                    X = this.Location.X - pointStartPosition.X,
+                    Y = this.Location.Y - pointStartPosition.Y
+                };
+            }
+            else
+            {
+                isTopPanelDragged = false;
+            }
+            if (e.Clicks == 2)
+            {
+                isTopPanelDragged = false;
+
+            }
+        }
+
+        private void TopBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isTopPanelDragged)
+            {
+                Point newPoint = TopBar.PointToScreen(new Point(e.X, e.Y));
+                newPoint.Offset(offset);
+                this.Location = newPoint;
+
+                if (this.Location.X > 2 || this.Location.Y > 2)
+                {
+                    if (this.WindowState == FormWindowState.Maximized)
+                    {
+                        this.Location = _normalWindowLocation;
+                        this.Size = _normalWindowSize;
+
+                        isWindowMaximized = false;
+                    }
+                }
+            }
+        }
+
+        private void TopBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            isTopPanelDragged = false;
+            if (this.Location.Y <= 5)
+            {
+                if (!isWindowMaximized)
+                {
+                    _normalWindowSize = this.Size;
+                    _normalWindowLocation = this.Location;
+
+                    Rectangle rect = Screen.PrimaryScreen.WorkingArea;
+                    this.Location = new Point(0, 0);
+                    this.Size = new System.Drawing.Size(rect.Width, rect.Height);
+
+                    isWindowMaximized = true;
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             text = textBox1.Text;

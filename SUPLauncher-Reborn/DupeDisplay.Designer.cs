@@ -36,6 +36,7 @@ namespace SUPLauncher_Reborn
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ovalPictureBox1 = new OvalPictureBox();
+            this.lbl_downloads = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -103,11 +104,23 @@ namespace SUPLauncher_Reborn
             this.ovalPictureBox1.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
             this.ovalPictureBox1.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
             // 
+            // lbl_downloads
+            // 
+            this.lbl_downloads.AutoSize = true;
+            this.lbl_downloads.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_downloads.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.lbl_downloads.Location = new System.Drawing.Point(333, 53);
+            this.lbl_downloads.Name = "lbl_downloads";
+            this.lbl_downloads.Size = new System.Drawing.Size(101, 16);
+            this.lbl_downloads.TabIndex = 4;
+            this.lbl_downloads.Text = "Downloads: 0";
+            // 
             // DupeDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.Controls.Add(this.lbl_downloads);
             this.Controls.Add(this.ovalPictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -116,12 +129,14 @@ namespace SUPLauncher_Reborn
             this.DoubleBuffered = true;
             this.Name = "DupeDisplay";
             this.Size = new System.Drawing.Size(448, 75);
+            this.Load += new System.EventHandler(this.DupeDisplay_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DupeDisplay_MouseDown);
             this.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -132,5 +147,6 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnl_left;
+        private System.Windows.Forms.Label lbl_downloads;
     }
 }

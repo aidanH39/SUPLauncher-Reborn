@@ -54,6 +54,9 @@ namespace SUPLauncher_Reborn
             this.pnl_topBar.Name = "pnl_topBar";
             this.pnl_topBar.Size = new System.Drawing.Size(360, 35);
             this.pnl_topBar.TabIndex = 1;
+            this.pnl_topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
+            this.pnl_topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
+            this.pnl_topBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
             // 
             // panel2
             // 
