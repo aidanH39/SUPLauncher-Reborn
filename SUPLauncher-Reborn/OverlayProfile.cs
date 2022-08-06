@@ -130,7 +130,7 @@ namespace SUPLauncher_Reborn
         {
             if (isTopPanelDragged)
             {
-                Point newPoint = panel1.PointToScreen(new Point(e.X, e.Y));
+                Point newPoint = pnl_topBar.PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(offset);
                 this.Location = newPoint;
 

@@ -38,7 +38,6 @@ namespace SUPLauncher_Reborn
             this.lbl_previousOffenses = new System.Windows.Forms.Label();
             this.lbl_playTime = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
-            this.img_avatar = new OvalPictureBox();
             this.btn_expand = new System.Windows.Forms.Button();
             this.tmr_giveBackFocus = new System.Windows.Forms.Timer(this.components);
             this.pnl_bans = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,16 +48,19 @@ namespace SUPLauncher_Reborn
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.pnl_topBar = new System.Windows.Forms.Panel();
+            this.img_avatar = new OvalPictureBox();
             this.pnl_profile.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.pnl_bans.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_profile
             // 
             this.pnl_profile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.pnl_profile.Controls.Add(this.pnl_topBar);
             this.pnl_profile.Controls.Add(this.panel2);
             this.pnl_profile.Controls.Add(this.panel1);
             this.pnl_profile.Controls.Add(this.lbl_previousOffenses);
@@ -71,9 +73,6 @@ namespace SUPLauncher_Reborn
             this.pnl_profile.Name = "pnl_profile";
             this.pnl_profile.Size = new System.Drawing.Size(231, 207);
             this.pnl_profile.TabIndex = 1;
-            this.pnl_profile.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
-            this.pnl_profile.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
-            this.pnl_profile.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
             // 
             // panel2
             // 
@@ -125,7 +124,7 @@ namespace SUPLauncher_Reborn
             // 
             this.lbl_previousOffenses.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_previousOffenses.ForeColor = System.Drawing.Color.White;
-            this.lbl_previousOffenses.Location = new System.Drawing.Point(90, 59);
+            this.lbl_previousOffenses.Location = new System.Drawing.Point(89, 75);
             this.lbl_previousOffenses.Name = "lbl_previousOffenses";
             this.lbl_previousOffenses.Size = new System.Drawing.Size(132, 23);
             this.lbl_previousOffenses.TabIndex = 3;
@@ -135,7 +134,7 @@ namespace SUPLauncher_Reborn
             // 
             this.lbl_playTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_playTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
-            this.lbl_playTime.Location = new System.Drawing.Point(91, 38);
+            this.lbl_playTime.Location = new System.Drawing.Point(90, 54);
             this.lbl_playTime.Name = "lbl_playTime";
             this.lbl_playTime.Size = new System.Drawing.Size(111, 23);
             this.lbl_playTime.TabIndex = 2;
@@ -145,21 +144,11 @@ namespace SUPLauncher_Reborn
             // 
             this.lbl_name.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_name.ForeColor = System.Drawing.Color.White;
-            this.lbl_name.Location = new System.Drawing.Point(90, 15);
+            this.lbl_name.Location = new System.Drawing.Point(89, 31);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(112, 23);
             this.lbl_name.TabIndex = 1;
             this.lbl_name.Text = "Best of all";
-            // 
-            // img_avatar
-            // 
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(15, 10);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(64, 64);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
             // 
             // btn_expand
             // 
@@ -171,7 +160,7 @@ namespace SUPLauncher_Reborn
             this.btn_expand.ForeColor = System.Drawing.Color.White;
             this.btn_expand.Location = new System.Drawing.Point(231, 0);
             this.btn_expand.Name = "btn_expand";
-            this.btn_expand.Size = new System.Drawing.Size(23, 207);
+            this.btn_expand.Size = new System.Drawing.Size(23, 208);
             this.btn_expand.TabIndex = 2;
             this.btn_expand.Text = ">";
             this.btn_expand.UseVisualStyleBackColor = false;
@@ -191,7 +180,7 @@ namespace SUPLauncher_Reborn
             this.pnl_bans.Location = new System.Drawing.Point(254, 0);
             this.pnl_bans.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_bans.Name = "pnl_bans";
-            this.pnl_bans.Size = new System.Drawing.Size(870, 207);
+            this.pnl_bans.Size = new System.Drawing.Size(870, 208);
             this.pnl_bans.TabIndex = 3;
             this.pnl_bans.WrapContents = false;
             // 
@@ -277,18 +266,42 @@ namespace SUPLauncher_Reborn
             this.label10.Text = "Unban Reason";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // pnl_topBar
+            // 
+            this.pnl_topBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.pnl_topBar.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.pnl_topBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_topBar.Location = new System.Drawing.Point(4, 0);
+            this.pnl_topBar.Name = "pnl_topBar";
+            this.pnl_topBar.Size = new System.Drawing.Size(227, 18);
+            this.pnl_topBar.TabIndex = 60;
+            this.pnl_topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
+            this.pnl_topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
+            this.pnl_topBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
+            // 
+            // img_avatar
+            // 
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(14, 26);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(64, 64);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            // 
             // OverlayProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SUPLauncher_Reborn.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(257, 207);
+            this.ClientSize = new System.Drawing.Size(257, 208);
             this.Controls.Add(this.pnl_bans);
             this.Controls.Add(this.btn_expand);
             this.Controls.Add(this.pnl_profile);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(0, 50);
+            this.MaximumSize = new System.Drawing.Size(1130, 208);
             this.Name = "OverlayProfile";
             this.Opacity = 0.9D;
             this.ShowIcon = false;
@@ -299,9 +312,9 @@ namespace SUPLauncher_Reborn
             this.Load += new System.EventHandler(this.OverlayProfile_Load);
             this.pnl_profile.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.pnl_bans.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -327,5 +340,6 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnl_topBar;
     }
 }
