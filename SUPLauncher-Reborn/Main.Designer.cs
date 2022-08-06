@@ -61,6 +61,7 @@ namespace SUPLauncher_Reborn
             this.tip_afk = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -155,6 +156,7 @@ namespace SUPLauncher_Reborn
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.chk_afkMode);
@@ -203,7 +205,7 @@ namespace SUPLauncher_Reborn
             // 
             this.chk_afkMode.AutoSize = true;
             this.chk_afkMode.ForeColor = System.Drawing.Color.White;
-            this.chk_afkMode.Location = new System.Drawing.Point(27, 399);
+            this.chk_afkMode.Location = new System.Drawing.Point(27, 422);
             this.chk_afkMode.Name = "chk_afkMode";
             this.chk_afkMode.Size = new System.Drawing.Size(118, 17);
             this.chk_afkMode.TabIndex = 9;
@@ -217,7 +219,7 @@ namespace SUPLauncher_Reborn
             this.pnl_afkHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnl_afkHead.Controls.Add(this.lbl_afk);
             this.pnl_afkHead.Controls.Add(this.panel4);
-            this.pnl_afkHead.Location = new System.Drawing.Point(12, 361);
+            this.pnl_afkHead.Location = new System.Drawing.Point(12, 384);
             this.pnl_afkHead.Name = "pnl_afkHead";
             this.pnl_afkHead.Size = new System.Drawing.Size(219, 29);
             this.pnl_afkHead.TabIndex = 6;
@@ -272,7 +274,7 @@ namespace SUPLauncher_Reborn
             this.btn_lookup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.btn_lookup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_lookup.ForeColor = System.Drawing.Color.White;
-            this.btn_lookup.Location = new System.Drawing.Point(13, 319);
+            this.btn_lookup.Location = new System.Drawing.Point(13, 342);
             this.btn_lookup.Name = "btn_lookup";
             this.btn_lookup.Size = new System.Drawing.Size(218, 23);
             this.btn_lookup.TabIndex = 6;
@@ -286,7 +288,7 @@ namespace SUPLauncher_Reborn
             this.pnl_lookup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnl_lookup.Controls.Add(this.lbl_lookup);
             this.pnl_lookup.Controls.Add(this.pnl_4);
-            this.pnl_lookup.Location = new System.Drawing.Point(12, 257);
+            this.pnl_lookup.Location = new System.Drawing.Point(12, 280);
             this.pnl_lookup.Name = "pnl_lookup";
             this.pnl_lookup.Size = new System.Drawing.Size(219, 29);
             this.pnl_lookup.TabIndex = 5;
@@ -315,7 +317,7 @@ namespace SUPLauncher_Reborn
             // 
             this.txt_lookup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.txt_lookup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_lookup.Location = new System.Drawing.Point(12, 292);
+            this.txt_lookup.Location = new System.Drawing.Point(12, 315);
             this.txt_lookup.Name = "txt_lookup";
             this.txt_lookup.Size = new System.Drawing.Size(219, 20);
             this.txt_lookup.TabIndex = 4;
@@ -430,6 +432,20 @@ namespace SUPLauncher_Reborn
             this.cProgressBar1.Value = 0;
             this.cProgressBar1.Visible = false;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(9, 242);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(218, 29);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Dupe Marketplace";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +511,7 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

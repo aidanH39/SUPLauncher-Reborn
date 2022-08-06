@@ -46,7 +46,11 @@ namespace SUPLauncher_Reborn
             {
                 APILogin form = new APILogin();
                 form.TopMost = TopMost;
-                form.Show();
+                form.ShowDialog();
+                if (Properties.Settings.Default.apiSecret.Length < 1)
+                {
+                    this.Close();
+                } 
             }
             navControls = new Panel[] { pnl_ownedDupesInd, pnl_publishedDupeInd, pnl_BrowseDupesInd };
         }
