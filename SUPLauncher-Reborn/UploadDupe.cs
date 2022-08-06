@@ -101,7 +101,13 @@ namespace SUPLauncher_Reborn
 
         private void fileDialog_image_FileOk(object sender, CancelEventArgs e)
         {
-            
+            try
+            {
+                pictureBox1.LoadAsync(fileDialog_image.FileName);
+            } catch (Exception)
+            {
+
+            }
         }
 
         private async void button1_Click(object sender, EventArgs e)

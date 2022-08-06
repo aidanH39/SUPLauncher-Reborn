@@ -47,10 +47,7 @@ namespace SUPLauncher_Reborn
                 APILogin form = new APILogin();
                 form.TopMost = TopMost;
                 form.ShowDialog();
-                if (Properties.Settings.Default.apiSecret.Length < 1)
-                {
-                    this.Close();
-                } 
+
             }
             navControls = new Panel[] { pnl_ownedDupesInd, pnl_publishedDupeInd, pnl_BrowseDupesInd };
         }
@@ -130,6 +127,11 @@ namespace SUPLauncher_Reborn
 
         private void DupeMarketPlace_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.apiSecret.Length < 1)
+            {
+                this.Close();
+                return;
+            }
             List<Dupe> dupes = DupeMarket.GetDupes(10);
             
             foreach (Dupe dupe in dupes)
