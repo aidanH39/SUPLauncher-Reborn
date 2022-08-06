@@ -1,6 +1,6 @@
 ![](https://superiorservers.co/static/images/site-logo_reduced.png)
 # SUPLauncher | Reborn (UNOFFICIAL)
-### V2.0.1
+### V2.1.0
 
 SUPLauncher contains plenty of features to enchance your experience on superiorservers, this was created for many reasons.
 
@@ -8,6 +8,7 @@ Another [sup launcher](https://github.com/Nicks-Alt/SUPLauncher) was released ye
 
 ## Features:
 * **Dupe Manager** - Import & delete dupes easily, with the dupe manager.
+* **Dupe Marketplace** - Share your dupes with anyone! You can upload dupes to the marketplace and choose who can access them. Ensure to read the [Terms and Conditions](https://github.com/BestOfAllCoding/SUPLauncher-Reborn/blob/main/MARKETPLACE_TERMS)
 * **Overlay** - This overlay will be available once gmod is ran. Here you can change server, access dupe manager, lookup up profiles via steamid, and see your profile easily. With the overlay as well, any window opened within the overlay will start ontop of garrys mod. You can easily interact with these windows by opening the overlay again ***or*** if your on a sup server, you can press f3, to unlock your cursor. 
 * **Staff easy profile lookup** - This can be easily enabled within the overlay. Whenever you copy a steamid there profile will be displayed in the top left (can be moved) and can display the player's PO's (Previous Offenses) by clicking on the expand button **or** using the keybinds that can be set in the settings menu.
 * **AFK Mode** - A classic feature from the old sup launcher, you can set your garrys mod to be running in the background and stay connected to the server, this will use less resources as they will be no visuals and will stay in the background.
