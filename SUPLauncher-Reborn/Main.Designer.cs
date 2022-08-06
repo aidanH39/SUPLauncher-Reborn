@@ -38,6 +38,7 @@ namespace SUPLauncher_Reborn
             this.btn_minimize = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.chk_afkMode = new System.Windows.Forms.CheckBox();
             this.pnl_afkHead = new System.Windows.Forms.Panel();
@@ -60,7 +61,6 @@ namespace SUPLauncher_Reborn
             this.tip_afk = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -173,6 +173,20 @@ namespace SUPLauncher_Reborn
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(244, 580);
             this.panel1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(12, 207);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(218, 29);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Dupe Manager";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label1
             // 
@@ -316,7 +330,7 @@ namespace SUPLauncher_Reborn
             this.lbl_server.Name = "lbl_server";
             this.lbl_server.Size = new System.Drawing.Size(244, 26);
             this.lbl_server.TabIndex = 2;
-            this.lbl_server.Text = "Currently playing Danktown";
+            this.lbl_server.Text = "Currently not playing SUP";
             this.lbl_server.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_playerName
@@ -415,20 +429,6 @@ namespace SUPLauncher_Reborn
             this.cProgressBar1.TabIndex = 4;
             this.cProgressBar1.Value = 0;
             this.cProgressBar1.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 207);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(218, 29);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Dupe Manager";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // frm_main
             // 
