@@ -487,6 +487,15 @@ namespace SUPLauncher_Reborn
                 renameToolStripMenuItem.Enabled = true;
             }
 
+            if (Dupes.SelectedItems.Count == 1 && Dupes.SelectedItems[0].Tag == "file")
+            {
+                strip_uploadToMarket.Enabled = true;
+            }
+            else
+            {
+                strip_uploadToMarket.Enabled = false;
+            }
+
         }
 
         public void deleteFolder(string path)
@@ -598,6 +607,16 @@ namespace SUPLauncher_Reborn
             DupeMarketPlace form = new DupeMarketPlace();
             form.Show();
             form.TopMost = TopMost;
+        }
+
+        private void uploadDupeToMarketPlaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Dupes.SelectedItems.Count == 1 && Dupes.SelectedItems[0].Tag == "file")
+            {
+                UploadDupe form = new UploadDupe(Program.dupePath + path.Text + "/" + Dupes.SelectedItems[0].Text);
+                form.Show();
+            }
+            
         }
     }
 }

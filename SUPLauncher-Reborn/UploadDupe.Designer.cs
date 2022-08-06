@@ -33,7 +33,6 @@ namespace SUPLauncher_Reborn
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_title = new System.Windows.Forms.Label();
             this.img_icon = new System.Windows.Forms.PictureBox();
-            this.btn_minimize = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +52,7 @@ namespace SUPLauncher_Reborn
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.btn_selectDupe = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_selectDupeHead = new System.Windows.Forms.Label();
             this.pnl_indDupeSelect = new System.Windows.Forms.Panel();
             this.btn_upload = new System.Windows.Forms.Button();
             this.fileDialog_dupe = new System.Windows.Forms.OpenFileDialog();
@@ -73,7 +72,6 @@ namespace SUPLauncher_Reborn
             this.pnl_topBar.Controls.Add(this.panel2);
             this.pnl_topBar.Controls.Add(this.lbl_title);
             this.pnl_topBar.Controls.Add(this.img_icon);
-            this.pnl_topBar.Controls.Add(this.btn_minimize);
             this.pnl_topBar.Controls.Add(this.btn_close);
             this.pnl_topBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_topBar.Location = new System.Drawing.Point(0, 0);
@@ -114,22 +112,6 @@ namespace SUPLauncher_Reborn
             this.img_icon.TabIndex = 2;
             this.img_icon.TabStop = false;
             // 
-            // btn_minimize
-            // 
-            this.btn_minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_minimize.BackColor = System.Drawing.Color.Transparent;
-            this.btn_minimize.FlatAppearance.BorderSize = 0;
-            this.btn_minimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btn_minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_minimize.ForeColor = System.Drawing.Color.White;
-            this.btn_minimize.Location = new System.Drawing.Point(408, 0);
-            this.btn_minimize.Name = "btn_minimize";
-            this.btn_minimize.Size = new System.Drawing.Size(35, 35);
-            this.btn_minimize.TabIndex = 1;
-            this.btn_minimize.Text = "⏤";
-            this.btn_minimize.UseVisualStyleBackColor = false;
-            // 
             // btn_close
             // 
             this.btn_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -145,6 +127,7 @@ namespace SUPLauncher_Reborn
             this.btn_close.TabIndex = 0;
             this.btn_close.Text = "╳";
             this.btn_close.UseVisualStyleBackColor = false;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // label1
             // 
@@ -337,23 +320,23 @@ namespace SUPLauncher_Reborn
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.panel6.Controls.Add(this.label5);
+            this.panel6.Controls.Add(this.lbl_selectDupeHead);
             this.panel6.Controls.Add(this.pnl_indDupeSelect);
             this.panel6.Location = new System.Drawing.Point(15, 525);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(218, 29);
             this.panel6.TabIndex = 9;
             // 
-            // label5
+            // lbl_selectDupeHead
             // 
-            this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(11, 1);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(204, 25);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Select Dupe (None Selected)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_selectDupeHead.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_selectDupeHead.ForeColor = System.Drawing.Color.White;
+            this.lbl_selectDupeHead.Location = new System.Drawing.Point(11, 1);
+            this.lbl_selectDupeHead.Name = "lbl_selectDupeHead";
+            this.lbl_selectDupeHead.Size = new System.Drawing.Size(204, 25);
+            this.lbl_selectDupeHead.TabIndex = 1;
+            this.lbl_selectDupeHead.Text = "Select Dupe (None Selected)";
+            this.lbl_selectDupeHead.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnl_indDupeSelect
             // 
@@ -383,6 +366,7 @@ namespace SUPLauncher_Reborn
             // 
             this.fileDialog_dupe.Filter = "txt files(*.txt) | *.txt*";
             this.fileDialog_dupe.Title = "Select dupe to upload...";
+            this.fileDialog_dupe.FileOk += new System.ComponentModel.CancelEventHandler(this.fileDialog_dupe_FileOk);
             // 
             // fileDialog_image
             // 
@@ -431,7 +415,6 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.PictureBox img_icon;
-        private System.Windows.Forms.Button btn_minimize;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -451,7 +434,7 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button btn_selectDupe;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_selectDupeHead;
         private System.Windows.Forms.Panel pnl_indDupeSelect;
         private System.Windows.Forms.Button btn_upload;
         private System.Windows.Forms.OpenFileDialog fileDialog_dupe;

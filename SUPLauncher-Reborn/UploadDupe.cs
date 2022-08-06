@@ -13,9 +13,11 @@ namespace SUPLauncher_Reborn
 {
     public partial class UploadDupe : Form
     {
-        public UploadDupe()
+        public UploadDupe(string path=null)
         {
             InitializeComponent();
+            fileDialog_dupe.FileName = path;
+            lbl_selectDupeHead.Text = "Select Dupe (" + fileDialog_dupe.SafeFileName + ")";
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -155,14 +157,23 @@ namespace SUPLauncher_Reborn
                 var response = await client.PostAsync("http://bestofall.ml:2095/api/editDupe.php?upload", formData);
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("error");
+                    Interaction.MessageBox("Something went wrong. Status code: " + response.StatusCode.ToString());
                 } else
                 {
-                    var st = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show(st);
+                    Interaction.MessageBox("Success!");
                 }
                 
             }
+        }
+
+        private void fileDialog_dupe_FileOk(object sender, CancelEventArgs e)
+        {
+            lbl_selectDupeHead.Text = "Select Dupe (" + fileDialog_dupe.SafeFileName + ")";
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

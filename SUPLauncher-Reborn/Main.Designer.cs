@@ -53,15 +53,15 @@ namespace SUPLauncher_Reborn
             this.txt_lookup = new System.Windows.Forms.TextBox();
             this.lbl_server = new System.Windows.Forms.Label();
             this.lbl_playerName = new System.Windows.Forms.Label();
-            this.img_avatar = new OvalPictureBox();
             this.lbl_version = new System.Windows.Forms.Label();
             this.pnl_servers = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_progress = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tip_afk = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
             this.button2 = new System.Windows.Forms.Button();
+            this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
+            this.img_avatar = new OvalPictureBox();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -156,7 +156,6 @@ namespace SUPLauncher_Reborn
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.chk_afkMode);
@@ -348,18 +347,6 @@ namespace SUPLauncher_Reborn
             this.lbl_playerName.Text = "PLAYER_NAME";
             this.lbl_playerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // img_avatar
-            // 
-            this.img_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(59, 6);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(128, 128);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
-            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
-            // 
             // lbl_version
             // 
             this.lbl_version.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -419,6 +406,20 @@ namespace SUPLauncher_Reborn
             this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(12, 277);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(218, 29);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Dupe Marketplace";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // cProgressBar1
             // 
             this.cProgressBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
@@ -432,19 +433,17 @@ namespace SUPLauncher_Reborn
             this.cProgressBar1.Value = 0;
             this.cProgressBar1.Visible = false;
             // 
-            // button2
+            // img_avatar
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(9, 242);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(218, 29);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Dupe Marketplace";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.img_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(59, 6);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(128, 128);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
             // 
             // frm_main
             // 
@@ -452,6 +451,7 @@ namespace SUPLauncher_Reborn
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SUPLauncher_Reborn.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(580, 615);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.lbl_progress);
             this.Controls.Add(this.cProgressBar1);
             this.Controls.Add(this.panel1);

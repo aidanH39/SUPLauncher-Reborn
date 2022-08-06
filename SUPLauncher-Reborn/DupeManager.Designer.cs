@@ -54,6 +54,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.strip_uploadToMarket = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderMenu.SuspendLayout();
             this.TopBar.SuspendLayout();
             this.Drop.SuspendLayout();
@@ -68,41 +70,43 @@
             this.importToolStripMenuItem,
             this.toolStripSeparator1,
             this.deleteFolderToolStripMenuItem,
-            this.renameToolStripMenuItem});
+            this.renameToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.strip_uploadToMarket});
             this.FolderMenu.Name = "FolderMenu";
-            this.FolderMenu.Size = new System.Drawing.Size(142, 98);
+            this.FolderMenu.Size = new System.Drawing.Size(227, 148);
             this.FolderMenu.Opening += new System.ComponentModel.CancelEventHandler(this.FolderMenu_Opening);
             // 
             // newFolderToolStripMenuItem
             // 
             this.newFolderToolStripMenuItem.Name = "newFolderToolStripMenuItem";
-            this.newFolderToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.newFolderToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.newFolderToolStripMenuItem.Text = "New Folder";
             this.newFolderToolStripMenuItem.Click += new System.EventHandler(this.NewFolderToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.importToolStripMenuItem.Text = "Import Dupe";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(223, 6);
             // 
             // deleteFolderToolStripMenuItem
             // 
             this.deleteFolderToolStripMenuItem.Name = "deleteFolderToolStripMenuItem";
-            this.deleteFolderToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.deleteFolderToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.deleteFolderToolStripMenuItem.Text = "Delete";
             this.deleteFolderToolStripMenuItem.Click += new System.EventHandler(this.deleteFolderToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
@@ -320,6 +324,18 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(223, 6);
+            // 
+            // strip_uploadToMarket
+            // 
+            this.strip_uploadToMarket.Name = "strip_uploadToMarket";
+            this.strip_uploadToMarket.Size = new System.Drawing.Size(226, 22);
+            this.strip_uploadToMarket.Text = "Upload Dupe To MarketPlace";
+            this.strip_uploadToMarket.Click += new System.EventHandler(this.uploadDupeToMarketPlaceToolStripMenuItem_Click);
+            // 
             // DupeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,5 +398,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem strip_uploadToMarket;
     }
 }

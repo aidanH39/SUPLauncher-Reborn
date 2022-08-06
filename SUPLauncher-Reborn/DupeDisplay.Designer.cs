@@ -47,7 +47,7 @@ namespace SUPLauncher_Reborn
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.label1.Location = new System.Drawing.Point(195, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 26);
+            this.label1.Size = new System.Drawing.Size(208, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Best of all";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -83,6 +83,7 @@ namespace SUPLauncher_Reborn
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = global::SUPLauncher_Reborn.Properties.Resources.dupe_default;
             this.pictureBox1.Location = new System.Drawing.Point(5, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(150, 75);
@@ -109,7 +110,7 @@ namespace SUPLauncher_Reborn
             this.lbl_downloads.AutoSize = true;
             this.lbl_downloads.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_downloads.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.lbl_downloads.Location = new System.Drawing.Point(333, 53);
+            this.lbl_downloads.Location = new System.Drawing.Point(302, 54);
             this.lbl_downloads.Name = "lbl_downloads";
             this.lbl_downloads.Size = new System.Drawing.Size(101, 16);
             this.lbl_downloads.TabIndex = 4;
@@ -128,7 +129,7 @@ namespace SUPLauncher_Reborn
             this.Controls.Add(this.pnl_left);
             this.DoubleBuffered = true;
             this.Name = "DupeDisplay";
-            this.Size = new System.Drawing.Size(448, 75);
+            this.Size = new System.Drawing.Size(406, 75);
             this.Load += new System.EventHandler(this.DupeDisplay_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DupeDisplay_MouseDown);
             this.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
