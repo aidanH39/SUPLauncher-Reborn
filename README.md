@@ -1,6 +1,6 @@
 ![](https://superiorservers.co/static/images/site-logo_reduced.png)
 # SUPLauncher | Reborn (UNOFFICIAL)
-### V2.0.1
+### V2.1.0
 
 SUPLauncher contains plenty of features to enchance your experience on superiorservers, this was created for many reasons.
 
