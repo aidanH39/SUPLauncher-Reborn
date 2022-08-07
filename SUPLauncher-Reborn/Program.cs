@@ -182,7 +182,7 @@ namespace SUPLauncher_Reborn
                     overlay.Show();
                     overlay.Visible = false;
                 }
-            } else if (!Properties.Settings.Default.overlayEnabled)
+            } else if (!Properties.Settings.Default.overlayEnabled || Steam.getGMOD() == IntPtr.Zero)
             {
                 overlay.Close();
             }
