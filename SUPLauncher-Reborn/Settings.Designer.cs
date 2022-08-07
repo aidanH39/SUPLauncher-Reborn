@@ -45,6 +45,7 @@ namespace SUPLauncher_Reborn
             this.chk_discordActivity = new System.Windows.Forms.CheckBox();
             this.chk_autoStartup = new System.Windows.Forms.CheckBox();
             this.tip = new System.Windows.Forms.ToolTip(this.components);
+            this.chk_overlay = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_profileOverlayExpandKey = new System.Windows.Forms.TextBox();
@@ -52,7 +53,6 @@ namespace SUPLauncher_Reborn
             this.txt_profileOverlayKey = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.chk_overlay = new System.Windows.Forms.CheckBox();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -69,7 +69,7 @@ namespace SUPLauncher_Reborn
             this.pnl_topBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_topBar.Location = new System.Drawing.Point(0, 0);
             this.pnl_topBar.Name = "pnl_topBar";
-            this.pnl_topBar.Size = new System.Drawing.Size(577, 35);
+            this.pnl_topBar.Size = new System.Drawing.Size(603, 35);
             this.pnl_topBar.TabIndex = 1;
             this.pnl_topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
             this.pnl_topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
@@ -114,7 +114,7 @@ namespace SUPLauncher_Reborn
             this.btn_minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_minimize.ForeColor = System.Drawing.Color.White;
-            this.btn_minimize.Location = new System.Drawing.Point(507, 0);
+            this.btn_minimize.Location = new System.Drawing.Point(533, 0);
             this.btn_minimize.Name = "btn_minimize";
             this.btn_minimize.Size = new System.Drawing.Size(35, 35);
             this.btn_minimize.TabIndex = 1;
@@ -131,7 +131,7 @@ namespace SUPLauncher_Reborn
             this.btn_close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(117)))), ((int)(((byte)(117)))));
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(542, 0);
+            this.btn_close.Location = new System.Drawing.Point(568, 0);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(35, 35);
             this.btn_close.TabIndex = 0;
@@ -161,11 +161,11 @@ namespace SUPLauncher_Reborn
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(9, 353);
+            this.button1.Location = new System.Drawing.Point(9, 304);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(556, 32);
+            this.button1.Size = new System.Drawing.Size(299, 32);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Save Settings";
+            this.button1.Text = "Update Keybinds";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -197,7 +197,7 @@ namespace SUPLauncher_Reborn
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(27, 318);
+            this.button2.Location = new System.Drawing.Point(423, 211);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 25);
             this.button2.TabIndex = 8;
@@ -208,9 +208,9 @@ namespace SUPLauncher_Reborn
             // label3
             // 
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(153, 317);
+            this.label3.Location = new System.Drawing.Point(420, 251);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(282, 28);
+            this.label3.Size = new System.Drawing.Size(148, 51);
             this.label3.TabIndex = 9;
             this.label3.Text = "You can login to the sup website. This will allow things such as sit count to be " +
     "displayed.";
@@ -219,7 +219,7 @@ namespace SUPLauncher_Reborn
             // 
             this.chk_discordActivity.AutoSize = true;
             this.chk_discordActivity.ForeColor = System.Drawing.Color.White;
-            this.chk_discordActivity.Location = new System.Drawing.Point(27, 251);
+            this.chk_discordActivity.Location = new System.Drawing.Point(423, 83);
             this.chk_discordActivity.Name = "chk_discordActivity";
             this.chk_discordActivity.Size = new System.Drawing.Size(102, 17);
             this.chk_discordActivity.TabIndex = 10;
@@ -231,7 +231,7 @@ namespace SUPLauncher_Reborn
             // 
             this.chk_autoStartup.AutoSize = true;
             this.chk_autoStartup.ForeColor = System.Drawing.Color.White;
-            this.chk_autoStartup.Location = new System.Drawing.Point(27, 274);
+            this.chk_autoStartup.Location = new System.Drawing.Point(423, 129);
             this.chk_autoStartup.Name = "chk_autoStartup";
             this.chk_autoStartup.Size = new System.Drawing.Size(85, 17);
             this.chk_autoStartup.TabIndex = 11;
@@ -244,6 +244,20 @@ namespace SUPLauncher_Reborn
             // tip
             // 
             this.tip.ToolTipTitle = "Infomation";
+            // 
+            // chk_overlay
+            // 
+            this.chk_overlay.AutoSize = true;
+            this.chk_overlay.ForeColor = System.Drawing.Color.White;
+            this.chk_overlay.Location = new System.Drawing.Point(423, 174);
+            this.chk_overlay.Name = "chk_overlay";
+            this.chk_overlay.Size = new System.Drawing.Size(104, 17);
+            this.chk_overlay.TabIndex = 16;
+            this.chk_overlay.Text = "Overlay Enabled";
+            this.tip.SetToolTip(this.chk_overlay, "Automaticlly start SUPLauncher on windows startup. If AFK auto startup is enabled" +
+        " this will be enabled. Disable that first.");
+            this.chk_overlay.UseVisualStyleBackColor = true;
+            this.chk_overlay.CheckedChanged += new System.EventHandler(this.chk_overlay_CheckedChanged);
             // 
             // label4
             // 
@@ -264,12 +278,12 @@ namespace SUPLauncher_Reborn
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(27, 165);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(536, 73);
+            this.panel1.Size = new System.Drawing.Size(281, 109);
             this.panel1.TabIndex = 13;
             // 
             // txt_profileOverlayExpandKey
             // 
-            this.txt_profileOverlayExpandKey.Location = new System.Drawing.Point(263, 27);
+            this.txt_profileOverlayExpandKey.Location = new System.Drawing.Point(4, 86);
             this.txt_profileOverlayExpandKey.Name = "txt_profileOverlayExpandKey";
             this.txt_profileOverlayExpandKey.ReadOnly = true;
             this.txt_profileOverlayExpandKey.Size = new System.Drawing.Size(100, 20);
@@ -282,7 +296,7 @@ namespace SUPLauncher_Reborn
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(259, 0);
+            this.label6.Location = new System.Drawing.Point(0, 64);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(259, 19);
             this.label6.TabIndex = 17;
@@ -311,34 +325,19 @@ namespace SUPLauncher_Reborn
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(128, 57);
+            this.label1.Location = new System.Drawing.Point(144, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(319, 13);
+            this.label1.Size = new System.Drawing.Size(153, 55);
             this.label1.TabIndex = 15;
             this.label1.Text = "Modifier Key will be the key you also press when using these keys.";
-            // 
-            // chk_overlay
-            // 
-            this.chk_overlay.AutoSize = true;
-            this.chk_overlay.ForeColor = System.Drawing.Color.White;
-            this.chk_overlay.Location = new System.Drawing.Point(27, 295);
-            this.chk_overlay.Name = "chk_overlay";
-            this.chk_overlay.Size = new System.Drawing.Size(104, 17);
-            this.chk_overlay.TabIndex = 16;
-            this.chk_overlay.Text = "Overlay Enabled";
-            this.tip.SetToolTip(this.chk_overlay, "Automaticlly start SUPLauncher on windows startup. If AFK auto startup is enabled" +
-        " this will be enabled. Disable that first.");
-            this.chk_overlay.UseVisualStyleBackColor = true;
-            this.chk_overlay.CheckedChanged += new System.EventHandler(this.chk_overlay_CheckedChanged);
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.ClientSize = new System.Drawing.Size(577, 397);
+            this.ClientSize = new System.Drawing.Size(603, 348);
             this.Controls.Add(this.chk_overlay);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);

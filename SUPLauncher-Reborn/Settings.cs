@@ -52,17 +52,20 @@ namespace SUPLauncher_Reborn
         {
             try
             {
+                if (Properties.Settings.Default.overlayKey != (int)overlayOpenKey && Properties.Settings.Default.overlayModiferKey != (uint)modifierKey)
+                {
+                    Program.overlayHotkeyHook.RegisterKeybind((uint)modifierKey, (int)overlayOpenKey);
+                    Properties.Settings.Default.overlayKey = (int)overlayOpenKey;
+                    Properties.Settings.Default.overlayModiferKey = (uint)modifierKey;
 
-                Program.overlayHotkeyHook.RegisterKeybind((uint)modifierKey, (int)overlayOpenKey);
-                Properties.Settings.Default.overlayKey = (int)overlayOpenKey;
-                Properties.Settings.Default.overlayModiferKey = (uint)modifierKey;
+                    Properties.Settings.Default.profileOverlayKey = (int)staffProfileOverlayKey;
+                    Properties.Settings.Default.profileOverlayExpandKey = (int)staffProfileOverlayExpandKey;
 
-                Properties.Settings.Default.profileOverlayKey = (int)staffProfileOverlayKey;
-                Properties.Settings.Default.profileOverlayExpandKey = (int)staffProfileOverlayExpandKey;
+                    Properties.Settings.Default.Save();
+                }
+                
 
-                Properties.Settings.Default.Save();
-
-                MessageBox.Show("Settings changed! Application will now restart!");
+                MessageBox.Show("Keybinds changed! Application will now restart!");
                 Application.Restart();
             } catch(Exception)
             {
