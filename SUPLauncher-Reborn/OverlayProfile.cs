@@ -121,9 +121,9 @@ namespace SUPLauncher_Reborn
                 Rectangle rect = Screen.PrimaryScreen.WorkingArea;
                 this.Location = new Point(0, 0);
                 this.Size = new System.Drawing.Size(rect.Width, rect.Height);
-
-
             }
+            Properties.Settings.Default.overlayProfilePos = this.Location;
+            Properties.Settings.Default.Save();
         }
 
         private void TopBar_MouseMove(object sender, MouseEventArgs e)
@@ -176,6 +176,7 @@ namespace SUPLauncher_Reborn
             pnl_bans.HorizontalScroll.Visible = false;
             pnl_bans.HorizontalScroll.Maximum = 0;
             pnl_bans.AutoScroll = true;
+            this.Location = Properties.Settings.Default.overlayProfilePos;
         }
     }
 }

@@ -56,18 +56,18 @@ namespace SUPLauncher_Reborn
             this.lbl_playtime = new System.Windows.Forms.Label();
             this.lbl_steamid = new System.Windows.Forms.Label();
             this.lbl_player_name = new System.Windows.Forms.Label();
-            this.img_avatar = new OvalPictureBox();
             this.pnl_staffSits = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.img_avatar = new OvalPictureBox();
             this.pnl_.SuspendLayout();
             this.pnl_staffTools.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_heading)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.pnl_staffSits.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_
@@ -88,7 +88,7 @@ namespace SUPLauncher_Reborn
             this.pnl_.Controls.Add(this.button2);
             this.pnl_.Controls.Add(this.btn_dupeMang);
             this.pnl_.Controls.Add(this.img_heading);
-            this.pnl_.Location = new System.Drawing.Point(574, 0);
+            this.pnl_.Location = new System.Drawing.Point(872, 0);
             this.pnl_.Name = "pnl_";
             this.pnl_.Size = new System.Drawing.Size(325, 920);
             this.pnl_.TabIndex = 1;
@@ -427,16 +427,6 @@ namespace SUPLauncher_Reborn
             this.lbl_player_name.Size = new System.Drawing.Size(211, 27);
             this.lbl_player_name.TabIndex = 1;
             // 
-            // img_avatar
-            // 
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(15, 23);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(128, 128);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
-            // 
             // pnl_staffSits
             // 
             this.pnl_staffSits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
@@ -476,13 +466,23 @@ namespace SUPLauncher_Reborn
             this.panel8.Size = new System.Drawing.Size(4, 148);
             this.panel8.TabIndex = 58;
             // 
+            // img_avatar
+            // 
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(15, 23);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(128, 128);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            // 
             // Overlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(899, 920);
+            this.ClientSize = new System.Drawing.Size(1197, 920);
             this.Controls.Add(this.pnl_staffSits);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnl_);
@@ -502,9 +502,9 @@ namespace SUPLauncher_Reborn
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_heading)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.pnl_staffSits.ResumeLayout(false);
             this.pnl_staffSits.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.ResumeLayout(false);
 
         }
