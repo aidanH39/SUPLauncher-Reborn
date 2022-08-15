@@ -302,7 +302,10 @@ namespace SUPLauncher_Reborn
                     Process[] p = Process.GetProcessesByName("gmod");
                     foreach (Process pro in p)
                     {
-                        pro.Kill();
+                        try
+                        {
+                            pro.Kill();
+                        } catch(Exception) { }
                     }
                 }
                 else

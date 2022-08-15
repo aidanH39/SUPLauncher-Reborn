@@ -69,6 +69,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CefSharp, Version=103.0.90.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
       <HintPath>..\packages\CefSharp.Common.103.0.90\lib\net452\CefSharp.dll</HintPath>
@@ -341,6 +344,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SUPLauncher-Reborn_1_TemporaryKey.pfx" />
     <None Include="SUPLauncher-Reborn_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
