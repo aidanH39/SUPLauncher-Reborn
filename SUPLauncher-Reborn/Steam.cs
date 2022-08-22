@@ -15,6 +15,10 @@ using System.IO;
 using Gameloop.Vdf.Linq;
 using System.Net;
 using SUPLauncher_Reborn;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// Allows basic communication with Steam.
@@ -334,6 +338,60 @@ public class Steam : IDisposable
         return isinstalled;
     }
 
+    public static long SteamID32To64(string steamId)
+    {
+        var match = Regex.Match(steamId, @"^STEAM_[0-5]:[01]:\d+$", RegexOptions.IgnoreCase);
+
+        if (!match.Success)
+        {
+            return 0;
+        }
+
+        // Split it into 3 parts using ":"
+        var split = steamId.Split(':');
+
+        var v = 76561197960265728;
+        var y = long.Parse(split[1]);
+        var z = long.Parse(split[2]);
+
+        var w = (z * 2) + v + y;
+
+        return w;
+    }
+
+    /// <summary>
+    /// Get all friends for this steamid
+    /// </summary>
+    public static List<string> getFriends(string steamid)
+    {
+        try
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://bestofall.ml:2095/api/getSteamFriends.php?steamid=" + steamid);
+            request.UserAgent = "SUPLauncher";
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+            string json;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                json = reader.ReadToEnd();
+            }
+
+            dynamic jsonP = JsonConvert.DeserializeObject(json);
+            List<String> friends = new List<string>();
+            foreach (JObject friend in jsonP.friends)
+            {
+
+                friends.Add((string)friend.GetValue("steamid"));
+            }
+
+            //MessageBox.Show(jsonP.response.Servers);
+            return friends;
+        } catch (Exception e)
+        {
+            return new List<String>();
+        }
+    }
 
 
 

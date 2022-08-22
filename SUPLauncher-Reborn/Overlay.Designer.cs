@@ -56,18 +56,19 @@ namespace SUPLauncher_Reborn
             this.lbl_playtime = new System.Windows.Forms.Label();
             this.lbl_steamid = new System.Windows.Forms.Label();
             this.lbl_player_name = new System.Windows.Forms.Label();
+            this.img_avatar = new OvalPictureBox();
             this.pnl_staffSits = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.img_avatar = new OvalPictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnl_.SuspendLayout();
             this.pnl_staffTools.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_heading)).BeginInit();
             this.panel2.SuspendLayout();
-            this.pnl_staffSits.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
+            this.pnl_staffSits.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_
@@ -97,12 +98,13 @@ namespace SUPLauncher_Reborn
             // 
             this.pnl_staffTools.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_staffTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.pnl_staffTools.Controls.Add(this.button1);
             this.pnl_staffTools.Controls.Add(this.label2);
             this.pnl_staffTools.Controls.Add(this.panel10);
             this.pnl_staffTools.Controls.Add(this.chk_profileOverlay);
             this.pnl_staffTools.Location = new System.Drawing.Point(3, 770);
             this.pnl_staffTools.Name = "pnl_staffTools";
-            this.pnl_staffTools.Size = new System.Drawing.Size(321, 100);
+            this.pnl_staffTools.Size = new System.Drawing.Size(321, 119);
             this.pnl_staffTools.TabIndex = 61;
             // 
             // label2
@@ -427,6 +429,16 @@ namespace SUPLauncher_Reborn
             this.lbl_player_name.Size = new System.Drawing.Size(211, 27);
             this.lbl_player_name.TabIndex = 1;
             // 
+            // img_avatar
+            // 
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(15, 23);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(128, 128);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            // 
             // pnl_staffSits
             // 
             this.pnl_staffSits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
@@ -466,15 +478,21 @@ namespace SUPLauncher_Reborn
             this.panel8.Size = new System.Drawing.Size(4, 148);
             this.panel8.TabIndex = 58;
             // 
-            // img_avatar
+            // button1
             // 
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(15, 23);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(128, 128);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(9, 82);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(300, 27);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Steam Friend Checker";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Overlay
             // 
@@ -502,9 +520,9 @@ namespace SUPLauncher_Reborn
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_heading)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.pnl_staffSits.ResumeLayout(false);
             this.pnl_staffSits.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -542,5 +560,6 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Panel pnl_staffTools;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button button1;
     }
 }

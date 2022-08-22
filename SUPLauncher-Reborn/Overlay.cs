@@ -232,5 +232,45 @@ namespace SUPLauncher_Reborn
             Properties.Settings.Default.profileOverlayEnabled = chk_profileOverlay.Checked;
             Properties.Settings.Default.Save();
         }
+
+        // Steam friend checker
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string player1 = Interaction.InputBox("Enter steamid of a player.", "Enter SteamID", true);
+            string player2 = Interaction.InputBox("Enter steamid of the other player. To check if they are friends on steam.", "Enter SteamID", true);
+
+            if (player1.StartsWith("STEAM_"))
+            {
+                player1 = Steam.SteamID32To64(player1).ToString();
+            }
+
+            if (player2.StartsWith("STEAM_"))
+            {
+                player2 = Steam.SteamID32To64(player2).ToString();
+            }
+
+            List<String> player1Friends = Steam.getFriends(player1);
+            List<String> player2Friends = Steam.getFriends(player2);
+
+            bool friends = false;
+
+            if (player1Friends.Contains(player2))
+            {
+                friends = true;
+            }
+            if (player2Friends.Contains(player1))
+            {
+                friends = true;
+            }
+            if (friends)
+            {
+                Interaction.MessageBox("These SteamID's are friends on steam!\n\nFRIENDS", "STEAM FRIEND LOOKUP", true);
+            } else
+            {
+                Interaction.MessageBox("These SteamID's are not friends on steam!\n\nNOT_FRIENDS", "STEAM FRIEND LOOKUP", true);
+            }
+
+
+        }
     }
 }
