@@ -35,6 +35,7 @@ namespace SUPLauncher_Reborn
 
             chk_autoStartup.Checked = Properties.Settings.Default.AutoStartup;
             chk_discordActivity.Checked = Properties.Settings.Default.discordRPCEnabled;
+            chk_overlay.Checked = Properties.Settings.Default.overlayEnabled;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
