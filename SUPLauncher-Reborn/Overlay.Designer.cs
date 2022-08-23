@@ -32,6 +32,7 @@ namespace SUPLauncher_Reborn
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Overlay));
             this.pnl_ = new System.Windows.Forms.Panel();
             this.pnl_staffTools = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.chk_profileOverlay = new System.Windows.Forms.CheckBox();
@@ -61,7 +62,6 @@ namespace SUPLauncher_Reborn
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnl_.SuspendLayout();
             this.pnl_staffTools.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -73,8 +73,6 @@ namespace SUPLauncher_Reborn
             // 
             // pnl_
             // 
-            this.pnl_.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.pnl_.Controls.Add(this.pnl_staffTools);
             this.pnl_.Controls.Add(this.btn_milrp);
@@ -89,6 +87,7 @@ namespace SUPLauncher_Reborn
             this.pnl_.Controls.Add(this.button2);
             this.pnl_.Controls.Add(this.btn_dupeMang);
             this.pnl_.Controls.Add(this.img_heading);
+            this.pnl_.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_.Location = new System.Drawing.Point(872, 0);
             this.pnl_.Name = "pnl_";
             this.pnl_.Size = new System.Drawing.Size(325, 920);
@@ -96,16 +95,32 @@ namespace SUPLauncher_Reborn
             // 
             // pnl_staffTools
             // 
-            this.pnl_staffTools.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl_staffTools.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnl_staffTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.pnl_staffTools.Controls.Add(this.button1);
             this.pnl_staffTools.Controls.Add(this.label2);
             this.pnl_staffTools.Controls.Add(this.panel10);
             this.pnl_staffTools.Controls.Add(this.chk_profileOverlay);
-            this.pnl_staffTools.Location = new System.Drawing.Point(3, 770);
+            this.pnl_staffTools.Location = new System.Drawing.Point(3, 628);
             this.pnl_staffTools.Name = "pnl_staffTools";
             this.pnl_staffTools.Size = new System.Drawing.Size(321, 119);
             this.pnl_staffTools.TabIndex = 61;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(9, 82);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(300, 27);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Steam Friend Checker";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label2
             // 
@@ -122,8 +137,7 @@ namespace SUPLauncher_Reborn
             // 
             // panel10
             // 
-            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
             this.panel10.Location = new System.Drawing.Point(66, 26);
             this.panel10.Name = "panel10";
@@ -132,6 +146,7 @@ namespace SUPLauncher_Reborn
             // 
             // chk_profileOverlay
             // 
+            this.chk_profileOverlay.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chk_profileOverlay.AutoSize = true;
             this.chk_profileOverlay.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk_profileOverlay.ForeColor = System.Drawing.Color.White;
@@ -145,14 +160,13 @@ namespace SUPLauncher_Reborn
             // 
             // btn_milrp
             // 
-            this.btn_milrp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_milrp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_milrp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.btn_milrp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btn_milrp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_milrp.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_milrp.ForeColor = System.Drawing.Color.White;
-            this.btn_milrp.Location = new System.Drawing.Point(13, 584);
+            this.btn_milrp.Location = new System.Drawing.Point(13, 442);
             this.btn_milrp.Name = "btn_milrp";
             this.btn_milrp.Size = new System.Drawing.Size(300, 31);
             this.btn_milrp.TabIndex = 59;
@@ -170,14 +184,13 @@ namespace SUPLauncher_Reborn
             // 
             // btn_cwrp2
             // 
-            this.btn_cwrp2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_cwrp2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_cwrp2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.btn_cwrp2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btn_cwrp2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cwrp2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cwrp2.ForeColor = System.Drawing.Color.White;
-            this.btn_cwrp2.Location = new System.Drawing.Point(13, 547);
+            this.btn_cwrp2.Location = new System.Drawing.Point(13, 405);
             this.btn_cwrp2.Name = "btn_cwrp2";
             this.btn_cwrp2.Size = new System.Drawing.Size(300, 31);
             this.btn_cwrp2.TabIndex = 12;
@@ -187,14 +200,13 @@ namespace SUPLauncher_Reborn
             // 
             // btn_cwrp
             // 
-            this.btn_cwrp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_cwrp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_cwrp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.btn_cwrp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btn_cwrp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cwrp.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cwrp.ForeColor = System.Drawing.Color.White;
-            this.btn_cwrp.Location = new System.Drawing.Point(13, 510);
+            this.btn_cwrp.Location = new System.Drawing.Point(13, 368);
             this.btn_cwrp.Name = "btn_cwrp";
             this.btn_cwrp.Size = new System.Drawing.Size(300, 31);
             this.btn_cwrp.TabIndex = 11;
@@ -204,14 +216,13 @@ namespace SUPLauncher_Reborn
             // 
             // btn_zombies
             // 
-            this.btn_zombies.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_zombies.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_zombies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.btn_zombies.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btn_zombies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zombies.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_zombies.ForeColor = System.Drawing.Color.White;
-            this.btn_zombies.Location = new System.Drawing.Point(13, 473);
+            this.btn_zombies.Location = new System.Drawing.Point(13, 331);
             this.btn_zombies.Name = "btn_zombies";
             this.btn_zombies.Size = new System.Drawing.Size(300, 31);
             this.btn_zombies.TabIndex = 10;
@@ -225,7 +236,7 @@ namespace SUPLauncher_Reborn
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-1, 387);
+            this.label1.Location = new System.Drawing.Point(-1, 245);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(319, 23);
             this.label1.TabIndex = 8;
@@ -234,24 +245,22 @@ namespace SUPLauncher_Reborn
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
-            this.panel4.Location = new System.Drawing.Point(62, 413);
+            this.panel4.Location = new System.Drawing.Point(62, 271);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 2);
             this.panel4.TabIndex = 9;
             // 
             // btn_danktown
             // 
-            this.btn_danktown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_danktown.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_danktown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.btn_danktown.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.btn_danktown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_danktown.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_danktown.ForeColor = System.Drawing.Color.White;
-            this.btn_danktown.Location = new System.Drawing.Point(12, 436);
+            this.btn_danktown.Location = new System.Drawing.Point(12, 294);
             this.btn_danktown.Name = "btn_danktown";
             this.btn_danktown.Size = new System.Drawing.Size(300, 31);
             this.btn_danktown.TabIndex = 7;
@@ -261,14 +270,13 @@ namespace SUPLauncher_Reborn
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.lbl_playerLookup);
             this.panel3.Controls.Add(this.panel1);
-            this.panel3.Location = new System.Drawing.Point(2, 628);
+            this.panel3.Location = new System.Drawing.Point(2, 486);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(322, 136);
             this.panel3.TabIndex = 6;
@@ -336,7 +344,7 @@ namespace SUPLauncher_Reborn
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(13, 170);
+            this.button2.Location = new System.Drawing.Point(12, 115);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(300, 48);
             this.button2.TabIndex = 2;
@@ -353,7 +361,7 @@ namespace SUPLauncher_Reborn
             this.btn_dupeMang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_dupeMang.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_dupeMang.ForeColor = System.Drawing.Color.White;
-            this.btn_dupeMang.Location = new System.Drawing.Point(13, 224);
+            this.btn_dupeMang.Location = new System.Drawing.Point(12, 176);
             this.btn_dupeMang.Name = "btn_dupeMang";
             this.btn_dupeMang.Size = new System.Drawing.Size(300, 48);
             this.btn_dupeMang.TabIndex = 1;
@@ -477,22 +485,6 @@ namespace SUPLauncher_Reborn
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(4, 148);
             this.panel8.TabIndex = 58;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(9, 82);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(300, 27);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Steam Friend Checker";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Overlay
             // 
