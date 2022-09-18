@@ -35,11 +35,71 @@ namespace SUPLauncher_Reborn
 
             browser.LoadingStateChanged += chromiumWebBrowser1_LoadingStateChanged;
             this.pnl_browser.Controls.Add(browser);
-            browser.Load("https://superiorservers.co");
+            browser.Load("https://superiorservers.co/api/auth/login/?return=https%3A%2F%2Fsuperiorservers.co%2F");
+        }
+
+        // Window Drag
+
+        bool isTopPanelDragged = false;
+        Size _normalWindowSize;
+        Point _normalWindowLocation = Point.Empty;
+        Point offset;
+        private void TopBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            isTopPanelDragged = false;
+            if (this.Location.Y <= 5)
+            {
+
+                _normalWindowSize = this.Size;
+                _normalWindowLocation = this.Location;
+
+                Rectangle rect = Screen.PrimaryScreen.WorkingArea;
+                this.Location = new Point(0, 0);
+                this.Size = new System.Drawing.Size(rect.Width, rect.Height);
 
 
+            }
+        }
 
+        private void TopBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isTopPanelDragged)
+            {
+                Point newPoint = pnl_topBar.PointToScreen(new Point(e.X, e.Y));
+                newPoint.Offset(offset);
+                this.Location = newPoint;
 
+                if (this.Location.X > 2 || this.Location.Y > 2)
+                {
+                    if (this.WindowState == FormWindowState.Maximized)
+                    {
+                        this.Location = _normalWindowLocation;
+                        this.Size = _normalWindowSize;
+                    }
+                }
+            }
+        }
+
+        private void TopBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isTopPanelDragged = true;
+                Point pointStartPosition = this.PointToScreen(new Point(e.X, e.Y));
+                offset = new Point
+                {
+                    X = this.Location.X - pointStartPosition.X,
+                    Y = this.Location.Y - pointStartPosition.Y
+                };
+            }
+            else
+            {
+                isTopPanelDragged = false;
+            }
+            if (e.Clicks == 2)
+            {
+                isTopPanelDragged = false;
+            }
         }
 
         private async Task getCookies()
@@ -104,6 +164,16 @@ namespace SUPLauncher_Reborn
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
