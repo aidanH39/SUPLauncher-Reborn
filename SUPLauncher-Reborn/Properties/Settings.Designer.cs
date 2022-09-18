@@ -190,5 +190,17 @@ namespace SUPLauncher_Reborn.Properties {
                 this["overlayProfilePos"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string moreAFKargs {
+            get {
+                return ((string)(this["moreAFKargs"]));
+            }
+            set {
+                this["moreAFKargs"] = value;
+            }
+        }
     }
 }

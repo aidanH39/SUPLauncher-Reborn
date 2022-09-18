@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SUPLauncher_Reborn.Logger;
 using static SUPLauncher_Reborn.SuperiorServers;
 
 namespace SUPLauncher_Reborn
@@ -46,10 +47,17 @@ namespace SUPLauncher_Reborn
 
         private void Overlay_Load(object sender, EventArgs e)
         {
+            Logger.Log(LogType.INFO, "Starting overlay form.");
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetClipboardViewer(this.Handle); // Set clipboard viewer to this form. So this form can catch when user copies.
+            try {
+                SetClipboardViewer(this.Handle); // Set clipboard viewer to this form. So this form can catch when user copies.
+            } catch (Exception ex)
+            {
+                Logger.Log(LogType.ERROR, "Failed to set clipboard viewer. " + ex.Message + "\n" + ex.StackTrace);
+            }
 
             // Set to size of garry's mod window.
+            Logger.Log(LogType.INFO, "Resizing overlay to gmod window...");
             IntPtr handle = Steam.getGMOD();
             GetWindowRect(handle, out rect);
             this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
@@ -57,11 +65,13 @@ namespace SUPLauncher_Reborn
             this.Left = rect.right - this.Bounds.Width;
             this.Focus();
 
+
             var client = new WebClient();
             client.Headers.Add("user-agent", "SUPLauncher");
             byte[] avatardata = client.DownloadData(new Uri("https://superiorservers.co/api/avatar/" + Program.steamid));
             using (var ms = new MemoryStream(avatardata))
             {
+                Logger.Log(LogType.INFO, "Got avatar of '" + Program.steamid + "'");
                 img_avatar.Image = Image.FromStream(ms);
                 client.Dispose();
                 ms.Close();
@@ -83,6 +93,7 @@ namespace SUPLauncher_Reborn
             catch (Exception ex)
             {
                 MessageBox.Show(ex.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.Log(LogType.ERROR, "Overlay.cs | Failed to get player's profile. " + ex.Message + "\n" + ex.StackTrace);
             }
 
             if (Properties.Settings.Default.supLogin.Length > 0 && SuperiorServers.IsStaff(profile))
@@ -111,11 +122,13 @@ namespace SUPLauncher_Reborn
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Logger.Log(LogType.ERROR, "Overlay.cs | Failed to get player sit count. " + ex.Message + "\n" + ex.StackTrace);
                 }
             }
             chk_profileOverlay.Checked = Properties.Settings.Default.profileOverlayEnabled;
             Notification n = new Notification("OVERLAY", "Overlay has been loaded (" + ((ModifierKeys)Properties.Settings.Default.overlayModiferKey).ToString() + " + " + ((Keys)Properties.Settings.Default.overlayKey).ToString() + ")");
             n.Show();
+            Logger.Log(LogType.INFO, "Overlay has been fully loaded. ");
         }
 
         /// <summary>
@@ -156,10 +169,12 @@ namespace SUPLauncher_Reborn
                     // Ok... its a steamid. show the profile.
                     if (overlayProfile == null || overlayProfile.IsDisposed)
                     {
+                        Logger.Log(LogType.INFO, "Copy event caught. Is SteamID. Showing overlay profile of steamid '" + text + "'");
                         overlayProfile = new OverlayProfile();
                         overlayProfile.loadProfile(SuperiorServers.getProfile(text));
                         overlayProfile.PointToScreen(new Point(0, 150));
                         overlayProfile.Show();
+
                     } else {
                         overlayProfile.Close();
                         overlayProfile = new OverlayProfile();
@@ -248,6 +263,8 @@ namespace SUPLauncher_Reborn
             {
                 player2 = Steam.SteamID32To64(player2).ToString();
             }
+
+            Logger.Log(LogType.INFO, "Looking for freinds connection between steamid '" + player1 + "' & '" + player2 + "'");
 
             List<String> player1Friends = Steam.getFriends(player1);
             List<String> player2Friends = Steam.getFriends(player2);

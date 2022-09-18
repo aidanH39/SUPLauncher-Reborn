@@ -502,7 +502,7 @@ namespace SUPLauncher_Reborn
             this.Name = "Overlay";
             this.Opacity = 0.95D;
             this.ShowInTaskbar = false;
-            this.Text = "Overlay";
+            this.Text = "p";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Overlay_Load);
             this.pnl_.ResumeLayout(false);

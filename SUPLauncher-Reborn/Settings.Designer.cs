@@ -53,9 +53,25 @@ namespace SUPLauncher_Reborn
             this.txt_profileOverlayKey = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txt_gmodAFKargs = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.gmodStartupArgs = new System.Windows.Forms.ToolTip(this.components);
+            this.button3 = new System.Windows.Forms.Button();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_topBar
@@ -69,7 +85,7 @@ namespace SUPLauncher_Reborn
             this.pnl_topBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_topBar.Location = new System.Drawing.Point(0, 0);
             this.pnl_topBar.Name = "pnl_topBar";
-            this.pnl_topBar.Size = new System.Drawing.Size(603, 35);
+            this.pnl_topBar.Size = new System.Drawing.Size(611, 35);
             this.pnl_topBar.TabIndex = 1;
             this.pnl_topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
             this.pnl_topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
@@ -114,7 +130,7 @@ namespace SUPLauncher_Reborn
             this.btn_minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_minimize.ForeColor = System.Drawing.Color.White;
-            this.btn_minimize.Location = new System.Drawing.Point(533, 0);
+            this.btn_minimize.Location = new System.Drawing.Point(541, 0);
             this.btn_minimize.Name = "btn_minimize";
             this.btn_minimize.Size = new System.Drawing.Size(35, 35);
             this.btn_minimize.TabIndex = 1;
@@ -131,7 +147,7 @@ namespace SUPLauncher_Reborn
             this.btn_close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(117)))), ((int)(((byte)(117)))));
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(568, 0);
+            this.btn_close.Location = new System.Drawing.Point(576, 0);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(35, 35);
             this.btn_close.TabIndex = 0;
@@ -148,7 +164,7 @@ namespace SUPLauncher_Reborn
             "CTRL",
             "ALT",
             "SHIFT"});
-            this.comboBox1.Location = new System.Drawing.Point(31, 81);
+            this.comboBox1.Location = new System.Drawing.Point(31, 31);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(107, 21);
             this.comboBox1.TabIndex = 2;
@@ -158,12 +174,13 @@ namespace SUPLauncher_Reborn
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(104)))), ((int)(((byte)(103)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(9, 304);
+            this.button1.Location = new System.Drawing.Point(3, 247);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(299, 32);
+            this.button1.Size = new System.Drawing.Size(369, 32);
             this.button1.TabIndex = 5;
             this.button1.Text = "Update Keybinds";
             this.button1.UseVisualStyleBackColor = false;
@@ -171,7 +188,7 @@ namespace SUPLauncher_Reborn
             // 
             // txt_overlayKey
             // 
-            this.txt_overlayKey.Location = new System.Drawing.Point(31, 139);
+            this.txt_overlayKey.Location = new System.Drawing.Point(31, 89);
             this.txt_overlayKey.Name = "txt_overlayKey";
             this.txt_overlayKey.ReadOnly = true;
             this.txt_overlayKey.Size = new System.Drawing.Size(100, 20);
@@ -185,7 +202,7 @@ namespace SUPLauncher_Reborn
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(27, 117);
+            this.label2.Location = new System.Drawing.Point(27, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 19);
             this.label2.TabIndex = 7;
@@ -197,7 +214,7 @@ namespace SUPLauncher_Reborn
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(423, 211);
+            this.button2.Location = new System.Drawing.Point(13, 182);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 25);
             this.button2.TabIndex = 8;
@@ -208,18 +225,19 @@ namespace SUPLauncher_Reborn
             // label3
             // 
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(420, 251);
+            this.label3.Location = new System.Drawing.Point(7, 222);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 51);
+            this.label3.Size = new System.Drawing.Size(186, 51);
             this.label3.TabIndex = 9;
             this.label3.Text = "You can login to the sup website. This will allow things such as sit count to be " +
     "displayed.";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chk_discordActivity
             // 
             this.chk_discordActivity.AutoSize = true;
             this.chk_discordActivity.ForeColor = System.Drawing.Color.White;
-            this.chk_discordActivity.Location = new System.Drawing.Point(423, 83);
+            this.chk_discordActivity.Location = new System.Drawing.Point(13, 54);
             this.chk_discordActivity.Name = "chk_discordActivity";
             this.chk_discordActivity.Size = new System.Drawing.Size(102, 17);
             this.chk_discordActivity.TabIndex = 10;
@@ -231,7 +249,7 @@ namespace SUPLauncher_Reborn
             // 
             this.chk_autoStartup.AutoSize = true;
             this.chk_autoStartup.ForeColor = System.Drawing.Color.White;
-            this.chk_autoStartup.Location = new System.Drawing.Point(423, 129);
+            this.chk_autoStartup.Location = new System.Drawing.Point(13, 100);
             this.chk_autoStartup.Name = "chk_autoStartup";
             this.chk_autoStartup.Size = new System.Drawing.Size(85, 17);
             this.chk_autoStartup.TabIndex = 11;
@@ -249,7 +267,7 @@ namespace SUPLauncher_Reborn
             // 
             this.chk_overlay.AutoSize = true;
             this.chk_overlay.ForeColor = System.Drawing.Color.White;
-            this.chk_overlay.Location = new System.Drawing.Point(423, 174);
+            this.chk_overlay.Location = new System.Drawing.Point(13, 145);
             this.chk_overlay.Name = "chk_overlay";
             this.chk_overlay.Size = new System.Drawing.Size(104, 17);
             this.chk_overlay.TabIndex = 16;
@@ -276,7 +294,7 @@ namespace SUPLauncher_Reborn
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txt_profileOverlayKey);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(27, 165);
+            this.panel1.Location = new System.Drawing.Point(31, 115);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(281, 109);
             this.panel1.TabIndex = 13;
@@ -317,7 +335,7 @@ namespace SUPLauncher_Reborn
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(27, 53);
+            this.label5.Location = new System.Drawing.Point(27, 3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 19);
             this.label5.TabIndex = 14;
@@ -326,30 +344,179 @@ namespace SUPLauncher_Reborn
             // label1
             // 
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(144, 74);
+            this.label1.Location = new System.Drawing.Point(144, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 55);
             this.label1.TabIndex = 15;
             this.label1.Text = "Modifier Key will be the key you also press when using these keys.";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.txt_overlayKey);
+            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Location = new System.Drawing.Point(9, 41);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(372, 279);
+            this.panel3.TabIndex = 17;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(3, 279);
+            this.panel4.TabIndex = 16;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label7);
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Controls.Add(this.button2);
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.chk_overlay);
+            this.panel5.Controls.Add(this.chk_discordActivity);
+            this.panel5.Controls.Add(this.chk_autoStartup);
+            this.panel5.Location = new System.Drawing.Point(387, 41);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(199, 279);
+            this.panel5.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(9, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 26);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Misc Options";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(3, 279);
+            this.panel6.TabIndex = 17;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.button3);
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Controls.Add(this.txt_gmodAFKargs);
+            this.panel7.Controls.Add(this.label9);
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Controls.Add(this.panel8);
+            this.panel7.Location = new System.Drawing.Point(12, 344);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(574, 145);
+            this.panel7.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(372, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(189, 16);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Default Arguments (Hover)";
+            this.gmodStartupArgs.SetToolTip(this.label10, "These are already included when starting up: -64bit -textmode -single_core -nojoy" +
+        " -low -nosound -sw -noshader -nopix -novid -nopreload -nopreloadmodels -multirun" +
+        " +connect rp.superiorservers.co");
+            // 
+            // txt_gmodAFKargs
+            // 
+            this.txt_gmodAFKargs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_gmodAFKargs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txt_gmodAFKargs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_gmodAFKargs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_gmodAFKargs.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_gmodAFKargs.Location = new System.Drawing.Point(12, 71);
+            this.txt_gmodAFKargs.Margin = new System.Windows.Forms.Padding(15);
+            this.txt_gmodAFKargs.MinimumSize = new System.Drawing.Size(300, 25);
+            this.txt_gmodAFKargs.Name = "txt_gmodAFKargs";
+            this.txt_gmodAFKargs.Size = new System.Drawing.Size(543, 26);
+            this.txt_gmodAFKargs.TabIndex = 21;
+            this.txt_gmodAFKargs.Text = "-64bit -textmode -single_core";
+            this.gmodStartupArgs.SetToolTip(this.txt_gmodAFKargs, "These are additional startup arguments for the gmod afk process.");
+            this.txt_gmodAFKargs.Enter += new System.EventHandler(this.textBox1_Enter);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(15, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(279, 15);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Additional Garry\'s Mod Startup Arguments";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(11, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(134, 26);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "AFK Settings";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(3, 145);
+            this.panel8.TabIndex = 17;
+            // 
+            // gmodStartupArgs
+            // 
+            this.gmodStartupArgs.AutomaticDelay = 0;
+            this.gmodStartupArgs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gmodStartupArgs.ForeColor = System.Drawing.Color.White;
+            this.gmodStartupArgs.OwnerDraw = true;
+            this.gmodStartupArgs.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.gmodStartupArgs.ToolTipTitle = "Experienced People Only";
+            this.gmodStartupArgs.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.gmodStartupArgs_Draw);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(104)))), ((int)(((byte)(103)))));
+            this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(3, 113);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(571, 32);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Update AFK Arguments";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.ClientSize = new System.Drawing.Size(603, 348);
-            this.Controls.Add(this.chk_overlay);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.chk_autoStartup);
-            this.Controls.Add(this.chk_discordActivity);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_overlayKey);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(611, 522);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.pnl_topBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Settings";
@@ -359,8 +526,13 @@ namespace SUPLauncher_Reborn
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -389,5 +561,18 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chk_overlay;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.TextBox txt_gmodAFKargs;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolTip gmodStartupArgs;
+        private System.Windows.Forms.Button button3;
     }
 }

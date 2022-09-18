@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static SUPLauncher_Reborn.Logger;
 using static SUPLauncher_Reborn.SuperiorServers;
 
 namespace SUPLauncher_Reborn
@@ -48,7 +49,6 @@ namespace SUPLauncher_Reborn
                 if (Opacity <= 0)     //check if opacity is 0
                 {
                     t1.Stop();    //if it is, we stop the timer
-                    Close();   //and we try to close the form
                 }
                 else
                     Opacity -= 0.05;
@@ -79,6 +79,7 @@ namespace SUPLauncher_Reborn
 
         public void loadProfile(Profile profile)
         {
+            Logger.Log(LogType.INFO, "Loadig overlay profile of " + profile.Badmin.Name + " (" + profile.SteamID32 + ")");
             int playtime = profile.Badmin.PlayTime;
             lbl_name.Text = profile.Badmin.Name;
             
@@ -170,6 +171,7 @@ namespace SUPLauncher_Reborn
 
         private void OverlayProfile_Load(object sender, EventArgs e)
         {
+            
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             pnl_bans.AutoScroll = false;
             pnl_bans.HorizontalScroll.Enabled = false;
@@ -177,6 +179,15 @@ namespace SUPLauncher_Reborn
             pnl_bans.HorizontalScroll.Maximum = 0;
             pnl_bans.AutoScroll = true;
             this.Location = Properties.Settings.Default.overlayProfilePos;
+            Logger.Log(LogType.INFO, "Overlay profile has loaded.");
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            t1 = new Timer();
+            t1.Interval = 10;  //we'll increase the opacity every 10ms
+            t1.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
+            t1.Start();
         }
     }
 }

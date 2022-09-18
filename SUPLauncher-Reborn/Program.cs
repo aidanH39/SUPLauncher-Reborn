@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Management;
 using static SUPLauncher_Reborn.SuperiorServers;
 using System.Threading;
+using static SUPLauncher_Reborn.Logger;
 
 namespace SUPLauncher_Reborn
 {
@@ -27,6 +28,7 @@ namespace SUPLauncher_Reborn
         public static KeyboardHook profileOverlayHook;
         public static KeyboardHook profileKeyHook;
         public static Server afkWaitForServer;
+        public static DateTime startTime = DateTime.Now;
 
         // Link to download CSS content.
         public static string CSSlink = "https://drive.google.com/file/d/1SPO4kx6e-ylkFrIG8R88Yg0ZS2G8WTRI/view?usp=sharing";
@@ -35,15 +37,21 @@ namespace SUPLauncher_Reborn
         [STAThread]
         static void Main()
         {
+            Logger.initLogger();
+            Logger.Log(LogType.INFO, "Starting program...");
 
+
+            Logger.Log(LogType.INFO, "Init steam hook...");
             steam = new Steam();
             steamid = steam.GetSteamId();
+            Logger.Log(LogType.INFO, "Got steamid of current logged in account.");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Application_ThreadException;
 
             # region Keyboard hooks
-
+            Logger.Log(LogType.INFO, "Registering keybinds...");
             overlayHotkeyHook = new KeyboardHook();
             overlayHotkeyHook.KeyPressed +=
             new EventHandler<KeyPressedEventArgs>(OverlayKey);
@@ -61,10 +69,11 @@ namespace SUPLauncher_Reborn
             new EventHandler<KeyPressedEventArgs>(ProfileOverlay);
             profileKeyHook.RegisterKeybind(Properties.Settings.Default.overlayModiferKey,
                         Properties.Settings.Default.profileOverlayKey);
-
+            Logger.Log(LogType.INFO, "Registered keybinds!");
             #endregion
 
             #region System.Windows.Forms.Timers
+            Logger.Log(LogType.INFO, "Starting application timers...");
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Enabled = true;
             timer.Interval = 5000;
@@ -79,12 +88,15 @@ namespace SUPLauncher_Reborn
             serverUpdate.Tick += delegate
             {
                 checkServer();
-            };
+            }; 
+            Logger.Log(LogType.INFO, "Timers has been started.");
             #endregion
 
+            Logger.Log(LogType.INFO, "Attempting to init discord rpc");
             rpcClient.Initialize();
+            Logger.Log(LogType.INFO, "RPC has been initialized or discord is not open.");
+            Logger.Log(LogType.INFO, "Attempting to run main form.");
             Application.Run(new frm_main());
-            
         }
         public static DiscordRpcClient rpcClient = new DiscordRpcClient("1003419232769409084");
         public static string lastIp;
@@ -99,11 +111,13 @@ namespace SUPLauncher_Reborn
                 lastIp = ip;
                 joinedSince = DateTimeOffset.Now.ToUnixTimeSeconds();
                 serverChanged.Invoke(null, null);
+                Logger.Log(LogType.INFO, "The player's current server has changed.");
             }
             if (afkWaitForServer != null)
             {
                 if (Steam.getGmodProcess() == null)
                 {
+                    Logger.Log(LogType.INFO, "Closed AFK process now starting GMOD.");
                     Process.Start(afkWaitForServer.Connect);
                 }
                 else
@@ -115,8 +129,9 @@ namespace SUPLauncher_Reborn
             {
                 if (!Steam.isGmodAFK() && afkWaitForServer == null)
                 {
+                    Logger.Log(LogType.INFO, "Start AFK Gmod process");
                     // Find the steam file instead of using URL's. As this bypasses the anoying popup :)
-                    Process.Start(Steam.getSteamPath() + "\\steam.exe", "-applaunch 4000 -64bit -textmode -single_core -nojoy -low -nosound -sw -noshader -nopix -novid -nopreload -nopreloadmodels -multirun +connect rp.superiorservers.co");
+                    Process.Start(Steam.getSteamPath() + "\\steam.exe", "-applaunch 4000 -64bit -textmode -single_core -nojoy -low -nosound -sw -noshader -nopix -novid -nopreload -nopreloadmodels -multirun +connect rp.superiorservers.co " + Properties.Settings.Default.moreAFKargs);
                 }
             }
         }
@@ -125,6 +140,7 @@ namespace SUPLauncher_Reborn
         // Custom unhandled error catching.
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
+            Logger.Log(LogType.ERROR, "A exception has occured. " + e.Exception.Message + "\n" + e.Exception.StackTrace);
             ExceptionForm form = new ExceptionForm(e.Exception);
             form.Show();
             form.TopMost = true;
@@ -197,6 +213,7 @@ namespace SUPLauncher_Reborn
             {
                 if (!System.IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\SUPLauncher.lnk"))
                 {
+                    Logger.Log(LogType.INFO, "Updating windows startup shorcut.");
                     IWshShortcut shortcut;
                     WshShell wshShell = new WshShell();
                     shortcut =
@@ -210,6 +227,7 @@ namespace SUPLauncher_Reborn
             {
                 if (System.IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\SUPLauncher.lnk"))
                 {
+                    Logger.Log(LogType.INFO, "Deleting windows startup shorcut.");
                     System.IO.File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\SUPLauncher.lnk");
                 }
 

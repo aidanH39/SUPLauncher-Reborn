@@ -194,5 +194,29 @@ namespace SUPLauncher_Reborn
             Properties.Settings.Default.overlayEnabled = chk_overlay.Checked;
             Properties.Settings.Default.Save();
         }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            
+            if (txt_gmodAFKargs.Text == "-64bit -textmode -single_core")
+            {
+                txt_gmodAFKargs.Text = "";
+                txt_gmodAFKargs.ForeColor = Color.White;
+            }
+        }
+
+        private void gmodStartupArgs_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            e.DrawText();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.moreAFKargs = txt_gmodAFKargs.Text;
+            Properties.Settings.Default.Save();
+            Interaction.MessageBox("These arguments will be ran next time, when the AFK process starts. If these arguments are invalid it may stop it from start. So be careful!");
+        }
     }
 }

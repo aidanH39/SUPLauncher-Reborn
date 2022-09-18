@@ -14,18 +14,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static SUPLauncher_Reborn.FileDownloader;
+using static SUPLauncher_Reborn.Logger;
 using static SUPLauncher_Reborn.SuperiorServers;
 
 namespace SUPLauncher_Reborn
 {
     public partial class frm_main : Form
     {
+        // Main form window
         public frm_main()
         {
+
+            // Init browser shit.
+            Logger.Log(LogType.INFO, "Starting main form...");
             var settings = new CefSettings();
             settings.CachePath = Application.StartupPath + "\\cookies";
             settings.PersistSessionCookies = true;
 
+            Logger.Log(LogType.INFO, "Init browser settings...");
             // Init browser settings.
             Cef.Initialize(settings);
             instance = this;
@@ -44,15 +50,17 @@ namespace SUPLauncher_Reborn
             lbl_version.Text = "V" + Updater.getCurrentVersion().ToString();
 
             // Check latest version
-            
+            Logger.Log(LogType.INFO, "Checking program version.");
             var result = Updater.getCurrentVersion().CompareTo(Updater.getLatestVersion());
             if (result > 0)
             {
+                Logger.Log(LogType.INFO, "Currently on a BETA version.");
                 toolTip1.SetToolTip(lbl_version, "You are currently on a beta version!");
                 toolTip1.SetToolTip(img_warning, "You are currently on a beta version!");
                 img_warning.Visible = true;
             } else if (result < 0)
             {
+                Logger.Log(LogType.WARN, "Program version is behind. Keep up to date!");
                 toolTip1.SetToolTip(lbl_version, "A update is available! Click to update.");
                 toolTip1.SetToolTip(img_warning, "A update is available! Click to update.");
                 img_warning.Visible = true;
@@ -64,6 +72,7 @@ namespace SUPLauncher_Reborn
 
             Program.serverChanged += delegate
             {
+                
                 string name = SuperiorServers.IpToName(Program.lastIp);
                 if (name != null)
                 {
@@ -73,6 +82,7 @@ namespace SUPLauncher_Reborn
                     lbl_server.Text = "Currently not playing SUP";
                 }
             };
+            
         }
 
         /// <summary>
@@ -99,8 +109,9 @@ namespace SUPLauncher_Reborn
 
             Profile profile = SuperiorServers.getProfile(Program.steamid.ToString());
             lbl_playerName.Text = profile.Badmin.Name;
-
+            Logger.Log(LogType.INFO, "Getting infomation on SUP servers...");
             List<Server> servers = SuperiorServers.GetServers();
+            
             foreach (Server server in servers)
             {
                 serversList.Add(server.Name, server);
@@ -110,6 +121,8 @@ namespace SUPLauncher_Reborn
             }
             loadImage(img_avatar, "https://superiorservers.co/api/avatar/" + Program.steam.GetSteamId());
             chk_afkMode.Checked = Properties.Settings.Default.afkModeEnabeld;
+            Logger.Log(LogType.INFO, "Got infomation of SUP servers!");
+            Logger.Log(LogType.INFO, "Main form has fully loaded!");
         }
 
         #region Window Drag

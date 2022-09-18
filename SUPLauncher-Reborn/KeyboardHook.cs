@@ -90,7 +90,10 @@ namespace SUPLauncher_Reborn
 
             // register the hot key.
             if (!RegisterHotKey(_window.Handle, _currentId, modifier, Convert.ToUInt32(key)))
-                throw new InvalidOperationException("Couldn’t register the hot key.");
+            {
+                Logger.Log(Logger.LogType.FATAL, "Overlay error! Could not register the keybind.");
+                return;
+            }
         }
 
         /// <summary>
