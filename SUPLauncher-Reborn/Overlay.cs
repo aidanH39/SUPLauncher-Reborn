@@ -289,5 +289,28 @@ namespace SUPLauncher_Reborn
 
 
         }
+
+        private void Overlay_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Overlay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        
+        }
+
+        private void Overlay_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (this.Visible)
+                {
+                    this.Visible = false;
+                    WindowHelper.SetForegroundWindow(Steam.getGMOD());
+                }
+            }
+        }
     }
 }

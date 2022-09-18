@@ -455,7 +455,7 @@ namespace SUPLauncher_Reborn
             this.pnl_staffSits.Controls.Add(this.panel8);
             this.pnl_staffSits.Location = new System.Drawing.Point(2, 179);
             this.pnl_staffSits.Name = "pnl_staffSits";
-            this.pnl_staffSits.Size = new System.Drawing.Size(403, 148);
+            this.pnl_staffSits.Size = new System.Drawing.Size(403, 220);
             this.pnl_staffSits.TabIndex = 59;
             this.pnl_staffSits.Visible = false;
             // 
@@ -463,7 +463,7 @@ namespace SUPLauncher_Reborn
             // 
             this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 34);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(378, 111);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(378, 174);
             this.flowLayoutPanel1.TabIndex = 60;
             // 
             // label3
@@ -483,7 +483,7 @@ namespace SUPLauncher_Reborn
             this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(4, 148);
+            this.panel8.Size = new System.Drawing.Size(4, 220);
             this.panel8.TabIndex = 58;
             // 
             // Overlay
@@ -499,12 +499,16 @@ namespace SUPLauncher_Reborn
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "Overlay";
             this.Opacity = 0.95D;
             this.ShowInTaskbar = false;
             this.Text = "p";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Overlay_Load);
+            this.VisibleChanged += new System.EventHandler(this.Overlay_VisibleChanged);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Overlay_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Overlay_KeyPress);
             this.pnl_.ResumeLayout(false);
             this.pnl_staffTools.ResumeLayout(false);
             this.pnl_staffTools.PerformLayout();
