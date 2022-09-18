@@ -53,8 +53,9 @@ namespace SUPLauncher_Reborn
         {
             try
             {
-                if (Properties.Settings.Default.overlayKey != (int)overlayOpenKey && Properties.Settings.Default.overlayModiferKey != (uint)modifierKey)
+                if (Properties.Settings.Default.overlayKey != (int)overlayOpenKey || Properties.Settings.Default.overlayModiferKey != (uint)modifierKey)
                 {
+                    MessageBox.Show("Test");
                     Program.overlayHotkeyHook.RegisterKeybind((uint)modifierKey, (int)overlayOpenKey);
                     Properties.Settings.Default.overlayKey = (int)overlayOpenKey;
                     Properties.Settings.Default.overlayModiferKey = (uint)modifierKey;
