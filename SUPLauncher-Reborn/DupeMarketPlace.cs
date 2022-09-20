@@ -13,6 +13,10 @@ using static SUPLauncher_Reborn.DupeMarket;
 
 namespace SUPLauncher_Reborn
 {
+    /// <summary>
+    /// Dupe market place.
+    /// Share dupes, and download dupes from other people.
+    /// </summary>
     public partial class DupeMarketPlace : Form
     {
         public DupeMarketPlace()
@@ -52,11 +56,7 @@ namespace SUPLauncher_Reborn
             navControls = new Panel[] { pnl_ownedDupesInd, pnl_publishedDupeInd, pnl_BrowseDupesInd };
         }
 
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        #region Top Bar Window Drag
         bool isTopPanelDragged = false;
         bool isWindowMaximized = false;
         Point offset;
@@ -89,7 +89,7 @@ namespace SUPLauncher_Reborn
         {
             if (isTopPanelDragged)
             {
-                Point newPoint = TopBar.PointToScreen(new Point(e.X, e.Y));
+                Point newPoint = pnl_topBar.PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(offset);
                 this.Location = newPoint;
 
@@ -124,6 +124,8 @@ namespace SUPLauncher_Reborn
                 }
             }
         }
+        #endregion
+
         Dictionary<int, DupeCategory> categoriesIndex = new Dictionary<int, DupeCategory>();
         private void DupeMarketPlace_Load(object sender, EventArgs e)
         {
@@ -180,16 +182,12 @@ namespace SUPLauncher_Reborn
             this.Close();
         }
 
-        private void pnl_publishedDupes_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btn_lookup_Click(object sender, EventArgs e)
         {
             UploadDupe form = new UploadDupe();
             form.Show();
         }
+
         Panel[] navControls;
         private void pnl_ownedDupes_Click(object sender, EventArgs e)
         {
@@ -221,7 +219,7 @@ namespace SUPLauncher_Reborn
             customTabControl1.SelectTab(2);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_search_Click(object sender, EventArgs e)
         {
             foreach (Control control in pnl_browsedupeList.Controls)
             {

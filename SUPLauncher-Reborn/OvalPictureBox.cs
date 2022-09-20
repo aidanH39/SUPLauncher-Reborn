@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 public class OvalPictureBox : PictureBox
 {
+    /// <summary>
+    /// Ez oval picture.
+    /// </summary>
     public OvalPictureBox()
     {
         this.BackColor = Color.DarkGray;

@@ -27,6 +27,7 @@ namespace SUPLauncher_Reborn
         private void Notification_Load(object sender, EventArgs e)
         {
             Form form = this;
+            // Get it to position in the right place below the corner of the screen.
             Rectangle bounds = Screen.FromHandle(Steam.getGMOD()).Bounds;
             this.Left = bounds.Width - this.Width;
             this.Top = bounds.Height;
@@ -35,6 +36,7 @@ namespace SUPLauncher_Reborn
             int startingTop = this.Top;
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Enabled = true;
+            // Animate this bad boy sliding in.
             timer.Tick += delegate
             {
                 form.Top -= 2;

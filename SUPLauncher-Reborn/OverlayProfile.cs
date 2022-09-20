@@ -80,7 +80,7 @@ namespace SUPLauncher_Reborn
         public void loadProfile(Profile profile)
         {
             Logger.Log(LogType.INFO, "Loadig overlay profile of " + profile.Badmin.Name + " (" + profile.SteamID32 + ")");
-            int playtime = profile.Badmin.PlayTime;
+            int playtime = Int32.Parse(profile.Badmin.PlayTime);
             lbl_name.Text = profile.Badmin.Name;
             
             

@@ -12,14 +12,20 @@ namespace SUPLauncher_Reborn
 {
     public partial class APILogin : Form
     {
+
+        /// <summary>
+        /// Takes you to the steam login page, that then logins you into MY API. For some details on what is stored about you look on the github page.
+        /// Its only really the steamid, and the login is used to verify you.
+        /// </summary>
         public APILogin()
         {
             InitializeComponent();
-            chromiumWebBrowser1.Load("http://bestofall.ml:2095/api/getProfileKey.php");
+            chromiumWebBrowser1.Load("http://bestofall.ml:2095/api/getProfileKey.php"); // Load API login page. (Gets redirected to steam)
         }
 
-        // Window Drag
+        #region Window Drag
 
+        // Window Drag
         bool isTopPanelDragged = false;
         Size _normalWindowSize;
         Point _normalWindowLocation = Point.Empty;
@@ -81,12 +87,14 @@ namespace SUPLauncher_Reborn
                 isTopPanelDragged = false;
             }
         }
-
+        #endregion
+        // Close button
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Verify person is not logged in when the loading state changes.
         private async void chromiumWebBrowser1_LoadingStateChanged(object sender, CefSharp.LoadingStateChangedEventArgs e)
         {
             if (e.Browser.MainFrame.IsMain)
@@ -98,6 +106,7 @@ namespace SUPLauncher_Reborn
                     var json = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(body);
                     if (Program.steamid.ToString() == json.id.ToString())
                     {
+                        // User has logged in. And steamid is valid. Now save the API secret to application settings.
                         Properties.Settings.Default.apiSecret = json.key;
                         Properties.Settings.Default.Save();
                         this.BeginInvoke((MethodInvoker)delegate () { this.Close(); });

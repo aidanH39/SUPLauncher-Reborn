@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SUPLauncher_Reborn
 {
+    /// <summary>
+    /// A class used to collect cookies. (fatty)
+    /// </summary>
     class CookieCollector : ICookieVisitor
     {
         private readonly TaskCompletionSource<List<Cookie>> _source = new TaskCompletionSource<List<Cookie>>();
@@ -23,10 +26,8 @@ namespace SUPLauncher_Reborn
             return false;
 
         }
-
         // https://github.com/amaitland/CefSharp.MinimalExample/blob/ce6e579ad77dc92be94c0129b4a101f85e2fd75b/CefSharp.MinimalExample.WinForms/ListCookieVisitor.cs
         // CefSharp.MinimalExample.WinForms ListCookieVisitor 
-
         public Task<List<Cookie>> Task => _source.Task;
 
         public static string GetCookieHeader(List<Cookie> cookies)
@@ -35,6 +36,7 @@ namespace SUPLauncher_Reborn
             StringBuilder cookieString = new StringBuilder();
             string delimiter = string.Empty;
 
+            // Generate cookies in string.
             foreach (var cookie in cookies)
             {
                 cookieString.Append(delimiter);
@@ -47,9 +49,10 @@ namespace SUPLauncher_Reborn
             return cookieString.ToString();
         }
 
-        private readonly List<Cookie> _cookies = new List<Cookie>();
         public void Dispose()
         {
         }
+
+        private readonly List<Cookie> _cookies = new List<Cookie>();
     }
 }

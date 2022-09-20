@@ -1,7 +1,7 @@
 ﻿
 namespace SUPLauncher_Reborn
 {
-    partial class LoginForm
+    partial class SUPLogin
     {
         /// <summary>
         /// Required designer variable.

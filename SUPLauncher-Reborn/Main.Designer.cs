@@ -38,7 +38,7 @@ namespace SUPLauncher_Reborn
             this.btn_minimize = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_dupeManager = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.chk_afkMode = new System.Windows.Forms.CheckBox();
             this.pnl_afkHead = new System.Windows.Forms.Panel();
@@ -53,15 +53,15 @@ namespace SUPLauncher_Reborn
             this.txt_lookup = new System.Windows.Forms.TextBox();
             this.lbl_server = new System.Windows.Forms.Label();
             this.lbl_playerName = new System.Windows.Forms.Label();
+            this.img_avatar = new OvalPictureBox();
             this.lbl_version = new System.Windows.Forms.Label();
             this.pnl_servers = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_progress = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tip_afk = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_marketplace = new System.Windows.Forms.Button();
             this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
-            this.img_avatar = new OvalPictureBox();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -156,7 +156,7 @@ namespace SUPLauncher_Reborn
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btn_dupeManager);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.chk_afkMode);
             this.panel1.Controls.Add(this.pnl_afkHead);
@@ -175,19 +175,19 @@ namespace SUPLauncher_Reborn
             this.panel1.Size = new System.Drawing.Size(244, 580);
             this.panel1.TabIndex = 1;
             // 
-            // button1
+            // btn_dupeManager
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 207);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(218, 29);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Dupe Manager";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btn_dupeManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.btn_dupeManager.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.btn_dupeManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_dupeManager.ForeColor = System.Drawing.Color.White;
+            this.btn_dupeManager.Location = new System.Drawing.Point(12, 207);
+            this.btn_dupeManager.Name = "btn_dupeManager";
+            this.btn_dupeManager.Size = new System.Drawing.Size(218, 29);
+            this.btn_dupeManager.TabIndex = 11;
+            this.btn_dupeManager.Text = "Dupe Manager";
+            this.btn_dupeManager.UseVisualStyleBackColor = false;
+            this.btn_dupeManager.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label1
             // 
@@ -347,6 +347,18 @@ namespace SUPLauncher_Reborn
             this.lbl_playerName.Text = "PLAYER_NAME";
             this.lbl_playerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // img_avatar
+            // 
+            this.img_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(59, 6);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(128, 128);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
+            // 
             // lbl_version
             // 
             this.lbl_version.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -403,22 +415,21 @@ namespace SUPLauncher_Reborn
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "SUPLauncher";
             this.notifyIcon1.Visible = true;
-            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
-            // button2
+            // btn_marketplace
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(12, 277);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(218, 29);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Dupe Marketplace";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_marketplace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.btn_marketplace.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.btn_marketplace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_marketplace.ForeColor = System.Drawing.Color.White;
+            this.btn_marketplace.Location = new System.Drawing.Point(12, 277);
+            this.btn_marketplace.Name = "btn_marketplace";
+            this.btn_marketplace.Size = new System.Drawing.Size(218, 29);
+            this.btn_marketplace.TabIndex = 12;
+            this.btn_marketplace.Text = "Dupe Marketplace";
+            this.btn_marketplace.UseVisualStyleBackColor = false;
+            this.btn_marketplace.Click += new System.EventHandler(this.button2_Click);
             // 
             // cProgressBar1
             // 
@@ -433,25 +444,13 @@ namespace SUPLauncher_Reborn
             this.cProgressBar1.Value = 0;
             this.cProgressBar1.Visible = false;
             // 
-            // img_avatar
-            // 
-            this.img_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(59, 6);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(128, 128);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
-            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
-            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SUPLauncher_Reborn.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(580, 615);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_marketplace);
             this.Controls.Add(this.lbl_progress);
             this.Controls.Add(this.cProgressBar1);
             this.Controls.Add(this.panel1);
@@ -510,8 +509,8 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label lbl_afk;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_dupeManager;
+        private System.Windows.Forms.Button btn_marketplace;
     }
 }
 

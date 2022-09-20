@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
+    /// <summary>
+    /// Custom interaction element.
+    /// Allows user to enter text.
+    /// </summary>
     public partial class inputbox : Form
     {
 
@@ -22,6 +26,7 @@ namespace SUPLauncher_Reborn
             label2.Text = title;
         }
 
+        #region Top Bar Window Drag
         bool isTopPanelDragged = false;
         bool isWindowMaximized = false;
         Point offset;
@@ -89,6 +94,7 @@ namespace SUPLauncher_Reborn
                 }
             }
         }
+        #endregion
 
         private void button1_Click(object sender, EventArgs e)
         {

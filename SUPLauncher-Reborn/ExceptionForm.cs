@@ -11,16 +11,20 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
+
+    /// <summary>
+    /// Custom exception form window. That pops up when the application has a fatal error.
+    /// </summary>
     public partial class ExceptionForm : Form
     {
         public ExceptionForm(Exception ex)
         {
             InitializeComponent();
-            richTextBox1.Text = ex.Message + "\n\n\nStack trace:\n" + ex.StackTrace;
+            txt_exception.Text = ex.Message + "\n\n\nStack trace:\n" + ex.StackTrace;
             this.BringToFront();
         }
-        // Window Drag
 
+        #region Top Bar Window Drag
         bool isTopPanelDragged = false;
         Size _normalWindowSize;
         Point _normalWindowLocation = Point.Empty;
@@ -83,14 +87,11 @@ namespace SUPLauncher_Reborn
 
             }
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/BestOfAllCoding/SUPLauncher-Reborn/issues/new?assignees=&labels=bug&template=exception.md&title=%5BEXCEPTION%5D");
+            Process.Start("https://github.com/BestOfAllCoding/SUPLauncher-Reborn/issues/new?assignees=&labels=bug&template=exception.md&title=%5BEXCEPTION%5D"); // Submit issue
         }
 
         private void btn_close_Click(object sender, EventArgs e)

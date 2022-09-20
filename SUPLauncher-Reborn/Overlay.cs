@@ -19,13 +19,14 @@ namespace SUPLauncher_Reborn
 {
     public partial class Overlay : Form
     {
+        // Rectangle. Rectangle.
         public struct RECT
         {
             public int left, top, right, bottom;
         }
 
         RECT rect;
-        public OverlayProfile overlayProfile;
+        public OverlayProfile overlayProfile; // Profile overlay instance.
         #region imports from user32.dll
         [DllImport("user32.dll")]
         static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
@@ -87,7 +88,7 @@ namespace SUPLauncher_Reborn
                 }
                 lbl_player_name.Text = profile.Badmin.Name;
                 lbl_steamid.Text = profile.SteamID32;
-                decimal playtime = profile.Badmin.PlayTime;
+                decimal playtime = decimal.Parse(profile.Badmin.PlayTime);
                 lbl_playtime.Text = Math.Floor(playtime / 60 / 60) + " hours total playtime";
             }
             catch (Exception ex)
@@ -96,6 +97,7 @@ namespace SUPLauncher_Reborn
                 Logger.Log(LogType.ERROR, "Overlay.cs | Failed to get player's profile. " + ex.Message + "\n" + ex.StackTrace);
             }
 
+            // Show sit count if player is staff.
             if (Properties.Settings.Default.supLogin.Length > 0 && SuperiorServers.IsStaff(profile))
             {
                 try

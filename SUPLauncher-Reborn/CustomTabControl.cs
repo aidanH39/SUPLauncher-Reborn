@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
+    /// <summary>
+    /// Little modification to the default TabControl, to hide the tab menu.
+    /// </summary>
     class CustomTabControl : TabControl
     {
         public CustomTabControl()

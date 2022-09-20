@@ -110,8 +110,8 @@ namespace SUPLauncher_Reborn
             Profile profile = SuperiorServers.getProfile(Program.steamid.ToString());
             lbl_playerName.Text = profile.Badmin.Name;
             Logger.Log(LogType.INFO, "Getting infomation on SUP servers...");
-            List<Server> servers = SuperiorServers.GetServers();
-            
+            List<Server> servers = SuperiorServers.GetServers(); // Get infomation on servers
+            Logger.Log(LogType.INFO, "Got infomation of SUP servers!");
             foreach (Server server in servers)
             {
                 serversList.Add(server.Name, server);
@@ -119,9 +119,9 @@ namespace SUPLauncher_Reborn
                 serverP.updateServer(server);
                 pnl_servers.Controls.Add(serverP);
             }
-            loadImage(img_avatar, "https://superiorservers.co/api/avatar/" + Program.steam.GetSteamId());
+            loadImage(img_avatar, "https://superiorservers.co/api/avatar/" + Program.steam.GetSteamId()); // Load player's avatar.
             chk_afkMode.Checked = Properties.Settings.Default.afkModeEnabeld;
-            Logger.Log(LogType.INFO, "Got infomation of SUP servers!");
+
             Logger.Log(LogType.INFO, "Main form has fully loaded!");
         }
 
@@ -390,7 +390,7 @@ namespace SUPLauncher_Reborn
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LoginForm form = new LoginForm();
+            SUPLogin form = new SUPLogin();
             form.Show();
         }
 
@@ -408,12 +408,6 @@ namespace SUPLauncher_Reborn
         private void img_warning_Click(object sender, EventArgs e)
         {
             Updater.downloadLatestVersion();
-        }
-
-        private void notifyIcon1_Click(object sender, EventArgs e)
-        {
-            
-            
         }
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SUPLauncher_Reborn
 {
+    /// A class used to visit cookies. (fatty)
     public class CookieVisitor : CefSharp.ICookieVisitor
     {
         public event Action<CefSharp.Cookie> SendCookie;

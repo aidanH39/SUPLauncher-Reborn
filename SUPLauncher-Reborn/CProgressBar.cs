@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
+
+    /// <summary>
+    /// Custom loading bar.
+    /// </summary>
     class CProgressBar : UserControl
     {
         int min = 0;// Minimum value for progress range

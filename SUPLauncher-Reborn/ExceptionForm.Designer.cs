@@ -35,9 +35,9 @@ namespace SUPLauncher_Reborn
             this.lbl_title = new System.Windows.Forms.Label();
             this.img_icon = new System.Windows.Forms.PictureBox();
             this.btn_close = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lbl_desc = new System.Windows.Forms.Label();
+            this.txt_exception = new System.Windows.Forms.RichTextBox();
+            this.btn_submit = new System.Windows.Forms.Button();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.SuspendLayout();
@@ -105,45 +105,45 @@ namespace SUPLauncher_Reborn
             this.btn_close.UseVisualStyleBackColor = false;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
-            // label1
+            // lbl_desc
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(455, 51);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "A application exception has occurred, the error details are below. If you wish to" +
+            this.lbl_desc.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lbl_desc.ForeColor = System.Drawing.Color.White;
+            this.lbl_desc.Location = new System.Drawing.Point(12, 48);
+            this.lbl_desc.Name = "lbl_desc";
+            this.lbl_desc.Size = new System.Drawing.Size(455, 51);
+            this.lbl_desc.TabIndex = 3;
+            this.lbl_desc.Text = "A application exception has occurred, the error details are below. If you wish to" +
     " report this bug, please make an issue on github.";
             // 
-            // richTextBox1
+            // txt_exception
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(15, 93);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox1.Size = new System.Drawing.Size(452, 125);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
+            this.txt_exception.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txt_exception.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_exception.ForeColor = System.Drawing.Color.White;
+            this.txt_exception.Location = new System.Drawing.Point(15, 93);
+            this.txt_exception.Name = "txt_exception";
+            this.txt_exception.ReadOnly = true;
+            this.txt_exception.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txt_exception.Size = new System.Drawing.Size(452, 125);
+            this.txt_exception.TabIndex = 4;
+            this.txt_exception.Text = "";
             // 
-            // button1
+            // btn_submit
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(15, 225);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(452, 29);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Submit Issue On Github";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_submit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.btn_submit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.btn_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_submit.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_submit.ForeColor = System.Drawing.Color.White;
+            this.btn_submit.Location = new System.Drawing.Point(15, 225);
+            this.btn_submit.Name = "btn_submit";
+            this.btn_submit.Size = new System.Drawing.Size(452, 29);
+            this.btn_submit.TabIndex = 5;
+            this.btn_submit.Text = "Submit Issue On Github";
+            this.btn_submit.UseVisualStyleBackColor = false;
+            this.btn_submit.Click += new System.EventHandler(this.button1_Click);
             // 
             // ExceptionForm
             // 
@@ -152,9 +152,9 @@ namespace SUPLauncher_Reborn
             this.BackgroundImage = global::SUPLauncher_Reborn.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(479, 263);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btn_submit);
+            this.Controls.Add(this.txt_exception);
+            this.Controls.Add(this.lbl_desc);
             this.Controls.Add(this.pnl_topBar);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -174,8 +174,8 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.PictureBox img_icon;
         private System.Windows.Forms.Button btn_close;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbl_desc;
+        private System.Windows.Forms.RichTextBox txt_exception;
+        private System.Windows.Forms.Button btn_submit;
     }
 }

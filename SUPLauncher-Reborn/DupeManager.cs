@@ -22,14 +22,8 @@ namespace SUPLauncher_Reborn
             t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
             t1.Start();
         }
-        #region Fade
-        /*
-            Opacity = 0;      //first the opacity is 0
 
-            t1.Interval = 10;  //we'll increase the opacity every 10ms
-            t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
-            t1.Start(); 
-         */
+        #region Fade
         System.Windows.Forms.Timer t1 = new System.Windows.Forms.Timer();
         
 
@@ -52,6 +46,7 @@ namespace SUPLauncher_Reborn
                 Opacity -= 0.05;
         }
         #endregion
+
         private TreeNode lastNode;
         private DirectoryInfo[] lastSubDirs;
         string copiedNode;
@@ -61,6 +56,12 @@ namespace SUPLauncher_Reborn
         private Image refresh_img;
         private Image original_refreshimg;
 
+        /// <summary>
+        /// Used to rotate a image by an angle IN A THREAD.
+        /// Invokes it first.
+        /// </summary>
+        /// <param name="bm">Bitmap image</param>
+        /// <param name="angle">Angle</param>
         private void rotateInThread(Bitmap bm, float angle)
         {
             if (InvokeRequired)
@@ -69,6 +70,7 @@ namespace SUPLauncher_Reborn
             }
             refresh_img = RotateBitmap(bm, angle);
         }
+
         private void GetPointBounds(PointF[] points,
     out float xmin, out float xmax,
     out float ymin, out float ymax)
@@ -86,6 +88,11 @@ namespace SUPLauncher_Reborn
             }
         }
 
+        /// <summary>
+        /// Used to rotate a image by an angle.
+        /// </summary>
+        /// <param name="bm">Bitmap image</param>
+        /// <param name="angle">Angle</param>
         private Bitmap RotateBitmap(Bitmap bm, float angle)
         {
             // Make a Matrix to represent rotation
@@ -157,29 +164,26 @@ namespace SUPLauncher_Reborn
         }
 
 
-
+        /// <summary>
+        /// Load files and folders in the garry's mod adv dupe folder.
+        /// </summary>
         private void reloadFoldersAndFiles()
         {
 
-            DirectoryInfo dInfo = new DirectoryInfo(Program.dupePath + @"\" + path.Text); // Directory info to see what directories we have to work with
-
-
-            Dupes.Items.Clear(); // Make sure the listview has no items before loading these items below
+            DirectoryInfo dInfo = new DirectoryInfo(Program.dupePath + @"\" + txt_path.Text); // Directory info to see what directories we have to work with
+            listview_dupes.Items.Clear(); // Make sure the listview has no items before loading these items below
 
             foreach (DirectoryInfo subDir in dInfo.GetDirectories())
             {
-                ListViewItem newItem = Dupes.Items.Add(subDir.Name, 0);
+                ListViewItem newItem = listview_dupes.Items.Add(subDir.Name, 0);
                 newItem.Tag = "folder";
-
             }
 
             foreach (FileInfo subDir in dInfo.GetFiles())
             {
-                ListViewItem newItem = Dupes.Items.Add(subDir.Name, 1);
-
+                ListViewItem newItem = listview_dupes.Items.Add(subDir.Name, 1);
                 newItem.Tag = "file";
             }
-
         }
 
 
@@ -187,11 +191,11 @@ namespace SUPLauncher_Reborn
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete " + Dupes.SelectedItems[0].ToString() + "?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to delete " + listview_dupes.SelectedItems[0].ToString() + "?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
 
-                File.Delete(Program.dupePath + path.Text + @"\" + Dupes.SelectedItems[0].Text);
-                Dupes.Items.RemoveAt(Dupes.SelectedIndices[0]);
+                File.Delete(Program.dupePath + txt_path.Text + @"\" + listview_dupes.SelectedItems[0].Text);
+                listview_dupes.Items.RemoveAt(listview_dupes.SelectedIndices[0]);
             }
         }
 
@@ -202,29 +206,28 @@ namespace SUPLauncher_Reborn
 
         private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            copiedNode = Program.dupePath + path.Text + @"\" + Dupes.SelectedItems[0].Text;
-            copiedNodeName = Dupes.Text;
+            copiedNode = Program.dupePath + txt_path.Text + @"\" + listview_dupes.SelectedItems[0].Text;
+            copiedNodeName = listview_dupes.Text;
         }
 
+        // Paste
         private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             if (File.Exists(copiedNode.ToString()))
             {
                 int i = 1;
-                while (File.Exists(Program.dupePath + path.Text + @"\" + copiedNodeName + "(" + i + ")"))
+                while (File.Exists(Program.dupePath + txt_path.Text + @"\" + copiedNodeName + "(" + i + ")"))
                 {
                     i = i + 1;
 
                 }
-                File.Copy(copiedNode.ToString(), Program.dupePath + path.Text + @"\" + copiedNodeName + "(" + i + ")");
-
+                File.Copy(copiedNode.ToString(), Program.dupePath + txt_path.Text + @"\" + copiedNodeName + "(" + i + ")");
             }
             else
             {
                 try
                 {
-                    File.Copy(copiedNode.ToString(), Program.dupePath + path.Text + "/" + @"\" + copiedNode);
+                    File.Copy(copiedNode.ToString(), Program.dupePath + txt_path.Text + "/" + @"\" + copiedNode);
                 }
                 catch (Exception) // Stops errors popping up if the file does not exist anymore
                 {
@@ -234,10 +237,11 @@ namespace SUPLauncher_Reborn
 
         }
 
+        // Create folder.
         private void CreateNewFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String name = Interaction.InputBox("Folder name:", "Please enter folder name");
-            Directory.CreateDirectory(Program.dupePath + Program.dupePath + path.Text + @"\" + copiedNode + name);
+            Directory.CreateDirectory(Program.dupePath + Program.dupePath + txt_path.Text + @"\" + copiedNode + name);
 
         }
 
@@ -251,41 +255,27 @@ namespace SUPLauncher_Reborn
             isMouseOver = true;
         }
 
-        private void Dupes_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void NewFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             String filename = Interaction.InputBox("Folder Name", "Please enter folder name");
-            if (Directory.Exists(Program.dupePath + path.Text + "/" + filename))
+            if (Directory.Exists(Program.dupePath + txt_path.Text + "/" + filename))
             {
                 MessageBox.Show("Folder already exsists!", "SUPLauncher");
                 return;
             }
             else
             {
-                Directory.CreateDirectory(Program.dupePath + path.Text + @"\" + filename);
+                Directory.CreateDirectory(Program.dupePath + txt_path.Text + @"\" + filename);
                 reloadFoldersAndFiles();
-
             }
         }
-
-
-
-
-
-
-
-
-
 
         private void DupeManager_DragLeave(object sender, EventArgs e)
         {
             Drop.Visible = false;
         }
+
+        // Drag n' Drop
         private void DupeManager_DragDrop(object sender, DragEventArgs e)
         {
             String[] DupePath = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -295,7 +285,7 @@ namespace SUPLauncher_Reborn
                     if (Path.GetFileName(dupe).EndsWith(".txt"))
                     {
                         Drop.Visible = false;
-                        File.Copy(dupe, Program.dupePath + Program.dupePath + path.Text + @"\" + Path.GetFileName(dupe));
+                        File.Copy(dupe, Program.dupePath + Program.dupePath + txt_path.Text + @"\" + Path.GetFileName(dupe));
                     }
                 }
 
@@ -303,10 +293,11 @@ namespace SUPLauncher_Reborn
             }
         }
 
+        // Refresh button.
         private void Imgrefresh_Click(object sender, EventArgs e)
         {
 
-            Dupes.Items.Clear();
+            listview_dupes.Items.Clear();
             new Thread(() =>
             {
                 int i = 0;
@@ -322,6 +313,9 @@ namespace SUPLauncher_Reborn
                 return;
             }).Start();
         }
+
+        #region Top Bar Window Drag
+
         bool isTopPanelDragged = false;
         bool isWindowMaximized = false;
         Point offset;
@@ -354,7 +348,7 @@ namespace SUPLauncher_Reborn
         {
             if (isTopPanelDragged)
             {
-                Point newPoint = TopBar.PointToScreen(new Point(e.X, e.Y));
+                Point newPoint = pnl_topBar.PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(offset);
                 this.Location = newPoint;
 
@@ -389,22 +383,21 @@ namespace SUPLauncher_Reborn
                 }
             }
         }
+        #endregion
 
         private void Dupes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
-            if (Directory.Exists(Program.dupePath + path.Text + @"\" + Dupes.SelectedItems[0].Text))
+            if (Directory.Exists(Program.dupePath + txt_path.Text + @"\" + listview_dupes.SelectedItems[0].Text))
             {
-                history.Add(path.Text);
-                if (path.Text[path.Text.Length - 1] == '/')
+                history.Add(txt_path.Text);
+                if (txt_path.Text[txt_path.Text.Length - 1] == '/')
                 {
-                    path.Text = path.Text + Dupes.SelectedItems[0].Text;
+                    txt_path.Text = txt_path.Text + listview_dupes.SelectedItems[0].Text;
                 }
                 else
                 {
-                    path.Text = path.Text + @"/" + Dupes.SelectedItems[0].Text;
+                    txt_path.Text = txt_path.Text + @"/" + listview_dupes.SelectedItems[0].Text;
                 }
-
                 reloadFoldersAndFiles();
             }
         }
@@ -416,7 +409,6 @@ namespace SUPLauncher_Reborn
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
             new Thread(() =>
             {
                 int i = 0;
@@ -425,10 +417,10 @@ namespace SUPLauncher_Reborn
                     i = i + 1;
                     Thread.Sleep(70);
                     rotateInThread(new Bitmap(refresh_img), 90);
-                    pictureBox1.Image = refresh_img;
+                    btn_refresh.Image = refresh_img;
                 }
 
-                pictureBox1.Image = original_refreshimg;
+                btn_refresh.Image = original_refreshimg;
                 return;
             }).Start();
 
@@ -439,11 +431,11 @@ namespace SUPLauncher_Reborn
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (path.Text != "/")
+            if (txt_path.Text != "/")
             {
                 string[] a = history.ToArray();
 
-                path.Text = a[a.Length - 1];
+                txt_path.Text = a[a.Length - 1];
                 history.RemoveAt(a.Length - 1);
                 reloadFoldersAndFiles();
             }
@@ -456,9 +448,9 @@ namespace SUPLauncher_Reborn
             {
                 if (File.Exists(Import.FileName))
                 {
-                    if (File.Exists(Program.dupePath + path.Text + "/" + Import.SafeFileName) == false)
+                    if (File.Exists(Program.dupePath + txt_path.Text + "/" + Import.SafeFileName) == false)
                     {
-                        File.Copy(Import.FileName, Program.dupePath + path.Text + "/" + Import.SafeFileName);
+                        File.Copy(Import.FileName, Program.dupePath + txt_path.Text + "/" + Import.SafeFileName);
                         reloadFoldersAndFiles();
                     }
                 }
@@ -467,7 +459,7 @@ namespace SUPLauncher_Reborn
 
         private void FolderMenu_Opening(object sender, CancelEventArgs e)
         {
-            if (Dupes.SelectedItems.Count < 1)
+            if (listview_dupes.SelectedItems.Count < 1)
             {
                 deleteFolderToolStripMenuItem.Enabled = false;
                 renameToolStripMenuItem.Enabled = false;
@@ -478,7 +470,7 @@ namespace SUPLauncher_Reborn
                 renameToolStripMenuItem.Enabled = true;
             }
 
-            if (Dupes.SelectedItems.Count != 1)
+            if (listview_dupes.SelectedItems.Count != 1)
             {
                 renameToolStripMenuItem.Enabled = false;
             }
@@ -487,7 +479,7 @@ namespace SUPLauncher_Reborn
                 renameToolStripMenuItem.Enabled = true;
             }
 
-            if (Dupes.SelectedItems.Count == 1 && Dupes.SelectedItems[0].Tag == "file")
+            if (listview_dupes.SelectedItems.Count == 1 && listview_dupes.SelectedItems[0].Tag == "file")
             {
                 strip_uploadToMarket.Enabled = true;
             }
@@ -522,20 +514,20 @@ namespace SUPLauncher_Reborn
 
         private void deleteFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Dupes.SelectedItems.Count > 0)
+            if (listview_dupes.SelectedItems.Count > 0)
             {
-                DialogResult d = MessageBox.Show("Are you sure you want to delete " + Dupes.SelectedItems.Count + " file(s)?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult d = MessageBox.Show("Are you sure you want to delete " + listview_dupes.SelectedItems.Count + " file(s)?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (d == DialogResult.Yes)
                 {
-                    foreach (ListViewItem item in Dupes.SelectedItems)
+                    foreach (ListViewItem item in listview_dupes.SelectedItems)
                     {
                         if (item.Tag == "folder")
                         {
-                            deleteFolder(Program.dupePath + path.Text + "/" + item.Text);
+                            deleteFolder(Program.dupePath + txt_path.Text + "/" + item.Text);
                         }
                         else
                         {
-                            File.Delete(Program.dupePath + path.Text + "/" + item.Text);
+                            File.Delete(Program.dupePath + txt_path.Text + "/" + item.Text);
                         }
                     }
                 }
@@ -544,24 +536,24 @@ namespace SUPLauncher_Reborn
 
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Dupes.SelectedItems[0].Tag == "file")
+            if (listview_dupes.SelectedItems[0].Tag == "file")
             {
 
-                String filename = Interaction.InputBox("New file name for '" + Dupes.SelectedItems[0].Text + "'. You do not need to include .txt at the end its done for you otherwise you may have problems loading in your dupe.", "Input File Name");
+                String filename = Interaction.InputBox("New file name for '" + listview_dupes.SelectedItems[0].Text + "'. You do not need to include .txt at the end its done for you otherwise you may have problems loading in your dupe.", "Input File Name");
 
-                if (!File.Exists(Program.dupePath + path.Text + "/" + filename))
+                if (!File.Exists(Program.dupePath + txt_path.Text + "/" + filename))
                 {
-                    File.Move(Program.dupePath + path.Text + "/" + Dupes.SelectedItems[0].Text, Program.dupePath + path.Text + "/" + filename);
+                    File.Move(Program.dupePath + txt_path.Text + "/" + listview_dupes.SelectedItems[0].Text, Program.dupePath + txt_path.Text + "/" + filename);
                     reloadFoldersAndFiles();
                 }
 
             }
             else
             {
-                String filename = Interaction.InputBox("New folder name for '" + Dupes.SelectedItems[0].Text + "'", "Input Folder Name");
-                if (!Directory.Exists(Program.dupePath + path.Text + "/" + filename))
+                String filename = Interaction.InputBox("New folder name for '" + listview_dupes.SelectedItems[0].Text + "'", "Input Folder Name");
+                if (!Directory.Exists(Program.dupePath + txt_path.Text + "/" + filename))
                 {
-                    Directory.Move(Program.dupePath + path.Text + "/" + Dupes.SelectedItems[0].Text, Program.dupePath + path.Text + "/" + filename);
+                    Directory.Move(Program.dupePath + txt_path.Text + "/" + listview_dupes.SelectedItems[0].Text, Program.dupePath + txt_path.Text + "/" + filename);
                     reloadFoldersAndFiles();
                 }
             }
@@ -579,12 +571,12 @@ namespace SUPLauncher_Reborn
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
-            pictureBox1.BackColor = Color.FromArgb(200, 14, 14, 14);
+            btn_refresh.BackColor = Color.FromArgb(200, 14, 14, 14);
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox1.BackColor = Color.Transparent;
+            btn_refresh.BackColor = Color.Transparent;
         }
 
         private void DupeManager_FormClosing(object sender, FormClosingEventArgs e)
@@ -611,9 +603,9 @@ namespace SUPLauncher_Reborn
 
         private void uploadDupeToMarketPlaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Dupes.SelectedItems.Count == 1 && Dupes.SelectedItems[0].Tag == "file")
+            if (listview_dupes.SelectedItems.Count == 1 && listview_dupes.SelectedItems[0].Tag == "file")
             {
-                UploadDupe form = new UploadDupe(Program.dupePath + path.Text + "/" + Dupes.SelectedItems[0].Text);
+                UploadDupe form = new UploadDupe(Program.dupePath + txt_path.Text + "/" + listview_dupes.SelectedItems[0].Text);
                 form.Show();
             }
             

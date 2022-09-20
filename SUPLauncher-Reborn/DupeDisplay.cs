@@ -11,6 +11,9 @@ using static SUPLauncher_Reborn.DupeMarket;
 
 namespace SUPLauncher_Reborn
 {
+    /// <summary>
+    /// Used when viewing dupes. Displays small infomation about a dupe.
+    /// </summary>
     public partial class DupeDisplay : UserControl
     {
         Dupe dupe;
@@ -18,12 +21,15 @@ namespace SUPLauncher_Reborn
         {
             this.dupe = dupe;
             InitializeComponent();
-            label1.Text = dupe.creator_name;
-            label2.Text = dupe.title;
-            if (dupe.img_url != null) pictureBox1.LoadAsync(dupe.img_url);
-            frm_main.loadImage(ovalPictureBox1, "https://superiorservers.co/api/avatar/" + dupe.creator);
+            lbl_creator.Text = dupe.creator_name;
+            lbl_name.Text = dupe.title;
+            if (dupe.img_url != null) img_displayImage.LoadAsync(dupe.img_url);
+            frm_main.loadImage(img_creatorAvatar, "https://superiorservers.co/api/avatar/" + dupe.creator);
             lbl_downloads.Text = "Downloads: " + dupe.downloads;
         }
+
+
+        #region Hover effects
 
         private void panel2_MouseEnter(object sender, EventArgs e)
         {
@@ -33,8 +39,8 @@ namespace SUPLauncher_Reborn
         private void pnl_left_MouseLeave(object sender, EventArgs e)
         {
             pnl_left.BackColor = Color.FromArgb(85, 85, 85);
-            
         }
+        #endregion
 
         private void DupeDisplay_MouseDown(object sender, MouseEventArgs e)
         {
@@ -44,11 +50,6 @@ namespace SUPLauncher_Reborn
                 form.TopMost = this.FindForm().TopMost;
                 form.Show();
             }
-        }
-
-        private void DupeDisplay_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
+    /// <summary>
+    /// Popups window to the user. Has a button to close as well.
+    /// </summary>
     public partial class msgBox : Form
     {
         public msgBox(string message, string title="SUPLauncher")
@@ -18,6 +21,8 @@ namespace SUPLauncher_Reborn
             lbl_title.Text = title;
             lbl_msg.Text = message;
         }
+
+        #region Top Bar Window Drag
         bool isTopPanelDragged = false;
         bool isWindowMaximized = false;
         Point offset;
@@ -85,9 +90,12 @@ namespace SUPLauncher_Reborn
                 }
             }
         }
+        #endregion
+
+        // Close button
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); 
         }
     }
 }

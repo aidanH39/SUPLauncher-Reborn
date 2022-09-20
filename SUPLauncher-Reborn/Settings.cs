@@ -161,7 +161,7 @@ namespace SUPLauncher_Reborn
 
         private void button2_Click(object sender, EventArgs e)
         {
-            LoginForm form = new LoginForm();
+            SUPLogin form = new SUPLogin();
             form.Show();
         }
 

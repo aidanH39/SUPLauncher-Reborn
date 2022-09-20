@@ -8,8 +8,12 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
+    /// <summary>
+    /// Allows logging to a file. For infomation about the application.
+    /// </summary>
     public static class Logger
     {
+        
         private static StreamWriter stream;
         public static void initLogger()
         {
@@ -23,7 +27,7 @@ namespace SUPLauncher_Reborn
             {
                 i++;
             }
-            
+            // Opens stream to the file.
             stream = new StreamWriter(File.Open(Application.StartupPath + "/logs/" + i + ".log", FileMode.OpenOrCreate));
         }
 

@@ -13,16 +13,16 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
-    public partial class LoginForm : Form
+    public partial class SUPLogin : Form
     {
 
         ChromiumWebBrowser browser;
-
-        public LoginForm()
+        /// <summary>
+        /// This form is used to login to superiorservers. The only sensitive infomation will be in the application settings. Do not share anything that you are not sure about.
+        /// It is done securely through a browser. Then takes the cache generated from the login to be able to view your sit count, and etc. IK. a lot of work just to see your fucking sit count.
+        /// </summary>
+        public SUPLogin()
         {
-            
-
-
             browser = new ChromiumWebBrowser();
             InitializeComponent();
 

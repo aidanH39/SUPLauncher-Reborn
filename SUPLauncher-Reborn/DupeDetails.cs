@@ -12,6 +12,9 @@ using static SUPLauncher_Reborn.DupeMarket;
 
 namespace SUPLauncher_Reborn
 {
+    /// <summary>
+    /// Displays infomation about a dupe, and allows the user to download or manage the dupe.
+    /// </summary>
     public partial class DupeDetails : Form
     {
 
@@ -21,13 +24,17 @@ namespace SUPLauncher_Reborn
         {
             this.dupe = dupe;
             InitializeComponent();
+            // Allows markdown in the description.
             Markdown m = new Markdown();
+            // use less ugly fonts.
             web_description.DocumentText = "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin ><link href=\"https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro:wght@400;600&display=swap\" rel=\"stylesheet\">  <style>body { background: rgb(25,25,25); color: white; font-family: 'Roboto', sans-serif; }</style> " + m.Transform(dupe.description);
             if (dupe.img_url != null) img_screenshot.LoadAsync(dupe.img_url);
             frm_main.loadImage(img_creator, "https://superiorservers.co/api/avatar/" + dupe.creator);
             lbl_creator.Text = dupe.creator_name;
             lbl_dupeName.Text = dupe.title;
         }
+
+        #region Top Bar Window Drag
 
         bool isTopPanelDragged = false;
         bool isWindowMaximized = false;
@@ -97,8 +104,11 @@ namespace SUPLauncher_Reborn
             }
         }
 
+        #endregion
+
         private void DupeDetails_Load(object sender, EventArgs e)
         {
+            // Check if user owns the dupe. Then allow them to manage it.
             if (dupe.creator != Program.steamid.ToString())
             {
                 btn_download.Width = 452;
@@ -125,6 +135,7 @@ namespace SUPLauncher_Reborn
 
         private void btn_remove_Click(object sender, EventArgs e)
         {
+            // Just extra caution before deleting it.
             string input = Interaction.InputBox("Are you sure? Type \"delete\" to delete this dupe from the market place. No caps!", "Are you sure?");
             if (input == "delete")
             {

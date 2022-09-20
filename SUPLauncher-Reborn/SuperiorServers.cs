@@ -43,33 +43,65 @@ namespace SUPLauncher_Reborn
             public string DiscordID;
             public string SteamURL;
             public string ForumURL;
-            public dynamic Badmin;
-            public dynamic DarkRP;
+            public bAdmin Badmin;
+            public DarkRP DarkRP;
 
             public void setAvatar(PictureBox img)
             {
                 frm_main.loadImage(img, "https://superiorservers.co/api/avatar/" + this.SteamID64);
             }
+        }
 
+        public class DarkRP
+        {
+            public string Money;
+            public string Karma;
+            public string OrgName;
+            public int OrgID;
+            public string OrgColor;
         }
 
         /// <summary>
-        /// A SUP ban.
+        /// BAdmin infomation. 
+        /// </summary>
+        public class bAdmin
+        {
+            public string Name;
+            public string FirstJoin;
+            public long LastSeen;
+            public string PlayTime;
+            public PlayerRanks Ranks;
+            public Ban[] Bans;
+        }
+
+        /// <summary>
+        /// Ban from superiorservers
         /// </summary>
         public class Ban
         {
+            public string BanID;
+            public string Time;
+            public string Server;
+            public string Name;
+            public string SteamID64;
             public string AdminName;
             public string AdminSteamID64;
-            public string BanID;
+            public string Length;
+            public string Reason;
+            public string UnbanReason;
             public bool IsActive;
             public bool IsHidden;
-            public string Length;
-            public string Name;
-            public string Reason;
-            public string Server;
-            public string SteamID64;
-            public string Time;
-            public string UnbanReason;
+        }
+
+        /// <summary>
+        /// Ranks across superiorservers.
+        /// </summary>
+        public class PlayerRanks
+        {
+            [JsonProperty(PropertyName = "DarkRP & Zombies")]
+            public string DarkRP;
+            public string CWRP;
+            public string MilRP;
         }
 
 
@@ -139,13 +171,7 @@ namespace SUPLauncher_Reborn
         /// </summary>
         public static List<Ban> GetBans(Profile profile)
         {
-            List<Ban> bans = new List<Ban>();
-            foreach (object ban in profile.Badmin.Bans)
-            {
-                bans.Add(((JObject)ban).ToObject<Ban>());
-            }
-            return bans;
-
+            return profile.Badmin.Bans.ToList();
         }
 
         /// <summary>

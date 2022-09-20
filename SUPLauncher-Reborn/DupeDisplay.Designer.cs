@@ -31,43 +31,43 @@ namespace SUPLauncher_Reborn
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_creator = new System.Windows.Forms.Label();
+            this.lbl_name = new System.Windows.Forms.Label();
             this.pnl_left = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ovalPictureBox1 = new OvalPictureBox();
+            this.img_displayImage = new System.Windows.Forms.PictureBox();
+            this.img_creatorAvatar = new OvalPictureBox();
             this.lbl_downloads = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_displayImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_creatorAvatar)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lbl_creator
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.label1.Location = new System.Drawing.Point(195, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 26);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Best of all";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
-            this.label1.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
+            this.lbl_creator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_creator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.lbl_creator.Location = new System.Drawing.Point(195, 28);
+            this.lbl_creator.Name = "lbl_creator";
+            this.lbl_creator.Size = new System.Drawing.Size(208, 26);
+            this.lbl_creator.TabIndex = 1;
+            this.lbl_creator.Text = "Best of all";
+            this.lbl_creator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_creator.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
+            this.lbl_creator.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
             // 
-            // label2
+            // lbl_name
             // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(164, 2);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(263, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Kappels Base Defense";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
-            this.label2.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
+            this.lbl_name.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_name.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_name.ForeColor = System.Drawing.Color.White;
+            this.lbl_name.Location = new System.Drawing.Point(164, 2);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(263, 25);
+            this.lbl_name.TabIndex = 2;
+            this.lbl_name.Text = "Kappels Base Defense";
+            this.lbl_name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_name.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
+            this.lbl_name.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
             // 
             // pnl_left
             // 
@@ -80,30 +80,30 @@ namespace SUPLauncher_Reborn
             this.pnl_left.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
             this.pnl_left.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
             // 
-            // pictureBox1
+            // img_displayImage
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = global::SUPLauncher_Reborn.Properties.Resources.dupe_default;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 75);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
+            this.img_displayImage.Dock = System.Windows.Forms.DockStyle.Left;
+            this.img_displayImage.Image = global::SUPLauncher_Reborn.Properties.Resources.dupe_default;
+            this.img_displayImage.Location = new System.Drawing.Point(5, 0);
+            this.img_displayImage.Name = "img_displayImage";
+            this.img_displayImage.Size = new System.Drawing.Size(150, 75);
+            this.img_displayImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_displayImage.TabIndex = 0;
+            this.img_displayImage.TabStop = false;
+            this.img_displayImage.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
+            this.img_displayImage.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
             // 
-            // ovalPictureBox1
+            // img_creatorAvatar
             // 
-            this.ovalPictureBox1.BackColor = System.Drawing.Color.DarkGray;
-            this.ovalPictureBox1.Location = new System.Drawing.Point(166, 30);
-            this.ovalPictureBox1.Name = "ovalPictureBox1";
-            this.ovalPictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.ovalPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ovalPictureBox1.TabIndex = 2;
-            this.ovalPictureBox1.TabStop = false;
-            this.ovalPictureBox1.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
-            this.ovalPictureBox1.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
+            this.img_creatorAvatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_creatorAvatar.Location = new System.Drawing.Point(166, 30);
+            this.img_creatorAvatar.Name = "img_creatorAvatar";
+            this.img_creatorAvatar.Size = new System.Drawing.Size(25, 25);
+            this.img_creatorAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_creatorAvatar.TabIndex = 2;
+            this.img_creatorAvatar.TabStop = false;
+            this.img_creatorAvatar.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
+            this.img_creatorAvatar.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
             // 
             // lbl_downloads
             // 
@@ -112,7 +112,7 @@ namespace SUPLauncher_Reborn
             this.lbl_downloads.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.lbl_downloads.Location = new System.Drawing.Point(302, 54);
             this.lbl_downloads.Name = "lbl_downloads";
-            this.lbl_downloads.Size = new System.Drawing.Size(101, 16);
+            this.lbl_downloads.Size = new System.Drawing.Size(100, 16);
             this.lbl_downloads.TabIndex = 4;
             this.lbl_downloads.Text = "Downloads: 0";
             // 
@@ -122,20 +122,20 @@ namespace SUPLauncher_Reborn
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.Controls.Add(this.lbl_downloads);
-            this.Controls.Add(this.ovalPictureBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.img_creatorAvatar);
+            this.Controls.Add(this.lbl_creator);
+            this.Controls.Add(this.lbl_name);
+            this.Controls.Add(this.img_displayImage);
             this.Controls.Add(this.pnl_left);
             this.DoubleBuffered = true;
             this.Name = "DupeDisplay";
             this.Size = new System.Drawing.Size(406, 75);
-            this.Load += new System.EventHandler(this.DupeDisplay_Load);
+            
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DupeDisplay_MouseDown);
             this.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.pnl_left_MouseLeave);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_displayImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_creatorAvatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,10 +143,10 @@ namespace SUPLauncher_Reborn
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private OvalPictureBox ovalPictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox img_displayImage;
+        private OvalPictureBox img_creatorAvatar;
+        private System.Windows.Forms.Label lbl_creator;
+        private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.Panel pnl_left;
         private System.Windows.Forms.Label lbl_downloads;
     }
