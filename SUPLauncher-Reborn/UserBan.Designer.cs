@@ -122,6 +122,7 @@ namespace SUPLauncher_Reborn
             this.img_admin.Location = new System.Drawing.Point(2, 1);
             this.img_admin.Name = "img_admin";
             this.img_admin.Size = new System.Drawing.Size(32, 32);
+            this.img_admin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_admin.TabIndex = 1;
             this.img_admin.TabStop = false;
             // 
