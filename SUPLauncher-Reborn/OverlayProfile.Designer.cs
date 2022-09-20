@@ -105,6 +105,7 @@ namespace SUPLauncher_Reborn
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(55, 18);
             this.btn_close.TabIndex = 1;
+            this.btn_close.TabStop = false;
             this.btn_close.Text = "╳";
             this.btn_close.UseVisualStyleBackColor = false;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
