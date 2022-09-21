@@ -82,8 +82,12 @@ namespace SUPLauncher_Reborn
             Logger.Log(LogType.INFO, "Loadig overlay profile of " + profile.Badmin.Name + " (" + profile.SteamID32 + ")");
             int playtime = Int32.Parse(profile.Badmin.PlayTime);
             lbl_name.Text = profile.Badmin.Name;
+
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dateTime = dateTime.AddSeconds(Double.Parse(profile.Badmin.FirstJoin)).ToLocalTime();
+            lbl_firstJoin.Text = dateTime.ToString("MM/dd/yyyy h:mm tt");
             
-            
+
             TimeSpan time = TimeSpan.FromSeconds(playtime);
             lbl_playTime.Text = SuperiorServers.PlaytimeFormat(playtime);
             profile.setAvatar(img_avatar);

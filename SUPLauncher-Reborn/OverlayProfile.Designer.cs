@@ -35,7 +35,7 @@ namespace SUPLauncher_Reborn
             this.btn_close = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_firstJoin = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lbl_previousOffenses = new System.Windows.Forms.Label();
             this.lbl_playTime = new System.Windows.Forms.Label();
@@ -121,26 +121,26 @@ namespace SUPLauncher_Reborn
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lbl_firstJoin);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(15, 144);
+            this.panel1.Location = new System.Drawing.Point(15, 101);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(210, 51);
             this.panel1.TabIndex = 6;
             // 
-            // label4
+            // lbl_firstJoin
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lbl_firstJoin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(3, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(204, 23);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "12/21/2016";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_firstJoin.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_firstJoin.ForeColor = System.Drawing.Color.White;
+            this.lbl_firstJoin.Location = new System.Drawing.Point(3, 23);
+            this.lbl_firstJoin.Name = "lbl_firstJoin";
+            this.lbl_firstJoin.Size = new System.Drawing.Size(204, 23);
+            this.lbl_firstJoin.TabIndex = 5;
+            this.lbl_firstJoin.Text = "12/21/2016";
+            this.lbl_firstJoin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -348,7 +348,7 @@ namespace SUPLauncher_Reborn
         private OvalPictureBox img_avatar;
         private System.Windows.Forms.Panel pnl_profile;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_firstJoin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbl_previousOffenses;
         private System.Windows.Forms.Label lbl_playTime;
