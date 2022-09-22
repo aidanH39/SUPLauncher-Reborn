@@ -59,19 +59,27 @@ namespace SUPLauncher_Reborn
             this.label7 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_gmodAFKargs = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.gmodStartupArgs = new System.Windows.Forms.ToolTip(this.components);
-            this.button3 = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_topBar
@@ -85,7 +93,7 @@ namespace SUPLauncher_Reborn
             this.pnl_topBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_topBar.Location = new System.Drawing.Point(0, 0);
             this.pnl_topBar.Name = "pnl_topBar";
-            this.pnl_topBar.Size = new System.Drawing.Size(611, 35);
+            this.pnl_topBar.Size = new System.Drawing.Size(646, 35);
             this.pnl_topBar.TabIndex = 1;
             this.pnl_topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
             this.pnl_topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
@@ -130,7 +138,7 @@ namespace SUPLauncher_Reborn
             this.btn_minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_minimize.ForeColor = System.Drawing.Color.White;
-            this.btn_minimize.Location = new System.Drawing.Point(541, 0);
+            this.btn_minimize.Location = new System.Drawing.Point(576, 0);
             this.btn_minimize.Name = "btn_minimize";
             this.btn_minimize.Size = new System.Drawing.Size(35, 35);
             this.btn_minimize.TabIndex = 1;
@@ -147,7 +155,7 @@ namespace SUPLauncher_Reborn
             this.btn_close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(117)))), ((int)(((byte)(117)))));
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(576, 0);
+            this.btn_close.Location = new System.Drawing.Point(611, 0);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(35, 35);
             this.btn_close.TabIndex = 0;
@@ -383,7 +391,7 @@ namespace SUPLauncher_Reborn
             this.panel5.Controls.Add(this.chk_overlay);
             this.panel5.Controls.Add(this.chk_discordActivity);
             this.panel5.Controls.Add(this.chk_autoStartup);
-            this.panel5.Location = new System.Drawing.Point(387, 41);
+            this.panel5.Location = new System.Drawing.Point(430, 41);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(199, 279);
             this.panel5.TabIndex = 18;
@@ -416,17 +424,32 @@ namespace SUPLauncher_Reborn
             this.panel7.Controls.Add(this.label9);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(12, 344);
+            this.panel7.Location = new System.Drawing.Point(9, 335);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(574, 145);
+            this.panel7.Size = new System.Drawing.Size(372, 145);
             this.panel7.TabIndex = 19;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(104)))), ((int)(((byte)(103)))));
+            this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(3, 113);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(369, 32);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Update AFK Arguments";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(372, 17);
+            this.label10.Location = new System.Drawing.Point(175, 13);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(189, 16);
             this.label10.TabIndex = 22;
@@ -446,7 +469,7 @@ namespace SUPLauncher_Reborn
             this.txt_gmodAFKargs.Margin = new System.Windows.Forms.Padding(15);
             this.txt_gmodAFKargs.MinimumSize = new System.Drawing.Size(300, 25);
             this.txt_gmodAFKargs.Name = "txt_gmodAFKargs";
-            this.txt_gmodAFKargs.Size = new System.Drawing.Size(543, 26);
+            this.txt_gmodAFKargs.Size = new System.Drawing.Size(341, 26);
             this.txt_gmodAFKargs.TabIndex = 21;
             this.txt_gmodAFKargs.Text = "-64bit -textmode -single_core";
             this.gmodStartupArgs.SetToolTip(this.txt_gmodAFKargs, "These are additional startup arguments for the gmod afk process.");
@@ -493,27 +516,89 @@ namespace SUPLauncher_Reborn
             this.gmodStartupArgs.ToolTipTitle = "Experienced People Only";
             this.gmodStartupArgs.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.gmodStartupArgs_Draw);
             // 
-            // button3
+            // panel9
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(104)))), ((int)(((byte)(103)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(3, 113);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(571, 32);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Update AFK Arguments";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.panel9.Controls.Add(this.button6);
+            this.panel9.Controls.Add(this.button5);
+            this.panel9.Controls.Add(this.label11);
+            this.panel9.Controls.Add(this.panel10);
+            this.panel9.Controls.Add(this.label15);
+            this.panel9.Location = new System.Drawing.Point(430, 335);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(199, 113);
+            this.panel9.TabIndex = 18;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(111, 72);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(74, 25);
+            this.button6.TabIndex = 20;
+            this.button6.Text = "Default";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(17, 72);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(93, 25);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "Choose custom";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            this.label11.Location = new System.Drawing.Point(10, 39);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(140, 16);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Custom sit request sound";
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(3, 113);
+            this.panel10.TabIndex = 16;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(10, 10);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(93, 19);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "SUP Settings";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "wav";
+            this.openFileDialog1.Filter = "WAV File|*.wav;";
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.ClientSize = new System.Drawing.Size(611, 522);
+            this.ClientSize = new System.Drawing.Size(646, 503);
+            this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
@@ -532,6 +617,8 @@ namespace SUPLauncher_Reborn
             this.panel5.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -574,5 +661,12 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolTip gmodStartupArgs;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

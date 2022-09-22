@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -218,6 +219,30 @@ namespace SUPLauncher_Reborn
             Properties.Settings.Default.moreAFKargs = txt_gmodAFKargs.Text;
             Properties.Settings.Default.Save();
             Interaction.MessageBox("These arguments will be ran next time, when the AFK process starts. If these arguments are invalid it may stop it from start. So be careful!");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            if (File.Exists(openFileDialog1.FileName))
+            {
+                Directory.CreateDirectory(Steam.getGarrysModPath() + "/garrysmod/addons/SUPLauncher/sound/vo/ravenholm/");
+                if (File.Exists(Steam.getGarrysModPath() + "/garrysmod/addons/SUPLauncher/sound/vo/ravenholm/monk_coverme05.wav"))
+                {
+                    File.Delete(Steam.getGarrysModPath() + "/garrysmod/addons/SUPLauncher/sound/vo/ravenholm/monk_coverme05.wav");
+                }
+                File.Copy(openFileDialog1.FileName, Steam.getGarrysModPath() + "/garrysmod/addons/SUPLauncher/sound/vo/ravenholm/monk_coverme05.wav");
+                Interaction.MessageBox("The sit request sound will now be changed. Please restart your garry's mod.");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(Steam.getGarrysModPath() + "/garrysmod/addons/SUPLauncher/sound/vo/ravenholm/monk_coverme05.wav"))
+            {
+                File.Delete(Steam.getGarrysModPath() + "/garrysmod/addons/SUPLauncher/sound/vo/ravenholm/monk_coverme05.wav");
+                Interaction.MessageBox("The default sit request sound will now be applied. Please restart your garry's mod.");
+            }
         }
     }
 }
