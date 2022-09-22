@@ -57,7 +57,7 @@ namespace SUPLauncher_Reborn
             public string Money;
             public string Karma;
             public string OrgName;
-            public int OrgID;
+            public string OrgID;
             public string OrgColor;
         }
 
