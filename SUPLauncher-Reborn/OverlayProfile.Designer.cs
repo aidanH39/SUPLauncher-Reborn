@@ -40,7 +40,6 @@ namespace SUPLauncher_Reborn
             this.lbl_previousOffenses = new System.Windows.Forms.Label();
             this.lbl_playTime = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
-            this.img_avatar = new OvalPictureBox();
             this.btn_expand = new System.Windows.Forms.Button();
             this.tmr_giveBackFocus = new System.Windows.Forms.Timer(this.components);
             this.pnl_bans = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,17 +50,21 @@ namespace SUPLauncher_Reborn
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.img_avatar = new OvalPictureBox();
+            this.txt_steamid = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnl_profile.SuspendLayout();
             this.pnl_topBar.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.pnl_bans.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_profile
             // 
             this.pnl_profile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.pnl_profile.Controls.Add(this.txt_steamid);
             this.pnl_profile.Controls.Add(this.pnl_topBar);
             this.pnl_profile.Controls.Add(this.panel2);
             this.pnl_profile.Controls.Add(this.panel1);
@@ -69,6 +72,7 @@ namespace SUPLauncher_Reborn
             this.pnl_profile.Controls.Add(this.lbl_playTime);
             this.pnl_profile.Controls.Add(this.lbl_name);
             this.pnl_profile.Controls.Add(this.img_avatar);
+            this.pnl_profile.Controls.Add(this.label2);
             this.pnl_profile.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnl_profile.Location = new System.Drawing.Point(0, 0);
             this.pnl_profile.MaximumSize = new System.Drawing.Size(231, 207);
@@ -123,7 +127,7 @@ namespace SUPLauncher_Reborn
             // 
             this.panel1.Controls.Add(this.lbl_firstJoin);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(15, 101);
+            this.panel1.Location = new System.Drawing.Point(15, 97);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(210, 51);
             this.panel1.TabIndex = 6;
@@ -160,7 +164,7 @@ namespace SUPLauncher_Reborn
             // 
             this.lbl_previousOffenses.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_previousOffenses.ForeColor = System.Drawing.Color.White;
-            this.lbl_previousOffenses.Location = new System.Drawing.Point(89, 75);
+            this.lbl_previousOffenses.Location = new System.Drawing.Point(89, 71);
             this.lbl_previousOffenses.Name = "lbl_previousOffenses";
             this.lbl_previousOffenses.Size = new System.Drawing.Size(132, 23);
             this.lbl_previousOffenses.TabIndex = 3;
@@ -170,7 +174,7 @@ namespace SUPLauncher_Reborn
             // 
             this.lbl_playTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_playTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
-            this.lbl_playTime.Location = new System.Drawing.Point(90, 54);
+            this.lbl_playTime.Location = new System.Drawing.Point(90, 50);
             this.lbl_playTime.Name = "lbl_playTime";
             this.lbl_playTime.Size = new System.Drawing.Size(111, 23);
             this.lbl_playTime.TabIndex = 2;
@@ -180,21 +184,11 @@ namespace SUPLauncher_Reborn
             // 
             this.lbl_name.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_name.ForeColor = System.Drawing.Color.White;
-            this.lbl_name.Location = new System.Drawing.Point(89, 31);
+            this.lbl_name.Location = new System.Drawing.Point(89, 27);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(112, 23);
             this.lbl_name.TabIndex = 1;
             this.lbl_name.Text = "Best of all";
-            // 
-            // img_avatar
-            // 
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(14, 26);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(64, 64);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
             // 
             // btn_expand
             // 
@@ -312,6 +306,38 @@ namespace SUPLauncher_Reborn
             this.label10.Text = "Unban Reason";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // img_avatar
+            // 
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(14, 22);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(64, 64);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            // 
+            // txt_steamid
+            // 
+            this.txt_steamid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txt_steamid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_steamid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_steamid.ForeColor = System.Drawing.Color.White;
+            this.txt_steamid.Location = new System.Drawing.Point(14, 174);
+            this.txt_steamid.Name = "txt_steamid";
+            this.txt_steamid.ReadOnly = true;
+            this.txt_steamid.Size = new System.Drawing.Size(211, 22);
+            this.txt_steamid.TabIndex = 61;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            this.label2.Location = new System.Drawing.Point(12, 154);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 23);
+            this.label2.TabIndex = 62;
+            this.label2.Text = "STEAMID 32";
+            // 
             // OverlayProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,11 +360,12 @@ namespace SUPLauncher_Reborn
             this.TopMost = true;
             this.Load += new System.EventHandler(this.OverlayProfile_Load);
             this.pnl_profile.ResumeLayout(false);
+            this.pnl_profile.PerformLayout();
             this.pnl_topBar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.pnl_bans.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -366,5 +393,7 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel pnl_topBar;
         private System.Windows.Forms.Button btn_close;
+        private System.Windows.Forms.TextBox txt_steamid;
+        private System.Windows.Forms.Label label2;
     }
 }

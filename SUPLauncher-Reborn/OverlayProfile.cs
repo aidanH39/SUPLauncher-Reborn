@@ -86,7 +86,7 @@ namespace SUPLauncher_Reborn
             DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             dateTime = dateTime.AddSeconds(Double.Parse(profile.Badmin.FirstJoin)).ToLocalTime();
             lbl_firstJoin.Text = dateTime.ToString("MM/dd/yyyy h:mm tt");
-            
+            txt_steamid.Text = profile.SteamID32;
 
             TimeSpan time = TimeSpan.FromSeconds(playtime);
             lbl_playTime.Text = SuperiorServers.PlaytimeFormat(playtime);
