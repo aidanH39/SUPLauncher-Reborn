@@ -561,11 +561,11 @@ namespace SUPLauncher_Reborn
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
-            this.label11.Location = new System.Drawing.Point(10, 39);
+            this.label11.Location = new System.Drawing.Point(10, 49);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(140, 16);
+            this.label11.Size = new System.Drawing.Size(180, 16);
             this.label11.TabIndex = 17;
-            this.label11.Text = "Custom sit request sound";
+            this.label11.Text = "Custom sit request sound (.WAV)";
             // 
             // panel10
             // 

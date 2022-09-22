@@ -53,7 +53,6 @@ namespace SUPLauncher_Reborn
             this.txt_lookup = new System.Windows.Forms.TextBox();
             this.lbl_server = new System.Windows.Forms.Label();
             this.lbl_playerName = new System.Windows.Forms.Label();
-            this.img_avatar = new OvalPictureBox();
             this.lbl_version = new System.Windows.Forms.Label();
             this.pnl_servers = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_progress = new System.Windows.Forms.Label();
@@ -62,6 +61,7 @@ namespace SUPLauncher_Reborn
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.btn_marketplace = new System.Windows.Forms.Button();
             this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
+            this.img_avatar = new OvalPictureBox();
             this.pnl_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -85,9 +85,6 @@ namespace SUPLauncher_Reborn
             this.pnl_topBar.Name = "pnl_topBar";
             this.pnl_topBar.Size = new System.Drawing.Size(580, 35);
             this.pnl_topBar.TabIndex = 0;
-            this.pnl_topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
-            this.pnl_topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
-            this.pnl_topBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
             // 
             // panel2
             // 
@@ -191,6 +188,7 @@ namespace SUPLauncher_Reborn
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(13, 458);
@@ -257,7 +255,7 @@ namespace SUPLauncher_Reborn
             // 
             // btn_settings
             // 
-            this.btn_settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_settings.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_settings.Image = global::SUPLauncher_Reborn.Properties.Resources.PngItem_64059891;
             this.btn_settings.Location = new System.Drawing.Point(12, 533);
             this.btn_settings.Name = "btn_settings";
@@ -323,7 +321,6 @@ namespace SUPLauncher_Reborn
             // 
             // lbl_server
             // 
-            this.lbl_server.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_server.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_server.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_server.ForeColor = System.Drawing.Color.Gainsboro;
@@ -336,7 +333,6 @@ namespace SUPLauncher_Reborn
             // 
             // lbl_playerName
             // 
-            this.lbl_playerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_playerName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_playerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_playerName.ForeColor = System.Drawing.Color.White;
@@ -347,20 +343,9 @@ namespace SUPLauncher_Reborn
             this.lbl_playerName.Text = "PLAYER_NAME";
             this.lbl_playerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // img_avatar
-            // 
-            this.img_avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(59, 6);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(128, 128);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
-            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
-            // 
             // lbl_version
             // 
+            this.lbl_version.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_version.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_version.ForeColor = System.Drawing.Color.DarkGray;
             this.lbl_version.Location = new System.Drawing.Point(0, 548);
@@ -444,6 +429,17 @@ namespace SUPLauncher_Reborn
             this.cProgressBar1.Value = 0;
             this.cProgressBar1.Visible = false;
             // 
+            // img_avatar
+            // 
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(59, 6);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(128, 128);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            this.img_avatar.Click += new System.EventHandler(this.img_avatar_Click);
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,7 +455,6 @@ namespace SUPLauncher_Reborn
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(580, 615);
             this.MinimumSize = new System.Drawing.Size(580, 615);
             this.Name = "frm_main";
             this.Opacity = 0D;

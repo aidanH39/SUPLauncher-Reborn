@@ -112,20 +112,28 @@ namespace SUPLauncher_Reborn
         /// <returns></returns>
         public static Profile getProfile(string id)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://superiorservers.co/api/profile/" + id);
-            request.UserAgent = "SUPLauncher";
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            string json;
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            try
             {
-                json = reader.ReadToEnd();
-            }
-            Profile profile = JsonConvert.DeserializeObject<Profile>(json);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://superiorservers.co/api/profile/" + id);
+                request.UserAgent = "SUPLauncher";
+                request.AutomaticDecompression = DecompressionMethods.GZip;
+                string json;
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    json = reader.ReadToEnd();
+                }
+                Profile profile = JsonConvert.DeserializeObject<Profile>(json);
 
-            //MessageBox.Show(jsonP.response.Servers);
-            return profile;
+                //MessageBox.Show(jsonP.response.Servers);
+                return profile;
+            } catch (Exception e)
+            {
+                Interaction.MessageBox("A error occured when attempting to fetch profile data from API.", "API Error");
+                Logger.Log(Logger.LogType.FATAL, e.Message + ": " + e.StackTrace);
+            }
+            return null;
         }
 
         /// <summary>
@@ -135,9 +143,29 @@ namespace SUPLauncher_Reborn
         /// <returns>true if player is staff member, else false.</returns>
         public static bool IsStaff(Profile profile)
         {
-            //string drp = (string)profile.GetType().GetProperty("Badmin").GetValue("CWRP");
-            //MessageBox.Show(drp);
-            return true;
+            bool darkrp = profile.Badmin.Ranks.DarkRP.ToLower() == "moderator" || profile.Badmin.Ranks.DarkRP.ToLower() == "admin" || profile.Badmin.Ranks.DarkRP.ToLower() == "double admin" || profile.Badmin.Ranks.DarkRP.ToLower() == "super admin" || profile.Badmin.Ranks.DarkRP.ToLower() == "council" || profile.Badmin.Ranks.DarkRP.ToLower() == "root" || profile.Badmin.Ranks.DarkRP.ToLower() == "sudo root";
+            bool cwrp = profile.Badmin.Ranks.CWRP.ToLower() == "moderator" || profile.Badmin.Ranks.CWRP.ToLower() == "admin" || profile.Badmin.Ranks.CWRP.ToLower() == "double admin" || profile.Badmin.Ranks.CWRP.ToLower() == "super admin" || profile.Badmin.Ranks.CWRP.ToLower() == "council" || profile.Badmin.Ranks.CWRP.ToLower() == "root" || profile.Badmin.Ranks.CWRP.ToLower() == "sudo root";
+            bool milrp = profile.Badmin.Ranks.MilRP.ToLower() == "moderator" || profile.Badmin.Ranks.MilRP.ToLower() == "admin" || profile.Badmin.Ranks.MilRP.ToLower() == "double admin" || profile.Badmin.Ranks.MilRP.ToLower() == "super admin" || profile.Badmin.Ranks.MilRP.ToLower() == "council" || profile.Badmin.Ranks.MilRP.ToLower() == "root" || profile.Badmin.Ranks.MilRP.ToLower() == "sudo root";
+            return darkrp || cwrp || milrp;
+        }
+
+        /// <summary>
+        ///  Checks if the person is a staff member on one of the servers on superiorservers.
+        /// </summary>
+        /// <param name="profile">Profile to check.</param>
+        /// <param name="server">Server to check.</param>
+        /// <returns>true if player is staff member, else false.</returns>
+        public static bool IsStaffOnServer(Profile profile, string server)
+        {
+            if (server.ToLower() == "darkrp") {
+                return profile.Badmin.Ranks.DarkRP.ToLower() == "moderator" || profile.Badmin.Ranks.DarkRP.ToLower() == "admin" || profile.Badmin.Ranks.DarkRP.ToLower() == "double admin" || profile.Badmin.Ranks.DarkRP.ToLower() == "super admin" || profile.Badmin.Ranks.DarkRP.ToLower() == "council" || profile.Badmin.Ranks.DarkRP.ToLower() == "root" || profile.Badmin.Ranks.DarkRP.ToLower() == "sudo root";
+            } else if (server.ToLower() == "cwrp") {
+                return profile.Badmin.Ranks.CWRP.ToLower() == "moderator" || profile.Badmin.Ranks.CWRP.ToLower() == "admin" || profile.Badmin.Ranks.CWRP.ToLower() == "double admin" || profile.Badmin.Ranks.CWRP.ToLower() == "super admin" || profile.Badmin.Ranks.CWRP.ToLower() == "council" || profile.Badmin.Ranks.CWRP.ToLower() == "root" || profile.Badmin.Ranks.CWRP.ToLower() == "sudo root"; ;
+            } else if (server.ToLower() == "milrp") {
+                return profile.Badmin.Ranks.MilRP.ToLower() == "moderator" || profile.Badmin.Ranks.MilRP.ToLower() == "admin" || profile.Badmin.Ranks.MilRP.ToLower() == "double admin" || profile.Badmin.Ranks.MilRP.ToLower() == "super admin" || profile.Badmin.Ranks.MilRP.ToLower() == "council" || profile.Badmin.Ranks.MilRP.ToLower() == "root" || profile.Badmin.Ranks.MilRP.ToLower() == "sudo root";
+            } else {
+                return false;
+            }
         }
 
         /// <summary>
