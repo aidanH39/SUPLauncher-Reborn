@@ -44,6 +44,7 @@ namespace SUPLauncher_Reborn
         public Overlay()
         {
             InitializeComponent();
+            new ControlResize(pnl_, null);
         }
 
         private void Overlay_Load(object sender, EventArgs e)

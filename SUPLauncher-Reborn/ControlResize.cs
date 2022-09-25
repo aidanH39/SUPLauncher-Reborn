@@ -10,9 +10,9 @@ namespace SUPLauncher_Reborn
 {
     class ControlResize
     {
-        private UserControl form;
+        private Control form;
         Panel topControlPanel;
-        public ControlResize(UserControl form, Panel topControlPanel = null)
+        public ControlResize(Control form, Panel topControlPanel = null)
         {
             this.topControlPanel = topControlPanel;
 
@@ -41,10 +41,10 @@ namespace SUPLauncher_Reborn
             leftPanel.Dock = DockStyle.Left;
             rightPanel.Dock = DockStyle.Right;
 
-            topPanel.Height = 2;
-            bottomPanel.Height = 2;
-            leftPanel.Width = 2;
-            rightPanel.Width = 2;
+            topPanel.Height = 4;
+            bottomPanel.Height = 4;
+            leftPanel.Width = 4;
+            rightPanel.Width = 4;
 
             topPanel.BackColor = Color.FromArgb(25, 25, 25);
             bottomPanel.BackColor = Color.FromArgb(25, 25, 25);
