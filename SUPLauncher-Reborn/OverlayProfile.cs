@@ -14,9 +14,20 @@ namespace SUPLauncher_Reborn
 {
     public partial class OverlayProfile : Form
     {
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
         public OverlayProfile()
         {
             InitializeComponent();
+            new FormResize(this, pnl_topBar);
             Opacity = 0;      //first the opacity is 0
 
             t1.Interval = 10;  //we'll increase the opacity every 10ms
@@ -66,13 +77,17 @@ namespace SUPLauncher_Reborn
 
         public void toggleExpand()
         {
-            if (this.Width < 1129)
+            if (pnl_bans.Width < 850)
             {
-                this.Size = new Size(1130, this.Height);
+                pnl_bans.Size = new Size(850, this.Height);
+                this.Size = new Size(this.Width + 850, this.Height);
+                this.MinimumSize = new Size(this.MinimumSize.Width + 850, this.MinimumSize.Height);
             }
             else
             {
-                this.Size = new Size(256, this.Height);
+                this.MinimumSize = new Size(265, this.MinimumSize.Height);
+                pnl_bans.Size = new Size(0, this.Height);
+                this.Size = new Size(this.Width - 850, this.Height);
             }
             WindowHelper.SetForegroundWindow(Steam.getGMOD());
         }
@@ -108,71 +123,6 @@ namespace SUPLauncher_Reborn
             loadProfile(SuperiorServers.getProfile(id));
         }
 
-        // Window Drag
-
-        bool isTopPanelDragged = false;
-        Size _normalWindowSize;
-        Point _normalWindowLocation = Point.Empty;
-        Point offset;
-        private void TopBar_MouseUp(object sender, MouseEventArgs e)
-        {
-            isTopPanelDragged = false;
-            if (this.Location.Y <= 5)
-            {
-
-                _normalWindowSize = this.Size;
-                _normalWindowLocation = this.Location;
-
-                Rectangle rect = Screen.PrimaryScreen.WorkingArea;
-                this.Location = new Point(0, 0);
-                this.Size = new System.Drawing.Size(rect.Width, rect.Height);
-            }
-            Properties.Settings.Default.overlayProfilePos = this.Location;
-            Properties.Settings.Default.Save();
-        }
-
-        private void TopBar_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isTopPanelDragged)
-            {
-                Point newPoint = pnl_topBar.PointToScreen(new Point(e.X, e.Y));
-                newPoint.Offset(offset);
-                this.Location = newPoint;
-
-                if (this.Location.X > 2 || this.Location.Y > 2)
-                {
-                    if (this.WindowState == FormWindowState.Maximized)
-                    {
-                        this.Location = _normalWindowLocation;
-                        this.Size = _normalWindowSize;
-                    }
-                }
-            }
-        }
-
-        private void TopBar_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                isTopPanelDragged = true;
-                Point pointStartPosition = this.PointToScreen(new Point(e.X, e.Y));
-                offset = new Point
-                {
-                    X = this.Location.X - pointStartPosition.X,
-                    Y = this.Location.Y - pointStartPosition.Y
-                };
-            }
-            else
-            {
-                isTopPanelDragged = false;
-            }
-            if (e.Clicks == 2)
-            {
-                isTopPanelDragged = false;
-
-            }
-        }
-
         private void OverlayProfile_Load(object sender, EventArgs e)
         {
             
@@ -192,6 +142,12 @@ namespace SUPLauncher_Reborn
             t1.Interval = 10;  //we'll increase the opacity every 10ms
             t1.Tick += new EventHandler(fadeOut);  //this calls the function that changes opacity 
             t1.Start();
+        }
+
+        private void OverlayProfile_LocationChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.overlayProfilePos = this.Location;
+            Properties.Settings.Default.Save();
         }
     }
 }

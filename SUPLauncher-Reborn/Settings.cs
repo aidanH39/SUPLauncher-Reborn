@@ -23,6 +23,7 @@ namespace SUPLauncher_Reborn
         public Settings()
         {
             InitializeComponent();
+            new FormResize(this, pnl_topBar);
         }
 
         private void Settings_Load(object sender, EventArgs e)

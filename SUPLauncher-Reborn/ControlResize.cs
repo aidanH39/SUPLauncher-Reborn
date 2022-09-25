@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace SUPLauncher_Reborn
 {
-    class FormResize
+    class ControlResize
     {
-        private Form form;
+        private UserControl form;
         Panel topControlPanel;
-        public FormResize (Form form, Panel topControlPanel = null)
+        public ControlResize(UserControl form, Panel topControlPanel = null)
         {
             this.topControlPanel = topControlPanel;
 
@@ -108,7 +108,7 @@ namespace SUPLauncher_Reborn
             e.DrawBorder();
             e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(47, 129, 255)), new Rectangle(0, 0, 3, e.Bounds.Height));
             e.DrawText();
-            
+
         }
 
         //**********************************************************************
@@ -186,16 +186,6 @@ namespace SUPLauncher_Reborn
                 Point newPoint = topControlPanel.PointToScreen(new Point(e.X, e.Y));
                 newPoint.Offset(offset);
                 form.Location = newPoint;
-
-                if (form.Location.X > 2 || form.Location.Y > 2)
-                {
-                    if (form.WindowState == FormWindowState.Maximized)
-                    {
-                        form.Location = _normalWindowLocation;
-                        form.Size = _normalWindowSize;
-                        isWindowMaximized = false;
-                    }
-                }
             }
         }
 
@@ -257,7 +247,7 @@ namespace SUPLauncher_Reborn
                         form.Width = form.Width - e.X;
                         if (form.Width != width)
                             form.Location = new Point(form.Location.X + e.X, form.Location.Y);
-                        
+
                     }
                 }
             }

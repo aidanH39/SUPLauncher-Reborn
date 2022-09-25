@@ -67,66 +67,14 @@ namespace SUPLauncher_Reborn
             this.Focus();
 
 
-            var client = new WebClient();
-            client.Headers.Add("user-agent", "SUPLauncher");
-            byte[] avatardata = client.DownloadData(new Uri("https://superiorservers.co/api/avatar/" + Program.steamid));
-            using (var ms = new MemoryStream(avatardata))
-            {
-                Logger.Log(LogType.INFO, "Got avatar of '" + Program.steamid + "'");
-                img_avatar.Image = Image.FromStream(ms);
-                client.Dispose();
-                ms.Close();
-            }
+
+
 
             Profile profile = SuperiorServers.getProfile(Program.steamid.ToString()); // Get SUP profile of current user.
-            try
-            {
-                if (profile.Badmin.Name == "Unknown")
-                {
-                    MessageBox.Show("Invalid SteamID");
-                    return;
-                }
-                lbl_player_name.Text = profile.Badmin.Name;
-                lbl_steamid.Text = profile.SteamID32;
-                decimal playtime = decimal.Parse(profile.Badmin.PlayTime);
-                lbl_playtime.Text = Math.Floor(playtime / 60 / 60) + " hours total playtime";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.Log(LogType.ERROR, "Overlay.cs | Failed to get player's profile. " + ex.Message + "\n" + ex.StackTrace);
-            }
+            overlay_ProfileWidget1.loadProfile(profile);
 
-            // Show sit count if player is staff.
-            if (Properties.Settings.Default.supLogin.Length > 0 && SuperiorServers.IsStaff(profile))
-            {
-                try
-                {
-                    HttpWebRequest request = WebRequest.CreateHttp("https://superiorservers.co/api/profile/sits/" + Program.steamid);
-                    request.UserAgent = "Browser";
-                    request.CookieContainer = new CookieContainer();
-                    request.CookieContainer.Add(new Cookie("forum_login_key", Properties.Settings.Default.supLogin) { Domain = "superiorservers.co" });
-                    request.CookieContainer.Add(new Cookie("forum_device_key", Properties.Settings.Default.deviceKey) { Domain = "superiorservers.co" });
-                    request.CookieContainer.Add(new Cookie("forum_member_id", Properties.Settings.Default.supuserId) { Domain = "superiorservers.co" });
-                    WebResponse response = null;
-                    response = request.GetResponse(); // Get Response from webrequest
-                    StreamReader sr = new StreamReader(response.GetResponseStream()); // Create stream to access web data
-                    pnl_staffSits.Visible = true;
-                    var result = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(sr.ReadToEnd());
-                    JArray sitCounts = (JArray)result.response;
-                    foreach (JObject count in sitCounts)
-                    {
-                        SitCount panel = new SitCount((string)count.GetValue("label"), (string)count.GetValue("count"));
-                        flowLayoutPanel1.Controls.Add(panel);
-                    }
-                    //lbl_sits_total.Text = result.response;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Logger.Log(LogType.ERROR, "Overlay.cs | Failed to get player sit count. " + ex.Message + "\n" + ex.StackTrace);
-                }
-            }
+            overlay_sitWidget1.loadSitCount(profile);
+
             chk_profileOverlay.Checked = Properties.Settings.Default.profileOverlayEnabled;
             Notification n = new Notification("OVERLAY", "Overlay has been loaded (" + ((ModifierKeys)Properties.Settings.Default.overlayModiferKey).ToString() + " + " + ((Keys)Properties.Settings.Default.overlayKey).ToString() + ")");
             n.Show();
@@ -313,6 +261,12 @@ namespace SUPLauncher_Reborn
                     WindowHelper.SetForegroundWindow(Steam.getGMOD());
                 }
             }
+        }
+
+        private void btn_browser_Click(object sender, EventArgs e)
+        {
+            InGameBrowser form = new InGameBrowser();
+            form.Show();
         }
     }
 }

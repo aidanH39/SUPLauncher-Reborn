@@ -51,29 +51,20 @@ namespace SUPLauncher_Reborn
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_dupeMang = new System.Windows.Forms.Button();
+            this.btn_browser = new System.Windows.Forms.Button();
             this.img_heading = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lbl_playtime = new System.Windows.Forms.Label();
-            this.lbl_steamid = new System.Windows.Forms.Label();
-            this.lbl_player_name = new System.Windows.Forms.Label();
-            this.img_avatar = new OvalPictureBox();
-            this.pnl_staffSits = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.overlay_sitWidget1 = new SUPLauncher_Reborn.Overlay_sitWidget();
+            this.overlay_ProfileWidget1 = new SUPLauncher_Reborn.Overlay_ProfileWidget();
             this.pnl_.SuspendLayout();
             this.pnl_staffTools.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_heading)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
-            this.pnl_staffSits.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_
             // 
             this.pnl_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.pnl_.Controls.Add(this.btn_browser);
             this.pnl_.Controls.Add(this.pnl_staffTools);
             this.pnl_.Controls.Add(this.btn_milrp);
             this.pnl_.Controls.Add(this.panel6);
@@ -101,7 +92,7 @@ namespace SUPLauncher_Reborn
             this.pnl_staffTools.Controls.Add(this.label2);
             this.pnl_staffTools.Controls.Add(this.panel10);
             this.pnl_staffTools.Controls.Add(this.chk_profileOverlay);
-            this.pnl_staffTools.Location = new System.Drawing.Point(3, 628);
+            this.pnl_staffTools.Location = new System.Drawing.Point(3, 681);
             this.pnl_staffTools.Name = "pnl_staffTools";
             this.pnl_staffTools.Size = new System.Drawing.Size(321, 119);
             this.pnl_staffTools.TabIndex = 61;
@@ -166,7 +157,7 @@ namespace SUPLauncher_Reborn
             this.btn_milrp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_milrp.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_milrp.ForeColor = System.Drawing.Color.White;
-            this.btn_milrp.Location = new System.Drawing.Point(13, 442);
+            this.btn_milrp.Location = new System.Drawing.Point(13, 498);
             this.btn_milrp.Name = "btn_milrp";
             this.btn_milrp.Size = new System.Drawing.Size(300, 31);
             this.btn_milrp.TabIndex = 59;
@@ -190,7 +181,7 @@ namespace SUPLauncher_Reborn
             this.btn_cwrp2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cwrp2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cwrp2.ForeColor = System.Drawing.Color.White;
-            this.btn_cwrp2.Location = new System.Drawing.Point(13, 405);
+            this.btn_cwrp2.Location = new System.Drawing.Point(13, 461);
             this.btn_cwrp2.Name = "btn_cwrp2";
             this.btn_cwrp2.Size = new System.Drawing.Size(300, 31);
             this.btn_cwrp2.TabIndex = 12;
@@ -206,7 +197,7 @@ namespace SUPLauncher_Reborn
             this.btn_cwrp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cwrp.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cwrp.ForeColor = System.Drawing.Color.White;
-            this.btn_cwrp.Location = new System.Drawing.Point(13, 368);
+            this.btn_cwrp.Location = new System.Drawing.Point(13, 424);
             this.btn_cwrp.Name = "btn_cwrp";
             this.btn_cwrp.Size = new System.Drawing.Size(300, 31);
             this.btn_cwrp.TabIndex = 11;
@@ -222,7 +213,7 @@ namespace SUPLauncher_Reborn
             this.btn_zombies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zombies.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_zombies.ForeColor = System.Drawing.Color.White;
-            this.btn_zombies.Location = new System.Drawing.Point(13, 331);
+            this.btn_zombies.Location = new System.Drawing.Point(13, 387);
             this.btn_zombies.Name = "btn_zombies";
             this.btn_zombies.Size = new System.Drawing.Size(300, 31);
             this.btn_zombies.TabIndex = 10;
@@ -236,7 +227,7 @@ namespace SUPLauncher_Reborn
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-1, 245);
+            this.label1.Location = new System.Drawing.Point(-1, 301);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(319, 23);
             this.label1.TabIndex = 8;
@@ -247,7 +238,7 @@ namespace SUPLauncher_Reborn
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
-            this.panel4.Location = new System.Drawing.Point(62, 271);
+            this.panel4.Location = new System.Drawing.Point(62, 327);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 2);
             this.panel4.TabIndex = 9;
@@ -260,7 +251,7 @@ namespace SUPLauncher_Reborn
             this.btn_danktown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_danktown.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_danktown.ForeColor = System.Drawing.Color.White;
-            this.btn_danktown.Location = new System.Drawing.Point(12, 294);
+            this.btn_danktown.Location = new System.Drawing.Point(12, 350);
             this.btn_danktown.Name = "btn_danktown";
             this.btn_danktown.Size = new System.Drawing.Size(300, 31);
             this.btn_danktown.TabIndex = 7;
@@ -276,7 +267,7 @@ namespace SUPLauncher_Reborn
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.lbl_playerLookup);
             this.panel3.Controls.Add(this.panel1);
-            this.panel3.Location = new System.Drawing.Point(2, 486);
+            this.panel3.Location = new System.Drawing.Point(2, 537);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(322, 136);
             this.panel3.TabIndex = 6;
@@ -361,13 +352,30 @@ namespace SUPLauncher_Reborn
             this.btn_dupeMang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_dupeMang.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_dupeMang.ForeColor = System.Drawing.Color.White;
-            this.btn_dupeMang.Location = new System.Drawing.Point(12, 176);
+            this.btn_dupeMang.Location = new System.Drawing.Point(12, 169);
             this.btn_dupeMang.Name = "btn_dupeMang";
             this.btn_dupeMang.Size = new System.Drawing.Size(300, 48);
             this.btn_dupeMang.TabIndex = 1;
             this.btn_dupeMang.Text = "Dupe Manager";
             this.btn_dupeMang.UseVisualStyleBackColor = false;
             this.btn_dupeMang.Click += new System.EventHandler(this.btn_dupeMang_Click);
+            // 
+            // btn_browser
+            // 
+            this.btn_browser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_browser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btn_browser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.btn_browser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_browser.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_browser.ForeColor = System.Drawing.Color.White;
+            this.btn_browser.Location = new System.Drawing.Point(12, 223);
+            this.btn_browser.Name = "btn_browser";
+            this.btn_browser.Size = new System.Drawing.Size(300, 48);
+            this.btn_browser.TabIndex = 62;
+            this.btn_browser.Text = "In-Game Browser";
+            this.btn_browser.UseVisualStyleBackColor = false;
+            this.btn_browser.Click += new System.EventHandler(this.btn_browser_Click);
             // 
             // img_heading
             // 
@@ -382,109 +390,20 @@ namespace SUPLauncher_Reborn
             this.img_heading.TabIndex = 0;
             this.img_heading.TabStop = false;
             // 
-            // panel2
+            // overlay_sitWidget1
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.lbl_playtime);
-            this.panel2.Controls.Add(this.lbl_steamid);
-            this.panel2.Controls.Add(this.lbl_player_name);
-            this.panel2.Controls.Add(this.img_avatar);
-            this.panel2.Location = new System.Drawing.Point(2, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(403, 173);
-            this.panel2.TabIndex = 2;
+            this.overlay_sitWidget1.Location = new System.Drawing.Point(5, 160);
+            this.overlay_sitWidget1.Name = "overlay_sitWidget1";
+            this.overlay_sitWidget1.Size = new System.Drawing.Size(403, 221);
+            this.overlay_sitWidget1.TabIndex = 61;
             // 
-            // panel5
+            // overlay_ProfileWidget1
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(4, 173);
-            this.panel5.TabIndex = 58;
-            // 
-            // lbl_playtime
-            // 
-            this.lbl_playtime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_playtime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_playtime.ForeColor = System.Drawing.Color.Silver;
-            this.lbl_playtime.Location = new System.Drawing.Point(165, 112);
-            this.lbl_playtime.Name = "lbl_playtime";
-            this.lbl_playtime.Size = new System.Drawing.Size(211, 27);
-            this.lbl_playtime.TabIndex = 3;
-            // 
-            // lbl_steamid
-            // 
-            this.lbl_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_steamid.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_steamid.ForeColor = System.Drawing.Color.Silver;
-            this.lbl_steamid.Location = new System.Drawing.Point(165, 64);
-            this.lbl_steamid.Name = "lbl_steamid";
-            this.lbl_steamid.Size = new System.Drawing.Size(211, 27);
-            this.lbl_steamid.TabIndex = 2;
-            // 
-            // lbl_player_name
-            // 
-            this.lbl_player_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_player_name.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_player_name.ForeColor = System.Drawing.Color.White;
-            this.lbl_player_name.Location = new System.Drawing.Point(165, 37);
-            this.lbl_player_name.Name = "lbl_player_name";
-            this.lbl_player_name.Size = new System.Drawing.Size(211, 27);
-            this.lbl_player_name.TabIndex = 1;
-            // 
-            // img_avatar
-            // 
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(15, 23);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(128, 128);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
-            // 
-            // pnl_staffSits
-            // 
-            this.pnl_staffSits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
-            this.pnl_staffSits.Controls.Add(this.flowLayoutPanel1);
-            this.pnl_staffSits.Controls.Add(this.label3);
-            this.pnl_staffSits.Controls.Add(this.panel8);
-            this.pnl_staffSits.Location = new System.Drawing.Point(2, 179);
-            this.pnl_staffSits.Name = "pnl_staffSits";
-            this.pnl_staffSits.Size = new System.Drawing.Size(403, 220);
-            this.pnl_staffSits.TabIndex = 59;
-            this.pnl_staffSits.Visible = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 34);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(378, 174);
-            this.flowLayoutPanel1.TabIndex = 60;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(11, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 22);
-            this.label3.TabIndex = 59;
-            this.label3.Text = "Sit Count";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(4, 220);
-            this.panel8.TabIndex = 58;
+            this.overlay_ProfileWidget1.Location = new System.Drawing.Point(5, 9);
+            this.overlay_ProfileWidget1.MinimumSize = new System.Drawing.Size(400, 145);
+            this.overlay_ProfileWidget1.Name = "overlay_ProfileWidget1";
+            this.overlay_ProfileWidget1.Size = new System.Drawing.Size(403, 145);
+            this.overlay_ProfileWidget1.TabIndex = 60;
             // 
             // Overlay
             // 
@@ -493,8 +412,8 @@ namespace SUPLauncher_Reborn
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1197, 920);
-            this.Controls.Add(this.pnl_staffSits);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.overlay_sitWidget1);
+            this.Controls.Add(this.overlay_ProfileWidget1);
             this.Controls.Add(this.pnl_);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -515,10 +434,6 @@ namespace SUPLauncher_Reborn
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_heading)).EndInit();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
-            this.pnl_staffSits.ResumeLayout(false);
-            this.pnl_staffSits.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -527,11 +442,6 @@ namespace SUPLauncher_Reborn
 
         private System.Windows.Forms.PictureBox img_heading;
         private System.Windows.Forms.Panel pnl_;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lbl_playtime;
-        private System.Windows.Forms.Label lbl_steamid;
-        private System.Windows.Forms.Label lbl_player_name;
-        private OvalPictureBox img_avatar;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbl_playerLookup;
@@ -546,16 +456,14 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btn_danktown;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btn_milrp;
-        private System.Windows.Forms.Panel pnl_staffSits;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.CheckBox chk_profileOverlay;
         private System.Windows.Forms.Panel pnl_staffTools;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button button1;
+        private Overlay_ProfileWidget overlay_ProfileWidget1;
+        private Overlay_sitWidget overlay_sitWidget1;
+        private System.Windows.Forms.Button btn_browser;
     }
 }

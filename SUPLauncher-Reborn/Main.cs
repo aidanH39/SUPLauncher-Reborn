@@ -21,6 +21,17 @@ namespace SUPLauncher_Reborn
 {
     public partial class frm_main : Form
     {
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
         // Main form window
         public frm_main()
         {

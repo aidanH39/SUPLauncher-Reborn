@@ -18,6 +18,7 @@ namespace SUPLauncher_Reborn
         {
             this.steamid = steamid;
             InitializeComponent();
+            new FormResize(this, pnl_topBar);
             this.cProgressBar1.Value = 25;
             chromiumWebBrowser1.Load("https://superiorservers.co/profile/" + steamid);
             this.Text = steamid + " Lookup";
@@ -52,77 +53,6 @@ namespace SUPLauncher_Reborn
                         return; 
                     }
                 };
-                
-            }
-        }
-
-        private void Profile_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        // Window Drag
-
-        bool isTopPanelDragged = false;
-        Size _normalWindowSize;
-        Point _normalWindowLocation = Point.Empty;
-        Point offset;
-        private void TopBar_MouseUp(object sender, MouseEventArgs e)
-        {
-            isTopPanelDragged = false;
-            if (this.Location.Y <= 5)
-            {
-
-                _normalWindowSize = this.Size;
-                _normalWindowLocation = this.Location;
-
-                Rectangle rect = Screen.PrimaryScreen.WorkingArea;
-                this.Location = new Point(0, 0);
-                this.Size = new System.Drawing.Size(rect.Width, rect.Height);
-
-
-            }
-        }
-
-        private void TopBar_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isTopPanelDragged)
-            {
-                Point newPoint = pnl_topBar.PointToScreen(new Point(e.X, e.Y));
-                newPoint.Offset(offset);
-                this.Location = newPoint;
-
-                if (this.Location.X > 2 || this.Location.Y > 2)
-                {
-                    if (this.WindowState == FormWindowState.Maximized)
-                    {
-                        this.Location = _normalWindowLocation;
-                        this.Size = _normalWindowSize;
-                    }
-                }
-            }
-        }
-
-        private void TopBar_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                isTopPanelDragged = true;
-                Point pointStartPosition = this.PointToScreen(new Point(e.X, e.Y));
-                offset = new Point
-                {
-                    X = this.Location.X - pointStartPosition.X,
-                    Y = this.Location.Y - pointStartPosition.Y
-                };
-            }
-            else
-            {
-                isTopPanelDragged = false;
-            }
-            if (e.Clicks == 2)
-            {
-                isTopPanelDragged = false;
-
             }
         }
 

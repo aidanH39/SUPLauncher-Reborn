@@ -147,6 +147,7 @@
     <Compile Include="APILogin.Designer.cs">
       <DependentUpon>APILogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlResize.cs" />
     <Compile Include="CookieCollector.cs" />
     <Compile Include="CookieVisitor.cs" />
     <Compile Include="CProgressBar.cs">
@@ -197,6 +198,24 @@
     <Compile Include="Interaction.cs" />
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Overlay_ProfileWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Overlay_ProfileWidget.Designer.cs">
+      <DependentUpon>Overlay_ProfileWidget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Overlay_sitWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Overlay_sitWidget.Designer.cs">
+      <DependentUpon>Overlay_sitWidget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InGameBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InGameBrowser.Designer.cs">
+      <DependentUpon>InGameBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="SUPLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +318,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="inputbox.resx">
       <DependentUpon>inputbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Overlay_ProfileWidget.resx">
+      <DependentUpon>Overlay_ProfileWidget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Overlay_sitWidget.resx">
+      <DependentUpon>Overlay_sitWidget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InGameBrowser.resx">
+      <DependentUpon>InGameBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SUPLogin.resx">
       <DependentUpon>SUPLogin.cs</DependentUpon>

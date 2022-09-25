@@ -31,6 +31,8 @@ namespace SUPLauncher_Reborn
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_profile = new System.Windows.Forms.Panel();
+            this.btn_expand = new System.Windows.Forms.Button();
+            this.txt_steamid = new System.Windows.Forms.TextBox();
             this.pnl_topBar = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -40,7 +42,8 @@ namespace SUPLauncher_Reborn
             this.lbl_previousOffenses = new System.Windows.Forms.Label();
             this.lbl_playTime = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
-            this.btn_expand = new System.Windows.Forms.Button();
+            this.img_avatar = new OvalPictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tmr_giveBackFocus = new System.Windows.Forms.Timer(this.components);
             this.pnl_bans = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -50,20 +53,18 @@ namespace SUPLauncher_Reborn
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.img_avatar = new OvalPictureBox();
-            this.txt_steamid = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnl_profile.SuspendLayout();
             this.pnl_topBar.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.pnl_bans.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_profile
             // 
             this.pnl_profile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.pnl_profile.Controls.Add(this.btn_expand);
             this.pnl_profile.Controls.Add(this.txt_steamid);
             this.pnl_profile.Controls.Add(this.pnl_topBar);
             this.pnl_profile.Controls.Add(this.panel2);
@@ -73,12 +74,40 @@ namespace SUPLauncher_Reborn
             this.pnl_profile.Controls.Add(this.lbl_name);
             this.pnl_profile.Controls.Add(this.img_avatar);
             this.pnl_profile.Controls.Add(this.label2);
-            this.pnl_profile.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_profile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_profile.Location = new System.Drawing.Point(0, 0);
-            this.pnl_profile.MaximumSize = new System.Drawing.Size(231, 207);
             this.pnl_profile.Name = "pnl_profile";
-            this.pnl_profile.Size = new System.Drawing.Size(231, 207);
+            this.pnl_profile.Size = new System.Drawing.Size(265, 160);
             this.pnl_profile.TabIndex = 1;
+            // 
+            // btn_expand
+            // 
+            this.btn_expand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(46)))), ((int)(((byte)(44)))));
+            this.btn_expand.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_expand.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_expand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_expand.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_expand.ForeColor = System.Drawing.Color.White;
+            this.btn_expand.Location = new System.Drawing.Point(242, 18);
+            this.btn_expand.Name = "btn_expand";
+            this.btn_expand.Size = new System.Drawing.Size(23, 142);
+            this.btn_expand.TabIndex = 2;
+            this.btn_expand.Text = ">";
+            this.btn_expand.UseVisualStyleBackColor = false;
+            this.btn_expand.Click += new System.EventHandler(this.btn_expand_Click);
+            // 
+            // txt_steamid
+            // 
+            this.txt_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txt_steamid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txt_steamid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_steamid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_steamid.ForeColor = System.Drawing.Color.White;
+            this.txt_steamid.Location = new System.Drawing.Point(14, 334);
+            this.txt_steamid.Name = "txt_steamid";
+            this.txt_steamid.ReadOnly = true;
+            this.txt_steamid.Size = new System.Drawing.Size(211, 22);
+            this.txt_steamid.TabIndex = 61;
             // 
             // pnl_topBar
             // 
@@ -88,11 +117,8 @@ namespace SUPLauncher_Reborn
             this.pnl_topBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_topBar.Location = new System.Drawing.Point(4, 0);
             this.pnl_topBar.Name = "pnl_topBar";
-            this.pnl_topBar.Size = new System.Drawing.Size(227, 18);
+            this.pnl_topBar.Size = new System.Drawing.Size(261, 18);
             this.pnl_topBar.TabIndex = 60;
-            this.pnl_topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
-            this.pnl_topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
-            this.pnl_topBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
             // 
             // btn_close
             // 
@@ -105,7 +131,7 @@ namespace SUPLauncher_Reborn
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(172, 0);
+            this.btn_close.Location = new System.Drawing.Point(203, 0);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(55, 18);
             this.btn_close.TabIndex = 1;
@@ -120,16 +146,17 @@ namespace SUPLauncher_Reborn
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(4, 207);
+            this.panel2.Size = new System.Drawing.Size(4, 160);
             this.panel2.TabIndex = 59;
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.lbl_firstJoin);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(15, 97);
+            this.panel1.Location = new System.Drawing.Point(4, 104);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 51);
+            this.panel1.Size = new System.Drawing.Size(261, 51);
             this.panel1.TabIndex = 6;
             // 
             // lbl_firstJoin
@@ -141,7 +168,7 @@ namespace SUPLauncher_Reborn
             this.lbl_firstJoin.ForeColor = System.Drawing.Color.White;
             this.lbl_firstJoin.Location = new System.Drawing.Point(3, 23);
             this.lbl_firstJoin.Name = "lbl_firstJoin";
-            this.lbl_firstJoin.Size = new System.Drawing.Size(204, 23);
+            this.lbl_firstJoin.Size = new System.Drawing.Size(255, 23);
             this.lbl_firstJoin.TabIndex = 5;
             this.lbl_firstJoin.Text = "12/21/2016";
             this.lbl_firstJoin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -155,7 +182,7 @@ namespace SUPLauncher_Reborn
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(3, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(204, 23);
+            this.label5.Size = new System.Drawing.Size(255, 23);
             this.label5.TabIndex = 4;
             this.label5.Text = "First Join";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -190,21 +217,26 @@ namespace SUPLauncher_Reborn
             this.lbl_name.TabIndex = 1;
             this.lbl_name.Text = "Best of all";
             // 
-            // btn_expand
+            // img_avatar
             // 
-            this.btn_expand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(46)))), ((int)(((byte)(44)))));
-            this.btn_expand.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_expand.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btn_expand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_expand.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_expand.ForeColor = System.Drawing.Color.White;
-            this.btn_expand.Location = new System.Drawing.Point(231, 0);
-            this.btn_expand.Name = "btn_expand";
-            this.btn_expand.Size = new System.Drawing.Size(23, 208);
-            this.btn_expand.TabIndex = 2;
-            this.btn_expand.Text = ">";
-            this.btn_expand.UseVisualStyleBackColor = false;
-            this.btn_expand.Click += new System.EventHandler(this.btn_expand_Click);
+            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
+            this.img_avatar.Location = new System.Drawing.Point(14, 22);
+            this.img_avatar.Name = "img_avatar";
+            this.img_avatar.Size = new System.Drawing.Size(64, 64);
+            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_avatar.TabIndex = 0;
+            this.img_avatar.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            this.label2.Location = new System.Drawing.Point(12, 314);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 23);
+            this.label2.TabIndex = 62;
+            this.label2.Text = "STEAMID 32";
             // 
             // tmr_giveBackFocus
             // 
@@ -215,12 +247,12 @@ namespace SUPLauncher_Reborn
             // 
             this.pnl_bans.BackColor = System.Drawing.Color.Transparent;
             this.pnl_bans.Controls.Add(this.flowLayoutPanel1);
-            this.pnl_bans.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_bans.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_bans.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.pnl_bans.Location = new System.Drawing.Point(254, 0);
+            this.pnl_bans.Location = new System.Drawing.Point(265, 0);
             this.pnl_bans.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_bans.Name = "pnl_bans";
-            this.pnl_bans.Size = new System.Drawing.Size(870, 208);
+            this.pnl_bans.Size = new System.Drawing.Size(0, 160);
             this.pnl_bans.TabIndex = 3;
             this.pnl_bans.WrapContents = false;
             // 
@@ -306,51 +338,18 @@ namespace SUPLauncher_Reborn
             this.label10.Text = "Unban Reason";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // img_avatar
-            // 
-            this.img_avatar.BackColor = System.Drawing.Color.DarkGray;
-            this.img_avatar.Location = new System.Drawing.Point(14, 22);
-            this.img_avatar.Name = "img_avatar";
-            this.img_avatar.Size = new System.Drawing.Size(64, 64);
-            this.img_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_avatar.TabIndex = 0;
-            this.img_avatar.TabStop = false;
-            // 
-            // txt_steamid
-            // 
-            this.txt_steamid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txt_steamid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_steamid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_steamid.ForeColor = System.Drawing.Color.White;
-            this.txt_steamid.Location = new System.Drawing.Point(14, 174);
-            this.txt_steamid.Name = "txt_steamid";
-            this.txt_steamid.ReadOnly = true;
-            this.txt_steamid.Size = new System.Drawing.Size(211, 22);
-            this.txt_steamid.TabIndex = 61;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
-            this.label2.Location = new System.Drawing.Point(12, 154);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 23);
-            this.label2.TabIndex = 62;
-            this.label2.Text = "STEAMID 32";
-            // 
             // OverlayProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SUPLauncher_Reborn.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(257, 208);
-            this.Controls.Add(this.pnl_bans);
-            this.Controls.Add(this.btn_expand);
+            this.ClientSize = new System.Drawing.Size(265, 160);
             this.Controls.Add(this.pnl_profile);
+            this.Controls.Add(this.pnl_bans);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(0, 50);
-            this.MaximumSize = new System.Drawing.Size(1130, 208);
+            this.MinimumSize = new System.Drawing.Size(230, 160);
             this.Name = "OverlayProfile";
             this.Opacity = 0.9D;
             this.ShowIcon = false;
@@ -359,13 +358,14 @@ namespace SUPLauncher_Reborn
             this.Text = "OverlayProfile";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.OverlayProfile_Load);
+            this.LocationChanged += new System.EventHandler(this.OverlayProfile_LocationChanged);
             this.pnl_profile.ResumeLayout(false);
             this.pnl_profile.PerformLayout();
             this.pnl_topBar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.pnl_bans.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.img_avatar)).EndInit();
             this.ResumeLayout(false);
 
         }
