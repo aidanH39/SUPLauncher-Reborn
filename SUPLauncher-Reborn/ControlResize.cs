@@ -16,6 +16,7 @@ namespace SUPLauncher_Reborn
         {
             this.topControlPanel = topControlPanel;
 
+            // Assign events to topPanel
             if (topControlPanel != null)
             {
                 topControlPanel.MouseDown += TopPanel_MouseDown;
@@ -25,6 +26,8 @@ namespace SUPLauncher_Reborn
             }
 
             this.form = form;
+
+            // Create border panels around the control
 
             Panel topPanel = new Panel();
             Panel bottomPanel = new Panel();
@@ -66,6 +69,8 @@ namespace SUPLauncher_Reborn
             toolTip.Draw += toolTip_draw;
             toolTip.OwnerDraw = true;
 
+
+            // Events for the borders.
             topPanel.MouseDown += TopBorderPanel_MouseDown;
             topPanel.MouseMove += TopBorderPanel_MouseMove;
             topPanel.MouseUp += TopBorderPanel_MouseUp;
@@ -91,6 +96,8 @@ namespace SUPLauncher_Reborn
 
         ToolTip toolTip;
 
+
+        
         bool isTopPanelDragged = false;
         bool isLeftPanelDragged = false;
         bool isRightPanelDragged = false;
@@ -98,17 +105,15 @@ namespace SUPLauncher_Reborn
         bool isTopBorderPanelDragged = false;
         bool isWindowMaximized = false;
         Point offset;
-        Size _normalWindowSize;
-        Point _normalWindowLocation = Point.Empty;
 
 
         private void toolTip_draw(object sender, DrawToolTipEventArgs e)
         {
+            // Full background for tooltips please. Also nice little border on left.
             e.DrawBackground();
             e.DrawBorder();
             e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(47, 129, 255)), new Rectangle(0, 0, 3, e.Bounds.Height));
             e.DrawText();
-
         }
 
         //**********************************************************************
@@ -192,19 +197,6 @@ namespace SUPLauncher_Reborn
         private void TopPanel_MouseUp(object sender, MouseEventArgs e)
         {
             isTopPanelDragged = false;
-            if (form.Location.Y <= 5)
-            {
-                if (!isWindowMaximized)
-                {
-                    _normalWindowSize = form.Size;
-                    _normalWindowLocation = form.Location;
-
-                    Rectangle rect = Screen.PrimaryScreen.WorkingArea;
-                    form.Location = new Point(0, 0);
-                    form.Size = new System.Drawing.Size(rect.Width, rect.Height);
-                    isWindowMaximized = true;
-                }
-            }
         }
 
         //**********************************************************************

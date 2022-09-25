@@ -37,10 +37,10 @@ namespace SUPLauncher_Reborn
             this.btn_minimize = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_updateKeybinds = new System.Windows.Forms.Button();
             this.txt_overlayKey = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_SUPlogin = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.chk_discordActivity = new System.Windows.Forms.CheckBox();
             this.chk_autoStartup = new System.Windows.Forms.CheckBox();
@@ -59,7 +59,7 @@ namespace SUPLauncher_Reborn
             this.label7 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_updateAfkArgs = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_gmodAFKargs = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -67,8 +67,8 @@ namespace SUPLauncher_Reborn
             this.panel8 = new System.Windows.Forms.Panel();
             this.gmodStartupArgs = new System.Windows.Forms.ToolTip(this.components);
             this.panel9 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_sitSoundDefault = new System.Windows.Forms.Button();
+            this.btn_sitSoundCustom = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
@@ -95,9 +95,6 @@ namespace SUPLauncher_Reborn
             this.pnl_topBar.Name = "pnl_topBar";
             this.pnl_topBar.Size = new System.Drawing.Size(646, 35);
             this.pnl_topBar.TabIndex = 1;
-            this.pnl_topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
-            this.pnl_topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
-            this.pnl_topBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
             // 
             // panel2
             // 
@@ -179,20 +176,20 @@ namespace SUPLauncher_Reborn
             this.comboBox1.Text = "ALT";
             this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
-            // button1
+            // btn_updateKeybinds
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(104)))), ((int)(((byte)(103)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 247);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(369, 32);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Update Keybinds";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_updateKeybinds.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(104)))), ((int)(((byte)(103)))));
+            this.btn_updateKeybinds.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_updateKeybinds.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.btn_updateKeybinds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_updateKeybinds.ForeColor = System.Drawing.Color.White;
+            this.btn_updateKeybinds.Location = new System.Drawing.Point(3, 247);
+            this.btn_updateKeybinds.Name = "btn_updateKeybinds";
+            this.btn_updateKeybinds.Size = new System.Drawing.Size(369, 32);
+            this.btn_updateKeybinds.TabIndex = 5;
+            this.btn_updateKeybinds.Text = "Update Keybinds";
+            this.btn_updateKeybinds.UseVisualStyleBackColor = false;
+            this.btn_updateKeybinds.Click += new System.EventHandler(this.button1_Click);
             // 
             // txt_overlayKey
             // 
@@ -203,7 +200,6 @@ namespace SUPLauncher_Reborn
             this.txt_overlayKey.TabIndex = 6;
             this.txt_overlayKey.Text = "S";
             this.txt_overlayKey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
-            this.txt_overlayKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label2
             // 
@@ -216,19 +212,19 @@ namespace SUPLauncher_Reborn
             this.label2.TabIndex = 7;
             this.label2.Text = "Overlay hotkey";
             // 
-            // button2
+            // btn_SUPlogin
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(13, 182);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 25);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Login to sup";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_SUPlogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.btn_SUPlogin.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_SUPlogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SUPlogin.ForeColor = System.Drawing.Color.White;
+            this.btn_SUPlogin.Location = new System.Drawing.Point(13, 182);
+            this.btn_SUPlogin.Name = "btn_SUPlogin";
+            this.btn_SUPlogin.Size = new System.Drawing.Size(110, 25);
+            this.btn_SUPlogin.TabIndex = 8;
+            this.btn_SUPlogin.Text = "Login to sup";
+            this.btn_SUPlogin.UseVisualStyleBackColor = false;
+            this.btn_SUPlogin.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -360,7 +356,7 @@ namespace SUPLauncher_Reborn
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btn_updateKeybinds);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.txt_overlayKey);
             this.panel3.Controls.Add(this.comboBox1);
@@ -386,7 +382,7 @@ namespace SUPLauncher_Reborn
             // 
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Controls.Add(this.button2);
+            this.panel5.Controls.Add(this.btn_SUPlogin);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.chk_overlay);
             this.panel5.Controls.Add(this.chk_discordActivity);
@@ -418,7 +414,7 @@ namespace SUPLauncher_Reborn
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.button3);
+            this.panel7.Controls.Add(this.btn_updateAfkArgs);
             this.panel7.Controls.Add(this.label10);
             this.panel7.Controls.Add(this.txt_gmodAFKargs);
             this.panel7.Controls.Add(this.label9);
@@ -429,20 +425,20 @@ namespace SUPLauncher_Reborn
             this.panel7.Size = new System.Drawing.Size(372, 145);
             this.panel7.TabIndex = 19;
             // 
-            // button3
+            // btn_updateAfkArgs
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(104)))), ((int)(((byte)(103)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(3, 113);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(369, 32);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Update AFK Arguments";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_updateAfkArgs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(104)))), ((int)(((byte)(103)))));
+            this.btn_updateAfkArgs.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_updateAfkArgs.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.btn_updateAfkArgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_updateAfkArgs.ForeColor = System.Drawing.Color.White;
+            this.btn_updateAfkArgs.Location = new System.Drawing.Point(3, 113);
+            this.btn_updateAfkArgs.Name = "btn_updateAfkArgs";
+            this.btn_updateAfkArgs.Size = new System.Drawing.Size(369, 32);
+            this.btn_updateAfkArgs.TabIndex = 23;
+            this.btn_updateAfkArgs.Text = "Update AFK Arguments";
+            this.btn_updateAfkArgs.UseVisualStyleBackColor = false;
+            this.btn_updateAfkArgs.Click += new System.EventHandler(this.button3_Click);
             // 
             // label10
             // 
@@ -518,8 +514,8 @@ namespace SUPLauncher_Reborn
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.button6);
-            this.panel9.Controls.Add(this.button5);
+            this.panel9.Controls.Add(this.btn_sitSoundDefault);
+            this.panel9.Controls.Add(this.btn_sitSoundCustom);
             this.panel9.Controls.Add(this.label11);
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Controls.Add(this.label15);
@@ -528,33 +524,33 @@ namespace SUPLauncher_Reborn
             this.panel9.Size = new System.Drawing.Size(199, 113);
             this.panel9.TabIndex = 18;
             // 
-            // button6
+            // btn_sitSoundDefault
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(111, 72);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(74, 25);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "Default";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btn_sitSoundDefault.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.btn_sitSoundDefault.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_sitSoundDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_sitSoundDefault.ForeColor = System.Drawing.Color.White;
+            this.btn_sitSoundDefault.Location = new System.Drawing.Point(111, 72);
+            this.btn_sitSoundDefault.Name = "btn_sitSoundDefault";
+            this.btn_sitSoundDefault.Size = new System.Drawing.Size(74, 25);
+            this.btn_sitSoundDefault.TabIndex = 20;
+            this.btn_sitSoundDefault.Text = "Default";
+            this.btn_sitSoundDefault.UseVisualStyleBackColor = false;
+            this.btn_sitSoundDefault.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button5
+            // btn_sitSoundCustom
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(17, 72);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(93, 25);
-            this.button5.TabIndex = 19;
-            this.button5.Text = "Choose custom";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btn_sitSoundCustom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.btn_sitSoundCustom.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn_sitSoundCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_sitSoundCustom.ForeColor = System.Drawing.Color.White;
+            this.btn_sitSoundCustom.Location = new System.Drawing.Point(17, 72);
+            this.btn_sitSoundCustom.Name = "btn_sitSoundCustom";
+            this.btn_sitSoundCustom.Size = new System.Drawing.Size(93, 25);
+            this.btn_sitSoundCustom.TabIndex = 19;
+            this.btn_sitSoundCustom.Text = "Choose custom";
+            this.btn_sitSoundCustom.UseVisualStyleBackColor = false;
+            this.btn_sitSoundCustom.Click += new System.EventHandler(this.button5_Click);
             // 
             // label11
             // 
@@ -632,10 +628,10 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Button btn_minimize;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_updateKeybinds;
         private System.Windows.Forms.TextBox txt_overlayKey;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_SUPlogin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chk_discordActivity;
         private System.Windows.Forms.CheckBox chk_autoStartup;
@@ -660,10 +656,10 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolTip gmodStartupArgs;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_updateAfkArgs;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_sitSoundDefault;
+        private System.Windows.Forms.Button btn_sitSoundCustom;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label15;

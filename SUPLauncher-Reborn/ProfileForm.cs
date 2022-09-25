@@ -35,7 +35,7 @@ namespace SUPLauncher_Reborn
         {
             if (!args.IsLoading)
             {
-                args.Browser.ExecuteScriptAsync("document.querySelector('nav').remove();");
+                args.Browser.ExecuteScriptAsync("document.querySelector('nav').remove();"); // Remove nav bar from website..
                 this.cProgressBar1.BeginInvoke((MethodInvoker)delegate () { this.cProgressBar1.Value = 100; });
                 Timer t = new Timer();
                 t.Enabled = true;

@@ -13,7 +13,7 @@ namespace SUPLauncher_Reborn
 {
     public partial class Settings : Form
     {
-
+        // Keybinds
         public Keys overlayOpenKey = (Keys)Properties.Settings.Default.overlayKey;
         public ModifierKeys modifierKey = (ModifierKeys)Properties.Settings.Default.overlayModiferKey;
 
@@ -28,6 +28,7 @@ namespace SUPLauncher_Reborn
 
         private void Settings_Load(object sender, EventArgs e)
         {
+            // Loads saved settings.
             KeysConverter kc = new KeysConverter();
             txt_overlayKey.Text = kc.ConvertToString((Keys)Properties.Settings.Default.overlayKey);
             txt_profileOverlayKey.Text = kc.ConvertToString((Keys)Properties.Settings.Default.profileOverlayKey);
@@ -38,11 +39,6 @@ namespace SUPLauncher_Reborn
             chk_autoStartup.Checked = Properties.Settings.Default.AutoStartup;
             chk_discordActivity.Checked = Properties.Settings.Default.discordRPCEnabled;
             chk_overlay.Checked = Properties.Settings.Default.overlayEnabled;
-        }
-
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -57,7 +53,6 @@ namespace SUPLauncher_Reborn
             {
                 if (Properties.Settings.Default.overlayKey != (int)overlayOpenKey || Properties.Settings.Default.overlayModiferKey != (uint)modifierKey)
                 {
-                    MessageBox.Show("Test");
                     Program.overlayHotkeyHook.RegisterKeybind((uint)modifierKey, (int)overlayOpenKey);
                     Properties.Settings.Default.overlayKey = (int)overlayOpenKey;
                     Properties.Settings.Default.overlayModiferKey = (uint)modifierKey;
@@ -67,7 +62,6 @@ namespace SUPLauncher_Reborn
 
                     Properties.Settings.Default.Save();
                 }
-                
 
                 MessageBox.Show("Keybinds changed! Application will now restart!");
                 Application.Restart();
@@ -86,68 +80,6 @@ namespace SUPLauncher_Reborn
                 modifierKey = SUPLauncher_Reborn.ModifierKeys.Alt;
             } else if (comboBox1.Text == "SHIFT") {
                 modifierKey = SUPLauncher_Reborn.ModifierKeys.Shift;
-            }
-        }
-
-        // Window Drag
-
-        bool isTopPanelDragged = false;
-        Size _normalWindowSize;
-        Point _normalWindowLocation = Point.Empty;
-        Point offset;
-        private void TopBar_MouseUp(object sender, MouseEventArgs e)
-        {
-            isTopPanelDragged = false;
-            if (this.Location.Y <= 5)
-            {
-                _normalWindowSize = this.Size;
-                _normalWindowLocation = this.Location;
-
-                Rectangle rect = Screen.PrimaryScreen.WorkingArea;
-                this.Location = new Point(0, 0);
-                this.Size = new System.Drawing.Size(rect.Width, rect.Height);
-            }
-        }
-
-        private void TopBar_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isTopPanelDragged)
-            {
-                Point newPoint = pnl_topBar.PointToScreen(new Point(e.X, e.Y));
-                newPoint.Offset(offset);
-                this.Location = newPoint;
-
-                if (this.Location.X > 2 || this.Location.Y > 2)
-                {
-                    if (this.WindowState == FormWindowState.Maximized)
-                    {
-                        this.Location = _normalWindowLocation;
-                        this.Size = _normalWindowSize;
-                    }
-                }
-            }
-        }
-
-        private void TopBar_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                isTopPanelDragged = true;
-                Point pointStartPosition = this.PointToScreen(new Point(e.X, e.Y));
-                offset = new Point
-                {
-                    X = this.Location.X - pointStartPosition.X,
-                    Y = this.Location.Y - pointStartPosition.Y
-                };
-            }
-            else
-            {
-                isTopPanelDragged = false;
-            }
-            if (e.Clicks == 2)
-            {
-                isTopPanelDragged = false;
-
             }
         }
 

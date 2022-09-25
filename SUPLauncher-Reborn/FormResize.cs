@@ -16,6 +16,7 @@ namespace SUPLauncher_Reborn
         {
             this.topControlPanel = topControlPanel;
 
+            // Assign events to topPanel
             if (topControlPanel != null)
             {
                 topControlPanel.MouseDown += TopPanel_MouseDown;
@@ -26,6 +27,7 @@ namespace SUPLauncher_Reborn
 
             this.form = form;
 
+            // Create borders around the form.
             Panel topPanel = new Panel();
             Panel bottomPanel = new Panel();
             Panel leftPanel = new Panel();
@@ -66,6 +68,7 @@ namespace SUPLauncher_Reborn
             toolTip.Draw += toolTip_draw;
             toolTip.OwnerDraw = true;
 
+            // Assign events to the borders.
             topPanel.MouseDown += TopBorderPanel_MouseDown;
             topPanel.MouseMove += TopBorderPanel_MouseMove;
             topPanel.MouseUp += TopBorderPanel_MouseUp;

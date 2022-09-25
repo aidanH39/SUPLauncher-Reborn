@@ -61,7 +61,6 @@ namespace SUPLauncher_Reborn
             this.chromiumWebBrowser1.Size = new System.Drawing.Size(1073, 510);
             this.chromiumWebBrowser1.TabIndex = 0;
             this.chromiumWebBrowser1.LoadError += new System.EventHandler<CefSharp.LoadErrorEventArgs>(this.chromiumWebBrowser1_LoadError);
-            this.chromiumWebBrowser1.FrameLoadEnd += new System.EventHandler<CefSharp.FrameLoadEndEventArgs>(this.chromiumWebBrowser1_FrameLoadEnd);
             // 
             // pnl_topBar
             // 

@@ -77,7 +77,6 @@ namespace SUPLauncher_Reborn
                     }
                 };
             }
-
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -99,13 +98,11 @@ namespace SUPLauncher_Reborn
             }
         }
 
-        private void chromiumWebBrowser1_FrameLoadEnd(object sender, FrameLoadEndEventArgs e)
-        {
-
-        }
-
         private void chromiumWebBrowser1_LoadError(object sender, LoadErrorEventArgs e)
         {
+
+            // Error documents. cba to do all.
+
             string errorText = "Failed to load website.<br><p style='color: rgb(100,100,100); font-size: 10px;'>" + e.ErrorText + "</p>";
             if (e.ErrorCode == CefErrorCode.NameNotResolved)
             {
