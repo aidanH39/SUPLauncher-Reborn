@@ -44,7 +44,7 @@ namespace SUPLauncher_Reborn
         public Overlay()
         {
             InitializeComponent();
-            new ControlResize(pnl_, null);
+            new ControlResize(pnl_, null, false, false, true, false);
         }
 
         private void Overlay_Load(object sender, EventArgs e)
@@ -94,6 +94,31 @@ namespace SUPLauncher_Reborn
             }
         }
 
+        /// <summary>
+        /// Open a form as a overlay window. Will have top most and can be minimised to the overlay.
+        /// </summary>
+        /// <param name="form">The form to start.</param>
+        public void openOverlayWindow(Form form)
+        {
+            OverlayWindowTab tab = new OverlayWindowTab();
+            tab.form = form;
+            pnl_tabs.Controls.Add(tab);
+            tab.Visible = false;
+            form.Show();
+            form.TopMost = true;
+            form.SizeChanged += delegate
+            {
+                if (form.WindowState == FormWindowState.Minimized)
+                {
+                    tab.Visible = true;
+                    form.Visible = false;
+                } else
+                {
+                    form.Visible = true;
+                    tab.Visible = false;
+                }
+            };
+        }
         protected override void WndProc(ref Message m) // Catch messages from windows.
         {
             // Handle messages...
@@ -147,17 +172,14 @@ namespace SUPLauncher_Reborn
 
         private void btn_dupeMang_Click(object sender, EventArgs e)
         {
-            DupeManager form = new DupeManager();
-            form.TopMost = true;
-            form.Show(this);
+            openOverlayWindow(new DupeManager());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             if (textBox1.Text.Length > 0)
             {
-                ProfileForm form = new ProfileForm(textBox1.Text, true);
-                form.Show();   
+                openOverlayWindow(new ProfileForm(textBox1.Text, true));
             }
         }
 
@@ -188,9 +210,7 @@ namespace SUPLauncher_Reborn
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ProfileForm form = new ProfileForm(Program.steamid.ToString(), true);
-            form.TopMost = true;
-            form.Show(this);
+            this.openOverlayWindow(new ProfileForm(Program.steamid.ToString(), true));
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -200,14 +220,22 @@ namespace SUPLauncher_Reborn
         }
 
         // Steam friend checker
-        private void button1_Click_1(object sender, EventArgs e)
+        private void friendChecker(object sender, EventArgs e)
         {
-            string player1 = Interaction.InputBox("Enter steamid of a player.", "Enter SteamID", true);
-            string player2 = Interaction.InputBox("Enter steamid of the other player. To check if they are friends on steam.", "Enter SteamID", true);
+            string oplayer1 = Interaction.InputBox("Enter steamid of a player.", "Enter SteamID", true);
+            string oplayer2 = Interaction.InputBox("Enter steamid of the other player. To check if they are friends on steam.", "Enter SteamID", true);
+
+            string player1 = oplayer1;
+            string player2 = oplayer2;
+
+            if (player1 == null || player2 == null)
+            {
+                return;
+            }
 
             if (player1.StartsWith("STEAM_"))
             {
-                player1 = Steam.SteamID32To64(player1).ToString();
+                player1 = Steam.SteamID32To64(oplayer1).ToString();
             }
 
             if (player2.StartsWith("STEAM_"))
@@ -232,23 +260,15 @@ namespace SUPLauncher_Reborn
             }
             if (friends)
             {
-                Interaction.MessageBox("These SteamID's are friends on steam!\n\nFRIENDS", "STEAM FRIEND LOOKUP", true);
+                Notification not = new Notification("✔️ STEAM FRIEND LOOKUP", "These player's are friends on steam\n" + oplayer1 + " & " + oplayer2);
+                not.Show();
             } else
             {
-                Interaction.MessageBox("These SteamID's are not friends on steam!\n\nNOT_FRIENDS", "STEAM FRIEND LOOKUP", true);
+                Notification not = new Notification("❌ STEAM FRIEND LOOKUP", "These player's are not friends on steam\n" + oplayer1 + " &\n" + oplayer2);
+                not.Show();
             }
 
 
-        }
-
-        private void Overlay_VisibleChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Overlay_KeyPress(object sender, KeyPressEventArgs e)
-        {
-        
         }
 
         private void Overlay_KeyDown(object sender, KeyEventArgs e)
@@ -266,8 +286,12 @@ namespace SUPLauncher_Reborn
 
         private void btn_browser_Click(object sender, EventArgs e)
         {
-            InGameBrowser form = new InGameBrowser();
-            form.Show();
+            this.openOverlayWindow(new InGameBrowser());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            openOverlayWindow(new NotesWriter());
         }
     }
 }

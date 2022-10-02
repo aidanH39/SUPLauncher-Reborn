@@ -40,7 +40,7 @@ namespace SUPLauncher_Reborn
             this.cProgressBar1 = new SUPLauncher_Reborn.CProgressBar();
             this.lbl_loading = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_toolBar = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_forward = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@ namespace SUPLauncher_Reborn
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).BeginInit();
             this.pnl_loading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnl_toolBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // chromiumWebBrowser1
@@ -190,20 +190,20 @@ namespace SUPLauncher_Reborn
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panel1
+            // pnl_toolBar
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btn_forward);
-            this.panel1.Controls.Add(this.btn_back);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.panel1.Location = new System.Drawing.Point(0, 35);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.panel1.Size = new System.Drawing.Size(1073, 36);
-            this.panel1.TabIndex = 3;
+            this.pnl_toolBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.pnl_toolBar.Controls.Add(this.textBox1);
+            this.pnl_toolBar.Controls.Add(this.button1);
+            this.pnl_toolBar.Controls.Add(this.btn_forward);
+            this.pnl_toolBar.Controls.Add(this.btn_back);
+            this.pnl_toolBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_toolBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.pnl_toolBar.Location = new System.Drawing.Point(0, 35);
+            this.pnl_toolBar.Name = "pnl_toolBar";
+            this.pnl_toolBar.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.pnl_toolBar.Size = new System.Drawing.Size(1073, 36);
+            this.pnl_toolBar.TabIndex = 3;
             // 
             // textBox1
             // 
@@ -268,7 +268,7 @@ namespace SUPLauncher_Reborn
             this.ClientSize = new System.Drawing.Size(1073, 581);
             this.Controls.Add(this.pnl_loading);
             this.Controls.Add(this.chromiumWebBrowser1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnl_toolBar);
             this.Controls.Add(this.pnl_topBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InGameBrowser";
@@ -277,8 +277,8 @@ namespace SUPLauncher_Reborn
             ((System.ComponentModel.ISupportInitialize)(this.img_icon)).EndInit();
             this.pnl_loading.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnl_toolBar.ResumeLayout(false);
+            this.pnl_toolBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -296,7 +296,7 @@ namespace SUPLauncher_Reborn
         private System.Windows.Forms.Label lbl_loading;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnl_toolBar;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_back;

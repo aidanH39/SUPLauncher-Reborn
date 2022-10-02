@@ -33,6 +33,7 @@ namespace SUPLauncher_Reborn
             this.pnl_ = new System.Windows.Forms.Panel();
             this.btn_browser = new System.Windows.Forms.Button();
             this.pnl_staffTools = new System.Windows.Forms.Panel();
+            this.pnl_notes = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -53,6 +54,8 @@ namespace SUPLauncher_Reborn
             this.button2 = new System.Windows.Forms.Button();
             this.btn_dupeMang = new System.Windows.Forms.Button();
             this.img_heading = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnl_tabs = new System.Windows.Forms.FlowLayoutPanel();
             this.overlay_sitWidget1 = new SUPLauncher_Reborn.Overlay_sitWidget();
             this.overlay_ProfileWidget1 = new SUPLauncher_Reborn.Overlay_ProfileWidget();
             this.pnl_.SuspendLayout();
@@ -64,6 +67,7 @@ namespace SUPLauncher_Reborn
             // pnl_
             // 
             this.pnl_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.pnl_.Controls.Add(this.pnl_notes);
             this.pnl_.Controls.Add(this.btn_browser);
             this.pnl_.Controls.Add(this.pnl_staffTools);
             this.pnl_.Controls.Add(this.btn_milrp);
@@ -79,9 +83,9 @@ namespace SUPLauncher_Reborn
             this.pnl_.Controls.Add(this.btn_dupeMang);
             this.pnl_.Controls.Add(this.img_heading);
             this.pnl_.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_.Location = new System.Drawing.Point(872, 0);
+            this.pnl_.Location = new System.Drawing.Point(857, 15);
             this.pnl_.Name = "pnl_";
-            this.pnl_.Size = new System.Drawing.Size(325, 920);
+            this.pnl_.Size = new System.Drawing.Size(325, 890);
             this.pnl_.TabIndex = 1;
             // 
             // btn_browser
@@ -92,7 +96,7 @@ namespace SUPLauncher_Reborn
             this.btn_browser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_browser.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_browser.ForeColor = System.Drawing.Color.White;
-            this.btn_browser.Location = new System.Drawing.Point(12, 223);
+            this.btn_browser.Location = new System.Drawing.Point(12, 204);
             this.btn_browser.Name = "btn_browser";
             this.btn_browser.Size = new System.Drawing.Size(300, 48);
             this.btn_browser.TabIndex = 62;
@@ -108,10 +112,26 @@ namespace SUPLauncher_Reborn
             this.pnl_staffTools.Controls.Add(this.label2);
             this.pnl_staffTools.Controls.Add(this.panel10);
             this.pnl_staffTools.Controls.Add(this.chk_profileOverlay);
-            this.pnl_staffTools.Location = new System.Drawing.Point(8, 681);
+            this.pnl_staffTools.Location = new System.Drawing.Point(8, 696);
             this.pnl_staffTools.Name = "pnl_staffTools";
-            this.pnl_staffTools.Size = new System.Drawing.Size(316, 119);
+            this.pnl_staffTools.Size = new System.Drawing.Size(316, 209);
             this.pnl_staffTools.TabIndex = 61;
+            // 
+            // pnl_notes
+            // 
+            this.pnl_notes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl_notes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnl_notes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.pnl_notes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pnl_notes.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
+            this.pnl_notes.ForeColor = System.Drawing.Color.White;
+            this.pnl_notes.Location = new System.Drawing.Point(12, 258);
+            this.pnl_notes.Name = "pnl_notes";
+            this.pnl_notes.Size = new System.Drawing.Size(300, 48);
+            this.pnl_notes.TabIndex = 63;
+            this.pnl_notes.Text = "Notepad";
+            this.pnl_notes.UseVisualStyleBackColor = false;
+            this.pnl_notes.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
@@ -121,13 +141,13 @@ namespace SUPLauncher_Reborn
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(9, 82);
+            this.button1.Location = new System.Drawing.Point(9, 88);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(295, 27);
             this.button1.TabIndex = 8;
             this.button1.Text = "Steam Friend Checker";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.friendChecker);
             // 
             // label2
             // 
@@ -135,7 +155,7 @@ namespace SUPLauncher_Reborn
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1, 0);
+            this.label2.Location = new System.Drawing.Point(1, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(314, 23);
             this.label2.TabIndex = 61;
@@ -146,7 +166,7 @@ namespace SUPLauncher_Reborn
             // 
             this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
-            this.panel10.Location = new System.Drawing.Point(66, 26);
+            this.panel10.Location = new System.Drawing.Point(66, 32);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(191, 2);
             this.panel10.TabIndex = 62;
@@ -157,7 +177,7 @@ namespace SUPLauncher_Reborn
             this.chk_profileOverlay.AutoSize = true;
             this.chk_profileOverlay.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk_profileOverlay.ForeColor = System.Drawing.Color.White;
-            this.chk_profileOverlay.Location = new System.Drawing.Point(14, 38);
+            this.chk_profileOverlay.Location = new System.Drawing.Point(14, 44);
             this.chk_profileOverlay.Name = "chk_profileOverlay";
             this.chk_profileOverlay.Size = new System.Drawing.Size(164, 23);
             this.chk_profileOverlay.TabIndex = 60;
@@ -173,7 +193,7 @@ namespace SUPLauncher_Reborn
             this.btn_milrp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_milrp.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_milrp.ForeColor = System.Drawing.Color.White;
-            this.btn_milrp.Location = new System.Drawing.Point(13, 498);
+            this.btn_milrp.Location = new System.Drawing.Point(13, 513);
             this.btn_milrp.Name = "btn_milrp";
             this.btn_milrp.Size = new System.Drawing.Size(300, 31);
             this.btn_milrp.TabIndex = 59;
@@ -197,7 +217,7 @@ namespace SUPLauncher_Reborn
             this.btn_cwrp2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cwrp2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cwrp2.ForeColor = System.Drawing.Color.White;
-            this.btn_cwrp2.Location = new System.Drawing.Point(13, 461);
+            this.btn_cwrp2.Location = new System.Drawing.Point(13, 476);
             this.btn_cwrp2.Name = "btn_cwrp2";
             this.btn_cwrp2.Size = new System.Drawing.Size(300, 31);
             this.btn_cwrp2.TabIndex = 12;
@@ -213,7 +233,7 @@ namespace SUPLauncher_Reborn
             this.btn_cwrp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cwrp.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cwrp.ForeColor = System.Drawing.Color.White;
-            this.btn_cwrp.Location = new System.Drawing.Point(13, 424);
+            this.btn_cwrp.Location = new System.Drawing.Point(13, 439);
             this.btn_cwrp.Name = "btn_cwrp";
             this.btn_cwrp.Size = new System.Drawing.Size(300, 31);
             this.btn_cwrp.TabIndex = 11;
@@ -229,7 +249,7 @@ namespace SUPLauncher_Reborn
             this.btn_zombies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_zombies.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_zombies.ForeColor = System.Drawing.Color.White;
-            this.btn_zombies.Location = new System.Drawing.Point(13, 387);
+            this.btn_zombies.Location = new System.Drawing.Point(13, 402);
             this.btn_zombies.Name = "btn_zombies";
             this.btn_zombies.Size = new System.Drawing.Size(300, 31);
             this.btn_zombies.TabIndex = 10;
@@ -243,7 +263,7 @@ namespace SUPLauncher_Reborn
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(8, 301);
+            this.label1.Location = new System.Drawing.Point(8, 316);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(310, 23);
             this.label1.TabIndex = 8;
@@ -254,7 +274,7 @@ namespace SUPLauncher_Reborn
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
-            this.panel4.Location = new System.Drawing.Point(62, 327);
+            this.panel4.Location = new System.Drawing.Point(62, 342);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 2);
             this.panel4.TabIndex = 9;
@@ -267,7 +287,7 @@ namespace SUPLauncher_Reborn
             this.btn_danktown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_danktown.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_danktown.ForeColor = System.Drawing.Color.White;
-            this.btn_danktown.Location = new System.Drawing.Point(12, 350);
+            this.btn_danktown.Location = new System.Drawing.Point(12, 365);
             this.btn_danktown.Name = "btn_danktown";
             this.btn_danktown.Size = new System.Drawing.Size(300, 31);
             this.btn_danktown.TabIndex = 7;
@@ -283,7 +303,7 @@ namespace SUPLauncher_Reborn
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.lbl_playerLookup);
             this.panel3.Controls.Add(this.panel1);
-            this.panel3.Location = new System.Drawing.Point(8, 537);
+            this.panel3.Location = new System.Drawing.Point(8, 552);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(316, 136);
             this.panel3.TabIndex = 6;
@@ -313,9 +333,9 @@ namespace SUPLauncher_Reborn
             this.textBox1.ForeColor = System.Drawing.Color.DimGray;
             this.textBox1.Location = new System.Drawing.Point(13, 59);
             this.textBox1.Margin = new System.Windows.Forms.Padding(15);
-            this.textBox1.MinimumSize = new System.Drawing.Size(300, 25);
+            this.textBox1.MinimumSize = new System.Drawing.Size(2, 25);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(300, 26);
+            this.textBox1.Size = new System.Drawing.Size(294, 26);
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "STEAM_ID";
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
@@ -350,7 +370,7 @@ namespace SUPLauncher_Reborn
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(12, 115);
+            this.button2.Location = new System.Drawing.Point(12, 96);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(300, 48);
             this.button2.TabIndex = 2;
@@ -366,7 +386,7 @@ namespace SUPLauncher_Reborn
             this.btn_dupeMang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_dupeMang.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_dupeMang.ForeColor = System.Drawing.Color.White;
-            this.btn_dupeMang.Location = new System.Drawing.Point(12, 169);
+            this.btn_dupeMang.Location = new System.Drawing.Point(12, 150);
             this.btn_dupeMang.Name = "btn_dupeMang";
             this.btn_dupeMang.Size = new System.Drawing.Size(300, 48);
             this.btn_dupeMang.TabIndex = 1;
@@ -380,12 +400,32 @@ namespace SUPLauncher_Reborn
             | System.Windows.Forms.AnchorStyles.Right)));
             this.img_heading.BackColor = System.Drawing.Color.Transparent;
             this.img_heading.Image = global::SUPLauncher_Reborn.Properties.Resources.site_logo_reduced;
-            this.img_heading.Location = new System.Drawing.Point(3, 12);
+            this.img_heading.Location = new System.Drawing.Point(3, -1);
             this.img_heading.Name = "img_heading";
             this.img_heading.Size = new System.Drawing.Size(322, 92);
             this.img_heading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_heading.TabIndex = 0;
             this.img_heading.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(15, 905);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(842, 0);
+            this.flowLayoutPanel1.TabIndex = 62;
+            // 
+            // pnl_tabs
+            // 
+            this.pnl_tabs.AutoSize = true;
+            this.pnl_tabs.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnl_tabs.Location = new System.Drawing.Point(15, 889);
+            this.pnl_tabs.Name = "pnl_tabs";
+            this.pnl_tabs.Padding = new System.Windows.Forms.Padding(8);
+            this.pnl_tabs.Size = new System.Drawing.Size(842, 16);
+            this.pnl_tabs.TabIndex = 64;
             // 
             // overlay_sitWidget1
             // 
@@ -409,6 +449,8 @@ namespace SUPLauncher_Reborn
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1197, 920);
+            this.Controls.Add(this.pnl_tabs);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.overlay_sitWidget1);
             this.Controls.Add(this.overlay_ProfileWidget1);
             this.Controls.Add(this.pnl_);
@@ -418,13 +460,12 @@ namespace SUPLauncher_Reborn
             this.KeyPreview = true;
             this.Name = "Overlay";
             this.Opacity = 0.95D;
+            this.Padding = new System.Windows.Forms.Padding(15);
             this.ShowInTaskbar = false;
             this.Text = "p";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Overlay_Load);
-            this.VisibleChanged += new System.EventHandler(this.Overlay_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Overlay_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Overlay_KeyPress);
             this.pnl_.ResumeLayout(false);
             this.pnl_staffTools.ResumeLayout(false);
             this.pnl_staffTools.PerformLayout();
@@ -432,6 +473,7 @@ namespace SUPLauncher_Reborn
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img_heading)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -462,5 +504,8 @@ namespace SUPLauncher_Reborn
         private Overlay_ProfileWidget overlay_ProfileWidget1;
         private Overlay_sitWidget overlay_sitWidget1;
         private System.Windows.Forms.Button btn_browser;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel pnl_tabs;
+        private System.Windows.Forms.Button pnl_notes;
     }
 }

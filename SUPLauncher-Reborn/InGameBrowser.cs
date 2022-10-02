@@ -17,6 +17,7 @@ namespace SUPLauncher_Reborn
         public InGameBrowser(bool topMost=true)
         {
             InitializeComponent();
+            chromiumWebBrowser1.TitleChanged += browser_changeTitle;
             new FormResize(this, pnl_topBar);
             this.cProgressBar1.Value = 25;
             chromiumWebBrowser1.Load("https://superiorservers.co/");
@@ -27,6 +28,8 @@ namespace SUPLauncher_Reborn
                 TopMost = true;
                 ShowInTaskbar = false;
             }
+            new ControlResize(pnl_toolBar, null, false, true);
+            
         }
         
         private void loadChange(object sender, LoadingStateChangedEventArgs args)
@@ -55,6 +58,7 @@ namespace SUPLauncher_Reborn
             } else if (!args.IsLoading)
             {
                 this.textBox1.BeginInvoke((MethodInvoker)delegate () { this.textBox1.Text = args.Browser.MainFrame.Url; });
+                
                 //args.Browser.ExecuteScriptAsync("document.querySelector('nav').remove();");
                 this.cProgressBar1.BeginInvoke((MethodInvoker)delegate () { this.cProgressBar1.Value = 100; });
                 Timer t = new Timer();
@@ -77,6 +81,11 @@ namespace SUPLauncher_Reborn
                     }
                 };
             }
+        }
+
+        private void browser_changeTitle(object sender, TitleChangedEventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate () { this.Text = e.Title; });
         }
 
         private void btn_close_Click(object sender, EventArgs e)

@@ -52,11 +52,11 @@ namespace SUPLauncher_Reborn
             // 
             this.lbl_header.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lbl_header.AutoSize = true;
-            this.lbl_header.Font = new System.Drawing.Font("Arial Black", 14F, System.Drawing.FontStyle.Bold);
+            this.lbl_header.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
             this.lbl_header.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.lbl_header.Location = new System.Drawing.Point(103, 19);
+            this.lbl_header.Location = new System.Drawing.Point(106, 18);
             this.lbl_header.Name = "lbl_header";
-            this.lbl_header.Size = new System.Drawing.Size(234, 27);
+            this.lbl_header.Size = new System.Drawing.Size(194, 23);
             this.lbl_header.TabIndex = 1;
             this.lbl_header.Text = "SETTINGS CHANGED";
             // 
@@ -65,18 +65,17 @@ namespace SUPLauncher_Reborn
             this.lbl_info.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info.ForeColor = System.Drawing.Color.White;
-            this.lbl_info.Location = new System.Drawing.Point(104, 46);
+            this.lbl_info.Location = new System.Drawing.Point(106, 46);
             this.lbl_info.Name = "lbl_info";
-            this.lbl_info.Size = new System.Drawing.Size(294, 52);
+            this.lbl_info.Size = new System.Drawing.Size(309, 66);
             this.lbl_info.TabIndex = 2;
             this.lbl_info.Text = "Overlay has been enabled!";
-            this.lbl_info.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(406, 0);
+            this.panel2.Location = new System.Drawing.Point(421, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(4, 121);
             this.panel2.TabIndex = 58;
@@ -86,7 +85,7 @@ namespace SUPLauncher_Reborn
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
-            this.ClientSize = new System.Drawing.Size(410, 121);
+            this.ClientSize = new System.Drawing.Size(425, 121);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lbl_info);
             this.Controls.Add(this.lbl_header);
