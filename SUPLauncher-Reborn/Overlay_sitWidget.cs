@@ -53,6 +53,9 @@ namespace SUPLauncher_Reborn
                     MessageBox.Show(ex.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Logger.Log(LogType.ERROR, "Overlay.cs | Failed to get player sit count. " + ex.Message + "\n" + ex.StackTrace);
                 }
+            } else
+            {
+                this.Dispose();
             }
         }
     }
