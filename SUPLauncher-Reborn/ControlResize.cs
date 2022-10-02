@@ -12,7 +12,7 @@ namespace SUPLauncher_Reborn
     {
         private Control form;
         Panel topControlPanel;
-        public ControlResize(Control form, Panel topControlPanel = null)
+        public ControlResize(Control form, Panel topControlPanel = null, bool topBorder=true, bool bottomBorder = true, bool leftBorder = true, bool rightBorder = true)
         {
             this.topControlPanel = topControlPanel;
 
@@ -27,70 +27,81 @@ namespace SUPLauncher_Reborn
 
             this.form = form;
 
-            // Create border panels around the control
-
-            Panel topPanel = new Panel();
-            Panel bottomPanel = new Panel();
-            Panel leftPanel = new Panel();
-            Panel rightPanel = new Panel();
-
-            topPanel.Cursor = Cursors.SizeNS;
-            bottomPanel.Cursor = Cursors.SizeNS;
-            leftPanel.Cursor = Cursors.SizeWE;
-            rightPanel.Cursor = Cursors.SizeWE;
-
-            topPanel.Dock = DockStyle.Top;
-            bottomPanel.Dock = DockStyle.Bottom;
-            leftPanel.Dock = DockStyle.Left;
-            rightPanel.Dock = DockStyle.Right;
-
-            topPanel.Height = 4;
-            bottomPanel.Height = 4;
-            leftPanel.Width = 4;
-            rightPanel.Width = 4;
-
-            topPanel.BackColor = Color.FromArgb(25, 25, 25);
-            bottomPanel.BackColor = Color.FromArgb(25, 25, 25);
-            leftPanel.BackColor = Color.FromArgb(25, 25, 25);
-            rightPanel.BackColor = Color.FromArgb(25, 25, 25);
-
-            form.Controls.Add(topPanel);
-            form.Controls.Add(bottomPanel);
-            form.Controls.Add(leftPanel);
-            form.Controls.Add(rightPanel);
+            // Tool tips
             toolTip = new ToolTip();
             toolTip.BackColor = Color.FromArgb(45, 45, 45);
             toolTip.ForeColor = Color.White;
-            //toolTip.ToolTipTitle = "";
-            toolTip.SetToolTip(topPanel, "Resize window");
-            toolTip.SetToolTip(bottomPanel, "Resize window");
-            toolTip.SetToolTip(leftPanel, "Resize window");
-            toolTip.SetToolTip(rightPanel, "Resize window");
+
             toolTip.Draw += toolTip_draw;
             toolTip.OwnerDraw = true;
 
+            // Create border panels around the control
+            if (topBorder)
+            {
+                Panel topPanel = new Panel();
+                topPanel.Cursor = Cursors.SizeNS;
+                topPanel.Dock = DockStyle.Top;
+                topPanel.Height = 4;
+                topPanel.BackColor = Color.FromArgb(25, 25, 25);
+                form.Controls.Add(topPanel);
+                toolTip.SetToolTip(topPanel, "Resize window");
 
-            // Events for the borders.
-            topPanel.MouseDown += TopBorderPanel_MouseDown;
-            topPanel.MouseMove += TopBorderPanel_MouseMove;
-            topPanel.MouseUp += TopBorderPanel_MouseUp;
+                topPanel.SendToBack();
 
-            bottomPanel.MouseDown += BottomPanel_MouseDown;
-            bottomPanel.MouseMove += BottomPanel_MouseMove;
-            bottomPanel.MouseUp += BottomPanel_MouseUp;
+                topPanel.MouseDown += TopBorderPanel_MouseDown;
+                topPanel.MouseMove += TopBorderPanel_MouseMove;
+                topPanel.MouseUp += TopBorderPanel_MouseUp;
+            }
 
-            leftPanel.MouseDown += LeftPanel_MouseDown;
-            leftPanel.MouseMove += LeftPanel_MouseMove;
-            leftPanel.MouseUp += LeftPanel_MouseUp;
+            if (bottomBorder)
+            {
+                Panel bottomPanel = new Panel();
+                bottomPanel.Cursor = Cursors.SizeNS;
+                bottomPanel.Dock = DockStyle.Bottom;
+                bottomPanel.Height = 4;
+                bottomPanel.BackColor = Color.FromArgb(25, 25, 25);
+                form.Controls.Add(bottomPanel);
+                toolTip.SetToolTip(bottomPanel, "Resize window");
+                bottomPanel.MouseDown += BottomPanel_MouseDown;
+                bottomPanel.MouseMove += BottomPanel_MouseMove;
+                bottomPanel.MouseUp += BottomPanel_MouseUp;
+                bottomPanel.BringToFront();
+            }
 
-            rightPanel.MouseDown += RightPanel_MouseDown;
-            rightPanel.MouseMove += RightPanel_MouseMove;
-            rightPanel.MouseUp += RightPanel_MouseUp;
+            if (leftBorder)
+            {
+                Panel leftPanel = new Panel();
+                leftPanel.Cursor = Cursors.SizeWE;
+                leftPanel.Dock = DockStyle.Left;
+                leftPanel.Width = 4;
+                leftPanel.BackColor = Color.FromArgb(25, 25, 25);
+                form.Controls.Add(leftPanel);
+                toolTip.SetToolTip(leftPanel, "Resize window");
+                leftPanel.MouseDown += LeftPanel_MouseDown;
+                leftPanel.MouseMove += LeftPanel_MouseMove;
+                leftPanel.MouseUp += LeftPanel_MouseUp;
+                leftPanel.SendToBack();
+            }
 
-            leftPanel.SendToBack();
-            rightPanel.SendToBack();
-            topPanel.SendToBack();
-            bottomPanel.BringToFront();
+            if (rightBorder)
+            {
+                Panel rightPanel = new Panel();
+                rightPanel.Cursor = Cursors.SizeWE;
+                rightPanel.Dock = DockStyle.Right;
+                rightPanel.Width = 4;
+                rightPanel.BackColor = Color.FromArgb(25, 25, 25);
+                form.Controls.Add(rightPanel);
+
+                toolTip.SetToolTip(rightPanel, "Resize window");
+
+                rightPanel.MouseDown += RightPanel_MouseDown;
+                rightPanel.MouseMove += RightPanel_MouseMove;
+                rightPanel.MouseUp += RightPanel_MouseUp;
+
+
+                rightPanel.SendToBack();
+            }
+            
 
         }
 
