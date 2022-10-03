@@ -36,6 +36,10 @@ namespace SUPLauncher_Reborn
             pnl_load.HorizontalScroll.Visible = false;
             pnl_load.HorizontalScroll.Maximum = 0;
             pnl_load.AutoScroll = true;
+            if (!Directory.Exists(Application.StartupPath + "/evals/"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "/evals/");
+            }
             loadEvals();
         }
 
@@ -170,9 +174,7 @@ namespace SUPLauncher_Reborn
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(Application.StartupPath + "/evals/")) {
-                Directory.CreateDirectory(Application.StartupPath + "/evals/");
-            }
+
 
             if (File.Exists(Application.StartupPath + "/evals/" + txt_name.Text))
             {
