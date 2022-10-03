@@ -114,7 +114,6 @@ namespace SUPLauncher_Reborn
         bool isRightPanelDragged = false;
         bool isBottomPanelDragged = false;
         bool isTopBorderPanelDragged = false;
-        bool isWindowMaximized = false;
         Point offset;
 
 

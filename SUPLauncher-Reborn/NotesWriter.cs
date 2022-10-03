@@ -25,9 +25,10 @@ namespace SUPLauncher_Reborn
         }
 
         private string evalName;
-
+        string dir;
         public NotesWriter()
         {
+            dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             InitializeComponent();
             new FormResize(this, pnl_topBar);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -36,9 +37,9 @@ namespace SUPLauncher_Reborn
             pnl_load.HorizontalScroll.Visible = false;
             pnl_load.HorizontalScroll.Maximum = 0;
             pnl_load.AutoScroll = true;
-            if (!Directory.Exists(Application.StartupPath + "/evals/"))
+            if (!Directory.Exists(dir + "/SUPLauncher/notes/"))
             {
-                Directory.CreateDirectory(Application.StartupPath + "/evals/");
+                Directory.CreateDirectory(dir + "/SUPLauncher/notes/");
             }
             loadEvals();
         }
@@ -50,7 +51,7 @@ namespace SUPLauncher_Reborn
             {
                 control.Dispose();
             }
-            foreach (string file in Directory.EnumerateFiles(Application.StartupPath + "/evals/"))
+            foreach (string file in Directory.EnumerateFiles(dir + "/SUPLauncher/notes/"))
             {
                 NoteFile f = new NoteFile(Path.GetFileName(file));
                 pnl_load.Controls.Add(f);
@@ -66,15 +67,15 @@ namespace SUPLauncher_Reborn
             {
                 if (this.evalName != null)
                 {
-                    File.WriteAllText(Application.StartupPath + "/evals/" + evalName, txt_content.Rtf); // Save when swapping file to avoid data loss.
+                    File.WriteAllText(dir + "/SUPLauncher/notes/" + evalName, txt_content.Rtf); // Save when swapping file to avoid data loss.
                 }
-                txt_content.Rtf = File.ReadAllText(Application.StartupPath + "/evals/" + f.file);
+                txt_content.Rtf = File.ReadAllText(dir + "/SUPLauncher/notes/" + f.file);
                 this.evalName = f.file;
             } else if (e.Button == MouseButtons.Right)
             {
                 if (Interaction.InputBox("Are you sure you want to delete eval '" + f.file + "'? Type \"delete\" to confirm.", "Are you sure?", true) == "delete")
                 {
-                    File.Delete(Application.StartupPath + "/evals/" + f.file);
+                    File.Delete(dir + "/SUPLauncher/notes/" + f.file);
                     loadEvals();
                 }
             }
@@ -176,12 +177,12 @@ namespace SUPLauncher_Reborn
         {
 
 
-            if (File.Exists(Application.StartupPath + "/evals/" + txt_name.Text))
+            if (File.Exists(dir + "/SUPLauncher/notes/" + txt_name.Text))
             {
                 Interaction.MessageBox("Another Eval is already called \"" + txt_name.Text + "\". Use a different name.");
             } else
             {
-                File.WriteAllText(Application.StartupPath + "/evals/" + txt_name.Text, txt_content.Rtf);
+                File.WriteAllText(dir + "/SUPLauncher/notes/" + txt_name.Text, txt_content.Rtf);
                 evalName = txt_name.Text;
                 lbl_autosave.Text = "Autosave Enabled";
                 loadEvals();
@@ -210,7 +211,7 @@ namespace SUPLauncher_Reborn
                 {
                     previousSaveLen = txt_content.Rtf.Length;
                     lbl_autosave.Text = "Saving...";
-                    File.WriteAllText(Application.StartupPath + "/evals/" + evalName, txt_content.Rtf);
+                    File.WriteAllText(dir + "/SUPLauncher/notes/" + evalName, txt_content.Rtf);
                     lbl_autosave.Text = "Saved.";
                 }
             } else

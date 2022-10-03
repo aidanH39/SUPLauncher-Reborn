@@ -17,18 +17,19 @@ namespace SUPLauncher_Reborn
         private static StreamWriter stream;
         public static void initLogger()
         {
-            if (!Directory.Exists(Application.StartupPath + "/logs"))
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            if (!Directory.Exists(dir + "/SUPLauncher/logs"))
             {
-                Directory.CreateDirectory(Application.StartupPath + "/logs");
+                Directory.CreateDirectory(dir + "/SUPLauncher/logs");
             }
 
             int i = 1;
-            while (File.Exists(Application.StartupPath + "/logs/" + i + ".log"))
+            while (File.Exists(dir + "/SUPLauncher/logs/" + i + ".log"))
             {
                 i++;
             }
             // Opens stream to the file.
-            stream = new StreamWriter(File.Open(Application.StartupPath + "/logs/" + i + ".log", FileMode.OpenOrCreate));
+            stream = new StreamWriter(File.Open(dir + "/SUPLauncher/logs/" + i + ".log", FileMode.OpenOrCreate));
         }
 
         public static void Log(LogType type, string message) {
