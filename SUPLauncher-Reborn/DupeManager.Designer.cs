@@ -40,13 +40,12 @@
             this.strip_uploadToMarket = new System.Windows.Forms.ToolStripMenuItem();
             this.Import = new System.Windows.Forms.OpenFileDialog();
             this.pnl_topBar = new System.Windows.Forms.Panel();
+            this.btn_minimize = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.Drop = new System.Windows.Forms.Panel();
             this.lbl_dropToImport = new System.Windows.Forms.Label();
-            this.imgrefresh = new System.Windows.Forms.PictureBox();
             this.listview_dupes = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -59,7 +58,6 @@
             this.FolderMenu.SuspendLayout();
             this.pnl_topBar.SuspendLayout();
             this.Drop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgrefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_refresh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,19 +129,33 @@
             // pnl_topBar
             // 
             this.pnl_topBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.pnl_topBar.Controls.Add(this.btn_minimize);
             this.pnl_topBar.Controls.Add(this.lbl_title);
             this.pnl_topBar.Controls.Add(this.panel2);
             this.pnl_topBar.Controls.Add(this.btn_close);
-            this.pnl_topBar.Controls.Add(this.button2);
             this.pnl_topBar.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.pnl_topBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_topBar.Location = new System.Drawing.Point(0, 0);
             this.pnl_topBar.Name = "pnl_topBar";
-            this.pnl_topBar.Size = new System.Drawing.Size(557, 28);
+            this.pnl_topBar.Size = new System.Drawing.Size(559, 28);
             this.pnl_topBar.TabIndex = 32;
-            this.pnl_topBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseDown);
-            this.pnl_topBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseMove);
-            this.pnl_topBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopBar_MouseUp);
+            // 
+            // btn_minimize
+            // 
+            this.btn_minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_minimize.BackColor = System.Drawing.Color.Transparent;
+            this.btn_minimize.FlatAppearance.BorderSize = 0;
+            this.btn_minimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btn_minimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_minimize.ForeColor = System.Drawing.Color.White;
+            this.btn_minimize.Location = new System.Drawing.Point(473, -3);
+            this.btn_minimize.Name = "btn_minimize";
+            this.btn_minimize.Size = new System.Drawing.Size(35, 35);
+            this.btn_minimize.TabIndex = 59;
+            this.btn_minimize.Text = "⏤";
+            this.btn_minimize.UseVisualStyleBackColor = false;
+            this.btn_minimize.Click += new System.EventHandler(this.btn_minimize_Click);
             // 
             // lbl_title
             // 
@@ -174,7 +186,7 @@
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(512, 0);
+            this.btn_close.Location = new System.Drawing.Point(514, 0);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(45, 28);
             this.btn_close.TabIndex = 55;
@@ -182,30 +194,14 @@
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(758, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(37, 22);
-            this.button2.TabIndex = 52;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.BtnExit_Click);
-            // 
             // Drop
             // 
             this.Drop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(29)))));
             this.Drop.Controls.Add(this.lbl_dropToImport);
             this.Drop.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Drop.Location = new System.Drawing.Point(0, 569);
+            this.Drop.Location = new System.Drawing.Point(0, 572);
             this.Drop.Name = "Drop";
-            this.Drop.Size = new System.Drawing.Size(557, 54);
+            this.Drop.Size = new System.Drawing.Size(559, 51);
             this.Drop.TabIndex = 33;
             this.Drop.Visible = false;
             // 
@@ -216,27 +212,17 @@
             this.lbl_dropToImport.ForeColor = System.Drawing.Color.White;
             this.lbl_dropToImport.Location = new System.Drawing.Point(0, 0);
             this.lbl_dropToImport.Name = "lbl_dropToImport";
-            this.lbl_dropToImport.Size = new System.Drawing.Size(557, 54);
+            this.lbl_dropToImport.Size = new System.Drawing.Size(559, 51);
             this.lbl_dropToImport.TabIndex = 0;
             this.lbl_dropToImport.Text = "DROP TO IMPORT";
             this.lbl_dropToImport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // imgrefresh
-            // 
-            this.imgrefresh.BackColor = System.Drawing.Color.Transparent;
-            this.imgrefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgrefresh.Image = ((System.Drawing.Image)(resources.GetObject("imgrefresh.Image")));
-            this.imgrefresh.Location = new System.Drawing.Point(732, 44);
-            this.imgrefresh.Name = "imgrefresh";
-            this.imgrefresh.Size = new System.Drawing.Size(17, 20);
-            this.imgrefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgrefresh.TabIndex = 49;
-            this.imgrefresh.TabStop = false;
-            this.imgrefresh.Click += new System.EventHandler(this.Imgrefresh_Click);
-            // 
             // listview_dupes
             // 
             this.listview_dupes.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listview_dupes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listview_dupes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.listview_dupes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listview_dupes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -271,6 +257,8 @@
             // 
             // txt_path
             // 
+            this.txt_path.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_path.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.txt_path.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_path.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -342,14 +330,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(557, 623);
+            this.ClientSize = new System.Drawing.Size(559, 623);
             this.ControlBox = false;
             this.Controls.Add(this.btn_marketPlace);
             this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.txt_path);
             this.Controls.Add(this.listview_dupes);
-            this.Controls.Add(this.imgrefresh);
             this.Controls.Add(this.Drop);
             this.Controls.Add(this.pnl_randomPanel);
             this.Controls.Add(this.pnl_topBar);
@@ -366,7 +353,6 @@
             this.pnl_topBar.ResumeLayout(false);
             this.pnl_topBar.PerformLayout();
             this.Drop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imgrefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_refresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -382,8 +368,6 @@
         private System.Windows.Forms.Panel pnl_topBar;
         private System.Windows.Forms.Panel Drop;
         private System.Windows.Forms.Label lbl_dropToImport;
-        private System.Windows.Forms.PictureBox imgrefresh;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListView listview_dupes;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -400,5 +384,6 @@
         private System.Windows.Forms.Button btn_marketPlace;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem strip_uploadToMarket;
+        private System.Windows.Forms.Button btn_minimize;
     }
 }

@@ -11,6 +11,7 @@ using System.Management;
 using static SUPLauncher_Reborn.SuperiorServers;
 using System.Threading;
 using static SUPLauncher_Reborn.Logger;
+using Timer = System.Windows.Forms.Timer;
 
 namespace SUPLauncher_Reborn
 {
@@ -29,7 +30,7 @@ namespace SUPLauncher_Reborn
         public static KeyboardHook profileKeyHook;
         public static Server afkWaitForServer;
         public static DateTime startTime = DateTime.Now;
-
+        public static SplashScreen splashScreen;
         // Link to download CSS content.
         public static string CSSlink = "https://drive.google.com/file/d/1SPO4kx6e-ylkFrIG8R88Yg0ZS2G8WTRI/view?usp=sharing";
 
@@ -39,16 +40,19 @@ namespace SUPLauncher_Reborn
         {
             Logger.initLogger();
             Logger.Log(LogType.INFO, "Starting program...");
-
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += Application_ThreadException;
+            
+             
+            
 
             Logger.Log(LogType.INFO, "Init steam hook...");
             steam = new Steam();
             steamid = steam.GetSteamId();
             Logger.Log(LogType.INFO, "Got steamid of current logged in account.");
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.ThreadException += Application_ThreadException;
+
 
             # region Keyboard hooks
             Logger.Log(LogType.INFO, "Registering keybinds...");
@@ -96,7 +100,10 @@ namespace SUPLauncher_Reborn
             rpcClient.Initialize();
             Logger.Log(LogType.INFO, "RPC has been initialized or discord is not open.");
             Logger.Log(LogType.INFO, "Attempting to run main form.");
+            splashScreen = new SplashScreen();
+            Application.Run(splashScreen);
             Application.Run(new frm_main());
+
         }
         public static DiscordRpcClient rpcClient = new DiscordRpcClient("1003419232769409084");
         public static string lastIp;

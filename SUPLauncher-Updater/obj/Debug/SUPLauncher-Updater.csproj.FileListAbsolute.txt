@@ -1,0 +1,15 @@
+C:\Users\aidan\source\repos\SUPLauncher-Updater\bin\Debug\SUPLauncher-Updater.exe.config
+C:\Users\aidan\source\repos\SUPLauncher-Updater\bin\Debug\SUPLauncher-Updater.exe
+C:\Users\aidan\source\repos\SUPLauncher-Updater\bin\Debug\SUPLauncher-Updater.pdb
+C:\Users\aidan\source\repos\SUPLauncher-Updater\obj\Debug\SUPLauncher-Updater.csproj.AssemblyReference.cache
+C:\Users\aidan\source\repos\SUPLauncher-Updater\obj\Debug\SUPLauncher-Updater.csproj.SuggestedBindingRedirects.cache
+C:\Users\aidan\source\repos\SUPLauncher-Updater\obj\Debug\SUPLauncher_Updater.Properties.Resources.resources
+C:\Users\aidan\source\repos\SUPLauncher-Updater\obj\Debug\SUPLauncher-Updater.csproj.GenerateResource.cache
+C:\Users\aidan\source\repos\SUPLauncher-Updater\obj\Debug\SUPLauncher-Updater.csproj.CoreCompileInputs.cache
+C:\Users\aidan\source\repos\SUPLauncher-Updater\obj\Debug\SUPLauncher-Updater.exe
+C:\Users\aidan\source\repos\SUPLauncher-Updater\obj\Debug\SUPLauncher-Updater.pdb
+C:\Users\aidan\source\repos\SUPLauncher-Updater\bin\Debug\DotNetZip.dll
+C:\Users\aidan\source\repos\SUPLauncher-Updater\bin\Debug\DotNetZip.pdb
+C:\Users\aidan\source\repos\SUPLauncher-Updater\bin\Debug\DotNetZip.xml
+C:\Users\aidan\source\repos\SUPLauncher-Updater\obj\Debug\SUPLauncher-Updater.csproj.CopyComplete
+C:\Users\aidan\source\repos\SUPLauncher-Updater\obj\Debug\SUPLauncher_Updater.UpdateForm.resources

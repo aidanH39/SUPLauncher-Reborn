@@ -12,9 +12,21 @@ namespace SUPLauncher_Reborn
 {
     public partial class DupeManager : Form
     {
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
         public DupeManager()
         {
             InitializeComponent();
+            new FormResize(this, pnl_topBar);
             this.AllowDrop = true;
             Opacity = 0;      //first the opacity is 0
 
@@ -153,8 +165,6 @@ namespace SUPLauncher_Reborn
         {
             try
             {
-                refresh_img = imgrefresh.Image;
-                original_refreshimg = imgrefresh.Image;
                 reloadFoldersAndFiles();
             }
             catch (Exception)
@@ -293,97 +303,9 @@ namespace SUPLauncher_Reborn
             }
         }
 
-        // Refresh button.
-        private void Imgrefresh_Click(object sender, EventArgs e)
-        {
 
-            listview_dupes.Items.Clear();
-            new Thread(() =>
-            {
-                int i = 0;
-                while (i != 10)
-                {
-                    i = i + 1;
-                    Thread.Sleep(70);
-                    rotateInThread(new Bitmap(refresh_img), 90);
-                    imgrefresh.Image = refresh_img;
-                }
 
-                imgrefresh.Image = original_refreshimg;
-                return;
-            }).Start();
-        }
 
-        #region Top Bar Window Drag
-
-        bool isTopPanelDragged = false;
-        bool isWindowMaximized = false;
-        Point offset;
-        Size _normalWindowSize;
-        Point _normalWindowLocation = Point.Empty;
-        private void TopBar_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                isTopPanelDragged = true;
-                Point pointStartPosition = this.PointToScreen(new Point(e.X, e.Y));
-                offset = new Point
-                {
-                    X = this.Location.X - pointStartPosition.X,
-                    Y = this.Location.Y - pointStartPosition.Y
-                };
-            }
-            else
-            {
-                isTopPanelDragged = false;
-            }
-            if (e.Clicks == 2)
-            {
-                isTopPanelDragged = false;
-
-            }
-        }
-
-        private void TopBar_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isTopPanelDragged)
-            {
-                Point newPoint = pnl_topBar.PointToScreen(new Point(e.X, e.Y));
-                newPoint.Offset(offset);
-                this.Location = newPoint;
-
-                if (this.Location.X > 2 || this.Location.Y > 2)
-                {
-                    if (this.WindowState == FormWindowState.Maximized)
-                    {
-                        this.Location = _normalWindowLocation;
-                        this.Size = _normalWindowSize;
-
-                        isWindowMaximized = false;
-                    }
-                }
-            }
-        }
-
-        private void TopBar_MouseUp(object sender, MouseEventArgs e)
-        {
-            isTopPanelDragged = false;
-            if (this.Location.Y <= 5)
-            {
-                if (!isWindowMaximized)
-                {
-                    _normalWindowSize = this.Size;
-                    _normalWindowLocation = this.Location;
-
-                    Rectangle rect = Screen.PrimaryScreen.WorkingArea;
-                    this.Location = new Point(0, 0);
-                    this.Size = new System.Drawing.Size(rect.Width, rect.Height);
-
-                    isWindowMaximized = true;
-                }
-            }
-        }
-        #endregion
 
         private void Dupes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -609,6 +531,11 @@ namespace SUPLauncher_Reborn
                 form.Show();
             }
             
+        }
+
+        private void btn_minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

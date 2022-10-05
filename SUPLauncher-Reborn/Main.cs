@@ -39,7 +39,6 @@ namespace SUPLauncher_Reborn
             // Init browser shit.
             Logger.Log(LogType.INFO, "Starting main form...");
 
-            
 
             var settings = new CefSettings();
             settings.CachePath = Application.StartupPath + "\\cookies";
@@ -59,7 +58,9 @@ namespace SUPLauncher_Reborn
                 fadeIn(this);
             }; 
             t1.Start();
-            
+            Program.splashScreen.Close();
+
+
             toolTip1.SetToolTip(btn_lookup, "Click to show profile of inputed steamid");
             lbl_version.Text = "V" + Updater.getCurrentVersion().ToString();
 
@@ -78,10 +79,32 @@ namespace SUPLauncher_Reborn
                 toolTip1.SetToolTip(lbl_version, "A update is available! Click to update.");
                 toolTip1.SetToolTip(img_warning, "A update is available! Click to update.");
                 img_warning.Visible = true;
+                if (MessageBox.Show("Do you wish to update right now? This will not take that long.", "SUPLauncher | Update V" + Updater.getLatestVersion().ToString(), MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (File.Exists("SUPLauncher-Updater.exe"))
+                    {
+                        Process.Start("SUPLauncher-Updater.exe");
+                        this.Close();
+                        Process.GetCurrentProcess().Kill();
+                    } else
+                    {
+                        if (MessageBox.Show("Could not find the updater file, please visit our github to re-run the installer to update. Would you like to go to the github page now?", "Error. While trying to update.", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                            Process.Start("https://github.com/BestOfAllCoding/SUPLauncher-Reborn/releases");
+                        }
+                    }
+                }
             } else
             {
                 toolTip1.SetToolTip(lbl_version, "You are currently on the latest version!");
                 toolTip1.SetToolTip(img_warning, "You are currently on the latest version!");
+                
+                if (!Properties.Settings.Default.whatsupShown)
+                {
+                    Form form = new WhatsNew();
+                    form.Show();
+                    Properties.Settings.Default.whatsupShown = true;
+                    Properties.Settings.Default.Save();
+                }
             }
 
             Program.serverChanged += delegate
