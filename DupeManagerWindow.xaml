@@ -1,0 +1,16 @@
+﻿<Window x:Class="SUPLauncher.DupeManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SUPLauncher"
+        mc:Ignorable="d"
+        Title="Dupe Manager" Height="650" Width="450" MinHeight="450" MinWidth="400" Style="{DynamicResource roundedWindow}" ResizeMode="CanResize" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="4" GlassFrameThickness="0" CaptionHeight="2"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <local:Toolbar HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <local:DupeManager Margin="0,40,0,0"></local:DupeManager>
+    </Grid>
+</Window>

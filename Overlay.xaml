@@ -1,0 +1,72 @@
+﻿<Window x:Class="SUPLauncher.Overlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SUPLauncher"
+        mc:Ignorable="d"
+        Title="SUPLauncher Overlay" Height="1212" Width="2048" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="Manual" Topmost="True" ShowInTaskbar="False">
+    <Window.Background>
+        <SolidColorBrush Opacity="0.95" Color="#090909"/>
+    </Window.Background>
+
+
+    <Grid x:Name="mainGrid">
+        
+        <Label Name="_ver" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" FontSize="16" Foreground="#2f2f2f"></Label>
+        
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="650" Height="597">
+            <Image HorizontalAlignment="Left" Height="202" VerticalAlignment="Top" Margin="40,30,0,0" Width="250" Source="header_logo.png.ae44b9c99471cf28b9cd36ac3d954966.png"/>
+            <Border BorderBrush="#212121" BorderThickness="10" CornerRadius="10" Background="#212121" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0.75" Width="auto" Height="auto" Margin="40,160,0,0" Padding="0,0,0,0">
+                <Grid>
+                    <Rectangle Fill="#1A9CFA" Width="5" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></Rectangle>
+                    <WrapPanel Orientation="Vertical" ItemHeight="30">
+                        <Label Content="SUPLauncher" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16" Margin="10,0,0,0" FontWeight="Bold"></Label>
+                        <Label Content="Currently connected to Danktown" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16"></Label>
+                        <Label Content="Current session: 2h55mi" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16"></Label>
+                        <Label Content="Playtime: 2555:50:22" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16"></Label>
+                    </WrapPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Border BorderBrush="#212121" BorderThickness="5" CornerRadius="10" Background="#212121" VerticalAlignment="Bottom" HorizontalAlignment="Center" Opacity="0.95" Width="auto" Height="120" Margin="0,0,0,20" Padding="100,0,100,0">
+            <Grid>
+                <WrapPanel ItemHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                    <WrapPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,70,0">
+                        <Ellipse Height="60" Width="60">
+                            <Ellipse.Fill>
+                                <ImageBrush x:Name="img_profile" ImageSource="background.jpg"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Label x:Name="lbl_profileName" Content="{}{PROFILE NAME}" FontSize="18" Foreground="White" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"></Label>
+                    </WrapPanel>
+                    <Rectangle Width="2" VerticalAlignment="Stretch"  Fill="#2d2d2d" Margin="0,0,50,0">
+
+                    </Rectangle>
+
+
+                    <Button Style="{DynamicResource OverlaymenuButtons}" ToolTip="Overlay Browser" Click="browser_click">
+                        <Image Source="browser.png" Margin="30" />
+                    </Button>
+                    <Button Style="{DynamicResource OverlaymenuButtons}" ToolTip="Join A Server" Click="servers_click">
+                        <Image Source="/server.png" Margin="30" />
+                    </Button>
+                    <Button Style="{DynamicResource OverlaymenuButtons}" Click="dupe_click" ToolTip="Dupe Manager">
+                        <Image Source="/dupes.png" Margin="30" />
+                    </Button>
+                    <!--<Button Style="{DynamicResource OverlaymenuButtons}" ToolTip="Staff Tools">
+                        <Image Source="/tools.png" Margin="30" />
+                    </Button> -->
+                    <Button Style="{DynamicResource OverlaymenuButtons}" ToolTip="Settings" Click="settings_click">
+                        <Image Source="/setting.png" Margin="30" />
+                    </Button>
+                    <Button Style="{DynamicResource OverlaymenuButtons}" ToolTip="Exit" Click="ExitButton_Click">
+                        <Image Source="/close.png" Margin="30" />
+                    </Button>
+                </WrapPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

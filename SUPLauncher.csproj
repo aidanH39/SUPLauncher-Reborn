@@ -1,0 +1,114 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <Version>3.0.0-beta</Version>
+    <Company>Best of all</Company>
+    <Description>Built for SuperiorServers, to get the best experience.</Description>
+    <Copyright>Best of all</Copyright>
+    <PackageIcon>textless_logo.png</PackageIcon>
+    <AssemblyVersion></AssemblyVersion>
+    <FileVersion></FileVersion>
+    <CefSharpBuildAction>Content</CefSharpBuildAction>
+    <Platforms>AnyCPU;x86;x64</Platforms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(PlatformTarget)' == 'x86'">
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-x86</RuntimeIdentifier>
+    <SelfContained Condition="'$(SelfContained)' == ''">false</SelfContained>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(PlatformTarget)' == 'x64'">
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-x64</RuntimeIdentifier>
+    <SelfContained Condition="'$(SelfContained)' == ''">false</SelfContained>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(PlatformTarget)' == 'arm64'">
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-arm64</RuntimeIdentifier>
+    <SelfContained Condition="'$(SelfContained)' == ''">false</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SUPLauncher-Updater\**" />
+    <EmbeddedResource Remove="SUPLauncher-Updater\**" />
+    <None Remove="SUPLauncher-Updater\**" />
+    <Page Remove="SUPLauncher-Updater\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="background.jpg" />
+    <None Remove="browser.png" />
+    <None Remove="close.png" />
+    <None Remove="danktown2.jpg" />
+    <None Remove="dupes.png" />
+    <None Remove="folder.png" />
+    <None Remove="GarrysMod.png" />
+    <None Remove="header_logo.png.ae44b9c99471cf28b9cd36ac3d954966.png" />
+    <None Remove="homepage.png" />
+    <None Remove="previous.png" />
+    <None Remove="refresh.png" />
+    <None Remove="server.png" />
+    <None Remove="setting.png" />
+    <None Remove="textless_logo.png" />
+    <None Remove="tools.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="G:\Downloads\textless_logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CefSharp.Wpf.NETCore" Version="114.2.120" />
+    <PackageReference Include="DiscordRichPresence" Version="1.1.4.20" />
+    <PackageReference Include="DotNetZip" Version="1.16.0" />
+    <PackageReference Include="Gameloop.Vdf" Version="0.6.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="background.jpg" />
+    <Resource Include="browser.png" />
+    <Resource Include="close.png" />
+    <Resource Include="danktown2.jpg" />
+    <Resource Include="dupes.png" />
+    <Resource Include="folder.png" />
+    <Resource Include="GarrysMod.png" />
+    <Resource Include="header_logo.png.ae44b9c99471cf28b9cd36ac3d954966.png" />
+    <Resource Include="homepage.png" />
+    <Resource Include="previous.png" />
+    <Resource Include="refresh.png" />
+    <Resource Include="server.png" />
+    <Resource Include="setting.png" />
+    <Resource Include="textless_logo.png" />
+    <Resource Include="tools.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AppSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppSettings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="AppSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>AppSettings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

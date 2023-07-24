@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Browser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DupeManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DupeManagerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="InputBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Overlay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="OverlayPicker.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ProfileOverlay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Settings.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SettingsPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ShareDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Toolbar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Browser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DupeManager.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DupeManagerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="InputBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Overlay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="OverlayPicker.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ProfileOverlay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ServerBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Settings.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SettingsPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ShareDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Toolbar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="SUPLauncher.DupeManager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SUPLauncher"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Margin="0,40,0,0" Unloaded="UserControl_Unloaded" IsVisibleChanged="UserControl_IsVisibleChanged">
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+            </Style>
+
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="#292929">
+        <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="40" Background="#191919">
+            <Button Style="{DynamicResource OverlaymenuButtons}" Click="onBackClick" Width="25" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0" ToolTip="Go to previous folder">
+                <Image Stretch="UniformToFill" Source="/previous.png" SnapsToDevicePixels="True"/>
+            </Button>
+            <Button Style="{DynamicResource OverlaymenuButtons}" Click="onHomeClick" Width="25" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0" ToolTip="Go back to root folder">
+                <Image Stretch="UniformToFill" Source="/homepage.png" SnapsToDevicePixels="True"/>
+            </Button>
+
+            <Button Style="{DynamicResource OverlaymenuButtons}" Click="onRefreshClick" Width="25" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0" ToolTip="Reload entries">
+                <Image Stretch="UniformToFill" Source="/refresh.png" SnapsToDevicePixels="True"/>
+            </Button>
+
+            <TextBox Name="txt_path" Margin="20,08,100,08" Background="#2f2f2f"  Foreground="#9f9f9f" BorderThickness="4" BorderBrush="#2f2f2f"></TextBox>
+        </DockPanel>
+
+        
+        
+        <ListBox Background="Transparent" Name="ListBoxFiles" Margin="0,40,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="0">
+            <ListBox.Resources>
+                <!--Defines a context menu-->
+                <ContextMenu x:Key="item_menu">
+                    <MenuItem Header="Share" Click="onShareClick"/>
+                    <Separator/>
+                    <MenuItem Header="Rename" Click="onRename"/>
+                    <MenuItem Header="Copy" Click="onCopy"/>
+                    <Separator/>
+                    <MenuItem Header="Delete" Click="onDelete"/>
+                </ContextMenu>
+
+                <ContextMenu x:Key="directory_menu">
+                    <MenuItem Header="Rename" Click="onRename" />
+                    <MenuItem Header="Delete" Click="onFolderDelete"/>
+                </ContextMenu>
+
+                <ContextMenu x:Key="box_menu">
+                    <MenuItem Header="Create new folder" Click="onNewFolder"/>
+                    <Separator></Separator>
+                    <MenuItem Header="Import dupe by URL" Click="importDupeURL"/>
+                    <MenuItem Header="Import local dupe" Click="browseLocal"/>
+                </ContextMenu>
+
+                <!--Sets a context menu for each ListBoxItem in the current ListBox-->
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource item_menu}"/>
+                </Style>
+                <Style x:Key="folder" TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource directory_menu}"/>
+                </Style>
+                <!--Sets a context menu for each ListBoxItem in the current ListBox-->
+                <Style TargetType="{x:Type ListBox}">
+                    <Setter Property="ContextMenu" Value="{StaticResource box_menu}"/>
+                </Style>
+            </ListBox.Resources>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" HorizontalAlignment="Center" ItemWidth="100">
+
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+
+
+    </Grid>
+</UserControl>
