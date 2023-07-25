@@ -22,9 +22,9 @@
                     <Rectangle Fill="#1A9CFA" Width="5" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></Rectangle>
                     <WrapPanel Orientation="Vertical" ItemHeight="30">
                         <Label Content="SUPLauncher" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16" Margin="10,0,0,0" FontWeight="Bold"></Label>
-                        <Label Content="Currently connected to Danktown" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16"></Label>
-                        <Label Content="Current session: 2h55mi" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16"></Label>
-                        <Label Content="Playtime: 2555:50:22" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16"></Label>
+                        <Label Name="lbl_currentServer"  Content="Currently connected to Danktown" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16"></Label>
+                        <Label Name="lbl_sessionTime"  Content="Current session: 2h55mi" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16"></Label>
+                        <Label Name="lbl_playtime"  Content="Playtime: 2555:50:22" Foreground="White" HorizontalContentAlignment="Left" HorizontalAlignment="Left" FontSize="16"></Label>
                     </WrapPanel>
                 </Grid>
             </Border>

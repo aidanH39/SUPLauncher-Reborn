@@ -16,6 +16,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using static SUPLauncher.Logger;
 using static SUPLauncher.SuperiorServers;
 
@@ -49,6 +50,8 @@ namespace SUPLauncher
         public static extern IntPtr SetClipboardViewer(IntPtr hWndNewViewer);
         #endregion
 
+        int currentSession = 0;
+        bool playingOnSUP = false;
         public Overlay()
         {
             this.IsVisibleChanged += onVisibilityChange;
@@ -71,9 +74,44 @@ namespace SUPLauncher
 
             _ver.Content = "SUPLauncher " + App.version;
             this.MouseDown += onOverlayClick;
-            
-            
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(60);
+            timer.Tick += delegate
+            {
+                string currentServer = Steam.getPlayingServer(App.profile.SteamID64);
+                if (currentServer != null)
+                {
+                    lbl_currentServer.Content = "Currently playing on " + SuperiorServers.IpToName(currentServer);
+                    playingOnSUP = true;
+                } else
+                {
+                    playingOnSUP = false;
+                    currentSession = 0;
+                    lbl_currentServer.Content = "Not currently playing SUP";
+                }
+            };
+            timer.Start();
+
+            DispatcherTimer playtimeTimer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += delegate
+            {
+                if (playingOnSUP)
+                {
+                    currentSession++;
+                    lbl_playtime.Content = "Playtime: " + SuperiorServers.PlaytimeFormat(int.Parse(App.profile.Badmin.PlayTime) + currentSession);
+                    lbl_sessionTime.Content = SuperiorServers.LengthFormat(currentSession);
+                } else
+                {
+                    lbl_playtime.Content = "";
+                    lbl_sessionTime.Content = "";
+                }
+            };
+            timer.Start();
+
         }
+
+
 
         /// <summary>
         /// Get Window Messages
