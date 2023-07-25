@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="SUPLauncher.Notification"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SUPLauncher"
+             mc:Ignorable="d" Height="100" Width="350" Background="Transparent" Opacity="0.98" Style="{DynamicResource roundedUserControl}" BorderBrush="#1f1f1f" BorderThickness="1" Margin="0,0,5,5"> 
+    <Grid> 
+        <Image HorizontalAlignment="Left" Margin="15" VerticalAlignment="Center" Source="textless_logo.png" Height="60"/>
+        <Label Name="lbl_title" HorizontalAlignment="Left" Margin="80,10,0,0" Height="30" FontSize="16" FontWeight="Bold" VerticalAlignment="Top" Content="NOTIFICATION"/>
+        <TextBlock Name="lbl_message" HorizontalAlignment="Stretch" Margin="86,40,20,0" Height="50" FontSize="12" VerticalAlignment="Top" Foreground="White" Text="Text" TextWrapping="Wrap"/>
+    </Grid>
+</UserControl>

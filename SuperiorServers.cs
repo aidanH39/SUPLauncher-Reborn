@@ -142,8 +142,7 @@ namespace SUPLauncher
             } catch (Exception e)
             {
                 Logger.Log(Logger.LogType.FATAL, e.Message + ": " + e.StackTrace);
-                Interaction.MsgBox("A error occured when attempting to fetch profile data from API. Click OK to try again.", MsgBoxStyle.Critical, "API Error");
-                return getProfile(id);
+                return getProfile(id); // try again
                 
             }
         }
@@ -296,16 +295,18 @@ namespace SUPLauncher
         {
             switch (ip)
             {
-                case "208.103.169.12:27015":
+                case "199.231.233.142:27015":
                     return "Danktown";
-                case "208.103.169.14:27015":
+                case "199.231.233.143:27015":
                     return "ZombieRP";
                 case "208.103.169.18:27015":
                     return "MilRP";
-                case "208.103.169.16:27015":
+                case "199.231.233.148:27015":
                     return "CWRP";
-                case "208.103.169.17:27015":
-                    return "CWRP (Events)";
+                case "199.231.233.149:27015":
+                    return "CWRP2";
+                case "199.231.233.150:27015":
+                    return "CWRP 3";
                 default:
                     return null;
             }

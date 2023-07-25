@@ -146,6 +146,7 @@ namespace SUPLauncher
             Logger.Log(LogType.INFO, "Attempting to init discord rpc");
             rpcClient.Initialize();
             updateDiscord();
+            new NotificationCentre().Show();
             new MainWindow().Show();
         }
 

@@ -493,13 +493,21 @@ namespace SUPLauncher
 
         void timer_tick(object sender, EventArgs e)
         {
-            if (overlay != null)
+            if (overlay != null && overlay.IsLoaded)
             {
                 Process gmod = Steam.getGmodProcess();
                 if ( gmod == null || gmod.HasExited)
                 {
                     overlay.Close();
                     overlay = null;
+                }
+            } else if (overlay == null)
+            {
+                if (Steam.getGmodProcess() != null && !Steam.isGmodAFK())
+                {
+                    overlay = new Overlay();
+                    NotificationCentre.notify("OVERLAY ENABLED", "Press " + ((ModifierKeys)AppSettings.Default.bind_overlay_modifier).ToString() + " + " + (KeyInterop.KeyFromVirtualKey((int)AppSettings.Default.bind_overlay_key).ToString()) + " to open the overlay.");
+                    
                 }
             }
         }

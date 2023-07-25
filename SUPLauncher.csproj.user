@@ -19,6 +19,12 @@
     <Compile Update="InputBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Notification.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="NotificationCentre.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Overlay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +61,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Notification.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="NotificationCentre.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Overlay.xaml">

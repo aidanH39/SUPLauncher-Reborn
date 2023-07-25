@@ -421,7 +421,7 @@ public class Steam : IDisposable
     {
         try
         {
-            HttpWebRequest request = WebRequest.CreateHttp("http://35.224.124.248/api/currentServer/" + steamid);
+            HttpWebRequest request = WebRequest.CreateHttp("http://35.224.124.248/api/currentServer.php?steamid=" + steamid);
             request.UserAgent = "SUPLauncher";
             WebResponse response = null;
             response = request.GetResponse();

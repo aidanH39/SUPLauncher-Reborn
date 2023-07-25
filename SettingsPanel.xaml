@@ -35,7 +35,7 @@
         <Rectangle Fill="#3d3d3d" Width="150" Height="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,90,0,0"></Rectangle>
 
 
-        <WrapPanel Orientation="Vertical" Margin="20,110,20,20" ItemWidth="900">
+        <WrapPanel Orientation="Vertical" Margin="20,110,20,20" ItemWidth="410">
 
             <Grid HorizontalAlignment="Stretch" Height="30"  VerticalAlignment="Top">
                 <Label Content="Overlay keybind" Foreground="White"></Label>

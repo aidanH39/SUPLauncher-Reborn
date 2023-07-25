@@ -48,6 +48,39 @@
                 </Setter>
             </Style>
 
+
+            <Style x:Key="roundedUserControl" TargetType="UserControl">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="UserControl">
+
+
+                            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8" Padding="0">
+                                <Grid>
+                                    <Border
+                                    Name="mask"
+                                    CornerRadius="8">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="background.jpg"></ImageBrush>
+                                        </Border.Background>
+                                    </Border>
+                                    <Grid>
+                                        <Grid.OpacityMask>
+                                            <VisualBrush Visual="{Binding ElementName=mask}"/>
+                                        </Grid.OpacityMask>
+
+                                        <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                    </Grid>
+
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Color x:Key="PrimaryDarkColor">#191919</Color>
             <Color x:Key="SecondDarkColor">#2d2d2d</Color>
             <Color x:Key="PrimaryLightColor">White</Color>

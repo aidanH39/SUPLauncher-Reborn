@@ -100,7 +100,7 @@ namespace SUPLauncher
                 {
                     currentSession++;
                     lbl_playtime.Content = "Playtime: " + SuperiorServers.PlaytimeFormat(int.Parse(App.profile.Badmin.PlayTime) + currentSession);
-                    lbl_sessionTime.Content = SuperiorServers.LengthFormat(currentSession);
+                    lbl_sessionTime.Content = "Current session: " + SuperiorServers.LengthFormat(currentSession);
                 } else
                 {
                     lbl_playtime.Content = "";
