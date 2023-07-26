@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SUPLauncher"
+        xmlns:local="clr-namespace:SUPLauncher" xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
-        Title="SUPLauncher" Style="{DynamicResource roundedWindow}" Height="600" Width="1035" MinHeight="600" MinWidth="1035" WindowStyle="None" ResizeMode="CanResize" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="Transparent">
+        Title="SUPLauncher" Style="{DynamicResource roundedWindow}" Height="600" Width="1035" MinHeight="600" MinWidth="1035" WindowStyle="None" ResizeMode="CanResize" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="Transparent" Closing="Window_Closing">
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="4" GlassFrameThickness="0" CaptionHeight="2"/>
     </WindowChrome.WindowChrome>
@@ -87,12 +87,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-
-
-
-
     </Window.Resources>
+    
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard Storyboard="{StaticResource Storyboard}" />
@@ -100,7 +96,29 @@
     </Window.Triggers>
 
 
+
+      
+
     <Grid>
+
+        <tb:TaskbarIcon x:Name="notify_icon"
+                    Visibility="Visible"
+                    ToolTipText="SUPLauncher"
+                    IconSource="favicon.ico"
+                    MenuActivation="LeftOrRightClick"
+                    TrayMouseDoubleClick="onContextMenu_Open_Click"
+                     Width="50" Height="50">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu Style="{DynamicResource context_style}">
+                    <MenuItem Header="Open" Click="onContextMenu_Open_Click"></MenuItem>
+                    <MenuItem Header="Settings" Click="onContextMenu_Settings_Click"></MenuItem>
+                    <MenuItem Header="Exit" Click="onContextMenu_Exit_Click"></MenuItem>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+
+        <!--TrayPopup="{StaticResoure TrayStatusPopup}"-->
+        <!--TrayToolTip="{StaticResource TrayToolTip}"-->
         <Grid Background="#191919" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <local:Toolbar x:Name="toolbar" />
 

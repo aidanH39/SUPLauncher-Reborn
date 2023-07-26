@@ -100,6 +100,7 @@ namespace SUPLauncher
 
         private void afkTimerTick(object sender, EventArgs e)
         {
+            updateDiscord();
             if (AppSettings.Default.enable_afk && !joiningServer && Steam.getGmodProcess() == null)
             {
                 Process.Start(Steam.getSteamPath() + "\\steam.exe", "-applaunch 4000 " + AppSettings.Default.afk_arguments);
@@ -161,7 +162,7 @@ namespace SUPLauncher
             if (AppSettings.Default.enable_discord_actvity)
             {
                 if (ip == null) ip = Steam.getPlayingServer(profile.SteamID64.ToString());
-                long secondsJoined = DateTimeOffset.Now.ToUnixTimeSeconds() - joinedSince;
+                //long secondsJoined = DateTimeOffset.Now.ToUnixTimeSeconds() - joinedSince;
                 string name = SuperiorServers.IpToName(ip);
                 string playingon;
                 if (name != null)
@@ -176,11 +177,13 @@ namespace SUPLauncher
                 rpcClient.SetPresence(new RichPresence()
                 { 
                     Details = playingon,
-                    State = "for " + SuperiorServers.LengthFormat(Int32.Parse(secondsJoined.ToString())),
+                    State = "superiorservers.co",
                     Assets = new Assets()
                     {
-                        SmallImageText = "SuperiorServers",
-                        SmallImageKey = "sup_small"
+                        SmallImageText = "Superior Servers",
+                        LargeImageText = "superiorservers.co",
+                        SmallImageKey = "sup_small",
+                        LargeImageKey = "garrysmod"
                     }
                 });
             }

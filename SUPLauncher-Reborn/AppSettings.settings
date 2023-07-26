@@ -29,5 +29,11 @@
     <Setting Name="afk_arguments" Type="System.String" Scope="User">
       <Value Profile="(Default)">-64bit -textmode -single_core -nojoy -low -nosound -sw -noshader -nopix -novid -nopreload -nopreloadmodels -multirun +connect rp.superiorservers.co</Value>
     </Setting>
+    <Setting Name="enable_profileOverlay" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="enable_overlay" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

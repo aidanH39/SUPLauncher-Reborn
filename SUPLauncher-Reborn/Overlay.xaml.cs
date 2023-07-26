@@ -124,7 +124,6 @@ namespace SUPLauncher
             base.OnSourceInitialized(e);
             _windowHandle = new WindowInteropHelper(this).Handle;
             _ClipboardViewerNext = SetClipboardViewer(_windowHandle);
-
             
             _source = HwndSource.FromHwnd(_windowHandle);
             _source.AddHook(HwndHook);
@@ -134,10 +133,9 @@ namespace SUPLauncher
 
         private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-
             // CLIPBOARD HANDLER
             // Check for steamid copies
-
+            if (!AppSettings.Default.enable_profileOverlay) return IntPtr.Zero;
             if (msg == 0x308 || msg == 0x031D) // If message is WM_DRAWCLIPBOARD OR WM_CLIPBOARDUPDATE
             {
                 // Make sure its a steamid.
@@ -168,6 +166,7 @@ namespace SUPLauncher
                 } else
                 {
                     profileOverlay.updateProfile(text);
+                    profileOverlay.Visibility = Visibility.Visible;
                 }
                 
 

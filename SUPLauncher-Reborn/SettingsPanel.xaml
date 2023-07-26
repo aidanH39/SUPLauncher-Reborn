@@ -5,16 +5,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUPLauncher"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" MouseDown="UserControl_MouseDown">
+             d:DesignHeight="450" d:DesignWidth="800" MouseDown="UserControl_MouseDown" >
     <UserControl.Resources>
         <ResourceDictionary>
+            <Style TargetType="{x:Type CheckBox}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <WrapPanel>
+
+                                <Border Name="border" Width="15" Height="15" Margin="0,0,15,0"  BorderBrush="#2f2f2f" BorderThickness="3" CornerRadius="5">
+
+                                </Border>
+
+                                <ContentPresenter/>
+                            </WrapPanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#efefef"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter TargetName="border" Property="Background" Value="#2f2f2f"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style TargetType="Button" x:Key="KeyBindingButton">
 
                 <Setter Property="Foreground" Value="White"></Setter>
                 <Setter Property="Margin" Value="15,0,0,0"></Setter>
                 <Setter Property="Padding" Value="10"></Setter>
                 <Setter Property="Background" Value="#2d2d2d"></Setter>
-                
+
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
@@ -29,13 +53,13 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid Background="#1f1f1f">
 
-        <Label Content="Settings" Foreground="White" FontSize="25" FontWeight="Bold" HorizontalAlignment="Left" Margin="19,47,0,0" VerticalAlignment="Top"/>
-        <Rectangle Fill="#3d3d3d" Width="150" Height="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,90,0,0"></Rectangle>
+        <Label Content="Settings" Foreground="White" FontSize="25" FontWeight="Bold" HorizontalAlignment="Left" Margin="20,22,0,0" VerticalAlignment="Top"/>
+        <Rectangle Fill="#3d3d3d" Width="150" Height="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,65,0,0"></Rectangle>
 
 
-        <WrapPanel Orientation="Vertical" Margin="20,110,20,20" ItemWidth="410">
+        <WrapPanel Orientation="Vertical" Margin="20,71,20,20" ItemWidth="410">
 
             <Grid HorizontalAlignment="Stretch" Height="30"  VerticalAlignment="Top">
                 <Label Content="Overlay keybind" Foreground="White"></Label>
@@ -72,15 +96,21 @@
                     </Button>
                 </WrapPanel>
             </Grid>
-            <CheckBox Name="check_discord" Foreground="White" Margin="0,20,0,20" Content="Enable Discord Actvity" ToolTip="Shows your playing SUP in your discord actvity" HorizontalAlignment="Left" Width="400"/>
-            <CheckBox Foreground="White" Name="check_afk" Content="Enable automatic SUP AFK " HorizontalAlignment="Left" ToolTip="Opens a AFK window when you are not playing GMOD." Width="400"/>
-
-            <Label Content="AFK Arguments"/>
+            <WrapPanel Margin="10,20,0,0" Height="80" Orientation="Vertical">
+                <CheckBox Name="check_discord" Foreground="White" Margin="0,10,80,10" Content="Enable Discord Actvity" ToolTip="Shows your playing SUP in your discord actvity" HorizontalAlignment="Left"/>
+                <CheckBox Name="check_startup" Foreground="White" Margin="0,10,0,10" Content="Start on windows startup" ToolTip="When windows boots up, SUPLauncher will automaticlly be ran." HorizontalAlignment="Left"/>
+                <CheckBox Foreground="White" Name="check_afk" Margin="0,10,0,10" Content="Enable automatic SUP AFK " HorizontalAlignment="Left" ToolTip="Opens a AFK window when you are not playing GMOD."/>
+                <CheckBox Foreground="White" Name="check_overlay" Margin="0,10,0,10" Content="Enable Overlay " HorizontalAlignment="Left" ToolTip="Allows you to open the overlay while playing Garrys Mod"/>
+            </WrapPanel>
+            <Label Content="AFK Arguments  ( IF ENABLED )" Margin="0,10,0,0"/>
             <TextBox Name="txt_afk_args" Height="20" HorizontalAlignment="Stretch"/>
+
+            <Label HorizontalAlignment="Left" HorizontalContentAlignment="Left" Content="Staff tools" Margin="0,10,0,10" FontSize="16" FontWeight="Bold"/>
+            <CheckBox Foreground="White" Name="check_profileOverlay" Content="Profile overlay " HorizontalAlignment="Left" ToolTip="Opens a player profile in the top left of your game, when you copy a SteamID, makes it easier to check PO's quick." Width="400"/>
 
         </WrapPanel>
         <Button Click="settings_save" Content="Save" Margin="0,40,0,10" Background="#3f3f3f" BorderBrush="Transparent" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="200"></Button>
-        
+
 
     </Grid>
 </UserControl>

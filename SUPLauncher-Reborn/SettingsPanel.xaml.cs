@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IWshRuntimeLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -77,9 +78,15 @@ namespace SUPLauncher
                 check_afk.IsChecked = AppSettings.Default.enable_afk;
                 check_discord.IsChecked = AppSettings.Default.enable_discord_actvity;
 
+                check_overlay.IsChecked = AppSettings.Default.enable_overlay;
+
                 txt_afk_args.Text = AppSettings.Default.afk_arguments;
 
+                check_profileOverlay.IsChecked = AppSettings.Default.enable_profileOverlay;
+                string startUpFolderPath =
+                Environment.GetFolderPath(Environment.SpecialFolder.Startup);
 
+                check_startup.IsChecked = System.IO.File.Exists(startUpFolderPath + "\\SUPLauncher.lnk");
             }
 
 
@@ -212,6 +219,32 @@ namespace SUPLauncher
             AppSettings.Default.afk_arguments = txt_afk_args.Text;
             AppSettings.Default.enable_afk = (bool)check_afk.IsChecked;
             AppSettings.Default.enable_discord_actvity = (bool)check_discord.IsChecked;
+            AppSettings.Default.enable_profileOverlay = (bool)check_profileOverlay.IsChecked;
+            AppSettings.Default.enable_overlay = (bool)check_overlay.IsChecked;
+
+            WshShell wshShell = new WshShell();
+
+
+
+            IWshRuntimeLibrary.IWshShortcut shortcut;
+            string startUpFolderPath =
+              Environment.GetFolderPath(Environment.SpecialFolder.Startup);
+
+            if ((bool)check_startup.IsChecked && !System.IO.File.Exists(startUpFolderPath + "\\SUPLauncher.lnk"))
+            {
+                // Create the shortcut
+                shortcut =
+                  (IWshRuntimeLibrary.IWshShortcut)wshShell.CreateShortcut(
+                    startUpFolderPath + "\\SUPLauncher" + ".lnk");
+
+                shortcut.TargetPath = Process.GetCurrentProcess().MainModule.FileName;
+                shortcut.WorkingDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+                shortcut.Description = "Launch SUPLauncher";
+                shortcut.Save();
+            } else if (!(bool)check_startup.IsChecked && System.IO.File.Exists(startUpFolderPath + "\\SUPLauncher.lnk"))
+            {
+                System.IO.File.Delete(startUpFolderPath + "\\SUPLauncher.lnk");
+            }
 
             AppSettings.Default.Save();
 

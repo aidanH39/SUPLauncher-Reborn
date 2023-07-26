@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="SUPLauncher.Toolbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SUPLauncher"
+             mc:Ignorable="d" Height="42" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+
+    <UserControl.Resources>
+
+    </UserControl.Resources>
+
+
+    <Grid Name="main_grid" Background="#191919">
+        <WrapPanel FlowDirection="RightToLeft" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Margin="0,0,0,0">
+            <Button Style="{StaticResource redButton}" ToolTip="Close" x:Name="btn_closeButton" Command="{Binding CloseWindow}" Content="&#xE10A;" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" RenderTransformOrigin="-0.084,0.546" Margin="10,0,0,0" Height="27" Width="31" FontFamily="Segoe MDL2 Assets" Click="close_Click"/>
+            <Button x:Name="btn_min" ToolTip="Minimize" Content="⏤" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" RenderTransformOrigin="-0.084,0.546" Height="27" Width="31" Click="btn_min_Click"/>
+            <Button x:Name="btn_overlayPin" Visibility="Hidden" Content="" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" ToolTip="Pin to GMOD" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" RenderTransformOrigin="-0.084,0.546" Height="27" Width="31" Click="btn_pin_Click"/>
+        </WrapPanel>
+        <WrapPanel Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Image Width="25" Height="25" Name="img_icon" Source="/textless_logo.png"/>
+            <WrapPanel>
+                <Grid Margin="1.5">
+                    <Menu Name="_menu" Style="{StaticResource menu_style}" Height="auto" Margin="0,0,0,-11">
+                        <MenuItem x:Name="_appName" Header="SUPLauncher">
+                            <MenuItem Header="Settings" Click="settings_Click" />
+                            <MenuItem Header="Exit" Click="exit_Click" />
+                        </MenuItem>
+                        <MenuItem Header="View">
+                            <MenuItem Header="Full Screen" Click="fullscreen" Name="menu_fullscreen"/>
+                        </MenuItem>
+                        <MenuItem Header="Help">
+                            <MenuItem Header="View Logs Folder" Click="showLogs_Click" />
+                            <MenuItem Header="Github" Click="github_Click" />
+                            <MenuItem Header="Report an issue/bug" />
+                            <MenuItem Header="SUP forum post" />
+                            <MenuItem Header="Credits" />
+                        </MenuItem>
+                    </Menu>
+                    <!--<Label Style="{StaticResource btn_top}" Name="top_sup" Content="SUPLauncher" FontFamily="Segoe UI" FontSize="12">
+                        
+                        </Label>-->
+                </Grid>
+                <!--<Label Style="{StaticResource btn_top}" Name="top_view" Content="View" FontFamily="Segoe UI" FontSize="12"/>
+                <Label Style="{StaticResource btn_top}" Name="top_help" Content="Help" FontFamily="Segoe UI" FontSize="12"/>-->
+            </WrapPanel>
+            <!--<Label Content="SUPLauncher" Background="{x:Null}" Foreground="#FFFFFFFF" FontFamily="Segoe UI" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>-->
+        </WrapPanel>
+    </Grid>
+</UserControl>

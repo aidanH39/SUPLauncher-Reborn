@@ -1,4 +1,5 @@
-﻿using Ionic.Zip;
+﻿using Hardcodet.Wpf.TaskbarNotification;
+using Ionic.Zip;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,8 @@ namespace SUPLauncher
         public MainWindow()
         {
             InitializeComponent();
+
+
             this.GotFocus += onFocus;
             scroll_servers.GotFocus += onFocus;
             this.grid_loading.Visibility = Visibility.Visible;
@@ -228,6 +231,24 @@ namespace SUPLauncher
             {
                 border_servers.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { border_servers.BorderThickness = new Thickness(0, 0, 0, 3); }));
             });
+        }
+
+        private void onContextMenu_Open_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Visible;
+            this.Activate();
+        }
+
+        private void onContextMenu_Settings_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Visible;
+            this.Activate();
+            onSettingsClick(sender, e);
+        }
+
+        private void onContextMenu_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void onProfileClick(object sender, RoutedEventArgs e)
@@ -486,7 +507,7 @@ namespace SUPLauncher
                 Logger.Log(LogType.ERROR, "Failed to set keybind \"Profile Overlay PO's (Show/Hide)\". " + ex.Message + "\nStack trace: " + ex.StackTrace);
             }
 
-    timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Interval = TimeSpan.FromSeconds(5);
             timer.Tick += timer_tick;
             timer.Start();
         }
@@ -496,12 +517,12 @@ namespace SUPLauncher
             if (overlay != null && overlay.IsLoaded)
             {
                 Process gmod = Steam.getGmodProcess();
-                if ( gmod == null || gmod.HasExited)
+                if ( gmod == null || gmod.HasExited || !AppSettings.Default.enable_overlay)
                 {
                     overlay.Close();
                     overlay = null;
                 }
-            } else if (overlay == null)
+            } else if (overlay == null && AppSettings.Default.enable_overlay)
             {
                 if (Steam.getGmodProcess() != null && !Steam.isGmodAFK())
                 {
@@ -518,15 +539,19 @@ namespace SUPLauncher
         private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             const int WM_HOTKEY = 0x0312;
-            
-            // OVERLAY HANDLING
 
+            // OVERLAY HANDLING
+            if (!AppSettings.Default.enable_overlay)
+            {
+                return IntPtr.Zero;
+            }
             switch (msg)
             {
                 case WM_HOTKEY:
                     switch (wParam.ToInt32())
                     {
                         case HOTKEY_ID:
+                            
                             int vkey = (((int)lParam >> 16) & 0xFFFF);
                             Process gmod = Steam.getGmodProcess();
 
@@ -579,6 +604,12 @@ namespace SUPLauncher
             _source.RemoveHook(HwndHook);
             UnregisterHotKey(_windowHandle, HOTKEY_ID);
             base.OnClosed(e);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -131,5 +131,29 @@ namespace SUPLauncher {
                 this["afk_arguments"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool enable_profileOverlay {
+            get {
+                return ((bool)(this["enable_profileOverlay"]));
+            }
+            set {
+                this["enable_profileOverlay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool enable_overlay {
+            get {
+                return ((bool)(this["enable_overlay"]));
+            }
+            set {
+                this["enable_overlay"] = value;
+            }
+        }
     }
 }

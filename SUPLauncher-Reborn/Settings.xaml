@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SUPLauncher"
         mc:Ignorable="d"
-         Title="Settings" Style="{DynamicResource roundedWindow}" Height="420" Width="460" MinHeight="270" MinWidth="460" WindowStyle="None" ResizeMode="CanResize" AllowsTransparency="True" Background="Transparent">
+         Title="Settings" Style="{DynamicResource roundedWindow}" Height="500" Width="460" MinHeight="270" MinWidth="460" WindowStyle="None" ResizeMode="CanResize" AllowsTransparency="True" Background="Transparent">
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="4" GlassFrameThickness="0" CaptionHeight="2"/>
     </WindowChrome.WindowChrome>
