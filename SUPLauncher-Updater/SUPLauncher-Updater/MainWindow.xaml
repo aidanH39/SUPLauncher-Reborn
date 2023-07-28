@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SUPLauncher_Updater" xmlns:xrpb="http://XamlRadialProgressBar/DotNet"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         Title="SUPLauncher Updater" Height="250" Width="450" Style="{DynamicResource roundedWindow}" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Storyboard x:Key="progress_anim" RepeatBehavior="Forever" BeginTime="0:0:0" SpeedRatio="3" Duration="0:0:10">
@@ -25,7 +25,7 @@
         <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0">
             <xrpb:RadialProgressBar Name="progress" Value="25"
 			        Width="160" Height="160" ArcMode="Fill" ArcWidth="5"
-			        Foreground="#1A9CFA" />
+			        Foreground="#1A9CFA" /> 
             <Image  Source="/textless_logo.png" Height="128"/>
         </Grid>
         <Label Content="Downloading update..." Foreground="White" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" FontSize="18"/>

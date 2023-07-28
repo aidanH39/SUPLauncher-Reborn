@@ -72,7 +72,7 @@ namespace SUPLauncher
             img_profile.ImageSource = profile.getAvatar();
             lbl_profileName.Content = profile.Badmin.Name;
 
-            _ver.Content = "SUPLauncher " + App.version;
+            _ver.Content = "SUPLauncher v" + App.version.Major + "." + App.version.Minor + "." + App.version.Build;
             this.MouseDown += onOverlayClick;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(60);

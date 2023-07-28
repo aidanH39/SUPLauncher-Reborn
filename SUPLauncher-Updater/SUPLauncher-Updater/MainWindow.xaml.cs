@@ -18,6 +18,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Diagnostics;
+using Windows.Management.Deployment;
+using System.IO.Packaging;
+using Windows.Foundation;
+using Windows.Networking.BackgroundTransfer;
 
 namespace SUPLauncher_Updater
 {
@@ -29,6 +33,11 @@ namespace SUPLauncher_Updater
         public MainWindow()
         {
             InitializeComponent();
+            lbl_progress.Content = "0%";
+            Task taskA = Task.Run(() =>
+            {
+                update(getLatestVersion().ToString());
+            });
         }
 
         // Gets the latest release on github, and returns the version.
@@ -52,38 +61,47 @@ namespace SUPLauncher_Updater
             }
         }
 
+        
+
+        PackageManager pgManager = new PackageManager();
         public void update(string version)
         {
             using (var client = new WebClient())
             {
                 client.DownloadProgressChanged += (s, e) =>
                 {
-                    lbl_progress.Content = "Downloading update...";
+                    lbl_progress.Dispatcher.Invoke(() => lbl_progress.Content = "Downloading (" + e.ProgressPercentage + "%)");
                 };
 
                 client.DownloadFileCompleted += delegate
                 {
-                    using (ZipFile zip = ZipFile.Read("update-v" + version + ".zip"))
+                    IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> deploymentOperation = pgManager.AddPackageAsync(new Uri(Directory.GetCurrentDirectory() + "\\update-v" + version + ".appxbundle"), null, DeploymentOptions.ForceTargetApplicationShutdown);
+                    deploymentOperation.Progress = (op, progress) =>
                     {
-                        zip.ExtractProgress +=
-                           new EventHandler<ExtractProgressEventArgs>(zip_ExtractProgress);
+                        lbl_progress.Dispatcher.Invoke(() => lbl_progress.Content = "Installing (" + progress.percentage + "%)");
+                    };
 
-                        zip.ExtractAll(".", ExtractExistingFileAction.OverwriteSilently);
-                    }
-                    File.Delete("update-v" + version + ".zip");
+                    deploymentOperation.Completed = (dep, status) =>
+                    {
+                        this.Dispatcher.Invoke(() => {
+                            // Cleanup
+                            File.Delete(Directory.GetCurrentDirectory() + "\\update-v" + version + ".appxbundle");
 
-                    this.Close();
+                            Process.Start("../SUPLauncher/SUPLauncher.exe");
+                            Application.Current.Shutdown();
+                        });
+                    };
+
+                    while (true) { }; // Dont stop this thread
+
                 };
                 try
                 {
-                    client.DownloadFileAsync(new Uri("http://35.224.124.248/api/launcher/" + version), "update-v" + version + ".zip");
+                    client.DownloadFileAsync(new Uri("http://35.224.124.248/api/launcher/" + version), "update-v" + version + ".appxbundle");
                 }catch(Exception e)
                 {
                     MessageBox.Show("Failed to download update! Visit https://github.com/aidanH39/SUPLauncher-Reborn/ to update instead.");
                 }
-
-
-
             }
         }
 
@@ -104,10 +122,7 @@ namespace SUPLauncher_Updater
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Task taskA = Task.Run(() =>
-            {
-                update(getLatestVersion().ToString());
-            });
+
         }
 
     }

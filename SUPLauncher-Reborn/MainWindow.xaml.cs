@@ -44,7 +44,7 @@ namespace SUPLauncher
         {
             InitializeComponent();
 
-
+            lbl_version.Content = "V" + App.version.Major + "." + App.version.Minor + "." + App.version.Build;
             this.GotFocus += onFocus;
             scroll_servers.GotFocus += onFocus;
             this.grid_loading.Visibility = Visibility.Visible;
@@ -108,10 +108,43 @@ namespace SUPLauncher
                 }
 
             });
+            
+            if (App.getLatestVersion() > App.version)
+            {
+                MenuItem item = new MenuItem()
+                {
+                    Padding = new Thickness(4, 4, 4, 4),
+                    Header = "⚠️ Update Available",
+                    Margin = new Thickness(20,0,0,0)
+                };
 
+                item.Click += delegate
+                {
+                    InputBox box = new InputBox("Would you like to update the application right now?", BoxType.ACCEPT_CANCEL, "Update now?");
+                    box.ShowDialog();
 
+                    if (box.getConfirm())
+                    {
+                        Process.Start("../SUPLauncher-Updater/SUPLauncher-Updater.exe");
+                    }
+
+                };
+
+                toolbar._menu.Items.Add(item);
+            } else if (App.version > App.getLatestVersion())
+            {
+                MenuItem item = new MenuItem()
+                {
+                    Padding = new Thickness(4, 4, 4, 4),
+                    Header = "⚠️ Beta version",
+                    Margin = new Thickness(20, 0, 0, 0),
+                    Background = (Brush) new BrushConverter().ConvertFrom("#ff8800")
+                };
+                toolbar._menu.Items.Add(item);
+            } 
 
         }
+
 
         long lastReload = 0;
 

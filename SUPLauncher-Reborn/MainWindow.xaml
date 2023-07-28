@@ -266,7 +266,7 @@
                         </Image.RenderTransform>
                     </Image>
                     <Label HorizontalAlignment="Stretch" Content="SUPLauncher" Foreground="White" FontSize="40" FontWeight="Bold" Width="259" Height="69"/>
-                    <Label HorizontalAlignment="Stretch" Content="V3.0.0" Foreground="#FFB1B1B1" FontSize="16" FontWeight="Bold" Width="159" Height="30" HorizontalContentAlignment="Center"/>
+                    <Label HorizontalAlignment="Stretch" Name="lbl_version" Foreground="#FFB1B1B1" FontSize="16" FontWeight="Bold" Width="159" Height="30" HorizontalContentAlignment="Center"/>
                 </StackPanel>
             </Grid>
             <Label Foreground="White" Width="561" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Hacking into SUP wallet..." FontWeight="Bold" Margin="20" FontSize="16"/>

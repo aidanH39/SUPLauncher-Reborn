@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Threading;
@@ -28,7 +30,7 @@ namespace SUPLauncher
         public static SuperiorServers supAPI = null;
         public static SuperiorServers.Profile profile = null;
         public static String CSSLink = "https://drive.google.com/file/d/1SPO4kx6e-ylkFrIG8R88Yg0ZS2G8WTRI/view?usp=sharing";
-        public static String version = "3.0.0-beta";
+        public static Version version = new Version(3,0,0,0);
 
 
         public static HttpClient httpClient;
@@ -212,6 +214,28 @@ namespace SUPLauncher
             }
             key.Close();
         }
+
+        // Gets the latest release on github, and returns the version.
+        public static Version getLatestVersion()
+        {
+            try
+            {
+                string[] webData;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // Secure security protocol for querying the github API
+                HttpWebRequest request = WebRequest.CreateHttp("http://api.github.com/repos/aidanH39/SUPLauncher-Reborn/releases/latest");
+                request.UserAgent = "SUPLauncher";
+                WebResponse response = null;
+                response = request.GetResponse();
+                StreamReader sr = new StreamReader(response.GetResponseStream());
+                dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(sr.ReadToEnd());
+                return new Version(json.tag_name.ToString());
+            }
+            catch (Exception e)
+            {
+                return new Version("0.0.0");
+            }
+        }
+
 
     }
 }
