@@ -30,7 +30,7 @@ namespace SUPLauncher
         public static SuperiorServers supAPI = null;
         public static SuperiorServers.Profile profile = null;
         public static String CSSLink = "https://drive.google.com/file/d/1SPO4kx6e-ylkFrIG8R88Yg0ZS2G8WTRI/view?usp=sharing";
-        public static Version version = new Version(3,0,0,0);
+        public static Version version = new Version(3,0,1);
 
 
         public static HttpClient httpClient;

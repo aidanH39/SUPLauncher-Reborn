@@ -58,12 +58,29 @@ namespace SUPLauncher
             settings.Show();
         }
 
-        private void exit_Click(object sender, RoutedEventArgs e)
+        private void issues_Click(object sender, RoutedEventArgs e)
         {
-            parentWindow.Close();
+            Process myProcess = new Process();
+            myProcess.StartInfo.UseShellExecute = true; // Won't run urls without this flag
+            myProcess.StartInfo.FileName = "https://github.com/aidanH39/SUPLauncher-Reborn/issues";
+            myProcess.Start();
         }
 
-        private void close_Click(object sender, RoutedEventArgs e)
+        private void forum_Click(object sender, RoutedEventArgs e)
+        {
+            Process myProcess = new Process();
+            myProcess.StartInfo.UseShellExecute = true; // Won't run urls without this flag
+            myProcess.StartInfo.FileName = "https://github.com/aidanH39/SUPLauncher-Reborn/issues";
+            myProcess.Start();
+        }
+
+        private void credits_click(object sender, RoutedEventArgs e)
+        {
+            InputBox box = new InputBox("Created by: Best of all\nSteamBridge.cs: Nick\nTHIRD PARTY SOFTWARE! This is not a official launcher.", BoxType.MESSAGE_BOX, "Credits");
+            box.Show();
+        }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
         {
             parentWindow.Close();
         }

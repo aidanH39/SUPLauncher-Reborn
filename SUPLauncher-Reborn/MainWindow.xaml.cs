@@ -106,9 +106,9 @@ namespace SUPLauncher
                         }
                     }
                 }
-
             });
-            
+
+
             if (App.getLatestVersion() > App.version)
             {
                 MenuItem item = new MenuItem()

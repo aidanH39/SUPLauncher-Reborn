@@ -13,7 +13,7 @@
 
     <Grid Name="main_grid" Background="#191919">
         <WrapPanel FlowDirection="RightToLeft" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Margin="0,0,0,0">
-            <Button Style="{StaticResource redButton}" ToolTip="Close" x:Name="btn_closeButton" Command="{Binding CloseWindow}" Content="&#xE10A;" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" RenderTransformOrigin="-0.084,0.546" Margin="10,0,0,0" Height="27" Width="31" FontFamily="Segoe MDL2 Assets" Click="close_Click"/>
+            <Button Style="{StaticResource redButton}" ToolTip="Close" x:Name="btn_closeButton" Click="exit_Click" Content="&#xE10A;" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" RenderTransformOrigin="-0.084,0.546" Margin="10,0,0,0" Height="27" Width="31" FontFamily="Segoe MDL2 Assets"/>
             <Button x:Name="btn_min" ToolTip="Minimize" Content="⏤" HorizontalAlignment="Left" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" RenderTransformOrigin="-0.084,0.546" Height="27" Width="31" Click="btn_min_Click"/>
             <Button x:Name="btn_overlayPin" Visibility="Hidden" Content="" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" ToolTip="Pin to GMOD" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" RenderTransformOrigin="-0.084,0.546" Height="27" Width="31" Click="btn_pin_Click"/>
         </WrapPanel>
@@ -32,9 +32,9 @@
                         <MenuItem Header="Help">
                             <MenuItem Header="View Logs Folder" Click="showLogs_Click" />
                             <MenuItem Header="Github" Click="github_Click" />
-                            <MenuItem Header="Report an issue/bug" />
-                            <MenuItem Header="SUP forum post" />
-                            <MenuItem Header="Credits" />
+                            <MenuItem Header="Report an issue/bug" Click="issues_Click" />
+                            <MenuItem Header="SUP forum post" Click="forum_Click" />
+                            <MenuItem Header="Credits" Click="credits_click" />
                         </MenuItem>
                     </Menu>
                     <!--<Label Style="{StaticResource btn_top}" Name="top_sup" Content="SUPLauncher" FontFamily="Segoe UI" FontSize="12">
