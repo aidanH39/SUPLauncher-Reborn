@@ -14,7 +14,7 @@ They are two ways you can go about installing this.
 This will install the certificate for you and then install the package. Quick and easy, but no GUI.
 
 1. Download the .zip file from the releases tab, then once downloaded extract to a folder.
-2. In the folder, they will be a powershell script called Install.ps1
+2. In the folder, they will be a powershell script called Install.ps1, Right click and click Run with powershell
    ![GIF to show what to click](https://i.imgur.com/yMQn5Po.gif)
 3. If install completes the app will be available in the start menu, or just by searching for it.
 
