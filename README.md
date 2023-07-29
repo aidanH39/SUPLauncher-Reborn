@@ -28,6 +28,7 @@ This will install the certificate for you and then install the package. Quick an
 7. Click Next, and then Finish. If all done correctly should get a popup saying Import successful or something like that
    
 ![](https://i.imgur.com/KYe9LZD.gif)
+
 9. Once that is all done, just open the .appxbundle and you will get a install GUI like your installing something from the store, Just click install.
 
 # Features:
