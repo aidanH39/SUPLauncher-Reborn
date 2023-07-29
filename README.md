@@ -26,8 +26,9 @@ This will install the certificate for you and then install the package. Quick an
 5. Click 'Place all Certificates in the following store'
 6. Search for and click 'Trusted People' then click OK
 7. Click Next, and then Finish. If all done correctly should get a popup saying Import successful or something like that
+   
 ![](https://i.imgur.com/KYe9LZD.gif)
-8. Once that is all done, just open the .appxbundle and you will get a install GUI like your installing something from the store, Just click install.
+9. Once that is all done, just open the .appxbundle and you will get a install GUI like your installing something from the store, Just click install.
 
 # Features:
 * **Dupe Manager** - Import & delete dupes easily, with the dupe manager. In the latest version (V3.0.0) they is also a quick share feature, that creates a tiny url, directly to download the shared dupe, with this link you can download locally, or import to the SUPLauncher if it is installed what will place the dupe automaticlly in the correct place.
