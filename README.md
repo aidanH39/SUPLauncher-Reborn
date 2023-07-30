@@ -1,6 +1,6 @@
 ![](https://superiorservers.co/static/images/site-logo_reduced.png)
 # SUPLauncher | Reborn (UNOFFICIAL)
-### V3.0.0
+### V3.1.0
 
 SUPLauncher is a application built for using while playing [Superior Servers](https://superiorservers.co) it includes many features for regular users, and staff members. I built this for my self mainly, to develop skills, and keep practising what i already know, but it is fun to develop these applications.
 
