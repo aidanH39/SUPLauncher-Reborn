@@ -34,7 +34,7 @@ namespace SUPLauncher
 
 
         
-        public static Version version = new Version(2,0,0);
+        public static Version version = new Version(3,1,0);
 
 
         public static HttpClient httpClient;
