@@ -37,27 +37,34 @@ namespace SUPLauncher
         private static NotificationCentre instance;
         Duration animationDuration = new Duration(new TimeSpan(0, 0, 0, 0, 450));
         
-        public static void notify(string title, string message, Action<Task> clickCallback=null)
+        public static void notify(string title, string message, Action clickCallback=null)
         {
-            Notification n = new Notification();
-            n.lbl_message.Text = message;
-            n.lbl_title.Content = title;
-
-            TranslateTransform t = new TranslateTransform();
-            DoubleAnimation anim = new DoubleAnimation(0, NotificationCentre.instance.animationDuration);
-            t.X = 360;
-            n.RenderTransform = t;
-            NotificationCentre.instance.pnl_wrap.Children.Add(n);
-            n.RenderTransform.BeginAnimation(TranslateTransform.XProperty, anim);
-
-            Task.Delay(8000).ContinueWith(delegate
+            NotificationCentre.instance.Dispatcher.Invoke(() =>
             {
-                NotificationCentre.instance.Dispatcher.Invoke(() =>
+                Notification n = new Notification();
+                n.lbl_message.Text = message;
+                n.lbl_title.Content = title;
+
+                TranslateTransform t = new TranslateTransform();
+                DoubleAnimation anim = new DoubleAnimation(0, NotificationCentre.instance.animationDuration);
+                t.X = 360;
+                n.RenderTransform = t;
+                NotificationCentre.instance.pnl_wrap.Children.Add(n);
+                n.RenderTransform.BeginAnimation(TranslateTransform.XProperty, anim);
+
+                n.MouseDoubleClick += delegate
                 {
-                    NotificationCentre.instance.afterNotify(n);
+                    new Task(clickCallback).RunSynchronously();
+                };
+
+                Task.Delay(8000).ContinueWith(delegate
+                {
+                    NotificationCentre.instance.Dispatcher.Invoke(() =>
+                    {
+                        NotificationCentre.instance.afterNotify(n);
+                    });
                 });
             });
-
         }
 
         private void afterNotify(Notification not)

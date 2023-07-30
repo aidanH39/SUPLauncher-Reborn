@@ -18,7 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Diagnostics;
-using Windows.Management.Deployment;
+using Windows.Management.Deployment; 
 using System.IO.Packaging;
 using Windows.Foundation;
 using Windows.Networking.BackgroundTransfer;
@@ -112,7 +112,7 @@ namespace SUPLauncher_Updater
         {
             if (e.TotalBytesToTransfer > 0)
             {
-                lbl_progress.Content = "Installing update...";
+                lbl_progress.Content = "Installing update..."; 
                 if (e.BytesTransferred >= e.TotalBytesToTransfer)
                 {
                     Process.Start("SUPLauncher.exe");

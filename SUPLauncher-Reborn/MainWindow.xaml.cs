@@ -24,6 +24,7 @@ using System.Windows.Threading;
 using static SUPLauncher.FileDownloader;
 using static SUPLauncher.Logger;
 using static SUPLauncher.SuperiorServers;
+using Path = System.IO.Path;
 
 namespace SUPLauncher
 {
@@ -125,7 +126,7 @@ namespace SUPLauncher
 
                     if (box.getConfirm())
                     {
-                        Process.Start("../SUPLauncher-Updater/SUPLauncher-Updater.exe");
+                        Application.Current.Shutdown();
                     }
 
                 };
@@ -371,9 +372,13 @@ namespace SUPLauncher
             }
         }
 
-        public void downloadProgressChange(object sender, DownloadProgress e)
+        public void css_downloadProgressChange(object sender, DownloadProgress e)
         {
             lbl_progressText.Content = "Downloading CSS content (" + e.ProgressPercentage + "%)";
+        }
+        public void tf2_downloadProgressChange(object sender, DownloadProgress e)
+        {
+            lbl_progressText.Content = "Downloading TF2 content (" + e.ProgressPercentage + "%)";
         }
 
 
@@ -405,20 +410,34 @@ namespace SUPLauncher
                 lbl_progressText.Content = "Checking for CSS (Counter Strike Source) content...";
                 string gmodPath = Steam.getGarrysModPath();
                 bool cssInstalled = false;
+                bool tf2Installed = false;
                 foreach (string folder in Directory.GetDirectories(gmodPath + "\\garrysmod\\addons"))
                 {
                     if (Directory.Exists(folder + "\\materials"))
                     {
-                        if (Directory.Exists(folder + "\\materials\\brick") && Directory.Exists(folder + "\\materials\\buildings") && Directory.Exists(folder + "\\materials\\glass") && Directory.Exists(folder + "\\materials\\carpet") && Directory.Exists(folder + "\\materials\\metal") && Directory.Exists(folder + "\\materials\\detail"))
+                        if (Directory.Exists(folder + "\\materials\\brick") && Directory.Exists(folder + "\\materials\\buildings") && Directory.Exists(folder + "\\materials\\glass") && Directory.Exists(folder + "\\materials\\carpet") && Directory.Exists(folder + "\\materials\\de_dust") && Directory.Exists(folder + "\\materials\\detail"))
                         {
                             cssInstalled = true;
                         }
+
+                        if (Directory.Exists(folder + "\\materials\\backpack") && Directory.Exists(folder + "\\materials\\ambulance") && Directory.Exists(folder + "\\materials\\cable") && Directory.Exists(folder + "\\materials\\vgui") && Directory.Exists(folder + "\\materials\\egypt") && Directory.Exists(folder + "\\materials\\effects"))
+                        {
+                            tf2Installed = true;
+                        }
+
                     }
                 }
 
-                if (!cssInstalled)
+                if (!cssInstalled) cssInstalled = Steam.isCSSinstalled();
+
+                if (!tf2Installed) tf2Installed = Steam.isTF2installed();
+
+                InputBox box = new InputBox("They is content needed for SUP to be installed, would you like to launch anyway, and download this content in the background? We will notify you when the content has been installed. A restart will be required after.", BoxType.ACCEPT_CANCEL, "Launch Anyway?");
+
+                box.ShowDialog();
+                if (box.getConfirm())
                 {
-                    cssInstalled = Steam.isCSSinstalled();
+                    launchServer(server, false);
                 }
 
                 if (!cssInstalled)
@@ -426,7 +445,7 @@ namespace SUPLauncher
                     // Download and install CSS textures.
                     lbl_progressText.Content = "Downloading CSS content...";
                     FileDownloader fileDownloader = new FileDownloader();
-                    fileDownloader.DownloadProgressChanged += downloadProgressChange;
+                    fileDownloader.DownloadProgressChanged += css_downloadProgressChange;
                     fileDownloader.DownloadFileCompleted += delegate
                     {
                         lbl_progressText.Content = "Installed CSS content!";
@@ -436,11 +455,12 @@ namespace SUPLauncher
                             using (ZipFile zip = ZipFile.Read(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\CSS-Content.zip"))
                             {
                                 zip.ExtractProgress +=
-                                   new EventHandler<ExtractProgressEventArgs>(zip_ExtractProgress);
+                                   new EventHandler<ExtractProgressEventArgs>(css_zip_ExtractProgress);
                                 zip.ExtractAll(Steam.getGarrysModPath() + "\\garrysmod\\addons\\", ExtractExistingFileAction.OverwriteSilently);
                             }
                             this.grid_progress.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { validateCheck(server, check + 1); }));
                             File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\CSS-Content.zip");
+                            NotificationCentre.notify("CSS CONTENT", "Has been downloaded and installed!");
                         });
                     };
                     Directory.CreateDirectory(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads");
@@ -451,6 +471,40 @@ namespace SUPLauncher
                 {
                     lbl_progressText.Content = "CSS Content is installed!";
                 }
+
+                if (!tf2Installed)
+                {
+                    NotificationCentre.notify("TF2 CONTENT", "Starting to download TF2 content...");
+                    // Download and install TF2 textures.
+                    lbl_progressText.Content = "Downloading TF2 content...";
+                    FileDownloader fileDownloader = new FileDownloader();
+                    fileDownloader.DownloadProgressChanged += tf2_downloadProgressChange;
+                    fileDownloader.DownloadFileCompleted += delegate
+                    {
+                        lbl_progressText.Content = "Installed TF2 content!";
+                        lbl_progressText.Content = "Extracintg TF2 content...";
+                        Task taskA = Task.Run(() =>
+                        {
+                            using (ZipFile zip = ZipFile.Read(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\TF2-Content.zip"))
+                            {
+                                zip.ExtractProgress +=
+                                   new EventHandler<ExtractProgressEventArgs>(tf2_zip_ExtractProgress);
+                                zip.ExtractAll(Steam.getGarrysModPath() + "\\garrysmod\\addons\\TF2-Content", ExtractExistingFileAction.OverwriteSilently);
+                            }
+                            this.grid_progress.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { validateCheck(server, check + 1); }));
+                            File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\TF2-Content.zip");
+                            NotificationCentre.notify("TF2 CONTENT", "has been downloaded and installed!");
+                        });
+                    };
+                    Directory.CreateDirectory(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads");
+                    fileDownloader.DownloadFileAsync(App.TF2Link, System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\TF2-Content.zip");
+                    return;
+                }
+                else
+                {
+                    lbl_progressText.Content = "TF2 Content is installed!";
+                }
+
             }
             if (check < 3)
             {
@@ -458,35 +512,66 @@ namespace SUPLauncher
             }
             else
             {
-                // Everything is installed proceed with launch.
-                lbl_progressText.Content = "Launching '" + server.Name + "'...";
-                // Check if garry's mod is in AFK mode first. If it is, close it and then proceed with launch.
-                if (Steam.isGmodAFK())
+                if (Steam.getGmodProcess() != null)
                 {
-                    Process gmod = Steam.getGmodProcess();
-                    App.joiningServer = true;
-                    gmod.Kill();
+                    NotificationCentre.notify("CONTENT INSTALLED", "You can now restart your game when you like. Or click this notification to restart now!", () =>
+                    {
+                        Steam.getGmodProcess().Kill();
+                        Task.Delay(2000).ContinueWith((e) =>
+                        {
+                            launchServer(server);
+                        });
+                        
+                    });
+                } else
+                {
+                    launchServer(server);
                 }
-
-                Process myProcess = new Process();
-                myProcess.StartInfo.UseShellExecute = true;
-                myProcess.StartInfo.FileName = server.Connect;
-                myProcess.Start();
-                Task.Delay(2000).ContinueWith(delegate
-                {
-                    this.grid_progress.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { this.grid_progress.Visibility = Visibility.Hidden; }));
-                });
-
                 
             }
         }
 
-        private void zip_ExtractProgress(object? sender, ExtractProgressEventArgs e)
+        private void launchServer(Server server, bool hideBar=true)
+        {
+            // Everything is installed proceed with launch.
+            lbl_progressText.Content = "Launching '" + server.Name + "'...";
+            // Check if garry's mod is in AFK mode first. If it is, close it and then proceed with launch.
+            if (Steam.isGmodAFK())
+            {
+                Process gmod = Steam.getGmodProcess();
+                App.joiningServer = true;
+                gmod.Kill();
+            }
+
+            Process myProcess = new Process();
+            myProcess.StartInfo.UseShellExecute = true;
+            myProcess.StartInfo.FileName = server.Connect;
+            myProcess.Start();
+            if (hideBar)
+            {
+                Task.Delay(2000).ContinueWith(delegate
+                {
+                    this.grid_progress.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { this.grid_progress.Visibility = Visibility.Hidden; }));
+                });
+            }
+        }
+
+        private void css_zip_ExtractProgress(object? sender, ExtractProgressEventArgs e)
         {
             if (e.EntriesTotal > 0)
             {
                 int percent = Convert.ToInt32(100 * e.EntriesExtracted / e.EntriesTotal);
                 this.lbl_progressText.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { lbl_progressText.Content = "Extracting CSS Content (" + percent + "%)"; }));
+            } 
+        }
+
+
+        private void tf2_zip_ExtractProgress(object? sender, ExtractProgressEventArgs e)
+        {
+            if (e.EntriesTotal > 0)
+            {
+                int percent = Convert.ToInt32(100 * e.EntriesExtracted / e.EntriesTotal);
+                this.lbl_progressText.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { lbl_progressText.Content = "Extracting TF2 Content (" + percent + "%)"; }));
             }
         }
 

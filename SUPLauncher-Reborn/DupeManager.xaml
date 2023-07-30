@@ -40,10 +40,10 @@
                 <!--Defines a context menu-->
                 <ContextMenu x:Key="item_menu">
                     <MenuItem Header="Share" Click="onShareClick"/>
-                    <Separator/>
+                    <Separator Background="#6f6f6f"/>
                     <MenuItem Header="Rename" Click="onRename"/>
                     <MenuItem Header="Copy" Click="onCopy"/>
-                    <Separator/>
+                    <Separator Background="#6f6f6f"/>
                     <MenuItem Header="Delete" Click="onDelete"/>
                 </ContextMenu>
 
@@ -54,7 +54,7 @@
 
                 <ContextMenu x:Key="box_menu">
                     <MenuItem Header="Create new folder" Click="onNewFolder"/>
-                    <Separator></Separator>
+                    <Separator Background="#6f6f6f"></Separator>
                     <MenuItem Header="Import dupe by URL" Click="importDupeURL"/>
                     <MenuItem Header="Import local dupe" Click="browseLocal"/>
                 </ContextMenu>

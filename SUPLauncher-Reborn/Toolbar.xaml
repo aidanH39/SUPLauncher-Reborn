@@ -21,7 +21,7 @@
             <Image Width="25" Height="25" Name="img_icon" Source="/textless_logo.png"/>
             <WrapPanel>
                 <Grid Margin="1.5">
-                    <Menu Name="_menu" Style="{StaticResource menu_style}" Height="auto" Margin="0,0,0,-11">
+                    <Menu Name="_menu" Height="auto" Margin="0,0,0,-11">
                         <MenuItem x:Name="_appName" Header="SUPLauncher">
                             <MenuItem Header="Settings" Click="settings_Click" />
                             <MenuItem Header="Exit" Click="exit_Click" />

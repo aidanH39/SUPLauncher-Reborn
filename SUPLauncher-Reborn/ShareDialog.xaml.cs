@@ -60,7 +60,7 @@ namespace SUPLauncher
                     }
                     else
                     {
-                        Interaction.MsgBox("ERROR: " + response.StatusCode);
+                        MessageBox.Show("ERROR: " + response.StatusCode);
                     }
                 }
             } catch (Exception ex)

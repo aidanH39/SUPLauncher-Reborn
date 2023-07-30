@@ -357,6 +357,36 @@ public class Steam : IDisposable
         return isinstalled;
     }
 
+    /// <summary>
+    /// Checks if the player owns & has downloaded TF2.
+    /// </summary>
+    /// <returns></returns>
+    public static bool isTF2installed()
+    {
+        String rpath = "";
+        if (Environment.Is64BitOperatingSystem)
+            rpath = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Valve\\Steam";
+        else
+            rpath = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Valve\\Steam";
+
+        string strSteamInstallPath = (String)Registry.GetValue(rpath, "InstallPath", null);
+        dynamic volvo = VdfConvert.Deserialize(File.ReadAllText(strSteamInstallPath + "/steamapps/libraryfolders.vdf"));
+        bool isinstalled = false;
+        foreach (dynamic v in volvo.Value)
+        {
+            string path = v.Value.path.ToString();
+            foreach (var lFolder in v.Value.apps)
+            {
+                String[] st = lFolder.ToString().Split('"');
+                if (st[1] == "440")
+                {
+                    isinstalled = true;
+                }
+            }
+        }
+        return isinstalled;
+    }
+
     public static long SteamID32To64(string steamId)
     {
         var match = Regex.Match(steamId, @"^STEAM_[0-5]:[01]:\d+$", RegexOptions.IgnoreCase);

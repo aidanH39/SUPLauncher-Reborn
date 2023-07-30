@@ -6,6 +6,20 @@
     <Application.Resources>
         <ResourceDictionary>
             <SolidColorBrush x:Key="Menu.Static.Background" Color="#3D4450"/>
+            <Style TargetType="ContextMenu">
+                <Setter Property="Background" Value="{StaticResource Menu.Static.Background}"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ContextMenu}">
+                            <Border Background="{StaticResource Menu.Static.Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Style x:Key="context_style" TargetType="ContextMenu">
                 <Setter Property="Background" Value="{StaticResource Menu.Static.Background}"></Setter>
                 <Setter Property="Foreground" Value="White"></Setter>
@@ -23,7 +37,7 @@
             <!-- START OF MENUS -->
 
             
-            <Style x:Key="menu_style" TargetType="{x:Type Menu}">
+            <Style TargetType="{x:Type Menu}">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemFonts.MenuFontFamilyKey}}"/>
                 <Setter Property="FontSize" Value="{DynamicResource {x:Static SystemFonts.MenuFontSizeKey}}"/>
