@@ -2,6 +2,8 @@
 # SUPLauncher | Reborn (UNOFFICIAL)
 ### V3.1.0
 
+**ONLY COMPATIBLE WITH WINDOWS 10 / 11 ATM**
+
 SUPLauncher is a application built for using while playing [Superior Servers](https://superiorservers.co) it includes many features for regular users, and staff members. I built this for my self mainly, to develop skills, and keep practising what i already know, but it is fun to develop these applications.
 
 # Install guide
