@@ -229,9 +229,11 @@ namespace SUPLauncher
             currentBrowser = (ChromiumWebBrowser)tabButton.Tag;
             currentTabLabel = (Label)((WrapPanel)currentTab.Content).Children[0];
 
-
-            txt_address.Text = currentBrowser.Address.ToString();
-            currentTabLabel.Content = currentBrowser.Title;
+            if (currentBrowser.Address != null)
+            {
+                txt_address.Text = currentBrowser.Address.ToString();
+                currentTabLabel.Content = currentBrowser.Title;
+            }
 
 
         }

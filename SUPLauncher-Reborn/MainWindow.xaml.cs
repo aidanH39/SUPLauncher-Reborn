@@ -432,12 +432,15 @@ namespace SUPLauncher
 
                 if (!tf2Installed) tf2Installed = Steam.isTF2installed();
 
-                InputBox box = new InputBox("They is content needed for SUP to be installed, would you like to launch anyway, and download this content in the background? We will notify you when the content has been installed. A restart will be required after.", BoxType.ACCEPT_CANCEL, "Launch Anyway?");
-
-                box.ShowDialog();
-                if (box.getConfirm())
+                if (!cssInstalled || !tf2Installed)
                 {
-                    launchServer(server, false);
+                    InputBox box = new InputBox("They is content needed for SUP to be installed, would you like to launch anyway, and download this content in the background? We will notify you when the content has been installed. A restart will be required after.", BoxType.ACCEPT_CANCEL, "Launch Anyway?");
+
+                    box.ShowDialog();
+                    if (box.getConfirm())
+                    {
+                        launchServer(server, false);
+                    }
                 }
 
                 if (!cssInstalled)
@@ -452,19 +455,19 @@ namespace SUPLauncher
                         lbl_progressText.Content = "Extracintg CSS content...";
                         Task taskA = Task.Run(() =>
                         {
-                            using (ZipFile zip = ZipFile.Read(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\CSS-Content.zip"))
+                            using (ZipFile zip = ZipFile.Read(Path.GetTempPath() + "\\SUPLauncher\\downloads\\CSS-Content.zip"))
                             {
                                 zip.ExtractProgress +=
                                    new EventHandler<ExtractProgressEventArgs>(css_zip_ExtractProgress);
                                 zip.ExtractAll(Steam.getGarrysModPath() + "\\garrysmod\\addons\\", ExtractExistingFileAction.OverwriteSilently);
                             }
                             this.grid_progress.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { validateCheck(server, check + 1); }));
-                            File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\CSS-Content.zip");
+                            File.Delete(Path.GetTempPath() + "\\SUPLauncher\\downloads\\CSS-Content.zip");
                             NotificationCentre.notify("CSS CONTENT", "Has been downloaded and installed!");
                         });
                     };
-                    Directory.CreateDirectory(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads");
-                    fileDownloader.DownloadFileAsync(App.CSSLink, System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\CSS-Content.zip");
+                    Directory.CreateDirectory(Path.GetTempPath() + "\\SUPLauncher\\downloads");
+                    fileDownloader.DownloadFileAsync(App.CSSLink, Path.GetTempPath() + "\\SUPLauncher\\downloads\\CSS-Content.zip");
                     return;
                 }
                 else
@@ -485,19 +488,19 @@ namespace SUPLauncher
                         lbl_progressText.Content = "Extracintg TF2 content...";
                         Task taskA = Task.Run(() =>
                         {
-                            using (ZipFile zip = ZipFile.Read(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\TF2-Content.zip"))
+                            using (ZipFile zip = ZipFile.Read(Path.GetTempPath() + "\\SUPLauncher\\downloads\\TF2-Content.zip"))
                             {
                                 zip.ExtractProgress +=
                                    new EventHandler<ExtractProgressEventArgs>(tf2_zip_ExtractProgress);
                                 zip.ExtractAll(Steam.getGarrysModPath() + "\\garrysmod\\addons\\TF2-Content", ExtractExistingFileAction.OverwriteSilently);
                             }
                             this.grid_progress.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { validateCheck(server, check + 1); }));
-                            File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\TF2-Content.zip");
+                            File.Delete(Path.GetTempPath() + "\\SUPLauncher\\downloads\\TF2-Content.zip");
                             NotificationCentre.notify("TF2 CONTENT", "has been downloaded and installed!");
                         });
                     };
-                    Directory.CreateDirectory(System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads");
-                    fileDownloader.DownloadFileAsync(App.TF2Link, System.AppDomain.CurrentDomain.BaseDirectory + "\\downloads\\TF2-Content.zip");
+                    Directory.CreateDirectory(Path.GetTempPath() + "\\SUPLauncher");
+                    fileDownloader.DownloadFileAsync(App.TF2Link, Path.GetTempPath + "\\SUPLauncher\\downloads\\TF2-Content.zip");
                     return;
                 }
                 else
@@ -520,8 +523,11 @@ namespace SUPLauncher
                         Task.Delay(2000).ContinueWith((e) =>
                         {
                             launchServer(server);
-                        });
-                        
+                        }); 
+                    });
+                    Task.Delay(2000).ContinueWith(delegate
+                    {
+                        this.grid_progress.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { this.grid_progress.Visibility = Visibility.Hidden; }));
                     });
                 } else
                 {
