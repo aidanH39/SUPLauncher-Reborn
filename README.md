@@ -12,16 +12,7 @@ They are two ways you can go about installing this.
 
 ## Windows
 
-**Install using powershell script (Included)**
-This will install the certificate for you and then install the package. Quick and easy, but no GUI.
-
-1. Download the .zip file from the releases tab, then once downloaded extract to a folder.
-2. In the folder, they will be a powershell script called Install.ps1, Right click and click Run with powershell
-   ![GIF to show what to click](https://i.imgur.com/yMQn5Po.gif)
-3. If install completes the app will be available in the start menu, or just by searching for it.
-
-**Install the certificate manually**
-1. Download the .zip file from the releases tab, then once downloaded extract to a folder.
+1. Download the .cer and .appinstaller file from the releases tab
 2. Click on the .cer file should be called something like `SUPLauncher Package_3.x.x.x_x86_x64.cer`
 3. Click `Install Certificate`
 4. Click Local Machine then Next (Admin privileges may be needed)
@@ -31,7 +22,7 @@ This will install the certificate for you and then install the package. Quick an
    
 ![](https://i.imgur.com/KYe9LZD.gif)
 
-9. Once that is all done, just open the .appxbundle and you will get a install GUI like your installing something from the store, Just click install.
+9. Once that is all done, just open the .appinstaller and you will get a install GUI like your installing something from the store, Just click install.
 
 # Features:
 * **Dupe Manager** - Import & delete dupes easily, with the dupe manager. In the latest version (V3.0.0) they is also a quick share feature, that creates a tiny url, directly to download the shared dupe, with this link you can download locally, or import to the SUPLauncher if it is installed what will place the dupe automaticlly in the correct place.
