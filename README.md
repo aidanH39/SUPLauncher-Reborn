@@ -1,6 +1,6 @@
 ![](https://superiorservers.co/static/images/site-logo_reduced.png)
 # SUPLauncher | Reborn (UNOFFICIAL)
-### V3.1.0
+### V3.1.1
 
 **ONLY COMPATIBLE WITH WINDOWS 10 / 11 ATM**
 
