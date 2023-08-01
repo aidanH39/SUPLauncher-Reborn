@@ -48,6 +48,12 @@ namespace SUPLauncher
             lbl_version.Content = "V" + App.version.Major + "." + App.version.Minor + "." + App.version.Build;
             this.GotFocus += onFocus;
             scroll_servers.GotFocus += onFocus;
+
+            var scareThemOff = new List<string> { "Hacking into SUP Wallet, taking all GBUX...", "Stealing all dupes...", "Adding user to bot net...", "Grabbing ip and adding to database...", "Downloading hacks for sup to get you banned..." };
+            Random random = new Random();
+
+            lbl_loadingMsg.Content = scareThemOff[random.Next(scareThemOff.Count)];
+
             this.grid_loading.Visibility = Visibility.Visible;
 
             // start listening for named pipe connections
