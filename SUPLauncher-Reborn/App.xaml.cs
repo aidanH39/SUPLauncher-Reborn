@@ -41,6 +41,7 @@ namespace SUPLauncher
 
         public App()
         {
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(ErrorHandler);
             // Start logging
             Logger.initLogger();
             Logger.Log(Logger.LogType.INFO, "Starting SUPLauncher v" + version + "...");
@@ -50,8 +51,14 @@ namespace SUPLauncher
             settings.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 SUPLauncher";
             Cef.Initialize(settings);
 
-            // Register custom protocol (sup://)
-            RegisterMyProtocol(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            try
+            {
+                // Register custom protocol (sup://)
+                RegisterMyProtocol(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            } catch (Exception e)
+            {
+                Logger.Log(Logger.LogType.ERROR, "Could not register protocol, sup:// will not work!");
+            }
 
 
 
@@ -124,6 +131,14 @@ namespace SUPLauncher
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "SUPLauncher/crashed.temp"))
+            {
+                File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "SUPLauncher/crashed.temp");
+                InputBox msg = new InputBox("It appears that the application crashed the last time it was ran, if this frequently happens, please create an issue on github. A crash report is avaiblable in %appdata%/SUPLauncher please include this along with the issue.", BoxType.MESSAGE_BOX, "Crashed");
+                msg.ShowDialog();
+            }
+
             // Get startup arguments
             startupArgs = e.Args;
 
@@ -155,6 +170,23 @@ namespace SUPLauncher
             updateDiscord();
             new NotificationCentre().Show();
             new MainWindow().Show();
+        }
+
+        void ErrorHandler(object sender, UnhandledExceptionEventArgs args)
+        {
+            if (args.IsTerminating)
+            {
+                Exception ex = (Exception)args.ExceptionObject;
+                Logger.Log(LogType.FATAL, "A unhandled error occured. " + ex.Message + "\nStack trace: " + ex.StackTrace);
+                Logger.createCrashReport(ex);
+            } else
+            {
+                Exception ex = (Exception)args.ExceptionObject;
+                Logger.Log(LogType.FATAL, "A unhandled error occured. " + ex.Message + "\nStack trace: " + ex.StackTrace);
+                Logger.createCrashReport(ex);
+                InputBox m = new InputBox("A unhandled error has occurred please report this error on github, along with the log file located in %appdata%/SUPLauncher/logs.\nMessage: " + ex.Message + "\nStack trace: Can be found in log file. " + Logger.fileName, BoxType.MESSAGE_BOX, "ERROR");
+                m.Show();
+            }
         }
 
         public static string lastIp;

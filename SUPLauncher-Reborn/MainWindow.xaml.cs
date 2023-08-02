@@ -148,7 +148,7 @@ namespace SUPLauncher
                     Background = (Brush) new BrushConverter().ConvertFrom("#ff8800")
                 };
                 toolbar._menu.Items.Add(item);
-            } 
+            }
 
         }
 

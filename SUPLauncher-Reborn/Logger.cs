@@ -15,6 +15,7 @@ namespace SUPLauncher
     {
         
         private static StreamWriter stream;
+        public static string fileName;
         public static void initLogger()
         {
             string dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -30,6 +31,7 @@ namespace SUPLauncher
             }
             // Opens stream to the file.
             stream = new StreamWriter(File.Open(dir + "/SUPLauncher/logs/" + i + ".log", FileMode.OpenOrCreate));
+            Logger.fileName = dir + "/SUPLauncher/logs/" + i + ".log";
         }
 
         public static void Log(LogType type, string message) {
@@ -37,6 +39,24 @@ namespace SUPLauncher
             stream.WriteLine("[" + type.ToString() + "] " + "(" + t.TotalMilliseconds.ToString() + "): " + message);
             stream.Flush();
         }
+
+        public static void createCrashReport(Exception e)
+        {
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            if (!Directory.Exists(dir + "/SUPLauncher/crashes"))
+            {
+                Directory.CreateDirectory(dir + "/SUPLauncher/crashes");
+            }
+            
+            int i = 1;
+            while (File.Exists(dir + "/SUPLauncher/crashes/" + i + ".crash"))
+            {
+                i++;
+            }
+            File.WriteAllText(dir + "SUPLauncher/crashes/crash.txt", "A error has made the application crash, below is the details to what caused this to happen!\nMessage: " + e.Message + "\nStack Trace: \n" + e.StackTrace);
+            File.Create(dir + "SUPLauncher/crashed.temp");
+        }
+
 
         public enum LogType
         {
