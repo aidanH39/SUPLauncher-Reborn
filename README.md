@@ -10,6 +10,10 @@ SUPLauncher is a application built for using while playing [Superior Servers](ht
 V3.0.0 is kinda easier to install than previous versions, but at the same time not? The certificate is the hard part. Let me show you.
 They are two ways you can go about installing this.
 
+Download the latest release **OR**
+You can also install the launcher here! [https://suplauncher.aidanhud.com/](https://suplauncher.aidanhud.com/)
+You won't have to install the .appinstaller if you download from here, it will automaticlly install the latest version.
+
 ## Windows
 
 1. Download the .cer and .appinstaller file from the releases tab
