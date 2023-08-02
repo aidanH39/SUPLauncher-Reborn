@@ -99,10 +99,9 @@ namespace SUPLauncher
                 ((MainWindow)parentWindow).grid_progress.Visibility = Visibility.Visible;
 
             }
-            if (url.Contains("?key="))
-            {
-                url = url + "&download";
-            }
+
+            url = url + "&download";
+          
             HttpResponseMessage file = await App.httpClient.GetAsync(url);
 
             // Check for redirection (Required if HTTPS > HTTP)
@@ -110,10 +109,7 @@ namespace SUPLauncher
             if (file.Headers.TryGetValues("Location", out values))
             {
                 string u = values.First();
-                if (u.Contains("?key="))
-                {
-                    u = u + "&download";
-                }
+                u = u + "&download";
                 file = await App.httpClient.GetAsync(u);
             }
 

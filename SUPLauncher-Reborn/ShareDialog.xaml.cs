@@ -49,7 +49,7 @@ namespace SUPLauncher
                     formData.Add(new StringContent(App.profile.Badmin.Name), "author");
                     formData.Add(new StringContent(App.profile.SteamID32), "steamid");
                     formData.Add(fileStreamContent, "file", Path.GetFileNameWithoutExtension(path));
-                    var response = await client.PostAsync("http://35.224.124.248/api/ShareDupe.php", formData);
+                    var response = await client.PostAsync("https://suplauncher.aidanhud.com/api/ShareDupe", formData);
                     if (response.IsSuccessStatusCode)
                     {
                         lbl_.Content = "Share link for dupe '" + Path.GetFileNameWithoutExtension(path) + "'!";

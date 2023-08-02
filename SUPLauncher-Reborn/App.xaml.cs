@@ -41,21 +41,21 @@ namespace SUPLauncher
 
         public App()
         {
-            CoreCompatibilityPreferences.IsAltKeyRequiredInAccessKeyDefaultScope = true;
+            // Start logging
+            Logger.initLogger();
+            Logger.Log(Logger.LogType.INFO, "Starting SUPLauncher v" + version + "...");
 
             // Setup chrominum settings
             CefSettings settings = new CefSettings();
             settings.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 SUPLauncher";
             Cef.Initialize(settings);
 
-
             // Register custom protocol (sup://)
             RegisterMyProtocol(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
 
 
-            Logger.initLogger();
-            Logger.Log(Logger.LogType.INFO, "Starting SUPLauncher v" + version + "...");
+            
             var handler = new HttpClientHandler()
             {
                 AllowAutoRedirect = true

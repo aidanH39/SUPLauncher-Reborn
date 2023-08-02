@@ -415,7 +415,7 @@ public class Steam : IDisposable
     {
         try
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://bestofall.ml:2095/api/getSteamFriends.php?steamid=" + steamid);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://suplauncher.aidanhud.com/api/getSteamFriends/" + steamid);
             request.UserAgent = "SUPLauncher";
             request.AutomaticDecompression = DecompressionMethods.GZip;
             string json;
@@ -451,7 +451,7 @@ public class Steam : IDisposable
     {
         try
         {
-            HttpWebRequest request = WebRequest.CreateHttp("http://35.224.124.248/api/currentServer.php?steamid=" + steamid);
+            HttpWebRequest request = WebRequest.CreateHttp("https://suplauncher.aidanhud.com/api/currentServer/" + steamid);
             request.UserAgent = "SUPLauncher";
             WebResponse response = null;
             response = request.GetResponse();
