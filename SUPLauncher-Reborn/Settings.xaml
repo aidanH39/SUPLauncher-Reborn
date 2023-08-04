@@ -9,8 +9,8 @@
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="4" GlassFrameThickness="0" CaptionHeight="2"/>
     </WindowChrome.WindowChrome>
-    <Grid>
-        <local:Toolbar HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+    <DockPanel>
+        <local:Toolbar DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
         <local:SettingsPanel></local:SettingsPanel>
-    </Grid>
+    </DockPanel>
 </Window>

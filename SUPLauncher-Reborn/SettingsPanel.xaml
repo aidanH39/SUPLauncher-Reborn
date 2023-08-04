@@ -109,7 +109,10 @@
             <CheckBox Foreground="White" Name="check_profileOverlay" Content="Profile overlay " HorizontalAlignment="Left" ToolTip="Opens a player profile in the top left of your game, when you copy a SteamID, makes it easier to check PO's quick." Width="400"/>
 
         </WrapPanel>
-        <Button Click="settings_save" Content="Save" Margin="0,40,0,10" Background="#3f3f3f" BorderBrush="Transparent" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="200"></Button>
+        <WrapPanel Margin="0,40,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button Click="settings_save" Content="Save"  Background="#3f3f3f" BorderBrush="Transparent" FontSize="14"  Width="200"></Button>
+            <Button Click="repair_Click" Content="Attempt Repair" ToolTip="This will attempt to repair any thing broken or needs changing, if something is not working try this first." Margin="20,0,0,0" Background="#3f3f3f" BorderBrush="Transparent" FontSize="14" Width="200"></Button>
+        </WrapPanel>
 
 
     </Grid>

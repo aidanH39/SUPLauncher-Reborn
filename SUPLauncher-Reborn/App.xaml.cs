@@ -12,6 +12,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
+using System.Reflection;
+using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -41,6 +43,7 @@ namespace SUPLauncher
 
         public App()
         {
+            InitializeComponent();
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(ErrorHandler);
             // Start logging
             Logger.initLogger();
@@ -51,14 +54,7 @@ namespace SUPLauncher
             settings.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 SUPLauncher";
             Cef.Initialize(settings);
 
-            try
-            {
-                // Register custom protocol (sup://)
-                RegisterMyProtocol(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            } catch (Exception e)
-            {
-                Logger.Log(Logger.LogType.ERROR, "Could not register protocol, sup:// will not work!");
-            }
+
 
 
 
@@ -108,6 +104,14 @@ namespace SUPLauncher
             afkTimer.Start();
 
         }
+
+        public static bool IsAdministrator()
+        {
+            var identity = WindowsIdentity.GetCurrent();
+            var principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+
 
         public static bool joiningServer = false;
 
@@ -162,6 +166,28 @@ namespace SUPLauncher
                         }
                     }
                 }
+                Process.GetCurrentProcess().Kill();
+            }
+
+            if (IsAdministrator())
+            {
+                new Repair().Show();
+            }
+            else if (AppSettings.Default.firstTimeStartup)
+            {
+                InputBox box = new InputBox("As this is the first launch, we will need to set up a few things, this will require administrator permissions. Once you click OK the application will restart with elevated permissions.", BoxType.MESSAGE_BOX, "Elevated Permissions Required");
+                box.ShowDialog();
+                var p = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = Process.GetCurrentProcess().MainModule.FileName,
+                        UseShellExecute = true,
+                        Verb = "runas"
+                    }
+                };
+
+                p.Start();
                 Process.GetCurrentProcess().Kill();
             }
 
@@ -232,24 +258,7 @@ namespace SUPLauncher
 
         }
 
-        /// <summary>
-        /// Registers the custom protocol
-        /// </summary>
-        /// <param name="myAppPath">Full path to program exe</param>
-        public void RegisterMyProtocol(string myAppPath) 
-        {
-            RegistryKey key = Registry.ClassesRoot.OpenSubKey("sup");
-            if (key == null)  //if the protocol is not registered yet...we register it
-            {
-                key = Registry.ClassesRoot.CreateSubKey("sup");
-                key.SetValue("", "URL: SUPLauncher");
-                key.SetValue("URL Protocol", "");
 
-                key = key.CreateSubKey(@"shell\open\command");
-                key.SetValue("", myAppPath + " " + "%1"); // Set value to path + any arguments supplied via the protocol
-            }
-            key.Close();
-        }
 
         // Gets the latest release on github, and returns the version.
         public static Version getLatestVersion()

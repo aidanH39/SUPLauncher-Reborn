@@ -34,6 +34,9 @@
     <Compile Update="ProfileOverlay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Repair.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Settings.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -76,6 +79,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ProfileOverlay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Repair.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ServerBox.xaml">

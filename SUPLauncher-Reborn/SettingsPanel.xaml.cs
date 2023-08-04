@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -256,5 +257,19 @@ namespace SUPLauncher
             Application.Current.Shutdown();
         }
 
+        private void repair_Click(object sender, RoutedEventArgs e)
+        {
+            var proc = new Process
+            {
+                StartInfo =
+                    {
+                        FileName = Process.GetCurrentProcess().MainModule.FileName,
+                        UseShellExecute = true,
+                        Verb = "runas"
+                    }
+            };
+            proc.Start();
+            Application.Current.Shutdown();
+        }
     }
 }
