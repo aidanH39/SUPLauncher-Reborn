@@ -196,8 +196,15 @@ namespace SUPLauncher
             if (Steam.getGmodProcess() != null && !Steam.isGmodAFK())
             {
                 Steam.getGmodProcess().Kill();
+                Process.Start(Steam.getSteamPath() + "\\steam.exe", "-applaunch 4000 " + AppSettings.Default.afk_arguments);
+            } else if (Steam.isGmodAFK())
+            {
+                Steam.getGmodProcess().Kill();
+            } else
+            {
+                Process.Start(Steam.getSteamPath() + "\\steam.exe", "-applaunch 4000 " + AppSettings.Default.afk_arguments);
             }
-            Process.Start(Steam.getSteamPath() + "\\steam.exe", "-applaunch 4000 " + AppSettings.Default.afk_arguments);
+            
         }
 
 
@@ -398,6 +405,7 @@ namespace SUPLauncher
         /// <param name="check"></param>
         private void validateCheck(Server server, int check)
         {
+            bool installingContent = false;
             grid_progress.Visibility = Visibility.Visible;
             if (check == 1)
             {
@@ -437,9 +445,10 @@ namespace SUPLauncher
                 if (!cssInstalled) cssInstalled = Steam.isCSSinstalled();
 
                 if (!tf2Installed) tf2Installed = Steam.isTF2installed();
-
+               
                 if (!cssInstalled || !tf2Installed)
                 {
+                    installingContent = true;
                     InputBox box = new InputBox("They is content needed for SUP to be installed, would you like to launch anyway, and download this content in the background? We will notify you when the content has been installed. A restart will be required after.", BoxType.ACCEPT_CANCEL, "Launch Anyway?");
 
                     box.ShowDialog();
@@ -523,14 +532,23 @@ namespace SUPLauncher
             {
                 if (Steam.getGmodProcess() != null)
                 {
-                    NotificationCentre.notify("CONTENT INSTALLED", "You can now restart your game when you like. Or click this notification to restart now!", () =>
+
+                    if (installingContent)
                     {
-                        Steam.getGmodProcess().Kill();
-                        Task.Delay(2000).ContinueWith((e) =>
+
+                        NotificationCentre.notify("CONTENT INSTALLED", "You can now restart your game when you like. Or click this notification to restart now!", () =>
                         {
-                            launchServer(server);
-                        }); 
-                    });
+                            Steam.getGmodProcess().Kill();
+                            Task.Delay(2000).ContinueWith((e) =>
+                            {
+                                launchServer(server);
+                            });
+                        });
+                    }
+                    else
+                    {
+                        launchServer(server);
+                    }
                     Task.Delay(2000).ContinueWith(delegate
                     {
                         this.grid_progress.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { this.grid_progress.Visibility = Visibility.Hidden; }));
@@ -553,12 +571,23 @@ namespace SUPLauncher
                 Process gmod = Steam.getGmodProcess();
                 App.joiningServer = true;
                 gmod.Kill();
+                Task.Delay(5000).ContinueWith(delegate
+                {
+                    Process myProcess = new Process();
+                    myProcess.StartInfo.UseShellExecute = true;
+                    myProcess.StartInfo.FileName = server.Connect;
+                    myProcess.Start();
+                });
+            } else
+            {
+                Process myProcess = new Process();
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = server.Connect;
+                myProcess.Start();
             }
 
-            Process myProcess = new Process();
-            myProcess.StartInfo.UseShellExecute = true;
-            myProcess.StartInfo.FileName = server.Connect;
-            myProcess.Start();
+                
+
             if (hideBar)
             {
                 Task.Delay(2000).ContinueWith(delegate
