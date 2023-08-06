@@ -83,6 +83,9 @@ namespace SUPLauncher
                 profile_achievements.Children.Add(panel);
             }
 
+
+            // Profile content
+
             darkrp_rank.Content = App.profile.Badmin.Ranks.DarkRP.ToUpper();
             cwrp_rank.Content = App.profile.Badmin.Ranks.CWRP.ToUpper();
             milrp_rank.Content = App.profile.Badmin.Ranks.MilRP.ToUpper();
@@ -95,8 +98,7 @@ namespace SUPLauncher
             lbl_karma.Content = App.profile.DarkRP.Karma;
             if (App.profile.DarkRP.OrgID != null) lbl_org.Content = App.profile.DarkRP.OrgName;
 
-
-            img_profile.ImageSource = SUPLauncher.App.profile.getAvatar();
+            img_profile.ImageSource = avatar;
 
             Task.Delay(5000).ContinueWith(delegate
             {
@@ -127,22 +129,18 @@ namespace SUPLauncher
 
                 item.Click += delegate
                 {
-                    InputBox box = new InputBox("Would you like to update the application right now?", BoxType.ACCEPT_CANCEL, "Update now?");
-                    box.ShowDialog();
-
-                    if (box.getConfirm())
-                    {
-                        Application.Current.Shutdown();
-                    }
-
+                    Process myProcess = new Process();
+                    myProcess.StartInfo.UseShellExecute = true;
+                    myProcess.StartInfo.FileName = "ms-appinstaller:?source=https://suplauncher.aidanhud.com/api/launcher/latest.appinstaller";
+                    myProcess.Start();
                 };
-
+                  
                 toolbar._menu.Items.Add(item);
             } else if (App.version > App.getLatestVersion())
             {
                 MenuItem item = new MenuItem()
                 {
-                    Padding = new Thickness(4, 4, 4, 4),
+                    Padding = new Thickness(4, 4, 4, 4), 
                     Header = "⚠️ Beta version",
                     Margin = new Thickness(20, 0, 0, 0),
                     Background = (Brush) new BrushConverter().ConvertFrom("#ff8800")
