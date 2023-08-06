@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SUPLauncher"
         mc:Ignorable="d"
-        Title="InputBox" Height="250" Width="400" WindowStyle="None" ResizeMode="CanResize" AllowsTransparency="True" Background="Transparent" Style="{DynamicResource roundedWindow}">
+        Title="InputBox" Height="250" Width="400" WindowStyle="None" WindowStartupLocation="CenterOwner" ResizeMode="CanResize" AllowsTransparency="True" Background="Transparent" Style="{DynamicResource roundedWindow}">
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="4" GlassFrameThickness="0" CaptionHeight="2"/>
     </WindowChrome.WindowChrome>

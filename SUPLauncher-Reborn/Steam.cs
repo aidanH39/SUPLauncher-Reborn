@@ -209,7 +209,10 @@ public class Steam : IDisposable
     {
         try
         {
-            if (getGmodProcess() == null) return IntPtr.Zero; else if (getGmodProcess().ProcessName == "hl2") { return WindowHelper.FindWindow(null, "Garry's Mod"); } else { return WindowHelper.FindWindow(null, "Garry's Mod (x64)"); }
+            if (getGmodProcess() == null)
+                return IntPtr.Zero;
+            else
+                return getGmodProcess().MainWindowHandle;
         }
         catch (Exception)
         {

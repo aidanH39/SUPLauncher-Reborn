@@ -141,36 +141,43 @@ namespace SUPLauncher
                 // Make sure its a steamid.
                 bool steamid = false;
                 long s = 0;
-                string text = Clipboard.GetText(); // Get text from clipboard
-                // 32 bit stemaids
-                if (text.StartsWith("STEAM_") && text.Length > 17)
+                try
                 {
-                    steamid = true;
-                }
-                else if (long.TryParse(text, out s) && text.Length == 17) // 64 bit ids
-                {
-                    steamid = true;
-                }
+                    string text = Clipboard.GetText(); // Get text from clipboard
+                                                       // 32 bit stemaids
+                    if (text.StartsWith("STEAM_") && text.Length > 17)
+                    {
+                        steamid = true;
+                    }
+                    else if (long.TryParse(text, out s) && text.Length == 17) // 64 bit ids
+                    {
+                        steamid = true;
+                    }
 
-                if (!steamid)
-                {
-                    handled = false;
-                    return IntPtr.Zero;
-                }
-                if (profileOverlay == null || !profileOverlay.IsLoaded)
-                {
-                    profileOverlay = new ProfileOverlay(text);
-                    profileOverlay.Owner = this;
-                    profileOverlay.Tag = "pinned";
-                    profileOverlay.Show();
-                } else
-                {
-                    profileOverlay.updateProfile(text);
-                    profileOverlay.Visibility = Visibility.Visible;
-                }
-                
+                    if (!steamid)
+                    {
+                        handled = false;
+                        return IntPtr.Zero;
+                    }
+                    if (profileOverlay == null || !profileOverlay.IsLoaded)
+                    {
+                        profileOverlay = new ProfileOverlay(text);
+                        profileOverlay.Owner = this;
+                        profileOverlay.Tag = "pinned";
+                        profileOverlay.Show();
+                    }
+                    else
+                    {
+                        profileOverlay.updateProfile(text);
+                        profileOverlay.Visibility = Visibility.Visible;
+                    }
 
-                handled = true;
+
+                    handled = true;
+                } catch (Exception e)
+                {
+                    Logger.Log(LogType.ERROR, "Something went wrong while opening profile overlay! " + e.Message + "\nStack trace:\n" + e.StackTrace);
+                }
             }
             return IntPtr.Zero;
         }
