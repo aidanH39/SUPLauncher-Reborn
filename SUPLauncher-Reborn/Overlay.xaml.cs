@@ -83,7 +83,8 @@ namespace SUPLauncher
                 {
                     lbl_currentServer.Content = "Currently playing on " + SuperiorServers.IpToName(currentServer);
                     playingOnSUP = true;
-                } else
+                }
+                else
                 {
                     playingOnSUP = false;
                     currentSession = 0;
@@ -101,7 +102,8 @@ namespace SUPLauncher
                     currentSession++;
                     lbl_playtime.Content = "Playtime: " + SuperiorServers.PlaytimeFormat(int.Parse(App.profile.Badmin.PlayTime) + currentSession);
                     lbl_sessionTime.Content = "Current session: " + SuperiorServers.LengthFormat(currentSession);
-                } else
+                }
+                else
                 {
                     lbl_playtime.Content = "";
                     lbl_sessionTime.Content = "";
@@ -110,8 +112,6 @@ namespace SUPLauncher
             timer.Start();
 
         }
-
-
 
         /// <summary>
         /// Get Window Messages
@@ -124,7 +124,7 @@ namespace SUPLauncher
             base.OnSourceInitialized(e);
             _windowHandle = new WindowInteropHelper(this).Handle;
             _ClipboardViewerNext = SetClipboardViewer(_windowHandle);
-            
+
             _source = HwndSource.FromHwnd(_windowHandle);
             _source.AddHook(HwndHook);
         }
@@ -174,7 +174,8 @@ namespace SUPLauncher
 
 
                     handled = true;
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     Logger.Log(LogType.ERROR, "Something went wrong while opening profile overlay! " + e.Message + "\nStack trace:\n" + e.StackTrace);
                 }
@@ -236,10 +237,12 @@ namespace SUPLauncher
                 if (server.Connect.StartsWith("steam://"))
                 {
                     uri = new Uri("pack://application:,,,/textless_logo.png");
-                } else if (server.Connect.StartsWith("ts"))
+                }
+                else if (server.Connect.StartsWith("ts"))
                 {
                     uri = new Uri("https://upload.wikimedia.org/wikipedia/commons/e/ec/TeamSpeak_logo_renovado.png");
-                } else
+                }
+                else
                 {
                     uri = new Uri("pack://application:,,,/textless_logo.png");
                 }
@@ -284,6 +287,10 @@ namespace SUPLauncher
                     window.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Hidden;
                 }
             }
+            if ((bool)e.NewValue == true)
+            {
+                Task.Delay(500).ContinueWith(e => this.Dispatcher.Invoke(() => this.Activate()));
+            };
         }
 
         /// <summary>
