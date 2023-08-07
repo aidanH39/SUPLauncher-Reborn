@@ -721,6 +721,8 @@ namespace SUPLauncher
                 if (Steam.getGmodProcess() != null && !Steam.isGmodAFK())
                 {
                     overlay = new Overlay();
+                    new WindowInteropHelper(overlay).EnsureHandle();
+                    
                     NotificationCentre.notify("OVERLAY ENABLED", "Press " + ((ModifierKeys)AppSettings.Default.bind_overlay_modifier).ToString() + " + " + (KeyInterop.KeyFromVirtualKey((int)AppSettings.Default.bind_overlay_key).ToString()) + " to open the overlay.");
                     
                 }
