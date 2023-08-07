@@ -203,7 +203,7 @@
                                 <ImageBrush x:Name="img_profile" ImageSource="background.jpg"/>
                             </Ellipse.Fill>
                         </Ellipse>
-                        <Label Content="Best of all" HorizontalAlignment="Left" Margin="140,10,0,0" Foreground="White" FontSize="28"/>
+                        <Label Content="Best of all" HorizontalAlignment="Left" Name="lbl_profile_name" Margin="140,10,0,0" Foreground="White" FontSize="28"/>
                         <Label Name="lbl_playtime" Content="Time played: 3105:46:47" HorizontalAlignment="Left" Margin="140,40,0,0" Foreground="#9f9f9f" FontSize="20"/>
                         <Label Name="lbl_lastSeen" Content="Last seen: 14H 50MI AGO" HorizontalAlignment="Left" Margin="140,60,0,0" Foreground="#9f9f9f" FontSize="20"/>
                     </Grid>

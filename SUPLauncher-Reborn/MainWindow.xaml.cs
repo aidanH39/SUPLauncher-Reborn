@@ -95,6 +95,8 @@ namespace SUPLauncher
             lbl_playtime.Content = "Time Played: " + Math.Floor(timeSpent.TotalHours) + ":" + timeSpent.Minutes + ":" + timeSpent.Seconds;
             lbl_lastSeen.Content = "Active " + (SuperiorServers.LengthFormat(((int)App.profile.Badmin.LastSeen)) + "AGO").ToUpper();
 
+            lbl_profile_name.Content = App.profile.Badmin.Name;
+
             lbl_karma.Content = Int32.Parse(App.profile.DarkRP.Karma).ToString("N0");
             lbl_money.Content = "$" + Int32.Parse(App.profile.DarkRP.Money).ToString("N0");
             if (App.profile.DarkRP.OrgID != null) lbl_org.Content = App.profile.DarkRP.OrgName;
