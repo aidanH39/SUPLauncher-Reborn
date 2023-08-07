@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
@@ -311,5 +312,58 @@ namespace SUPLauncher
                     return null;
             }
         }
+
+
+        // VM BANK Integration
+
+        public class BankAccount
+        {
+            public string account_id;
+            public string ign;
+            public string steamid;
+            public string balance;
+            public string interest_rate;
+            public string total_withdraw;
+            public string total_deposit;
+            public string total_printers_donated;
+            public string total_tips;
+            public string tr;
+            public string joined_date;
+            public bool isActive;
+            public string isBlacklisted;
+            public string error;
+        }
+
+        public static BankAccount getBankAccount(string steamid)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://vmbank.aidanhud.com/api/bank/" + steamid);
+                request.UserAgent = "SUPLauncher";
+                request.AutomaticDecompression = DecompressionMethods.GZip;
+                string json;
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    json = reader.ReadToEnd();
+                }
+                BankAccount bank = JsonConvert.DeserializeObject<BankAccount>(json);
+                if (bank.error != null)
+                {
+                    return null;
+                }
+
+                //MessageBox.Show(jsonP.response.Servers);
+                return bank;
+            }
+            catch (Exception e)
+            {
+                Logger.Log(Logger.LogType.FATAL, e.Message + ": " + e.StackTrace);
+                return null;
+            }
+            return null;
+        }
+
     }
 }

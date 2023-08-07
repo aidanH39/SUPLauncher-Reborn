@@ -95,8 +95,24 @@ namespace SUPLauncher
             lbl_playtime.Content = "Time Played: " + Math.Floor(timeSpent.TotalHours) + ":" + timeSpent.Minutes + ":" + timeSpent.Seconds;
             lbl_lastSeen.Content = "Active " + (SuperiorServers.LengthFormat(((int)App.profile.Badmin.LastSeen)) + "AGO").ToUpper();
 
-            lbl_karma.Content = App.profile.DarkRP.Karma;
+            lbl_karma.Content = Int32.Parse(App.profile.DarkRP.Karma).ToString("N0");
+            lbl_money.Content = "$" + Int32.Parse(App.profile.DarkRP.Money).ToString("N0");
             if (App.profile.DarkRP.OrgID != null) lbl_org.Content = App.profile.DarkRP.OrgName;
+
+            BankAccount acc = getBankAccount(App.profile.SteamID32);
+            BitmapImage avatar = SUPLauncher.App.profile.getAvatar();
+            if (acc != null)
+            {
+                vmbank_avatar.ImageSource = avatar;
+                vmbank_balance.Content = acc.balance;
+                vmbank_deposits.Content = acc.total_deposit;
+                vmbank_withdraws.Content = acc.total_withdraw;
+                vmbank_tr.Content = acc.tr;
+                vmbank_name.Content = acc.ign;
+                vmbank_interest.Content = acc.interest_rate + "%";
+                vmbank_printersDonated.Content = acc.total_printers_donated;
+                btn_vmBank.Visibility = Visibility.Visible;
+            }
 
             img_profile.ImageSource = avatar;
 
@@ -257,6 +273,11 @@ namespace SUPLauncher
             lbl_profile.Foreground = (Brush)new BrushConverter().ConvertFrom("White");
             border_profile.BorderThickness = new Thickness(0, 0, 0, 0);
 
+            // VM Bank
+            scroll_vmbank.Visibility = Visibility.Hidden;
+            //tab_vmbank.Visibility = Visibility.Hidden;
+            lbl_vmbank.Foreground = (Brush)new BrushConverter().ConvertFrom("White");
+            border_vmbank.BorderThickness = new Thickness(0, 0, 0, 0);
 
         }
 
@@ -309,6 +330,22 @@ namespace SUPLauncher
             Task.Delay(350).ContinueWith(delegate
             {
                 border_profile.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { border_profile.BorderThickness = new Thickness(0, 0, 0, 3); }));
+            });
+        }
+
+        private void onVMBankClick(object sender, RoutedEventArgs e)
+        {
+            resetSelected();
+            lbl_vmbank.Foreground = (Brush)new BrushConverter().ConvertFrom("#1A9CFA");
+
+            tab_profile.Visibility = Visibility.Visible;
+            scroll_vmbank.Visibility = Visibility.Visible;
+            DoubleAnimation anim = new DoubleAnimation(565, animationDuration);
+            select_bar.RenderTransform.BeginAnimation(TranslateTransform.XProperty, anim);
+            toolbar._appName.Header = "SUPLauncher";
+            Task.Delay(350).ContinueWith(delegate
+            {
+                border_profile.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { border_vmbank.BorderThickness = new Thickness(0, 0, 0, 3); }));
             });
         }
 

@@ -58,6 +58,9 @@
     <None Remove="setting.png" />
     <None Remove="textless_logo.png" />
     <None Remove="tools.png" />
+    <None Remove="vmbank" />
+    <None Remove="vmbank.png" />
+    <None Remove="ZUUH0RW.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -110,6 +113,9 @@
     <Resource Include="setting.png" />
     <Resource Include="textless_logo.png" />
     <Resource Include="tools.png" />
+    <Resource Include="vmbank" />
+    <Resource Include="vmbank.png" />
+    <Resource Include="ZUUH0RW.png" />
   </ItemGroup>
 
   <ItemGroup>

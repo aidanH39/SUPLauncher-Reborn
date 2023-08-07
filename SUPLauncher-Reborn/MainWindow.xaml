@@ -164,7 +164,7 @@
                         </Border>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource btn_selection}" Click="onProfileClick" x:Name="btn_profile" Background="{x:Null}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="auto" >
+                <Button Style="{StaticResource btn_selection}" Click="onProfileClick" x:Name="btn_profile" Background="{x:Null}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="200" >
                     <Grid Margin="10,0,10,0">
                         <Label x:Name="lbl_profile" HorizontalAlignment="Stretch" Foreground="White" FontFamily="Motiva Sans" Content="PROFILE"/>
                         <Border BorderThickness="0,0,0,0" Name="border_profile" BorderBrush="#1A9CFA" Width="50" >
@@ -172,7 +172,14 @@
                         </Border>
                     </Grid>
                 </Button>
+                <Button Visibility="Hidden" Style="{StaticResource btn_selection}" Click="onVMBankClick" x:Name="btn_vmBank" Background="{x:Null}" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="auto" >
+                    <Grid Margin="10,0,10,0">
+                        <Label x:Name="lbl_vmbank" HorizontalAlignment="Stretch" Foreground="White" FontFamily="Motiva Sans" Content="VM Bank"/>
+                        <Border BorderThickness="0,0,0,0" Name="border_vmbank" BorderBrush="#1A9CFA" Width="50" >
 
+                        </Border>
+                    </Grid>
+                </Button>
             </WrapPanel>
         </Grid>
 
@@ -228,7 +235,7 @@
                                 <WrapPanel Margin="10,40,10,20" ItemWidth="150">
                                     <StackPanel>
                                         <Label Content="Money" FontSize="18" HorizontalContentAlignment="Center"/>
-                                        <Label Content="$4,383" HorizontalContentAlignment="Center"/>
+                                        <Label Name="lbl_money" Content="$4,383" HorizontalContentAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel>
                                         <Label Content="Karama" FontSize="18" HorizontalContentAlignment="Center"/>
@@ -250,6 +257,85 @@
                         
                     </WrapPanel>
 
+                </Grid>
+            </ScrollViewer>
+
+            <ScrollViewer Margin="0,0" VerticalScrollBarVisibility="Auto" x:Name="scroll_vmbank" Visibility="Hidden">
+                <Grid ClipToBounds="True">
+                    <Grid Margin="-5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.Effect>
+                            <BlurEffect Radius="25"/>
+                        </Grid.Effect>
+                        <Grid.Background>
+                            <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Offset="0.2" Color="#191919" />
+                                    <GradientStop Offset="3" Color="#9402FB" />
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                    </Grid>
+                    <DockPanel>
+                    
+                        <Grid DockPanel.Dock="Top" Height="50" HorizontalAlignment="Stretch" Background="#191919">
+                            <Ellipse HorizontalAlignment="Left" Margin="10,0,0,0" Height="50" Width="50">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="ZUUH0RW.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <Label Content="VM Bank Integration" Margin="70,5,0,0" FontSize="20"/>
+                        </Grid>
+                        <Grid x:Name="tab_vmbank" Margin="20,0,20,0">
+                    
+                            <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20">
+                                <Ellipse Height="125" Width="125" HorizontalAlignment="Left">
+                                    <Ellipse.Fill>
+                                        <ImageBrush x:Name="vmbank_avatar" ImageSource="background.jpg"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <Label Content="Best of all" Name="vmbank_name" HorizontalAlignment="Left" Margin="140,10,0,0" Foreground="White" FontSize="28"/>
+                                <Label Name="vmbank_memberSince" Content="Member since ( 06/04/2023 )" HorizontalAlignment="Left" Margin="140,40,0,0" Foreground="#9f9f9f" FontSize="20"/>
+
+                            </Grid>
+
+                            <WrapPanel VerticalAlignment="Top" Margin="0,200,0,0" HorizontalAlignment="Stretch">
+                                <Grid Height="120" VerticalAlignment="Top">
+                                    <Border CornerRadius="8" BorderThickness="1"  Background="#1f1f1f" Opacity="0.8" BorderBrush="#1f1f1f">
+                                    </Border>
+                                    <Label Content="VM BANK" Foreground="White" FontSize="16" FontWeight="Bold" VerticalAlignment="Top" Margin="10,0,0,0"></Label>
+                                    <WrapPanel Margin="10,40,10,20" ItemWidth="160">
+                                        <StackPanel>
+                                            <Label Content="$100,000" Name="vmbank_balance" FontSize="18" HorizontalContentAlignment="Center"/>
+                                            <Label Content="Balance" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <Label Content="2.0%" Name="vmbank_interest" FontSize="18" HorizontalContentAlignment="Center"/>
+                                            <Label Content="Interest" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <Label Content="2%" Name="vmbank_tr" FontSize="18" HorizontalContentAlignment="Center"/>
+                                            <Label Content="Trust Rating" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <StackPanel Margin="0,0,0,0">
+                                            <Label Content="5" Name="vmbank_deposits" FontSize="18" HorizontalContentAlignment="Center"/>
+                                            <Label Content="Deposits" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <Label Content="7" Name="vmbank_withdraws" FontSize="18" HorizontalContentAlignment="Center"/>
+                                            <Label Content="Withdraws" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <Label Content="2" Name="vmbank_printersDonated" FontSize="18" HorizontalContentAlignment="Center"/>
+                                            <Label Content="Printers Donated" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                    </WrapPanel>
+                                </Grid>
+
+                            </WrapPanel>
+
+                        </Grid>
+                    </DockPanel>
                 </Grid>
             </ScrollViewer>
 
