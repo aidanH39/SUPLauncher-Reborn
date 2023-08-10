@@ -171,6 +171,7 @@ public class Steam : IDisposable
     {
         Process[] hl2 = Process.GetProcessesByName("hl2");
         Process[] gmod = Process.GetProcessesByName("gmod");
+        
         if (hl2.Length > 0)
         {
             return hl2[0];
@@ -193,7 +194,7 @@ public class Steam : IDisposable
     {
         if (Steam.getGmodProcess() != null)
         {
-            if (Steam.getGMOD() == IntPtr.Zero)
+            if (!Steam.getGmodProcess().MainWindowTitle.Contains("Garry's Mod"))
             {
                 return true;
             }
