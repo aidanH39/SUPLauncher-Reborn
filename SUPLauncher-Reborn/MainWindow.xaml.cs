@@ -778,17 +778,17 @@ namespace SUPLauncher
                             }
                             break;
                         case HOTKEY_ID + 1:
-                            if (overlay.profileOverlay != null && overlay.profileOverlay.IsLoaded)
+                            if (App.profileOverlay != null && App.profileOverlay.IsLoaded)
                             {
-                                overlay.profileOverlay.Visibility = overlay.profileOverlay.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
+                                App.profileOverlay.Visibility = App.profileOverlay.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
                             }
 
                             handled = true;
                             break;
                         case HOTKEY_ID + 2:
-                            if (overlay.profileOverlay != null && overlay.profileOverlay.IsLoaded)
+                            if (App.profileOverlay != null && App.profileOverlay.IsLoaded)
                             {
-                                overlay.profileOverlay.onViewPunishments(null, null);
+                                App.profileOverlay.onViewPunishments(null, null);
                             }
                             break;
                     }

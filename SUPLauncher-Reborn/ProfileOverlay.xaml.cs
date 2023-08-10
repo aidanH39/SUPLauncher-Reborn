@@ -82,28 +82,32 @@ namespace SUPLauncher
             Brush brush = (Brush)new BrushConverter().ConvertFrom("#0f0f0f");
 
             Label label = new Label();
-            label.Content = "Date";
+            label.Content = "DATE";
             label.Background = brush;
 
             Label label2 = new Label();
-            label2.Content = "Server";
+            label2.Content = "SERVER";
             label2.Background = brush;
 
             Label label3 = new Label();
-            label3.Content = "Type";
+            label3.Content = "TYPE";
             label3.Background = brush;
 
             Label label4 = new Label();
-            label4.Content = "Admin";
+            label4.Content = "ADMIN";
             label4.Background = brush;
 
             Label label5 = new Label();
-            label5.Content = "Length";
+            label5.Content = "LENGTH";
             label5.Background = brush;
 
             Label label6 = new Label();
-            label6.Content = "Reason";
+            label6.Content = "REASON";
             label6.Background = brush;
+
+            Label label7 = new Label();
+            label7.Content = "UNBAN";
+            label7.Background = brush;
 
             punishments.Children.Add(label);
             punishments.Children.Add(label2);
@@ -111,6 +115,7 @@ namespace SUPLauncher
             punishments.Children.Add(label4);
             punishments.Children.Add(label5);
             punishments.Children.Add(label6);
+            punishments.Children.Add(label7);
 
             Grid.SetColumn(label, 0);
             Grid.SetColumn(label2, 1);
@@ -118,6 +123,7 @@ namespace SUPLauncher
             Grid.SetColumn(label4, 3);
             Grid.SetColumn(label5, 4);
             Grid.SetColumn(label6, 5);
+            Grid.SetColumn(label7, 6);
 
             int i = 1;
             foreach (Ban ban in profile.Badmin.Bans)
@@ -128,8 +134,9 @@ namespace SUPLauncher
                 punishments.RowDefinitions.Add(r);
 
                 Label date = new Label();
-
-                date.Content = "Date";
+                DateTime d = new DateTime(1970, 1, 1, 0, 0, 0);
+                
+                date.Content = d.AddSeconds(Double.Parse(ban.Time));
 
                 Label server = new Label();
                 server.Content = ban.Server;
@@ -147,6 +154,8 @@ namespace SUPLauncher
                 Label reason = new Label();
                 reason.Content = ban.Reason;
 
+                Label unban = new Label();
+                unban.Content = ban.UnbanReason;
 
                 if (ban.BanID == null)
                 {
@@ -168,6 +177,9 @@ namespace SUPLauncher
 
                     reason.Background = (Brush)new BrushConverter().ConvertFrom("#ff960d");
                     reason.Opacity = 0.5;
+
+                    unban.Background = (Brush)new BrushConverter().ConvertFrom("#ff960d");
+                    unban.Opacity = 0.5;
 
                 }
                 else
@@ -193,6 +205,33 @@ namespace SUPLauncher
 
                         reason.Background = (Brush)new BrushConverter().ConvertFrom("#3d2827");
                         reason.Opacity = 0.5;
+
+                        unban.Background = (Brush)new BrushConverter().ConvertFrom("#02db06");
+                        unban.Opacity = 0.5;
+                    }
+                    if (ban.UnbanReason.Length > 0)
+                    {
+                        date.Background = (Brush)new BrushConverter().ConvertFrom("#02db06");
+                        date.Opacity = 0.5;
+
+                        server.Background = (Brush)new BrushConverter().ConvertFrom("#02db06");
+                        server.Opacity = 0.5;
+
+                        type.Background = (Brush)new BrushConverter().ConvertFrom("#02db06");
+                        type.Opacity = 0.5;
+
+                        admin.Background = (Brush)new BrushConverter().ConvertFrom("#02db06");
+                        admin.Opacity = 0.5;
+
+                        length.Background = (Brush)new BrushConverter().ConvertFrom("#02db06");
+                        length.Opacity = 0.5;
+
+                        reason.Background = (Brush)new BrushConverter().ConvertFrom("#02db06");
+                        reason.Opacity = 0.5;
+
+                        unban.Background = (Brush)new BrushConverter().ConvertFrom("#02db06");
+                        unban.Opacity = 0.5;
+
                     }
 
                 }
@@ -222,6 +261,9 @@ namespace SUPLauncher
                 Grid.SetColumn(reason, 5);
                 Grid.SetRow(reason, i);
 
+                punishments.Children.Add(unban);
+                Grid.SetColumn(unban, 6);
+                Grid.SetRow(unban, i);
 
                 i++;
             }

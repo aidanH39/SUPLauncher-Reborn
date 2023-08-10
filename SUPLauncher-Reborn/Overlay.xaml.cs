@@ -129,8 +129,6 @@ namespace SUPLauncher
             _source.AddHook(HwndHook);
         }
 
-        public ProfileOverlay profileOverlay;
-
         private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             // CLIPBOARD HANDLER
@@ -159,17 +157,17 @@ namespace SUPLauncher
                         handled = false;
                         return IntPtr.Zero;
                     }
-                    if (profileOverlay == null || !profileOverlay.IsLoaded)
+                    if (App.profileOverlay == null || !App.profileOverlay.IsLoaded)
                     {
-                        profileOverlay = new ProfileOverlay(text);
-                        profileOverlay.Owner = this;
-                        profileOverlay.Tag = "pinned";
-                        profileOverlay.Show();
+                        App.profileOverlay = new ProfileOverlay(text);
+                        App.profileOverlay.Owner = this;
+                        App.profileOverlay.Tag = "pinned";
+                        App.profileOverlay.Show();
                     }
                     else
                     {
-                        profileOverlay.updateProfile(text);
-                        profileOverlay.Visibility = Visibility.Visible;
+                        App.profileOverlay.updateProfile(text);
+                        App.profileOverlay.Visibility = Visibility.Visible;
                     }
 
 

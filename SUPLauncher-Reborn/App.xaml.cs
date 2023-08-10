@@ -35,8 +35,8 @@ namespace SUPLauncher
         public static String TF2Link = "https://drive.google.com/file/d/1rdtr-fQ_U39ZP1_6eTVM9AhTB539uOu2/view?usp=sharing";
 
 
-        
-        public static Version version = new Version(3,2,0);
+        public static ProfileOverlay profileOverlay;
+        public static Version version = new Version(3,2,1);
 
 
         public static HttpClient httpClient;

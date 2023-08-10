@@ -54,9 +54,10 @@
                         <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="45"/>
-                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="70"/>
-                        <ColumnDefinition Width="380"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="180"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
@@ -69,6 +70,7 @@
                     <Label Grid.Column="3"  Grid.Row="0" Content="Admin" Background="#0f0f0f"/>
                     <Label Grid.Column="4"  Grid.Row="0" Content="Length" Background="#0f0f0f"/>
                     <Label Grid.Column="5"  Grid.Row="0" Content="Reason" Background="#0f0f0f"/>
+                    <Label Grid.Column="6"  Grid.Row="0" Content="UNBAN" Background="#0f0f0f"/>
 
 
 

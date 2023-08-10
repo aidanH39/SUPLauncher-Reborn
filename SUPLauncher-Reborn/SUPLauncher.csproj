@@ -7,7 +7,7 @@
     <UseWPF>true</UseWPF>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
-    <Version>3.2.0</Version>
+    <Version>3.2.1</Version>
     <Company>Best of all</Company>
     <Description>Built for SuperiorServers, to get the best experience.</Description>
     <Copyright>Best of all</Copyright>
