@@ -36,7 +36,7 @@ namespace SUPLauncher
 
 
         public static ProfileOverlay profileOverlay;
-        public static Version version = new Version(3,2,2);
+        public static Version version = new Version(3,2,3);
 
 
         public static HttpClient httpClient;
@@ -183,6 +183,7 @@ namespace SUPLauncher
                     {
                         FileName = Process.GetCurrentProcess().MainModule.FileName,
                         UseShellExecute = true,
+                        WorkingDirectory = System.AppDomain.CurrentDomain.BaseDirectory,
                         Verb = "runas"
                     }
                 };
