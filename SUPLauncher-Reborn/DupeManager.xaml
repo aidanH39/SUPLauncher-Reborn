@@ -8,8 +8,29 @@
              d:DesignHeight="450" d:DesignWidth="800" Margin="0,40,0,0" Unloaded="UserControl_Unloaded" IsVisibleChanged="UserControl_IsVisibleChanged">
     
     <UserControl.Resources>
-        <ResourceDictionary>
 
+        <ResourceDictionary>
+            <Style TargetType="{x:Type Button}">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#1f1f1f"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Trigger>
+                </Style.Triggers>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderThickness="2" CornerRadius="3" BorderBrush="Transparent">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="Transparent"></Setter>
+
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="18"></Setter>
+            </Style>
             <Style TargetType="Label">
                 <Setter Property="Foreground" Value="White"></Setter>
             </Style>
@@ -19,17 +40,17 @@
     </UserControl.Resources>
     <Grid Background="#292929">
         <DockPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="40" Background="#191919">
-            <Button Style="{DynamicResource OverlaymenuButtons}" Click="onBackClick" Width="25" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0" ToolTip="Go to previous folder">
-                <Image Stretch="UniformToFill" Source="/previous.png" SnapsToDevicePixels="True"/>
-            </Button>
-            <Button Style="{DynamicResource OverlaymenuButtons}" Click="onHomeClick" Width="25" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0" ToolTip="Go back to root folder">
-                <Image Stretch="UniformToFill" Source="/homepage.png" SnapsToDevicePixels="True"/>
-            </Button>
+            <WrapPanel Margin="5,0,0,0" Height="40" ItemHeight="30" ItemWidth="30">
+                <Button Click="onBackClick" Width="25" Height="25" HorizontalAlignment="Center" ToolTip="Go to previous folder" Content="" FontFamily="Segoe MDL2 Assets">
 
-            <Button Style="{DynamicResource OverlaymenuButtons}" Click="onRefreshClick" Width="25" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0" ToolTip="Reload entries">
-                <Image Stretch="UniformToFill" Source="/refresh.png" SnapsToDevicePixels="True"/>
-            </Button>
+                </Button>
+                <Button Click="onHomeClick" Width="25" Height="25" HorizontalAlignment="Center"  ToolTip="Go back to root folder" Content="" FontFamily="Segoe MDL2 Assets">
 
+                </Button>
+
+                <Button Click="onRefreshClick" Width="25" Height="25" HorizontalAlignment="Center" ToolTip="Reload entries" Content="" FontFamily="Segoe MDL2 Assets">
+                </Button>
+            </WrapPanel>
             <TextBox Name="txt_path" Margin="20,08,100,08" Background="#2f2f2f"  Foreground="#9f9f9f" BorderThickness="4" BorderBrush="#2f2f2f"></TextBox>
         </DockPanel>
 
