@@ -88,7 +88,7 @@ namespace SUPLauncher
 
             darkrp_rank.Content = App.profile.Badmin.Ranks.DarkRP.ToUpper();
             cwrp_rank.Content = App.profile.Badmin.Ranks.CWRP.ToUpper();
-            milrp_rank.Content = App.profile.Badmin.Ranks.MilRP.ToUpper();
+            //milrp_rank.Content = App.profile.Badmin.Ranks.MilRP.ToUpper();
 
             var timeSpent = TimeSpan.FromSeconds(Double.Parse(App.profile.Badmin.PlayTime));
 

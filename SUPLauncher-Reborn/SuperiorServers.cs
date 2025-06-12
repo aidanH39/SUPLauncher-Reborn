@@ -110,10 +110,10 @@ namespace SUPLauncher
         /// </summary>
         public class PlayerRanks
         {
-            [JsonProperty(PropertyName = "DarkRP & Zombies")]
+            [JsonProperty(PropertyName = "DarkRP")]
             public string DarkRP;
             public string CWRP;
-            public string MilRP;
+            //public string MilRP;
         }
 
 
@@ -157,8 +157,8 @@ namespace SUPLauncher
         {
             bool darkrp = profile.Badmin.Ranks.DarkRP.ToLower() == "moderator" || profile.Badmin.Ranks.DarkRP.ToLower() == "admin" || profile.Badmin.Ranks.DarkRP.ToLower() == "double admin" || profile.Badmin.Ranks.DarkRP.ToLower() == "super admin" || profile.Badmin.Ranks.DarkRP.ToLower() == "council" || profile.Badmin.Ranks.DarkRP.ToLower() == "root" || profile.Badmin.Ranks.DarkRP.ToLower() == "sudo root";
             bool cwrp = profile.Badmin.Ranks.CWRP.ToLower() == "moderator" || profile.Badmin.Ranks.CWRP.ToLower() == "admin" || profile.Badmin.Ranks.CWRP.ToLower() == "double admin" || profile.Badmin.Ranks.CWRP.ToLower() == "super admin" || profile.Badmin.Ranks.CWRP.ToLower() == "council" || profile.Badmin.Ranks.CWRP.ToLower() == "root" || profile.Badmin.Ranks.CWRP.ToLower() == "sudo root";
-            bool milrp = profile.Badmin.Ranks.MilRP.ToLower() == "moderator" || profile.Badmin.Ranks.MilRP.ToLower() == "admin" || profile.Badmin.Ranks.MilRP.ToLower() == "double admin" || profile.Badmin.Ranks.MilRP.ToLower() == "super admin" || profile.Badmin.Ranks.MilRP.ToLower() == "council" || profile.Badmin.Ranks.MilRP.ToLower() == "root" || profile.Badmin.Ranks.MilRP.ToLower() == "sudo root";
-            return darkrp || cwrp || milrp;
+            //bool milrp = profile.Badmin.Ranks.MilRP.ToLower() == "moderator" || profile.Badmin.Ranks.MilRP.ToLower() == "admin" || profile.Badmin.Ranks.MilRP.ToLower() == "double admin" || profile.Badmin.Ranks.MilRP.ToLower() == "super admin" || profile.Badmin.Ranks.MilRP.ToLower() == "council" || profile.Badmin.Ranks.MilRP.ToLower() == "root" || profile.Badmin.Ranks.MilRP.ToLower() == "sudo root";
+            return darkrp || cwrp;
         }
 
         /// <summary>
@@ -174,7 +174,8 @@ namespace SUPLauncher
             } else if (server.ToLower() == "cwrp") {
                 return profile.Badmin.Ranks.CWRP.ToLower() == "moderator" || profile.Badmin.Ranks.CWRP.ToLower() == "admin" || profile.Badmin.Ranks.CWRP.ToLower() == "double admin" || profile.Badmin.Ranks.CWRP.ToLower() == "super admin" || profile.Badmin.Ranks.CWRP.ToLower() == "council" || profile.Badmin.Ranks.CWRP.ToLower() == "root" || profile.Badmin.Ranks.CWRP.ToLower() == "sudo root"; ;
             } else if (server.ToLower() == "milrp") {
-                return profile.Badmin.Ranks.MilRP.ToLower() == "moderator" || profile.Badmin.Ranks.MilRP.ToLower() == "admin" || profile.Badmin.Ranks.MilRP.ToLower() == "double admin" || profile.Badmin.Ranks.MilRP.ToLower() == "super admin" || profile.Badmin.Ranks.MilRP.ToLower() == "council" || profile.Badmin.Ranks.MilRP.ToLower() == "root" || profile.Badmin.Ranks.MilRP.ToLower() == "sudo root";
+                //return profile.Badmin.Ranks.MilRP.ToLower() == "moderator" || profile.Badmin.Ranks.MilRP.ToLower() == "admin" || profile.Badmin.Ranks.MilRP.ToLower() == "double admin" || profile.Badmin.Ranks.MilRP.ToLower() == "super admin" || profile.Badmin.Ranks.MilRP.ToLower() == "council" || profile.Badmin.Ranks.MilRP.ToLower() == "root" || profile.Badmin.Ranks.MilRP.ToLower() == "sudo root";
+                return false; // MilRP is no longer available, so we return false.
             } else {
                 return false;
             }
