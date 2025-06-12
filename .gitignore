@@ -2,5 +2,6 @@
 obj/
 bin/
 *.dbf~
-SUPLauncher Package/
+SUPLauncher-Package/
 SUPLauncher-Reborn/UpgradeLog.htm
+SUPLauncher-Reborn/SUPLauncher-Package.sln

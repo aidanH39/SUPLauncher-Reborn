@@ -7,7 +7,7 @@
     <UseWPF>true</UseWPF>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
-    <Version>3.2.1</Version>
+    <Version>3.3.0</Version>
     <Company>Best of all</Company>
     <Description>Built for SuperiorServers, to get the best experience.</Description>
     <Copyright>Best of all</Copyright>
@@ -18,6 +18,9 @@
     <Platforms>AnyCPU;x86;x64</Platforms>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <SupportedOSPlatformVersion>8.0</SupportedOSPlatformVersion>
+    <Title>SUPLauncher</Title>
+    <RepositoryUrl>https://github.com/aidanH39/SUPLauncher-Reborn</RepositoryUrl>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(PlatformTarget)' == 'x86'">
@@ -56,7 +59,6 @@
     <None Remove="refresh.png" />
     <None Remove="server.png" />
     <None Remove="setting.png" />
-    <None Remove="textless_logo.png" />
     <None Remove="tools.png" />
     <None Remove="vmbank" />
     <None Remove="vmbank.png" />
@@ -77,13 +79,6 @@
 
   <ItemGroup>
     <Resource Include="favicon.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="G:\Downloads\textless_logo.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -130,6 +125,10 @@
     <None Update="AppSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>AppSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="textless_logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
