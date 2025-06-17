@@ -36,7 +36,7 @@ namespace SUPLauncher
 
 
         public static ProfileOverlay profileOverlay;
-        public static Version version = new Version(3,2,3);
+        public static Version version = new Version(3,3,0);
 
 
         public static HttpClient httpClient;
